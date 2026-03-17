@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Spot, CityInfo, RegionNode } from '../types';
 import { searchPOI, getSubDistricts } from '../services/amap';
+import { fetchRealWorldData } from '../services/crawler';
+import { generateFallbackPOIs } from '../services/deepseek';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
 import { SpotDetail } from './SpotDetail';
@@ -57,10 +59,33 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     setLoading(true);
     setLoadingStep(`正在检索 ${name} 的地理星图...`);
     try {
-      const result = await searchPOI(name, searchKw, center);
+      // 第一引擎：高德实体检索
+      let result = await searchPOI(name, searchKw, center);
+      
+      // 第二引擎：当高德返回空时，启动 RAG 兜底
+      if (result.length === 0) {
+        setLoadingStep(`高德数据未返回，正在启动网络爬虫检索 ${name} 实况...`);
+        const realWorldText = await fetchRealWorldData(name, searchKw);
+        
+        setLoadingStep(`抓取完成，正在唤醒 DeepSeek 提取真实地理信息...`);
+        result = await generateFallbackPOIs(name, realWorldText, center);
+      }
+      
       setSpots(result);
     } catch (err: any) {
-      setErrorMsg(`检索失败: ${err.message}`);
+      // 高德崩溃时也尝试 RAG 兜底
+      setLoadingStep(`检索异常，正在启动备用智能引擎...`);
+      try {
+        const realWorldText = await fetchRealWorldData(name, searchKw);
+        const fallback = await generateFallbackPOIs(name, realWorldText, center);
+        if (fallback.length > 0) {
+          setSpots(fallback);
+        } else {
+          setErrorMsg(`检索失败: ${err.message}`);
+        }
+      } catch (ragErr: any) {
+        setErrorMsg(`双引擎均失败: ${err.message} / ${ragErr.message}`);
+      }
     } finally {
       setLoading(false);
       setLoadingStep('');

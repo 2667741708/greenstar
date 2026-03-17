@@ -6,6 +6,12 @@
     <title>绿星 (Green Star) - 智能旅游打卡</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- 高德地图安全配置 (2021年12月后新申请的 Key 必须配合安全密钥使用) -->
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: '在此处填入您的安全密钥(Web端)',
+        }
+    </script>
     <!-- 引入高德地图 JS API -->
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=d7427bb415e50eb00a01f93581ceb3ac&plugin=AMap.PlaceSearch,AMap.Geocoder,AMap.DistrictSearch,AMap.ToolBar"></script>
     <style>

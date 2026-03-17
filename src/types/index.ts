@@ -9,6 +9,8 @@ export interface Spot {
   tags: string[];
   checkedIn: boolean;
   distance?: number;
+  isAIGenerated?: boolean;    // 是否由 AI 兜底生成
+  dataSource?: string;        // 数据溯源标识（如 "维基百科 + DeepSeek"）
 }
 
 export interface CityInfo {
