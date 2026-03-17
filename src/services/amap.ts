@@ -27,15 +27,15 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
         const placeSearch = new AMap.PlaceSearch({
           city: city, // 城市名或 citycode
           citylimit: true,
-          type: CONSTANTS.POI_TYPES.join('|'),
+          type: CONSTANTS.POI_TYPE_STRING, // 严格使用中文分类名或数字编码，非模糊 keyword
           pageSize: 15,
           pageIndex: 1,
         });
 
-        // 如果传入了坐标点且 keyword 为空或较宽泛，则进行周边检索功能
+        // 如果传入了精准搜索词（非空），进行全城文本搜索；如果没传，根据当前地点周边半径检索
         const searchFn = keyword 
-            ? (cb: any) => placeSearch.search(keyword, cb)
-            : (cb: any) => placeSearch.searchNearBy('', [center.lng, center.lat], 50000, cb);
+          ? (cb: any) => placeSearch.search(keyword, cb)
+          : (cb: any) => placeSearch.searchNearBy('', [center.lng, center.lat], 5000, cb); // 半径设置为 5km，防止越界
 
         searchFn((status: string, result: any) => {
           if (status === 'complete' && result.info === 'OK' && result.poiList) {
@@ -143,5 +143,32 @@ export const geocode = (address: string): Promise<{ lat: number, lng: number, fo
           reject(err);
         }
       });
+  });
+};
+
+export const getSubDistricts = (keyword: string, level: string = 'city'): Promise<any[]> => {
+  return new Promise((resolve, reject) => {
+    if (typeof AMap === 'undefined') {
+      reject(new Error('高德地图 JS API 未加载成功'));
+      return;
+    }
+    AMap.plugin('AMap.DistrictSearch', () => {
+      try {
+        const districtSearch = new AMap.DistrictSearch({
+          level: level,
+          subdistrict: 1, // 只取下一级
+          showbiz: false
+        });
+        districtSearch.search(keyword, (status: string, result: any) => {
+          if (status === 'complete' && result.districtList && result.districtList.length > 0) {
+            resolve(result.districtList[0].districtList || []);
+          } else {
+            resolve([]);
+          }
+        });
+      } catch (err) {
+        reject(err);
+      }
+    });
   });
 };

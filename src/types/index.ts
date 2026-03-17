@@ -20,6 +20,13 @@ export interface CityInfo {
   isUnlocked: boolean; // 是否已解锁/访问过
 }
 
+export interface RegionNode {
+  name: string;
+  adcode: string;
+  level: 'country' | 'province' | 'city' | 'district' | 'street';
+  center: { lat: number; lng: number };
+}
+
 export interface GroundingSource {
   title: string;
   uri: string;

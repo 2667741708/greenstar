@@ -35,6 +35,8 @@ export const useAmap = (
       AMap.plugin(['AMap.ToolBar'], function() {
         mapInstance.current.addControl(new AMap.ToolBar({ position: 'RB' }));
       });
+    } else if (center) {
+      mapInstance.current.setZoomAndCenter(zoom, [center.lng, center.lat], false, 800);
     }
 
     // 更新主题

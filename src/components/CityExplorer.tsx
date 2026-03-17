@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Spot, CityInfo } from '../types';
-import { searchPOI } from '../services/amap';
+import { Spot, CityInfo, RegionNode } from '../types';
+import { searchPOI, getSubDistricts } from '../services/amap';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
 import { SpotDetail } from './SpotDetail';
@@ -23,11 +23,29 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
   const [keyword, setKeyword] = useState('');
+  
+  // 栈式下钻探索状态
+  const [explorationStack, setExplorationStack] = useState<RegionNode[]>([]);
+  const [subRegions, setSubRegions] = useState<any[]>([]);
+
+  // 栈顶 = 当前层级
+  const currentRegion: RegionNode = explorationStack.length > 0
+    ? explorationStack[explorationStack.length - 1]
+    : { name: city.name, adcode: '', level: 'city', center: city.coordinates };
+
+  // 根据层级动态计算 zoom
+  const zoomForLevel = (level: string): number => {
+    switch (level) {
+      case 'district': return CONSTANTS.MAP.DISTRICT_ZOOM;
+      case 'street': return CONSTANTS.MAP.STREET_ZOOM;
+      default: return CONSTANTS.MAP.CITY_ZOOM;
+    }
+  };
 
   useAmap(
     'city-map-container',
-    city.coordinates,
-    CONSTANTS.MAP.CITY_ZOOM,
+    currentRegion.center,
+    zoomForLevel(currentRegion.level),
     isPro,
     spots,
     [],
@@ -35,11 +53,11 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     setSelectedSpot
   );
 
-  const fetchCitySpots = async (searchKw: string = '') => {
+  const fetchCitySpots = async (searchKw: string = '', center: {lat: number, lng: number}, name: string) => {
     setLoading(true);
-    setLoadingStep(`正在检索 ${city.name} 的地理星图...`);
+    setLoadingStep(`正在检索 ${name} 的地理星图...`);
     try {
-      const result = await searchPOI(city.name, searchKw, city.coordinates);
+      const result = await searchPOI(name, searchKw, center);
       setSpots(result);
     } catch (err: any) {
       setErrorMsg(`检索失败: ${err.message}`);
@@ -49,15 +67,53 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     }
   };
 
+  const loadSubRegions = async (name: string, level: string) => {
+    try {
+      const regions = await getSubDistricts(name, level);
+      setSubRegions(regions.filter((r: any) => r.center)); // 过滤掉没有坐标的
+    } catch (e) {
+      console.error(e);
+      setSubRegions([]);
+    }
+  };
+
   useEffect(() => {
-    fetchCitySpots();
-    // 进入城市探索页代表解锁了该城市
+    setExplorationStack([]);
+    fetchCitySpots('', city.coordinates, city.name);
+    loadSubRegions(city.name, 'city');
     updateCityUnlockedStatus(city.id);
   }, [city.id]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchCitySpots(keyword);
+    fetchCitySpots(keyword, currentRegion.center, currentRegion.name);
+  };
+
+  const handleRegionClick = (region: any) => {
+    const newNode: RegionNode = {
+      name: region.name,
+      adcode: region.adcode,
+      level: region.level,
+      center: { lat: region.center.lat, lng: region.center.lng }
+    };
+    setExplorationStack(prev => [...prev, newNode]);
+    setKeyword('');
+    fetchCitySpots('', newNode.center, newNode.name);
+    loadSubRegions(newNode.name, newNode.level);
+  };
+
+  const handleBreadcrumbClick = (index: number) => {
+    setKeyword('');
+    if (index < 0) {
+      setExplorationStack([]);
+      fetchCitySpots('', city.coordinates, city.name);
+      loadSubRegions(city.name, 'city');
+    } else {
+      const target = explorationStack[index];
+      setExplorationStack(prev => prev.slice(0, index + 1));
+      fetchCitySpots('', target.center, target.name);
+      loadSubRegions(target.name, target.level);
+    }
   };
 
   const handleCheckIn = (spot: Spot) => {
@@ -86,14 +142,23 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
       <div className="px-5 mt-4 relative z-30">
         <div className="bg-white/70 backdrop-blur-xl rounded-[2rem] p-2 pl-5 flex items-center gap-3 shadow-lg border border-white group transition-all">
-          <button onClick={onBack} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors">
+          <button onClick={() => {
+            if (explorationStack.length > 0) {
+              handleBreadcrumbClick(explorationStack.length - 2);
+            } else {
+              onBack();
+            }
+          }} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors shrink-0">
             <i className="bi bi-arrow-left text-gray-600"></i>
           </button>
           <div className="flex-1 min-w-0">
             <p className="text-[10px] font-bold text-gray-400 uppercase">当前跃迁点</p>
-            <p className="text-sm font-bold text-gray-800 truncate">{city.name} {city.province !== city.name && <span className="text-xs text-gray-400">{city.province}</span>}</p>
+            <p className="text-sm font-bold text-gray-800 truncate">
+              {currentRegion.name} 
+              {currentRegion.name !== city.name && <span className="text-xs text-gray-400 ml-1">({city.name})</span>}
+            </p>
           </div>
-          <form onSubmit={handleSearch} className="flex gap-1 pr-1">
+          <form onSubmit={handleSearch} className="flex gap-1 pr-1 shrink-0">
             <input 
               type="text" 
               value={keyword} 
@@ -106,15 +171,54 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         </div>
       </div>
 
+      {/* 面包屑导航 */}
+      <div className="px-5 mt-2 flex items-center gap-1 overflow-x-auto scrollbar-none text-xs">
+        <button
+          onClick={() => handleBreadcrumbClick(-1)}
+          className="text-emerald-600 font-bold hover:underline whitespace-nowrap"
+        >
+          {city.name}
+        </button>
+        {explorationStack.map((node, i) => (
+          <React.Fragment key={node.adcode || i}>
+            <i className="bi bi-chevron-right text-gray-300 text-[10px]"></i>
+            <button
+              onClick={() => handleBreadcrumbClick(i)}
+              className={`whitespace-nowrap font-bold transition-colors ${
+                i === explorationStack.length - 1
+                  ? 'text-gray-800 pointer-events-none'
+                  : 'text-emerald-500 hover:underline'
+              }`}
+            >
+              {node.name}
+            </button>
+          </React.Fragment>
+        ))}
+      </div>
+
       <div className="px-5 mt-4 flex justify-between items-center z-30">
         <h2 className="text-2xl font-black tracking-tight"><span className="text-emerald-500">发现</span>周边</h2>
-        <div className="bg-gray-100 p-1 rounded-2xl flex gap-1 shadow-inner">
+        <div className="bg-gray-100 p-1 rounded-2xl flex gap-1 shadow-inner shrink-0 ml-4">
           <button onClick={() => setViewMode('list')} className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${viewMode === 'list' ? 'bg-white shadow pointer-events-none' : 'text-gray-500 hover:text-gray-700'}`}><i className="bi bi-list-ul mr-1"></i>列表</button>
           <button onClick={() => setViewMode('map')} className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${viewMode === 'map' ? 'bg-white shadow pointer-events-none' : 'text-gray-500 hover:text-gray-700'}`}><i className="bi bi-map mr-1"></i>地图</button>
         </div>
       </div>
 
-      <div className="flex-1 relative overflow-hidden mt-4 pb-24">
+      {subRegions.length > 0 && (
+        <div className="px-5 mt-3 flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+          {subRegions.map(region => (
+            <button 
+              key={region.adcode} 
+              onClick={() => handleRegionClick(region)}
+              className="px-3 py-1.5 bg-white border border-emerald-100 rounded-full text-xs font-bold text-emerald-700 whitespace-nowrap shadow-sm hover:bg-emerald-50 active:scale-95 transition-all"
+            >
+              探索 {region.name}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className="flex-1 relative overflow-hidden mt-2 pb-24">
         {viewMode === 'list' ? (
           <div className="h-full overflow-y-auto px-5 space-y-4 pb-12">
             {spots.length > 0 ? (
