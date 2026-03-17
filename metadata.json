@@ -1,0 +1,8 @@
+{
+  "description": "Green Star - Intelligent Travel Check-in Platform with AI Grounded Itineraries.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ],
+  "name": "GreenStar"
+}
