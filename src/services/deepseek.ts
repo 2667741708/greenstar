@@ -1,48 +1,62 @@
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY as string;
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY as string;
 const DEEPSEEK_BASE_URL = 'https://api.deepseek.com';
+const GEMINI_OPENAI_URL = 'https://generativelanguage.googleapis.com/v1beta/openai';
+
+// 工具函数：封装统一的 OpenAI 兼容 Fetch 请求
+const fetchOpenAICompatible = async (url: string, key: string, model: string, prompt: string, jsonMode: boolean, signal: AbortSignal) => {
+  const body: any = {
+    model,
+    messages: [{ role: 'user', content: prompt }],
+    temperature: 0.7,
+    max_tokens: 2048,
+  };
+  if (jsonMode) {
+    body.response_format = { type: 'json_object' };
+  }
+  const res = await fetch(`${url}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${key}`,
+    },
+    body: JSON.stringify(body),
+    signal,
+  });
+  if (!res.ok) throw new Error(`${model} API HTTP ${res.status}: ${await res.text()}`);
+  return res.json();
+};
 
 export const callDeepSeek = async (prompt: string, jsonMode = false, timeoutMs = 30000): Promise<string> => {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
+  
   try {
-    const body: any = {
-      model: 'deepseek-chat',
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.7,
-      max_tokens: 2048,
-    };
-    if (jsonMode) {
-      body.response_format = { type: 'json_object' };
-    }
-    const res = await fetch(`${DEEPSEEK_BASE_URL}/chat/completions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
-      },
-      body: JSON.stringify(body),
-      signal: controller.signal,
-    });
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(`DeepSeek API ${res.status}: ${err}`);
-    }
-    const data = await res.json();
+    // 尝试主模型 DeepSeek
+    const data = await fetchOpenAICompatible(DEEPSEEK_BASE_URL, DEEPSEEK_API_KEY, 'deepseek-chat', prompt, jsonMode, controller.signal);
     return data.choices?.[0]?.message?.content || '';
+  } catch (err: any) {
+    console.warn('⚠️ DeepSeek 接口额度或服务异常，正在平滑切换到 Gemini 容灾模型...', err.message);
+    try {
+      // 容灾回退到 Gemini 2.5 Flash (通过 OpenAI 兼容接口)
+      const data = await fetchOpenAICompatible(GEMINI_OPENAI_URL, GEMINI_API_KEY, 'gemini-2.5-flash', prompt, jsonMode, controller.signal);
+      return data.choices?.[0]?.message?.content || '';
+    } catch (fallbackErr: any) {
+      throw new Error(`双模型均失效: ${fallbackErr.message}`);
+    }
   } finally {
     clearTimeout(timer);
   }
 };
 
 // ============================================================================
-// 流式调用 DeepSeek API（SSE）
-// Streaming call to DeepSeek API with thinking/content chunk callbacks
+// 流式调用 API（SSE） - 包含自动 Fallback 机制
 // ============================================================================
 export interface StreamCallbacks {
-  onThinking?: (chunk: string) => void;   // 思考过程增量回调
-  onContent?: (chunk: string) => void;    // 输出内容增量回调
-  onDone?: () => void;                    // 流结束回调
-  onError?: (error: Error) => void;       // 错误回调
+  onThinking?: (chunk: string) => void;
+  onContent?: (chunk: string) => void;
+  onDone?: () => void;
+  onError?: (error: Error) => void;
 }
 
 export const streamDeepSeek = async (
@@ -50,76 +64,84 @@ export const streamDeepSeek = async (
   callbacks: StreamCallbacks,
   timeoutMs = 120000
 ): Promise<void> => {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), timeoutMs);
-  
-  try {
-    const res = await fetch(`${DEEPSEEK_BASE_URL}/chat/completions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'deepseek-reasoner',
-        messages: [{ role: 'user', content: prompt }],
-        stream: true,
-        max_tokens: 4096,
-      }),
-      signal: controller.signal,
-    });
+  const executeStream = async (url: string, key: string, model: string, useThinking: boolean) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
 
-    if (!res.ok) {
-      const err = await res.text();
-      throw new Error(`DeepSeek API ${res.status}: ${err}`);
-    }
+    try {
+      const res = await fetch(`${url}/chat/completions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${key}`,
+        },
+        body: JSON.stringify({
+          model,
+          messages: [{ role: 'user', content: prompt }],
+          stream: true,
+          max_tokens: 4096,
+        }),
+        signal: controller.signal,
+      });
 
-    const reader = res.body!.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop() || '';  // 保留不完整的最后一行
+      const reader = res.body!.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
 
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed || !trimmed.startsWith('data: ')) continue;
-        const data = trimmed.slice(6);
-        if (data === '[DONE]') {
-          callbacks.onDone?.();
-          return;
-        }
-        try {
-          const parsed = JSON.parse(data);
-          const delta = parsed.choices?.[0]?.delta;
-          if (!delta) continue;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed || !trimmed.startsWith('data: ')) continue;
+          const data = trimmed.slice(6);
+          if (data === '[DONE]') return; // 流式正常结束
           
-          // DeepSeek reasoner 模型: reasoning_content = 思考过程, content = 最终输出
-          if (delta.reasoning_content) {
-            callbacks.onThinking?.(delta.reasoning_content);
-          }
-          if (delta.content) {
-            callbacks.onContent?.(delta.content);
-          }
-        } catch {
-          // 忽略解析错误的行
+          try {
+            const parsed = JSON.parse(data);
+            const delta = parsed.choices?.[0]?.delta;
+            if (!delta) continue;
+            
+            if (delta.reasoning_content) {
+              callbacks.onThinking?.(delta.reasoning_content);
+            }
+            if (delta.content) {
+              // 如果是 fallback 补充逻辑：部分模型没思考过程，可以给一个固定思考状态
+              callbacks.onContent?.(delta.content);
+            }
+          } catch {}
         }
       }
+    } finally {
+      clearTimeout(timer);
     }
+  };
+
+  try {
+    // Stage 1: Attempt DeepSeek Reasoner
+    await executeStream(DEEPSEEK_BASE_URL, DEEPSEEK_API_KEY, 'deepseek-reasoner', true);
     callbacks.onDone?.();
   } catch (err: any) {
-    if (err.name === 'AbortError') {
-      callbacks.onError?.(new Error('请求超时'));
-    } else {
-      callbacks.onError?.(err);
+    console.warn('⚠️ DeepSeek 流式中断，正在无缝热切换到 Gemini 引擎接管...', err.message);
+    callbacks.onThinking?.('\n\n[系统提示] 检测到 DeepSeek 星球算力达到瓶颈 (Quota/503)，已自适应切换至 Gemini 引擎继续计算...\n');
+    try {
+      // Stage 2: Fallback to Gemini 2.5 Flash
+      await executeStream(GEMINI_OPENAI_URL, GEMINI_API_KEY, 'gemini-2.5-flash', false);
+      callbacks.onDone?.();
+    } catch (fallbackErr: any) {
+      if (err.name === 'AbortError' || fallbackErr.name === 'AbortError') {
+        callbacks.onError?.(new Error('请求超时'));
+      } else {
+        callbacks.onError?.(fallbackErr);
+      }
     }
-  } finally {
-    clearTimeout(timer);
   }
 };
 
