@@ -14,6 +14,7 @@ import { MarkdownRenderer } from './MarkdownRenderer';
 import { Spot } from '../types';
 import { streamDeepSeek } from '../services/deepseek';
 import { fetchRealWorldData } from '../services/crawler';
+import { RouteMapPanel } from './RouteMapPanel';
 
 interface PlanPanelProps {
   setLoading: (loading: boolean) => void;
@@ -32,6 +33,7 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
   const [content, setContent] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
   const [showThinking, setShowThinking] = useState(true);
+  const [showRoute, setShowRoute] = useState(false);
   const [phase, setPhase] = useState<'idle' | 'crawling' | 'thinking' | 'writing' | 'done'>('idle');
 
   const thinkingRef = useRef<HTMLDivElement>(null);
@@ -255,6 +257,27 @@ ${wikiText || '（无百科数据可用）'}
               {phase === 'writing' && <span className="inline-block w-2 h-5 bg-emerald-500 ml-0.5 animate-pulse align-middle"></span>}
             </div>
           </div>
+        )}
+
+        {/* 攻略完成后的路线规划按钮 */}
+        {phase === 'done' && content && (
+          <button 
+            onClick={() => setShowRoute(true)}
+            className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3"
+          >
+            <i className="bi bi-map-fill text-lg"></i>
+            <span>📍 查看攻略路线地图</span>
+            <i className="bi bi-arrow-right"></i>
+          </button>
+        )}
+
+        {/* 路线地图全屏面板 */}
+        {showRoute && content && (
+          <RouteMapPanel 
+            planText={content} 
+            cityName={targetDestination || currentCityName || ''} 
+            onClose={() => setShowRoute(false)} 
+          />
         )}
 
         {/* 空状态 */}
