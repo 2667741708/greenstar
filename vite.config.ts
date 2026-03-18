@@ -5,6 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      // GitHub Pages 需要子路径 base，Vercel/Supabase 用根路径
+      base: process.env.DEPLOY_TARGET === 'github' ? '/greenstar/' : '/',
       server: {
         port: 3000,
         host: '0.0.0.0',
