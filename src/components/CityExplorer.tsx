@@ -3,6 +3,7 @@ import { Spot, CityInfo, RegionNode } from '../types';
 import { searchPOI, getSubDistricts } from '../services/amap';
 import { fetchRealWorldData } from '../services/crawler';
 import { generateFallbackPOIs } from '../services/deepseek';
+import { batchFetchPOIImages } from '../services/imageCrawler';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
 import { SpotDetail } from './SpotDetail';
@@ -77,7 +78,18 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         result = await generateFallbackPOIs(name, realWorldText, center);
       }
       
+      // 先立即展示数据（用户先看到内容）
       setSpots(result);
+      
+      // 异步补充缺失图片（爬虫抓取，不阻塞主流程）
+      if (result.length > 0) {
+        setLoadingStep(`正在抓取真实地点图片...`);
+        const images = await batchFetchPOIImages(result, name);
+        setSpots(prev => prev.map((s, i) => ({
+          ...s,
+          imageUrl: images[i] || s.imageUrl || ''
+        })));
+      }
     } catch (err: any) {
       // 高德崩溃时也尝试 RAG 兜底
       setLoadingStep(`检索异常，正在启动备用智能引擎...`);
@@ -86,6 +98,12 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         const fallback = await generateFallbackPOIs(name, realWorldText, center);
         if (fallback.length > 0) {
           setSpots(fallback);
+          // 为兜底数据也抓取图片
+          const images = await batchFetchPOIImages(fallback, name);
+          setSpots(prev => prev.map((s, i) => ({
+            ...s,
+            imageUrl: images[i] || s.imageUrl || ''
+          })));
         } else {
           setErrorMsg(`检索失败: ${err.message}`);
         }
