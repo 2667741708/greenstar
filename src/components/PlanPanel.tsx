@@ -23,10 +23,11 @@ interface PlanPanelProps {
   errorMsg: string | null;
   currentSpots?: Spot[];       // 当前城市/区域的高德 POI 数据
   currentCityName?: string;    // 当前城市名称
+  currentKeywords?: string[];  // 探索页传来的 3D 主题标签
 }
 
 export const PlanPanel: React.FC<PlanPanelProps> = ({ 
-  setLoading, setLoadingStep, setErrorMsg, errorMsg, currentSpots, currentCityName 
+  setLoading, setLoadingStep, setErrorMsg, errorMsg, currentSpots, currentCityName, currentKeywords 
 }) => {
   const [targetDestination, setTargetDestination] = useState(currentCityName || '');
   const [thinking, setThinking] = useState('');
@@ -34,7 +35,8 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
   const [isStreaming, setIsStreaming] = useState(false);
   const [showThinking, setShowThinking] = useState(true);
   const [showRoute, setShowRoute] = useState(false);
-  const [phase, setPhase] = useState<'idle' | 'crawling' | 'thinking' | 'writing' | 'done'>('idle');
+  const [phase, setPhase] = useState<'idle' | 'drafting' | 'crawling' | 'thinking' | 'writing' | 'done'>('idle');
+  const [draftPrompt, setDraftPrompt] = useState<string>('');
 
   const thinkingRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -57,49 +59,55 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
     if (currentCityName) setTargetDestination(currentCityName);
   }, [currentCityName]);
 
-  const buildPrompt = (destination: string, poiText: string, wikiText: string): string => {
-    return `你是一位拥有丰富实地经验的资深旅游规划师。请基于以下**真实数据源**为用户生成一份详尽、专业的旅游攻略和路线规划。
+  // 生成基础指令给用户编辑
+  const generateBaseInstructions = (destination: string, keywords: string[]): string => {
+    const kwStr = keywords.length > 0 
+      ? `\n\n【🚀 用户探索偏好】：${keywords.join(', ')}\n**重要指示**：用户特别指定了以上主题倾向，请务必在路线规划、餐厅安排中大幅提升这些元素的比重！`
+      : '';
 
-## 真实数据源
+    return `你是一位拥有丰富实地经验的资深旅游规划师。请基于附加的【真实信源系统】数据，为用户生成定制旅游攻略。
 
-### 高德地图 API 返回的当地 POI 数据（最高优先级信源）
-${poiText || '（无高德数据可用）'}
+## 规划核心需求
+**目的地**: ${destination}${kwStr}
 
-### 网络百科检索资料
-${wikiText || '（无百科数据可用）'}
+请严格生成以下核心内容板块：
 
-## 规划要求
+### 1. 📍 目的地硬核概览
+简要说明此地的精神文化内核、气候雷区。
 
-**目的地**: ${destination}
+### 2. 🚗 交通接驳与大盘指南
+机场/高铁站下车后的最优解（如何快速到核心区、网约车上车点坑位）。
 
-请生成以下内容：
+### 3. 🗺️ X天Y夜的精研路书（核心）
+结合传给你的真实 POI 坐标，每天怎么走最顺路？不走回头路。
+- 上午/下午/晚上的详细安排
+- 点与点之间的切换方式及时间耗损
+- 必出片的机位或隐秘体验
 
-### 1. 📍 目的地概览
-简要介绍该地的地理位置、气候特点和文化特色。
+### 4. 🍜 黑珍珠与苍蝇馆子
+基于数据的餐厅打分，推荐必须去尝的。
 
-### 2. 🚗 抵达交通
-从当地主要枢纽（机场/车站）到市区的交通建议（含费用和时间参考）。
+### 5. ⚠️ 避雷区（含隐性消费预警）
+如不该信的拉客大妈、不该买的特产。
 
-### 3. 🗺️ 精华路线推荐
-基于上方高德 POI 数据中的**真实地点**，规划一条 2-3 天的最优游览路线：
-- 每天的行程安排（上午/下午/晚上）
-- 地点之间的交通方式和预估时间
-- 每个地点的推荐游玩时长
+### 6. 💰 全盘预算控制表
+按照舒适游估算 2-3 天整体花销。
 
-### 4. 🍜 美食攻略
-基于 POI 数据中的餐饮类地点，推荐当地特色美食和餐厅。
-
-### 5. ⚠️ 避坑指南
-当地的防坑避雷建议、安全提示。
-
-### 6. 💰 预算参考
-2-3 天行程的大致花费预估。
-
-请使用 Markdown 格式回答，内容要详实、具体、可操作。优先引用高德 API 提供的真实地点名称。`;
+请使用结构严谨的 Markdown 格式输出。排版必须精美好看，不要废话。`;
   };
 
-  const generateStreamingPlan = async (destination: string) => {
-    if (!destination || isStreaming) return;
+  // 依赖监听：当城市或关键词变动时，自动更新草稿
+  useEffect(() => {
+    if (phase === 'idle' || phase === 'drafting') {
+      const dest = currentCityName || '未知星球';
+      setTargetDestination(dest);
+      setDraftPrompt(generateBaseInstructions(dest, currentKeywords || []));
+      setPhase('drafting');
+    }
+  }, [currentCityName, currentKeywords]);
+
+  const startStreamingPlan = async () => {
+    if (!draftPrompt || isStreaming) return;
     
     setThinking('');
     setContent('');
@@ -109,7 +117,7 @@ ${wikiText || '（无百科数据可用）'}
 
     // Step 1: 整理高德 POI 数据
     setPhase('crawling');
-    setLoadingStep(`正在整理 ${destination} 的地理数据...`);
+    setLoadingStep(`正在整理 ${targetDestination} 的地理数据...`);
     
     let poiText = '';
     if (currentSpots && currentSpots.length > 0) {
@@ -121,17 +129,17 @@ ${wikiText || '（无百科数据可用）'}
     // Step 2: 抓取网络百科数据
     let wikiText = '';
     try {
-      wikiText = await fetchRealWorldData(destination);
+      wikiText = await fetchRealWorldData(targetDestination);
     } catch (e) {
       console.warn('[Plan] Wiki fetch failed:', e);
     }
 
-    // Step 3: 构建 Prompt 并开始流式调用
-    const prompt = buildPrompt(destination, poiText, wikiText);
+    // Step 3: 将底层数据隐式拼接到用户 Prompt 后，开始推流
+    const finalPrompt = `${draftPrompt}\n\n---\n## 📋 系统级真实信源系统注入数据（勿向用户展示此段原文）\n\n### 高德 API 极速实况探测（最高优先）：\n${poiText || '无'}\n\n### 维基百科知识引擎索引（背景知识）：\n${wikiText || '无'}`;
     setPhase('thinking');
     setLoadingStep('');
     
-    await streamDeepSeek(prompt, {
+    await streamDeepSeek(finalPrompt, {
       onThinking: (chunk) => {
         setPhase('thinking');
         setThinking(prev => prev + chunk);
@@ -154,6 +162,7 @@ ${wikiText || '（无百科数据可用）'}
 
   const phaseLabel = {
     idle: '',
+    drafting: '📝 等待审查并点燃引擎...',
     crawling: '📡 正在抓取数据源...',
     thinking: '🧠 DeepSeek 正在深度思考...',
     writing: '✍️ 正在生成攻略...',
@@ -173,26 +182,47 @@ ${wikiText || '（无百科数据可用）'}
               type="text" 
               value={targetDestination} 
               onChange={e => setTargetDestination(e.target.value)} 
-              onKeyDown={e => e.key === 'Enter' && generateStreamingPlan(targetDestination)}
               placeholder="例如：成都..." 
               className="w-full bg-white/20 border-white/30 text-white rounded-2xl py-3 pl-5 pr-14 backdrop-blur-md outline-none focus:bg-white/30 transition-all placeholder:text-white/60 text-sm" 
               disabled={isStreaming}
             />
-            <button 
-              onClick={() => generateStreamingPlan(targetDestination)} 
-              disabled={isStreaming}
-              className={`absolute right-2 top-1.5 bottom-1.5 w-10 h-10 rounded-xl flex items-center justify-center shadow-lg transition-all ${isStreaming ? 'bg-gray-300 text-gray-500' : 'bg-white text-emerald-700 active:scale-90'}`}
-            >
-              <i className={`bi ${isStreaming ? 'bi-hourglass-split animate-spin' : 'bi-send-fill'}`}></i>
-            </button>
           </div>
-          {currentSpots && currentSpots.length > 0 && (
-            <p className="text-[10px] text-white/60 mt-2">
-              <i className="bi bi-database-fill mr-1"></i>
-              已加载 {currentSpots.length} 个高德 POI 数据作为信源
-            </p>
-          )}
+          <div className="mt-2 flex items-center justify-between text-white/60 text-[10px]">
+            <span><i className="bi bi-database-fill mr-1"></i>搭载 {currentSpots?.length || 0} 个高德核心坐标源</span>
+            {currentKeywords && currentKeywords.length > 0 && <span><i className="bi bi-tag-fill mr-1"></i>聚焦主题: {currentKeywords.join(' / ')}</span>}
+          </div>
         </div>
+
+        {/* Prompt 审查编辑界（Drafting 阶段显示） */}
+        {phase === 'drafting' && (
+           <div className="bg-white rounded-3xl p-5 shadow-lg border-2 border-emerald-100 flex flex-col gap-3 animate-in fade-in slide-in-from-bottom-4 relative">
+             <div className="flex justify-between items-center text-emerald-800">
+               <span className="text-sm font-black"><i className="bi bi-terminal-fill mr-2"></i>定制化 Prompt 审查台</span>
+               <span className="text-[10px] bg-emerald-100 px-2 py-1 rounded-md font-bold text-emerald-600 border border-emerald-200 shadow-inner">极客模式</span>
+             </div>
+             
+             <p className="text-[11px] text-gray-400 font-bold">下面是为你自动生成的指令，可直接修改任意字符，高德和维基的实况数据已被自动折叠附加在底层。</p>
+             
+             <textarea 
+               value={draftPrompt}
+               onChange={(e) => setDraftPrompt(e.target.value)}
+               className="w-full bg-slate-800 text-emerald-400 font-mono text-xs rounded-xl p-4 min-h-[220px] outline-none border border-slate-700 focus:border-emerald-500 transition-colors resize-y scrollbar-thin scrollbar-thumb-emerald-700 leading-relaxed disabled:opacity-50"
+               placeholder="在这里手写你的 Prompt 指令..."
+               disabled={isStreaming}
+               spellCheck={false}
+             />
+             
+             <button 
+               onClick={startStreamingPlan} 
+               disabled={isStreaming || !draftPrompt.trim()}
+               className={`w-full py-3.5 rounded-2xl font-black shadow-lg transition-all flex items-center justify-center gap-2 
+                ${(isStreaming || !draftPrompt.trim()) ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-emerald-500 to-emerald-400 text-white hover:shadow-emerald-200 active:scale-95'}`}
+             >
+               <i className={`bi ${isStreaming ? 'bi-hourglass-split animate-spin' : 'bi-rocket-takeoff-fill'}`}></i>
+               锁定策略，引燃 DeepSeek 引擎
+             </button>
+           </div>
+        )}
 
         {/* 状态指示 */}
         {phase !== 'idle' && phase !== 'done' && (
@@ -284,7 +314,7 @@ ${wikiText || '（无百科数据可用）'}
         {phase === 'idle' && !content && (
           <div className="text-center py-16 opacity-30 flex flex-col items-center">
             <i className="bi bi-map-fill text-6xl mb-4"></i>
-            <p className="font-bold">输入目的地，开启 AI 全局视野</p>
+            <p className="font-bold">探索城市并锁定星系，开启 AI 全局视野</p>
             {currentCityName && (
               <p className="text-sm mt-2">当前已加载 {currentCityName} 的地理数据</p>
             )}

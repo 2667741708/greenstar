@@ -18,10 +18,11 @@ interface CityExplorerProps {
   setErrorMsg: (msg: string | null) => void;
   updateCityUnlockedStatus: (cityId: string) => void;
   onSpotsUpdate?: (spots: Spot[]) => void;  // 向上上报 spots 供 PlanPanel 使用
+  onKeywordsUpdate?: (keywords: string[]) => void; // 向上上报 keywords 供 PlanPanel 使用
 }
 
 export const CityExplorer: React.FC<CityExplorerProps> = ({ 
-  city, isPro, onBack, setLoading, setLoadingStep, setErrorMsg, updateCityUnlockedStatus, onSpotsUpdate 
+  city, isPro, onBack, setLoading, setLoadingStep, setErrorMsg, updateCityUnlockedStatus, onSpotsUpdate, onKeywordsUpdate 
 }) => {
   const [spots, setSpots] = useState<Spot[]>([]);
   const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
@@ -32,10 +33,27 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   const [explorationStack, setExplorationStack] = useState<RegionNode[]>([]);
   const [subRegions, setSubRegions] = useState<any[]>([]);
 
-  // 同步 spots 到父组件供 PlanPanel 使用
+  // 主题关键词（3D 标签状态）
+  const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
+  const PREDEFINED_KEYWORDS = [
+    '🍷 酒吧', '☕ 咖啡馆', '🏛️ 博物馆', '📸 热门打卡', 
+    '🛍️ 购物休闲', '🏞️ 自然探索', '🍜 特色美食', '🛌 舒适住宿'
+  ];
+
+  // 同步 spots 与 keywords 到父组件供 PlanPanel 使用
   useEffect(() => {
     onSpotsUpdate?.(spots);
   }, [spots]);
+
+  useEffect(() => {
+    onKeywordsUpdate?.(selectedKeywords);
+  }, [selectedKeywords]);
+
+  const toggleKeyword = (kw: string) => {
+    setSelectedKeywords(prev => 
+      prev.includes(kw) ? prev.filter(k => k !== kw) : [...prev, kw]
+    );
+  };
 
   // 栈顶 = 当前层级
   const currentRegion: RegionNode = explorationStack.length > 0
@@ -217,6 +235,29 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
             />
             <button type="submit" className="w-8 h-8 bg-emerald-600 text-white rounded-2xl active:scale-90 transition-transform"><i className="bi bi-search text-sm"></i></button>
           </form>
+        </div>
+      </div>
+
+      {/* 3D 悬浮关键词多选标签 */}
+      <div className="px-5 mt-3 relative z-30">
+        <div className="flex gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none items-center">
+          <span className="text-xs font-black text-gray-500 shrink-0 mr-1"><i className="bi bi-stars text-emerald-500"></i>AI 规划偏好:</span>
+          {PREDEFINED_KEYWORDS.map(kw => {
+            const isSelected = selectedKeywords.includes(kw);
+            return (
+              <button
+                key={kw}
+                onClick={() => toggleKeyword(kw)}
+                className={`shrink-0 px-4 py-2 rounded-2xl text-xs font-bold transition-all duration-300 transform backdrop-blur-md whitespace-nowrap
+                  ${isSelected 
+                    ? 'bg-emerald-500/90 text-white shadow-[0_8px_16px_-4px_rgba(16,185,129,0.4)] scale-105 -translate-y-1' 
+                    : 'bg-white/70 text-gray-600 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)] hover:-translate-y-0.5'
+                  } active:scale-95 active:translate-y-0`}
+              >
+                {kw}
+              </button>
+            );
+          })}
         </div>
       </div>
 

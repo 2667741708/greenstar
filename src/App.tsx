@@ -31,6 +31,7 @@ const App: React.FC = () => {
   const [cities, setCities] = useState<CityInfo[]>(CHINA_CITIES);
   const [currentCity, setCurrentCity] = useState<CityInfo | null>(null);
   const [globalSpots, setGlobalSpots] = useState<any[]>([]); // 全局 spots 供 PlanPanel 使用
+  const [globalKeywords, setGlobalKeywords] = useState<string[]>([]); // 全屏联动主题关键词
 
   const { refreshLocation } = useGeolocation();
 
@@ -96,6 +97,7 @@ const App: React.FC = () => {
             setErrorMsg={setErrorMsg}
             updateCityUnlockedStatus={updateCityUnlockedStatus}
             onSpotsUpdate={setGlobalSpots}
+            onKeywordsUpdate={setGlobalKeywords}
           />
         )}
 
@@ -121,6 +123,7 @@ const App: React.FC = () => {
             errorMsg={errorMsg}
             currentSpots={globalSpots}
             currentCityName={currentCity?.name}
+            currentKeywords={globalKeywords}
           />
         )}
 
