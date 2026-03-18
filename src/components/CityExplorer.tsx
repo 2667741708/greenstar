@@ -16,10 +16,11 @@ interface CityExplorerProps {
   setLoadingStep: (step: string) => void;
   setErrorMsg: (msg: string | null) => void;
   updateCityUnlockedStatus: (cityId: string) => void;
+  onSpotsUpdate?: (spots: Spot[]) => void;  // 向上上报 spots 供 PlanPanel 使用
 }
 
 export const CityExplorer: React.FC<CityExplorerProps> = ({ 
-  city, isPro, onBack, setLoading, setLoadingStep, setErrorMsg, updateCityUnlockedStatus 
+  city, isPro, onBack, setLoading, setLoadingStep, setErrorMsg, updateCityUnlockedStatus, onSpotsUpdate 
 }) => {
   const [spots, setSpots] = useState<Spot[]>([]);
   const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
@@ -29,6 +30,11 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   // 栈式下钻探索状态
   const [explorationStack, setExplorationStack] = useState<RegionNode[]>([]);
   const [subRegions, setSubRegions] = useState<any[]>([]);
+
+  // 同步 spots 到父组件供 PlanPanel 使用
+  useEffect(() => {
+    onSpotsUpdate?.(spots);
+  }, [spots]);
 
   // 栈顶 = 当前层级
   const currentRegion: RegionNode = explorationStack.length > 0

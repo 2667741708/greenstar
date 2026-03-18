@@ -35,6 +35,95 @@ export const callDeepSeek = async (prompt: string, jsonMode = false, timeoutMs =
 };
 
 // ============================================================================
+// 流式调用 DeepSeek API（SSE）
+// Streaming call to DeepSeek API with thinking/content chunk callbacks
+// ============================================================================
+export interface StreamCallbacks {
+  onThinking?: (chunk: string) => void;   // 思考过程增量回调
+  onContent?: (chunk: string) => void;    // 输出内容增量回调
+  onDone?: () => void;                    // 流结束回调
+  onError?: (error: Error) => void;       // 错误回调
+}
+
+export const streamDeepSeek = async (
+  prompt: string,
+  callbacks: StreamCallbacks,
+  timeoutMs = 120000
+): Promise<void> => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  
+  try {
+    const res = await fetch(`${DEEPSEEK_BASE_URL}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'deepseek-reasoner',
+        messages: [{ role: 'user', content: prompt }],
+        stream: true,
+        max_tokens: 4096,
+      }),
+      signal: controller.signal,
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`DeepSeek API ${res.status}: ${err}`);
+    }
+
+    const reader = res.body!.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';  // 保留不完整的最后一行
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || !trimmed.startsWith('data: ')) continue;
+        const data = trimmed.slice(6);
+        if (data === '[DONE]') {
+          callbacks.onDone?.();
+          return;
+        }
+        try {
+          const parsed = JSON.parse(data);
+          const delta = parsed.choices?.[0]?.delta;
+          if (!delta) continue;
+          
+          // DeepSeek reasoner 模型: reasoning_content = 思考过程, content = 最终输出
+          if (delta.reasoning_content) {
+            callbacks.onThinking?.(delta.reasoning_content);
+          }
+          if (delta.content) {
+            callbacks.onContent?.(delta.content);
+          }
+        } catch {
+          // 忽略解析错误的行
+        }
+      }
+    }
+    callbacks.onDone?.();
+  } catch (err: any) {
+    if (err.name === 'AbortError') {
+      callbacks.onError?.(new Error('请求超时'));
+    } else {
+      callbacks.onError?.(err);
+    }
+  } finally {
+    clearTimeout(timer);
+  }
+};
+
+// ============================================================================
 // 修改基准: deepseek.ts (原始版本 36 行)
 // 修改内容 / Changes:
 //   [追加] generateFallbackPOIs() — 基于真实网络爬虫数据的 RAG 结构化提取

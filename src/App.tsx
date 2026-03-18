@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ViewState, CityInfo } from './types';
 import { CHINA_CITIES } from './config/cities';
 import { Header } from './components/Header';
@@ -30,6 +30,7 @@ const App: React.FC = () => {
   // 全局数据
   const [cities, setCities] = useState<CityInfo[]>(CHINA_CITIES);
   const [currentCity, setCurrentCity] = useState<CityInfo | null>(null);
+  const [globalSpots, setGlobalSpots] = useState<any[]>([]); // 全局 spots 供 PlanPanel 使用
 
   const { refreshLocation } = useGeolocation();
 
@@ -94,6 +95,7 @@ const App: React.FC = () => {
             setLoadingStep={setLoadingStep}
             setErrorMsg={setErrorMsg}
             updateCityUnlockedStatus={updateCityUnlockedStatus}
+            onSpotsUpdate={setGlobalSpots}
           />
         )}
 
@@ -117,6 +119,8 @@ const App: React.FC = () => {
             setLoadingStep={setLoadingStep}
             setErrorMsg={setErrorMsg}
             errorMsg={errorMsg}
+            currentSpots={globalSpots}
+            currentCityName={currentCity?.name}
           />
         )}
 
