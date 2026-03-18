@@ -172,7 +172,8 @@
             zoom: 12,
             center: [104.0668, 30.5728],
             viewMode: '2D',
-            mapStyle: 'amap://styles/darkblue',
+            // 不使用自定义主题样式（darkblue/whitesmoke 等在 TUN+FakeIP 下可能因 amap:// 协议被拦截）
+            // mapStyle: 'amap://styles/darkblue',
         });
 
         // 强制触发 resize 确保瓦片加载
