@@ -8,6 +8,8 @@ import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
 import { SpotDetail } from './SpotDetail';
 import { DiscoverCard } from './DiscoverCard';
+import { PhotoGalleryOverlay } from './explore/PhotoGalleryOverlay';
+import { AiJournalModal } from './explore/AiJournalModal';
 
 interface CityExplorerProps {
   city: CityInfo;
@@ -37,6 +39,7 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
   const [customKwInput, setCustomKwInput] = useState('');
   const [customKeywords, setCustomKeywords] = useState<string[]>([]);
+  const [showAiJournal, setShowAiJournal] = useState(false);
 
   const PREDEFINED_KEYWORDS = [
     '🍷 酒吧', '☕ 咖啡馆', '🏛️ 博物馆', '📸 热门打卡', 
@@ -202,16 +205,36 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     }
   };
 
-  const handleCheckIn = (spot: Spot) => {
+  const handleCheckIn = (spot: Spot, photoUrls?: string[]) => {
     setLoading(true);
-    setLoadingStep(''); // Trigger checkin overlay internally in App logic but here we simulate simple delay
+    setLoadingStep('正在连接空间记录网络...');
     
-    // Simulate checkin
+    // Simulate checkin delay for local save
     setTimeout(() => {
-      setSpots(prev => prev.map(s => s.id === spot.id ? { ...s, checkedIn: true } : s));
-      setSelectedSpot(prev => prev?.id === spot.id ? { ...prev, checkedIn: true } : prev);
+      const now = new Date();
+      const timestamp = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ', ' + 
+                        now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+                        
+      setSpots(prev => prev.map(s => {
+        if (s.id === spot.id) {
+          const newPhotos = [...(s.photos || [])];
+          if (photoUrls) newPhotos.push(...photoUrls);
+          return { ...s, checkedIn: true, photos: newPhotos, checkInTimestamp: timestamp };
+        }
+        return s;
+      }));
+      
+      setSelectedSpot(prev => {
+        if (prev?.id === spot.id) {
+          const newPhotos = [...(prev.photos || [])];
+          if (photoUrls) newPhotos.push(...photoUrls);
+          return { ...prev, checkedIn: true, photos: newPhotos, checkInTimestamp: timestamp };
+        }
+        return prev;
+      });
+      
       setLoading(false);
-      alert(`🎉 打卡成功！你已点亮了 ${spot.name}`);
+      setLoadingStep('');
     }, 1500);
   };
 
@@ -376,10 +399,25 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
                     </div>
                   </div>
                 )}
+
+                {/* 侧边漂浮照片回忆墙 */}
+                <PhotoGalleryOverlay 
+                  memories={spots.filter(s => s.photos && s.photos.length > 0)} 
+                  onGenerateJournal={() => setShowAiJournal(true)} 
+                />
              </div>
           </div>
         )}
       </div>
+
+      {/* AI 旅行日记模态框 */}
+      {showAiJournal && (
+        <AiJournalModal 
+          memories={spots.filter(s => s.photos && s.photos.length > 0)} 
+          citySlug={currentRegion.name} 
+          onClose={() => setShowAiJournal(false)} 
+        />
+      )}
     </div>
   );
 };

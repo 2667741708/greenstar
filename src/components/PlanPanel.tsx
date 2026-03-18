@@ -15,6 +15,8 @@ import { Spot } from '../types';
 import { streamDeepSeek } from '../services/deepseek';
 import { fetchRealWorldData } from '../services/crawler';
 import RouteVisualizer from './explore/RouteVisualizer';
+import { fetchWeatherForecast } from '../mcp-services/weatherService';
+import { fetchTravelContent } from '../mcp-services/travelContentService';
 
 interface PlanPanelProps {
   setLoading: (loading: boolean) => void;
@@ -24,10 +26,11 @@ interface PlanPanelProps {
   currentSpots?: Spot[];       // 当前城市/区域的高德 POI 数据
   currentCityName?: string;    // 当前城市名称
   currentKeywords?: string[];  // 探索页传来的 3D 主题标签
+  onSavePlan?: (content: string, destination: string) => void;
 }
 
 export const PlanPanel: React.FC<PlanPanelProps> = ({ 
-  setLoading, setLoadingStep, setErrorMsg, errorMsg, currentSpots, currentCityName, currentKeywords 
+  setLoading, setLoadingStep, setErrorMsg, errorMsg, currentSpots, currentCityName, currentKeywords, onSavePlan
 }) => {
   const [targetDestination, setTargetDestination] = useState(currentCityName || '');
   const [thinking, setThinking] = useState('');
@@ -37,6 +40,9 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
   const [showRoute, setShowRoute] = useState(false);
   const [phase, setPhase] = useState<'idle' | 'drafting' | 'crawling' | 'thinking' | 'writing' | 'done'>('idle');
   const [draftPrompt, setDraftPrompt] = useState<string>('');
+  const [hasSaved, setHasSaved] = useState(false);
+  const [startPoint, setStartPoint] = useState('');
+  const [endPoint, setEndPoint] = useState('');
 
   const thinkingRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -60,15 +66,19 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
   }, [currentCityName]);
 
   // 生成基础指令给用户编辑
-  const generateBaseInstructions = (destination: string, keywords: string[]): string => {
+  const generateBaseInstructions = (destination: string, keywords: string[], sp: string, ep: string): string => {
     const kwStr = keywords.length > 0 
       ? `\n\n【🚀 用户探索偏好】：${keywords.join(', ')}\n**重要指示**：用户特别指定了以上主题倾向，请务必在路线规划、餐厅安排中大幅提升这些元素的比重！`
+      : '';
+    
+    const constraintStr = (sp || ep) 
+      ? `\n\n【🚨 强制起点终点约束】：\n本次路线规划必须严格遵守以下物理空间约束：${sp ? `\n- 起点必须是【${sp}】` : ''}${ep ? `\n- 终点必须是【${ep}】` : ''}\n请确保路线是从起点顺滑过渡到终点，不要出现胡乱折返绕大圈的情况。`
       : '';
 
     return `你是一位拥有丰富实地经验的资深旅游规划师。请基于附加的【真实信源系统】数据，为用户生成定制旅游攻略。
 
 ## 规划核心需求
-**目的地**: ${destination}${kwStr}
+**目的地**: ${destination}${kwStr}${constraintStr}
 
 请严格生成以下核心内容板块：
 
@@ -93,6 +103,10 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
 ### 6. 💰 全盘预算控制表
 按照舒适游估算 2-3 天整体花销。
 
+⚠️ **非常重要的系统指令**：
+在您的全文回答中，凡是推荐的**真实物理地点（景点、餐厅、酒店、商圈等，必须是地图能搜到的实体）**，请务必使用 \`【实体名称】\` 的格式进行包裹（例如：前往 【宽窄巷子】 品尝美食）。
+**千万不要**将任何形容词、文化概念、非实体名词（如：【精神文化】、【农牧交错带】、【避雷指南】）加括号，系统将在后台直接提取括号内的词进行 GPS 坐标定位！
+
 请使用结构严谨的 Markdown 格式输出。排版必须精美好看，不要废话。`;
   };
 
@@ -101,10 +115,10 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
     if (phase === 'idle' || phase === 'drafting') {
       const dest = currentCityName || '未知星球';
       setTargetDestination(dest);
-      setDraftPrompt(generateBaseInstructions(dest, currentKeywords || []));
+      setDraftPrompt(generateBaseInstructions(dest, currentKeywords || [], startPoint, endPoint));
       setPhase('drafting');
     }
-  }, [currentCityName, currentKeywords]);
+  }, [currentCityName, currentKeywords, startPoint, endPoint]);
 
   const startStreamingPlan = async () => {
     if (!draftPrompt || isStreaming) return;
@@ -114,9 +128,18 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
     setIsStreaming(true);
     setErrorMsg(null);
     setShowThinking(true);
+    setHasSaved(false);
 
-    // Step 1: 整理高德 POI 数据
+    // Step 1: 获取天气预报 MCP 服务数据
     setPhase('crawling');
+    setLoadingStep(`[MCP] 正在调用气象局 API 获取 ${targetDestination} 预报...`);
+    const forecasts = await fetchWeatherForecast(targetDestination);
+    let weatherText = '';
+    if (forecasts.length > 0) {
+      weatherText = '未来三天天气预报：\n' + forecasts.map(f => `- ${f.date}: ${f.description}, 气温 ${f.temperatureMin}°C ~ ${f.temperatureMax}°C`).join('\n');
+    }
+
+    // Step 2: 整理高德 POI 数据
     setLoadingStep(`正在整理 ${targetDestination} 的地理数据...`);
     
     let poiText = '';
@@ -126,7 +149,8 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
       ).join('\n');
     }
 
-    // Step 2: 抓取网络百科数据
+    // Step 3: 抓取网络百科数据
+    setLoadingStep(`[MCP] 正在抓取维基百科知识引擎...`);
     let wikiText = '';
     try {
       wikiText = await fetchRealWorldData(targetDestination);
@@ -134,8 +158,28 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
       console.warn('[Plan] Wiki fetch failed:', e);
     }
 
-    // Step 3: 将底层数据隐式拼接到用户 Prompt 后，开始推流
-    const finalPrompt = `${draftPrompt}\n\n---\n## 📋 系统级真实信源系统注入数据（勿向用户展示此段原文）\n\n### 高德 API 极速实况探测（最高优先）：\n${poiText || '无'}\n\n### 维基百科知识引擎索引（背景知识）：\n${wikiText || '无'}`;
+    // Step 4: 聚合旅行内容 MCP 服务（小红书种草笔记 + 搜索引擎摘要）
+    setLoadingStep(`[MCP] 正在抓取旅行攻略数据（小红书风格笔记 + 搜索引擎摘要）...`);
+    let travelContentText = '';
+    try {
+      const travelContent = await fetchTravelContent(targetDestination);
+      const parts: string[] = [];
+      if (travelContent.notes.length > 0) {
+        parts.push('小红书风格种草笔记参考：\n' + travelContent.notes.map((n, i) => `${i+1}. ${n.title}\n${n.content}\n标签：${n.tags.join(' ')}`).join('\n\n'));
+      }
+      if (travelContent.wikiSummaryEn) {
+        parts.push('英文维基百科摘要：\n' + travelContent.wikiSummaryEn);
+      }
+      if (travelContent.searchSnippets.length > 0) {
+        parts.push('搜索引擎摘要片段：\n' + travelContent.searchSnippets.join('\n'));
+      }
+      travelContentText = parts.join('\n\n');
+    } catch (e) {
+      console.warn('[Plan] Travel content fetch failed:', e);
+    }
+
+    // Step 5: 将底层数据隐式拼接到用户 Prompt 后，开始推流
+    const finalPrompt = `${draftPrompt}\n\n---\n## 📋 系统级真实信源系统注入数据（勿向用户展示此段原文）\n\n### 气象预报 MCP 服务（提供穿衣及室内外游玩建议）：\n${weatherText || '无'}\n\n### 高德 API 极速实况探测（最高优先）：\n${poiText || '无'}\n\n### 维基百科知识引擎索引（背景知识）：\n${wikiText || '无'}\n\n### 旅行内容聚合 MCP 服务（含小红书种草 + 搜索引擎知识图谱）：\n${travelContentText || '无'}`;
     setPhase('thinking');
     setLoadingStep('');
     
@@ -187,7 +231,25 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
               disabled={isStreaming}
             />
           </div>
-          <div className="mt-2 flex items-center justify-between text-white/60 text-[10px]">
+          <div className="flex gap-2 mt-3 z-10 relative">
+            <input 
+              type="text" 
+              value={startPoint} 
+              onChange={e => setStartPoint(e.target.value)} 
+              placeholder="起点 (如: 某大酒店)" 
+              className="w-1/2 bg-white/20 border-white/30 text-white rounded-xl py-2 px-3 backdrop-blur-md outline-none focus:bg-white/30 transition-all placeholder:text-white/60 text-xs" 
+              disabled={isStreaming}
+            />
+            <input 
+              type="text" 
+              value={endPoint} 
+              onChange={e => setEndPoint(e.target.value)} 
+              placeholder="终点 (如: 高铁站)" 
+              className="w-1/2 bg-white/20 border-white/30 text-white rounded-xl py-2 px-3 backdrop-blur-md outline-none focus:bg-white/30 transition-all placeholder:text-white/60 text-xs" 
+              disabled={isStreaming}
+            />
+          </div>
+          <div className="mt-3 flex items-center justify-between text-white/60 text-[10px]">
             <span><i className="bi bi-database-fill mr-1"></i>搭载 {currentSpots?.length || 0} 个高德核心坐标源</span>
             {currentKeywords && currentKeywords.length > 0 && <span><i className="bi bi-tag-fill mr-1"></i>聚焦主题: {currentKeywords.join(' / ')}</span>}
           </div>
@@ -289,22 +351,36 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
           </div>
         )}
 
-        {/* 攻略完成后的路线规划按钮 */}
+        {/* 攻略完成后的动作面板 */}
         {phase === 'done' && content && (
-          <button 
-            onClick={() => setShowRoute(true)}
-            className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-3"
-          >
-            <i className="bi bi-map-fill text-lg"></i>
-            <span>📍 查看攻略路线地图</span>
-            <i className="bi bi-arrow-right"></i>
-          </button>
+          <div className="flex gap-3">
+            <button 
+              onClick={() => {
+                if (onSavePlan && !hasSaved) {
+                  onSavePlan(content, targetDestination || currentCityName || '旅行');
+                  setHasSaved(true);
+                }
+              }}
+              className={`flex-1 py-4 rounded-2xl font-black shadow-lg transition-all flex items-center justify-center gap-2 ${hasSaved ? 'bg-gray-100 text-gray-500 shadow-none' : 'bg-white text-emerald-600 border-2 border-emerald-500 hover:bg-emerald-50 active:scale-95'}`}
+            >
+              <i className={`bi ${hasSaved ? 'bi-check2-circle' : 'bi-bookmark-heart-fill'}`}></i>
+              {hasSaved ? '已收藏攻略' : '保存此生必去攻略'}
+            </button>
+            <button 
+              onClick={() => setShowRoute(true)}
+              className="flex-1 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2"
+            >
+              <i className="bi bi-map-fill text-lg"></i>
+              <span>查看全局地图</span>
+            </button>
+          </div>
         )}
 
         {/* 路线地图全屏毛玻璃面板 */}
         {showRoute && content && (
           <RouteVisualizer 
             planText={content} 
+            cityName={targetDestination || currentCityName || '全国'}
             onClose={() => setShowRoute(false)} 
           />
         )}

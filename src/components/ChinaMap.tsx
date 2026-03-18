@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CityInfo } from '../types';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
-import { geocode } from '../services/amap';
+import { searchGlobal, SearchResult } from '../mcp-services/searchService';
 
 interface ChinaMapProps {
   cities: CityInfo[];
@@ -33,21 +33,32 @@ export const ChinaMap: React.FC<ChinaMapProps> = ({ cities, isPro, onCitySelect,
     if (!searchQuery) return;
     
     setLoading(true);
-    setLoadingStep('正在跨星系检索目标坐标...');
+    setLoadingStep(`🔍 多引擎聚合搜索 "${searchQuery}"（高德 + OpenStreetMap）...`);
     try {
-      const result = await geocode(searchQuery);
-      // 检查搜索出来的城市是否在预设列表中，如果在则直接选中
-      const matchedCity = cities.find(c => c.name.includes(result.city) || result.city.includes(c.name));
+      const results = await searchGlobal(searchQuery);
+      if (results.length === 0) {
+        setErrorMsg(`未找到 "${searchQuery}" 的任何坐标，请尝试更换关键词或使用英文名`);
+        return;
+      }
+
+      const best = results[0]; // 置信度最高的结果
+      console.log(`[Search] Best result: ${best.name} (${best.source}, confidence=${best.confidence.toFixed(2)})`);
+
+      // 检查搜索出来的城市是否在预设列表中
+      const matchedCity = best.name
+        ? cities.find(c => c.name.includes(best.name) || best.name.includes(c.name))
+        : null;
+
       if (matchedCity) {
         onCitySelect(matchedCity);
       } else {
-        // 如果不在预设列表，创建一个临时的 CityInfo
+        // 创建临时星系坐标（支持海外城市）
         const tempCity: CityInfo = {
           id: `temp-${Date.now()}`,
-          name: result.city || searchQuery,
-          province: '',
-          coordinates: { lat: result.lat, lng: result.lng },
-          description: result.formattedAddress,
+          name: best.name || searchQuery,
+          province: best.country || '',
+          coordinates: { lat: best.lat, lng: best.lng },
+          description: `${best.formattedAddress} [来源: ${best.source === 'amap' ? '高德地图' : 'OpenStreetMap'}]`,
           isUnlocked: true
         };
         onCitySelect(tempCity);
@@ -74,8 +85,8 @@ export const ChinaMap: React.FC<ChinaMapProps> = ({ cities, isPro, onCitySelect,
               type="text" 
               value={searchQuery} 
               onChange={e => setSearchQuery(e.target.value)} 
-              placeholder="搜索任何城市..." 
-              className="w-24 bg-emerald-50/50 rounded-2xl px-3 py-2 text-[10px] border-none outline-none focus:bg-emerald-100 transition-colors" 
+              placeholder="搜索全球任意城市/国家..." 
+              className="w-36 bg-emerald-50/50 rounded-2xl px-3 py-2 text-[10px] border-none outline-none focus:bg-emerald-100 transition-colors" 
             />
             <button type="submit" className="w-8 h-8 bg-emerald-600 text-white rounded-2xl active:scale-90 transition-transform"><i className="bi bi-search text-sm"></i></button>
           </form>

@@ -4,7 +4,7 @@ import { Spot } from '../types';
 interface SpotDetailProps {
   spot: Spot;
   onClose: () => void;
-  onCheckIn: (spot: Spot) => void;
+  onCheckIn: (spot: Spot, photoUrls?: string[]) => void;
   isPro: boolean;
 }
 
@@ -20,10 +20,11 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, onClose, onCheckIn
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // Simulate real checkin after photo is taken
-      onCheckIn(spot);
+    const files = Array.from(e.target.files || []) as File[];
+    if (files.length > 0) {
+      // 捕获真实设备照片并转化为内存 Blob URL
+      const photoUrls = files.map(file => URL.createObjectURL(file));
+      onCheckIn(spot, photoUrls);
     }
   };
 
@@ -47,9 +48,9 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, onClose, onCheckIn
               <i className="bi bi-image text-4xl text-gray-300"></i>
             </div>
           )}
-          {!imgError && spot.imageUrl ? (
+          {!imgError && ((spot.photos && spot.photos.length > 0) || spot.imageUrl) ? (
             <img 
-              src={spot.imageUrl} 
+              src={spot.photos && spot.photos.length > 0 ? spot.photos[spot.photos.length - 1] : spot.imageUrl} 
               className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${isImgLoading ? 'opacity-0' : 'opacity-100'}`} 
               onLoad={() => setIsImgLoading(false)}
               onError={() => { setImgError(true); setIsImgLoading(false); }} 
@@ -77,13 +78,22 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, onClose, onCheckIn
             {spot.tags.map((tag, idx) => (<span key={idx} className="text-[10px] font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-xl">#{tag}</span>))}
           </div>
           <div className="pt-6 flex gap-3">
-             <button onClick={handleCameraCheckIn} disabled={spot.checkedIn} className={`flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 ${spot.checkedIn ? 'bg-gray-100 text-gray-400 shadow-none' : (isPro ? 'bg-amber-500 text-white shadow-amber-200' : 'bg-emerald-600 text-white shadow-emerald-200')}`}>
-               {spot.checkedIn ? '已点亮足迹' : <span><i className="bi bi-camera mr-2"></i>立即实地打卡</span>}
+             <button onClick={handleCameraCheckIn} className={`flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 ${spot.checkedIn ? 'bg-emerald-600 text-white shadow-emerald-200' : (isPro ? 'bg-amber-500 text-white shadow-amber-200' : 'bg-emerald-600 text-white shadow-emerald-200')}`}>
+               {spot.checkedIn ? <span><i className="bi bi-camera mr-2"></i>再传几张回忆</span> : <span><i className="bi bi-camera mr-2"></i>记录专属回忆</span>}
              </button>
              <button className="px-6 py-4 bg-gray-100 rounded-2xl text-gray-600 hover:bg-gray-200 transition-all"><i className="bi bi-send-fill"></i></button>
           </div>
         </div>
       </div>
+      {/* 隐藏的文件输入组件，支持多图 */}
+      <input 
+        type="file" 
+        accept="image/*" 
+        multiple
+        ref={fileInputRef} 
+        onChange={handleFileChange} 
+        className="hidden" 
+      />
     </div>
   );
 };

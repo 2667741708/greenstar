@@ -124,6 +124,13 @@ const App: React.FC = () => {
             currentSpots={globalSpots}
             currentCityName={currentCity?.name}
             currentKeywords={globalKeywords}
+            onSavePlan={(content, dest) => {
+              try {
+                const plans = JSON.parse(localStorage.getItem('gs_saved_plans') || '[]');
+                plans.unshift({ id: Date.now().toString(), content, destination: dest, date: new Date().toLocaleDateString() });
+                localStorage.setItem('gs_saved_plans', JSON.stringify(plans));
+              } catch (e) { console.error('Failed to save plan', e); }
+            }}
           />
         )}
 

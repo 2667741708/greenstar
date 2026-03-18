@@ -97,10 +97,48 @@ export const useAmap = (
 
       spots.forEach(spot => {
         const isSelected = selectedSpot?.id === spot.id;
+        let markerContent = '';
+        let offsetParams: [number, number] = [-16, -32];
+        let zIndex = 100;
+
+        if (spot.checkedIn && spot.photos && spot.photos.length > 0) {
+          // New High-Fidelity Polaroid Marker
+          const countBadge = spot.photos.length > 1 
+            ? `<div style="position: absolute; top: -8px; right: -8px; background: #ef4444; color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white; z-index: 10; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">\${spot.photos.length}</div>` 
+            : '';
+            
+          markerContent = `
+            <div class="glass-panel" style="width: 110px; height: 120px; padding: 6px; border-radius: 12px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; box-shadow: 0 10px 25px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.2s;">
+              \${countBadge}
+              <div style="width: 100%; height: 75px; background: #f1f5f9; border-radius: 8px; overflow: hidden;">
+                <img src="\${spot.photos[spot.photos.length - 1]}" style="width: 100%; height: 100%; object-fit: cover;" alt="\${spot.name}" />
+              </div>
+              <div style="width: 100%; padding-top: 4px; text-align: center;">
+                <div style="font-size: 11px; font-weight: 800; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1;">\${spot.name}</div>
+                <div style="font-size: 9px; font-weight: 600; color: #64748b; margin-top: 2px;">Day 1</div>
+              </div>
+              
+              <!-- 底部三角形指向路线 -->
+              <div style="position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-top: 12px solid white; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.1));"></div>
+              
+              <!-- 蓝色路线节点原点 -->
+              <div style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); width: 14px; height: 14px; background: #3b82f6; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 10px rgba(59,130,246,0.5);"></div>
+            </div>
+          `;
+          offsetParams = [-55, -135]; // Adjust offset for the huge 110x120 marker + 24px bottom point
+          zIndex = 200;
+        } else {
+          // Default marker
+          markerContent = `<div class="custom-marker transition-all duration-500 ${isSelected ? 'scale-125 shadow-xl' : ''}" style="background: ${spot.checkedIn ? (isPro ? '#f59e0b' : '#059669') : '#94a3b8'}; border: ${spot.checkedIn ? '3px solid white' : '1px solid white'}; opacity: ${spot.checkedIn ? '1' : '0.6'}"><i class="bi bi-${spot.category.toLowerCase().includes('cafe') ? 'cup-hot' : 'star-fill'}"></i></div>`;
+          offsetParams = [-16, -32];
+          zIndex = isSelected ? 100 : 10;
+        }
+
         const marker = new AMap.Marker({
           position: [spot.coordinates.lng, spot.coordinates.lat],
-          content: `<div class="custom-marker transition-all duration-500 ${isSelected ? 'scale-125 shadow-xl' : ''}" style="background: ${spot.checkedIn ? (isPro ? '#f59e0b' : '#059669') : '#94a3b8'}; border: ${spot.checkedIn ? '3px solid white' : '1px solid white'}; opacity: ${spot.checkedIn ? '1' : '0.6'}"><i class="bi bi-${spot.category.toLowerCase().includes('cafe') ? 'cup-hot' : 'star-fill'}"></i></div>`,
-          offset: new AMap.Pixel(-16, -32)
+          content: markerContent,
+          offset: new AMap.Pixel(offsetParams[0], offsetParams[1]),
+          zIndex: zIndex
         });
         marker.on('click', () => { 
           onSpotSelect(spot); 

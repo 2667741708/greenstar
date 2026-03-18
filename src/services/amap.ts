@@ -26,7 +26,7 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
       try {
         const placeSearch = new AMap.PlaceSearch({
           city: city, // 城市名或 citycode
-          citylimit: true,
+          citylimit: false, // 必须设为 false 才能支持海外（如新加坡、吉隆坡）的 POI 跨区域模糊检索
           type: CONSTANTS.POI_TYPE_STRING, // 严格使用中文分类名或数字编码，非模糊 keyword
           pageSize: 15,
           pageIndex: 1,
@@ -129,7 +129,8 @@ export const geocode = (address: string): Promise<{ lat: number, lng: number, fo
           geocoder.getLocation(address, (status: string, result: any) => {
             if (status === 'complete' && result.geocodes.length) {
               const first = result.geocodes[0];
-              const city = first.addressComponent?.city || first.addressComponent?.province || '';
+              // 支持提取海外国家名作为 fallback，避免海外城市全是空字符串导致名称折叠
+              const city = first.addressComponent?.city || first.addressComponent?.province || first.addressComponent?.country || '';
               resolve({
                  lat: first.location.lat,
                  lng: first.location.lng,
