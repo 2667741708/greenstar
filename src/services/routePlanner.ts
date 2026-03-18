@@ -157,7 +157,9 @@ export const extractStopsFromPlan = (planText: string, cityName: string): string
   for (const pattern of patterns) {
     let match;
     while ((match = pattern.exec(planText)) !== null) {
-      const name = match[1].trim();
+      // 清洗残留的嵌套括号标记（如 **【地名】** 中 match[1] 会捕获到 【地名】）
+      // Strip residual bracket markers from nested formatting like **【name】**
+      const name = match[1].trim().replace(/[【】「」『』《》\[\]]/g, '').trim();
       // 过滤掉明显不是地名的内容
       if (name.length >= 2 && name.length <= 15 && 
           !name.includes('建议') && !name.includes('提示') && 
