@@ -14,7 +14,7 @@ import { MarkdownRenderer } from './MarkdownRenderer';
 import { Spot } from '../types';
 import { streamDeepSeek } from '../services/deepseek';
 import { fetchRealWorldData } from '../services/crawler';
-import { RouteMapPanel } from './RouteMapPanel';
+import RouteVisualizer from './explore/RouteVisualizer';
 
 interface PlanPanelProps {
   setLoading: (loading: boolean) => void;
@@ -301,11 +301,10 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
           </button>
         )}
 
-        {/* 路线地图全屏面板 */}
+        {/* 路线地图全屏毛玻璃面板 */}
         {showRoute && content && (
-          <RouteMapPanel 
+          <RouteVisualizer 
             planText={content} 
-            cityName={targetDestination || currentCityName || ''} 
             onClose={() => setShowRoute(false)} 
           />
         )}
