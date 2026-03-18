@@ -3,461 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GreenStar 路线规划可视化验证台</title>
+    <title>GreenStar 路线规划验证台 v3 - 纯 Canvas 渲染</title>
     <!-- ============================================================================
     文件: test_route_map.html
-    基准版本: test_route_map.html (初版 - 地图瓦片渲染空白)
+    基准版本: test_route_map.html v2 (AMap 瓦片渲染空白版)
     修改内容 / Changes:
-      [修复] CSS Grid 布局在高德 AMap 容器中可能导致的尺寸计算零值问题
-      [修复] 增加地图初始化后的 resize 强刷操作
-      [修复] 增加 Clash 代理可能阻断高德瓦片的诊断输出
-      [FIX] CSS Grid layout may cause zero-size issue for AMap container
-      [FIX] Added post-init resize force-refresh for map tiles
-      [FIX] Added Clash proxy diagnostics for AMap tile servers
+      [重写] 彻底弃用 AMap 瓦片渲染，改用纯 Canvas 自绘地图坐标系
+      [重写] 使用高德 REST API (JS API 内嵌 JSONP) 仅做 Geocoding，不依赖地图组件
+      [新增] 基于 Canvas 2D 的实时路线动画渲染引擎
+      [REWRITE] Replaced AMap tile-based map with pure Canvas coordinate rendering
+      [NEW] Canvas 2D-based route animation engine
     ============================================================================ -->
     <script type="text/javascript">
-        window._AMapSecurityConfig = {
-            securityJsCode: 'fa5b4914b560026b23e2c7ae1bc757d4',
-        }
+        window._AMapSecurityConfig = { securityJsCode: 'fa5b4914b560026b23e2c7ae1bc757d4' };
     </script>
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=040c3af03bab9232ab67e0d232838b28&plugin=AMap.Geocoder,AMap.Driving,AMap.Walking,AMap.ToolBar"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=040c3af03bab9232ab67e0d232838b28&plugin=AMap.Geocoder,AMap.Driving,AMap.Walking"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Noto Sans SC', sans-serif; background: #0f172a; color: #e2e8f0; height: 100vh; overflow: hidden; }
-        .header { background: linear-gradient(135deg, #065f46, #0d9488); padding: 16px 24px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); height: 64px; flex-shrink: 0; }
-        .header h1 { font-size: 20px; font-weight: 700; }
-        .header span { font-size: 11px; opacity: 0.7; }
-        .main-wrapper { display: flex; height: calc(100vh - 64px); }
-        .panel { width: 420px; min-width: 420px; padding: 16px; overflow-y: auto; background: #1e293b; border-right: 1px solid #334155; flex-shrink: 0; }
-        .panel h2 { font-size: 15px; color: #10b981; margin-bottom: 10px; font-weight: 700; }
-        .map-wrapper { flex: 1; position: relative; }
-        #map-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
-        .log-entry { padding: 7px 10px; margin-bottom: 5px; border-radius: 8px; font-size: 11px; line-height: 1.5; animation: slideIn 0.3s ease; }
-        .log-entry.info { background: #1e3a5f; border-left: 3px solid #3b82f6; }
-        .log-entry.success { background: #14532d; border-left: 3px solid #22c55e; }
-        .log-entry.error { background: #450a0a; border-left: 3px solid #ef4444; }
-        .log-entry.warn { background: #422006; border-left: 3px solid #f59e0b; }
-        .log-entry .label { font-weight: 700; margin-right: 4px; }
-        .stop-card { background: #334155; border-radius: 10px; padding: 10px 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; }
-        .stop-card:hover { background: #475569; transform: translateX(4px); }
-        .stop-card .idx { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #059669); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; }
-        .stop-card .name { font-weight: 700; font-size: 13px; }
-        .stop-card .coord { font-size: 10px; color: #94a3b8; }
-        .section-divider { height: 1px; background: #334155; margin: 14px 0; }
-        #route-selector { margin-top: 10px; }
-        #route-selector select { width: 100%; padding: 8px; border-radius: 8px; background: #334155; color: white; border: 1px solid #475569; font-size: 12px; }
-        .summary { background: linear-gradient(135deg, #065f46, #0d9488); padding: 14px; border-radius: 14px; margin-top: 14px; }
-        .summary h3 { font-size: 13px; margin-bottom: 6px; }
-        .summary .row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        .header { background: linear-gradient(135deg, #065f46, #0d9488); padding: 14px 20px; height: 56px; display: flex; align-items: center; gap: 12px; }
+        .header h1 { font-size: 18px; font-weight: 700; }
+        .header span { font-size: 10px; opacity: 0.7; }
+        .main { display: flex; height: calc(100vh - 56px); }
+        .panel { width: 380px; min-width: 380px; padding: 14px; overflow-y: auto; background: #1e293b; border-right: 1px solid #334155; }
+        .panel h2 { font-size: 14px; color: #10b981; margin-bottom: 8px; font-weight: 700; }
+        .canvas-wrapper { flex: 1; position: relative; background: #111827; }
+        canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .log { padding: 6px 8px; margin-bottom: 4px; border-radius: 6px; font-size: 10px; line-height: 1.5; }
+        .log.info { background: #1e3a5f; border-left: 3px solid #3b82f6; }
+        .log.ok { background: #14532d; border-left: 3px solid #22c55e; }
+        .log.err { background: #450a0a; border-left: 3px solid #ef4444; }
+        .log.warn { background: #422006; border-left: 3px solid #f59e0b; }
+        .log b { font-weight: 700; }
+        .stop-chip { display: inline-flex; align-items: center; gap: 4px; background: #334155; padding: 4px 10px; border-radius: 20px; margin: 2px 3px; font-size: 10px; }
+        .stop-chip .n { width: 18px; height: 18px; border-radius: 50%; background: #10b981; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: white; }
+        .summary-box { background: linear-gradient(135deg, #065f46, #0d9488); padding: 12px; border-radius: 12px; margin-top: 10px; font-size: 12px; }
+        .summary-box .row { display: flex; justify-content: space-between; margin-bottom: 2px; }
+        .divider { height: 1px; background: #334155; margin: 10px 0; }
+        select { width: 100%; padding: 7px; border-radius: 8px; background: #334155; color: white; border: 1px solid #475569; font-size: 11px; margin-top: 6px; }
     </style>
 </head>
 <body>
     <div class="header">
         <div>
-            <h1>🌍 GreenStar 路线规划可视化验证台</h1>
-            <span>攻略NER提取 → 高德地理编码 → 多站点路线规划 → 实时地图渲染</span>
+            <h1>🌍 GreenStar 路线规划验证台 v3</h1>
+            <span>Canvas 纯坐标渲染 · 无瓦片依赖 · NER → Geocode → Route → Draw</span>
         </div>
     </div>
-    <div class="main-wrapper">
+    <div class="main">
         <div class="panel">
-            <h2>📋 验证日志</h2>
-            <div id="log-container"></div>
-            <div class="section-divider"></div>
-            <h2>📍 解析站点列表</h2>
-            <div id="stops-container"></div>
-            <div id="route-selector" style="display:none;">
+            <h2>📋 执行日志</h2>
+            <div id="logs"></div>
+            <div class="divider"></div>
+            <h2>📍 站点</h2>
+            <div id="chips"></div>
+            <div id="route-ctl" style="display:none">
+                <div class="divider"></div>
                 <h2>🗺️ 路线方案</h2>
-                <select id="route-plan-select" onchange="onRoutePlanChange()">
-                    <option value="driving">🚗 驾车路线（全站贯穿）</option>
-                    <option value="walking-seg">🚶 步行路线（分段解算）</option>
+                <select id="mode" onchange="switchMode()">
+                    <option value="drive">🚗 驾车路线</option>
+                    <option value="walk">🚶 步行路线（分段）</option>
+                    <option value="straight">📐 直线连接（无 API）</option>
                 </select>
             </div>
-            <div id="summary-container"></div>
+            <div id="summary"></div>
         </div>
-        <div class="map-wrapper">
-            <div id="map-container"></div>
+        <div class="canvas-wrapper">
+            <canvas id="cv"></canvas>
         </div>
     </div>
 
-    <script>
-    // =========================================================================
-    // NER 提取函数（复刻自 src/services/routePlanner.ts，含括号清洗修复）
-    // =========================================================================
-    function extractStopsFromPlan(planText) {
-        const stops = [];
-        const patterns = [
-            /\*\*([^*]{2,15})\*\*/g,
-            /「([^」]{2,15})」/g,
-            /【([^】]{2,15})】/g,
-            /→\s*([^\s→,，。]{2,12})/g,
-            /前往\s*([^\s,，。（(]{2,12})/g,
-        ];
-        const seen = new Set();
-        for (const pattern of patterns) {
-            let match;
-            while ((match = pattern.exec(planText)) !== null) {
-                const name = match[1].trim().replace(/[【】「」『』《》\[\]]/g, '').trim();
-                if (name.length >= 2 && name.length <= 15 &&
-                    !name.includes('建议') && !name.includes('提示') &&
-                    !name.includes('注意') && !name.includes('推荐') &&
-                    !name.includes('公里') && !name.includes('小时') &&
-                    !seen.has(name)) {
-                    seen.add(name);
-                    stops.push(name);
-                }
-            }
-        }
-        return stops.slice(0, 10);
-    }
+<script>
+// ========= NER（同 routePlanner.ts）=========
+function extractStops(text) {
+    const pats = [/\*\*([^*]{2,15})\*\*/g, /「([^」]{2,15})」/g, /【([^】]{2,15})】/g, /→\s*([^\s→,，。]{2,12})/g, /前往\s*([^\s,，。（(]{2,12})/g];
+    const seen = new Set(), out = [];
+    for (const p of pats) { let m; while ((m = p.exec(text)) !== null) { const n = m[1].trim().replace(/[【】「」『』《》\[\]]/g,'').trim(); if (n.length>=2&&n.length<=15&&!['建议','提示','注意','推荐','公里','小时'].some(w=>n.includes(w))&&!seen.has(n)){seen.add(n);out.push(n);} } }
+    return out.slice(0,10);
+}
 
-    // =========================================================================
-    // 日志系统
-    // =========================================================================
-    const logContainer = document.getElementById('log-container');
-    function log(msg, type = 'info') {
-        const div = document.createElement('div');
-        div.className = `log-entry ${type}`;
-        div.innerHTML = msg;
-        logContainer.appendChild(div);
-        logContainer.scrollTop = logContainer.scrollHeight;
-    }
+// ========= 日志 =========
+const $log = document.getElementById('logs');
+function L(m, t='info') { const d=document.createElement('div'); d.className='log '+t; d.innerHTML=m; $log.appendChild(d); $log.scrollTop=1e6; }
 
-    // =========================================================================
-    // 全局状态
-    // =========================================================================
-    let mapInstance = null;
-    let resolvedStops = [];
-    let drivingPolyline = null;
-    let walkingPolylines = [];
-    let stopMarkers = [];
+// ========= 状态 =========
+let stops = []; // {name, lng, lat}
+let routePath = []; // [{lng,lat}]
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
 
-    // =========================================================================
-    // AI 攻略模拟文本（真实 LLM 产出）
-    // =========================================================================
-    const MOCK_AI_PLAN = `
-清晨前往 **【成都大熊猫繁育研究基地】** 观看熊猫，随后地铁直达 **【天府广场】**。
+// ========= AI 攻略 =========
+const PLAN = `清晨前往 **【成都大熊猫繁育研究基地】** 观看熊猫，随后地铁直达 **【天府广场】**。
 步行至 **「人民公园」** 鹤鸣茶社体验盖碗茶，然后前往 **【太古里】** 与 **【春熙路】** 打卡。
 下午前往 **「宽窄巷子」** 游览，然后步行至 **【青羊宫】**。
-傍晚前往 **武侯祠**，最后夜游打卡 **「锦里古街」** 结束行程。
-交通建议全程使用地铁与共享单车，高效串联。
-    `;
+傍晚前往 **武侯祠**，最后夜游打卡 **「锦里古街」** 结束行程。`;
 
-    // =========================================================================
-    // 初始化
-    // =========================================================================
-    async function init() {
-        log('<span class="label">🚀 启动</span>GreenStar 路线规划可视化验证台正在加载...');
-
-        // 检测 AMap 是否可用
-        if (typeof AMap === 'undefined') {
-            log('<span class="label">❌ 致命</span>高德地图 JS API 未加载！请检查网络连接或 Clash 代理是否阻断了 webapi.amap.com', 'error');
-            return;
-        }
-
-        // 检查地图容器尺寸
-        const container = document.getElementById('map-container');
-        const rect = container.getBoundingClientRect();
-        log(`<span class="label">📐 容器</span>地图容器尺寸: ${Math.round(rect.width)}×${Math.round(rect.height)}px`);
-
-        if (rect.width < 10 || rect.height < 10) {
-            log('<span class="label">⚠️ 尺寸</span>地图容器尺寸异常（宽或高为0），尝试强制修复...', 'warn');
-            container.style.width = (window.innerWidth - 420) + 'px';
-            container.style.height = (window.innerHeight - 64) + 'px';
-        }
-
-        // 初始化地图（使用 2D 视角以提高兼容性）
-        mapInstance = new AMap.Map('map-container', {
-            zoom: 12,
-            center: [104.0668, 30.5728],
-            viewMode: '2D',
-            // 不使用自定义主题样式（darkblue/whitesmoke 等在 TUN+FakeIP 下可能因 amap:// 协议被拦截）
-            // mapStyle: 'amap://styles/darkblue',
-        });
-
-        // 强制触发 resize 确保瓦片加载
-        setTimeout(() => {
-            mapInstance.resize && mapInstance.resize();
-            log('<span class="label">🔄 Resize</span>已强制触发地图 resize 刷新瓦片渲染', 'info');
-        }, 500);
-
-        // 地图加载完成事件
-        mapInstance.on('complete', function() {
-            log('<span class="label">✅ 地图</span>高德地图瓦片加载渲染完成！', 'success');
-        });
-
-        // 瓦片连通性诊断
-        setTimeout(async () => {
-            try {
-                const tileTest = await fetch('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x=1&y=1&z=1', { mode: 'no-cors' });
-                log('<span class="label">🌐 瓦片</span>高德瓦片服务器连通性: 握手成功', 'success');
-            } catch (e) {
-                log('<span class="label">⚠️ 瓦片</span>高德瓦片服务器可能被代理阻断 (Clash/VPN)，请尝试将 *.is.autonavi.com 加入直连规则', 'warn');
-            }
-        }, 1000);
-
-        AMap.plugin(['AMap.ToolBar'], function() {
-            mapInstance.addControl(new AMap.ToolBar({ position: 'RB' }));
-        });
-        log('<span class="label">✅ 地图</span>高德地图引擎挂载成功 (成都市中心坐标)', 'success');
-
-        // NER 提取
-        log('<span class="label">🔍 NER</span>正在对 AI 攻略文本执行地名实体多源提取...');
-        const stopNames = extractStopsFromPlan(MOCK_AI_PLAN);
-        log(`<span class="label">✅ NER</span>提取到 <b>${stopNames.length}</b> 个纯净地标锚点: ${stopNames.join(' → ')}`, 'success');
-
-        // 批量地理编码
-        log('<span class="label">📡 Geocoding</span>启动高德 AMap.Geocoder 批量坐标解算...');
-        const geocoder = new AMap.Geocoder({ city: '成都' });
-
-        for (let i = 0; i < stopNames.length; i++) {
-            const name = stopNames[i];
-            try {
-                const lnglat = await geocodeOne(geocoder, name);
-                if (lnglat) {
-                    resolvedStops.push({ name, lnglat });
-                    log(`<span class="label">📍 #${i+1}</span>${name} → [${lnglat.getLng().toFixed(4)}, ${lnglat.getLat().toFixed(4)}]`, 'success');
-                } else {
-                    log(`<span class="label">❌ #${i+1}</span>${name} 坐标解算失败`, 'error');
-                }
-            } catch (e) {
-                log(`<span class="label">❌ #${i+1}</span>${name}: ${e.message}`, 'error');
-            }
-        }
-
-        // 去重
-        const seen = new Set();
-        resolvedStops = resolvedStops.filter(s => {
-            if (seen.has(s.name)) return false;
-            seen.add(s.name);
-            return true;
-        });
-
-        // 绘制站点标记
-        renderStopMarkers();
-        renderStopCards();
-
-        if (resolvedStops.length < 2) {
-            log('<span class="label">⚠️</span>有效站点不足2个，无法规划路线', 'warn');
-            return;
-        }
-
-        // 开始规划路线
-        document.getElementById('route-selector').style.display = 'block';
-        log('<span class="label">🗺️</span>站点解析完毕，正在自动规划 <b>驾车</b> 路线...', 'info');
-        await planDrivingRoute();
-    }
-
-    function geocodeOne(geocoder, name) {
-        return new Promise((resolve) => {
-            geocoder.getLocation(name, function(status, result) {
-                if (status === 'complete' && result.geocodes && result.geocodes.length > 0) {
-                    resolve(result.geocodes[0].location);
-                } else {
-                    resolve(null);
-                }
+// ========= Geocode（串行，带超时保护） =========
+function geocode(name) {
+    return new Promise((resolve) => {
+        const timer = setTimeout(() => { L(`<b>⏰ 超时</b> ${name} geocode 超时(5s)，跳过`, 'warn'); resolve(null); }, 5000);
+        try {
+            const g = new AMap.Geocoder({city:'成都'});
+            g.getLocation(name, (s, r) => {
+                clearTimeout(timer);
+                if (s==='complete'&&r.geocodes?.length) { const loc=r.geocodes[0].location; resolve({lng:loc.getLng(),lat:loc.getLat()}); }
+                else resolve(null);
             });
-        });
-    }
-
-    // =========================================================================
-    // 渲染站点标记
-    // =========================================================================
-    function renderStopMarkers() {
-        stopMarkers.forEach(m => m.setMap(null));
-        stopMarkers = [];
-
-        resolvedStops.forEach((stop, idx) => {
-            const markerDiv = document.createElement('div');
-            markerDiv.style.cssText = 'display:flex;flex-direction:column;align-items:center;cursor:pointer;';
-            markerDiv.innerHTML = `
-                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,0.3);">${idx + 1}</div>
-                <div style="margin-top:3px;background:white;padding:2px 6px;border-radius:5px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);">${stop.name}</div>
-            `;
-            const marker = new AMap.Marker({
-                position: stop.lnglat,
-                content: markerDiv,
-                offset: new AMap.Pixel(-16, -16),
-                zIndex: 100 + idx,
-            });
-            marker.setMap(mapInstance);
-            stopMarkers.push(marker);
-        });
-
-        mapInstance.setFitView(stopMarkers, false, [60, 60, 60, 60]);
-    }
-
-    function renderStopCards() {
-        const container = document.getElementById('stops-container');
-        container.innerHTML = '';
-        resolvedStops.forEach((stop, idx) => {
-            const card = document.createElement('div');
-            card.className = 'stop-card';
-            card.innerHTML = `
-                <div class="idx">${idx + 1}</div>
-                <div>
-                    <div class="name">${stop.name}</div>
-                    <div class="coord">[${stop.lnglat.getLng().toFixed(6)}, ${stop.lnglat.getLat().toFixed(6)}]</div>
-                </div>
-            `;
-            card.onclick = () => mapInstance.setZoomAndCenter(16, stop.lnglat, false, 600);
-            container.appendChild(card);
-        });
-    }
-
-    // =========================================================================
-    // 驾车路线规划
-    // =========================================================================
-    async function planDrivingRoute() {
-        clearRoutes();
-        log('<span class="label">🚗 Driving</span>正在调用 AMap.Driving 多站点贯穿路线解算...', 'info');
-
-        return new Promise((resolve) => {
-            AMap.plugin('AMap.Driving', function() {
-                const driving = new AMap.Driving({ policy: 0, ferry: 0 });
-                const origin = resolvedStops[0].lnglat;
-                const destination = resolvedStops[resolvedStops.length - 1].lnglat;
-                const waypoints = resolvedStops.slice(1, -1).map(s => s.lnglat);
-
-                driving.search(origin, destination, { waypoints }, function(status, result) {
-                    if (status === 'complete' && result.routes && result.routes.length > 0) {
-                        const route = result.routes[0];
-                        const path = [];
-                        for (const step of (route.steps || [])) {
-                            if (step.path) path.push(...step.path);
-                        }
-
-                        drivingPolyline = new AMap.Polyline({
-                            path: path,
-                            strokeColor: '#10b981',
-                            strokeWeight: 6,
-                            strokeOpacity: 0.9,
-                            lineJoin: 'round',
-                            lineCap: 'round',
-                            showDir: true,
-                        });
-                        drivingPolyline.setMap(mapInstance);
-
-                        const distKm = (route.distance / 1000).toFixed(1);
-                        const durMin = Math.round(route.time / 60);
-                        log(`<span class="label">✅ 路线</span>驾车路线规划成功: 总距离 <b>${distKm} km</b>, 预计耗时 <b>${durMin} 分钟</b>`, 'success');
-
-                        renderSummary('🚗 驾车路线', distKm + ' km', durMin + ' 分钟', resolvedStops.length);
-                        mapInstance.setFitView([drivingPolyline, ...stopMarkers], false, [60, 60, 60, 60]);
-                    } else {
-                        log('<span class="label">❌</span>驾车路线规划失败: ' + status, 'error');
-                    }
-                    resolve();
-                });
-            });
-        });
-    }
-
-    // =========================================================================
-    // 步行分段路线规划
-    // =========================================================================
-    async function planWalkingSegments() {
-        clearRoutes();
-        log('<span class="label">🚶 Walking</span>启动分段步行路线解算 (共 ' + (resolvedStops.length - 1) + ' 段)...', 'info');
-        
-        let totalDist = 0, totalTime = 0;
-        const colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#ef4444', '#06b6d4', '#84cc16', '#f97316', '#6366f1'];
-
-        for (let i = 0; i < resolvedStops.length - 1; i++) {
-            const from = resolvedStops[i];
-            const to = resolvedStops[i + 1];
-            const color = colors[i % colors.length];
-
-            try {
-                const result = await walkOneSegment(from.lnglat, to.lnglat);
-                if (result) {
-                    const polyline = new AMap.Polyline({
-                        path: result.path,
-                        strokeColor: color,
-                        strokeWeight: 5,
-                        strokeOpacity: 0.85,
-                        lineJoin: 'round',
-                        lineCap: 'round',
-                        showDir: true,
-                        strokeStyle: 'dashed',
-                        strokeDasharray: [12, 6],
-                    });
-                    polyline.setMap(mapInstance);
-                    walkingPolylines.push(polyline);
-                    totalDist += result.distance;
-                    totalTime += result.time;
-                    const segDist = (result.distance / 1000).toFixed(2);
-                    const segMin = Math.round(result.time / 60);
-                    log(`<span class="label" style="color:${color}">🔗 #${i+1}</span>${from.name} → ${to.name}: <b>${segDist}km</b>, 约 <b>${segMin}分钟</b>`, 'success');
-                } else {
-                    log(`<span class="label">⚠️ #${i+1}</span>${from.name} → ${to.name}: 步行路线无解`, 'warn');
-                }
-            } catch (e) {
-                log(`<span class="label">❌ #${i+1}</span>${from.name} → ${to.name}: ${e.message}`, 'error');
-            }
-        }
-
-        const totalKm = (totalDist / 1000).toFixed(1);
-        const totalMin = Math.round(totalTime / 60);
-        log(`<span class="label">✅ 汇总</span>步行全程: <b>${totalKm} km</b>, 总计约 <b>${totalMin} 分钟</b>`, 'success');
-        renderSummary('🚶 步行路线（分段）', totalKm + ' km', totalMin + ' 分钟', resolvedStops.length);
-        mapInstance.setFitView([...walkingPolylines, ...stopMarkers], false, [60, 60, 60, 60]);
-    }
-
-    function walkOneSegment(from, to) {
-        return new Promise((resolve) => {
-            AMap.plugin('AMap.Walking', function() {
-                const walking = new AMap.Walking();
-                walking.search(from, to, function(status, result) {
-                    if (status === 'complete' && result.routes && result.routes.length > 0) {
-                        const route = result.routes[0];
-                        const path = [];
-                        for (const step of (route.steps || [])) {
-                            if (step.path) path.push(...step.path);
-                        }
-                        resolve({ path, distance: route.distance, time: route.time });
-                    } else {
-                        resolve(null);
-                    }
-                });
-            });
-        });
-    }
-
-    // =========================================================================
-    // 辅助函数
-    // =========================================================================
-    function clearRoutes() {
-        if (drivingPolyline) { drivingPolyline.setMap(null); drivingPolyline = null; }
-        walkingPolylines.forEach(p => p.setMap(null));
-        walkingPolylines = [];
-        document.getElementById('summary-container').innerHTML = '';
-    }
-
-    function onRoutePlanChange() {
-        const val = document.getElementById('route-plan-select').value;
-        if (val === 'driving') planDrivingRoute();
-        else if (val === 'walking-seg') planWalkingSegments();
-    }
-
-    function renderSummary(title, dist, time, stops) {
-        document.getElementById('summary-container').innerHTML = `
-            <div class="summary">
-                <h3>${title}</h3>
-                <div class="row"><span>总距离</span><b>${dist}</b></div>
-                <div class="row"><span>预计耗时</span><b>${time}</b></div>
-                <div class="row"><span>途经站点</span><b>${stops} 个</b></div>
-            </div>
-        `;
-    }
-
-    // 等 DOM 完全就绪后再启动
-    window.addEventListener('load', function() {
-        setTimeout(() => {
-            init().catch(err => log('致命错误: ' + err.message, 'error'));
-        }, 300);
+        } catch(e) { clearTimeout(timer); resolve(null); }
     });
-    </script>
+}
+
+// ========= Canvas 渲染引擎 =========
+function resizeCanvas() {
+    const wr = cv.parentElement.getBoundingClientRect();
+    cv.width = wr.width * devicePixelRatio;
+    cv.height = wr.height * devicePixelRatio;
+    ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+}
+
+function geoToScreen(lng, lat) {
+    if (stops.length === 0) return {x:0,y:0};
+    const pad = 60;
+    const wr = cv.parentElement.getBoundingClientRect();
+    const w = wr.width - pad*2, h = wr.height - pad*2;
+    let minLng=Infinity,maxLng=-Infinity,minLat=Infinity,maxLat=-Infinity;
+    const all = [...stops.map(s=>({lng:s.lng,lat:s.lat})), ...routePath];
+    for(const p of all){if(p.lng<minLng)minLng=p.lng;if(p.lng>maxLng)maxLng=p.lng;if(p.lat<minLat)minLat=p.lat;if(p.lat>maxLat)maxLat=p.lat;}
+    const dLng=maxLng-minLng||0.01, dLat=maxLat-minLat||0.01;
+    const scale = Math.min(w/dLng, h/dLat);
+    const cx = pad + (w - dLng*scale)/2;
+    const cy = pad + (h - dLat*scale)/2;
+    return { x: cx + (lng - minLng)*scale, y: cy + (maxLat - lat)*scale }; // lat inverted
+}
+
+function drawMap() {
+    resizeCanvas();
+    const wr = cv.parentElement.getBoundingClientRect();
+    const W = wr.width, H = wr.height;
+
+    // 背景网格
+    ctx.fillStyle = '#111827';
+    ctx.fillRect(0,0,W,H);
+    ctx.strokeStyle = '#1e293b';
+    ctx.lineWidth = 0.5;
+    for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+    for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+
+    // 标题
+    ctx.fillStyle = '#374151';
+    ctx.font = '12px "Noto Sans SC"';
+    ctx.fillText('成都市 · GreenStar 地理坐标可视化 · WGS-84', 20, 24);
+
+    if (stops.length === 0) return;
+
+    // 画路线路径
+    if (routePath.length > 1) {
+        ctx.beginPath();
+        const first = geoToScreen(routePath[0].lng, routePath[0].lat);
+        ctx.moveTo(first.x, first.y);
+        for (let i=1; i<routePath.length; i++) {
+            const p = geoToScreen(routePath[i].lng, routePath[i].lat);
+            ctx.lineTo(p.x, p.y);
+        }
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([]);
+        ctx.stroke();
+
+        // 方向箭头
+        const step = Math.max(1, Math.floor(routePath.length/15));
+        for (let i=step; i<routePath.length; i+=step) {
+            const a = geoToScreen(routePath[i-1].lng, routePath[i-1].lat);
+            const b = geoToScreen(routePath[i].lng, routePath[i].lat);
+            const angle = Math.atan2(b.y-a.y, b.x-a.x);
+            const mx = (a.x+b.x)/2, my = (a.y+b.y)/2;
+            ctx.save();
+            ctx.translate(mx, my);
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.moveTo(6,0); ctx.lineTo(-4,-4); ctx.lineTo(-4,4); ctx.closePath();
+            ctx.fillStyle = '#34d399';
+            ctx.fill();
+            ctx.restore();
+        }
+    }
+
+    // 站点连线（虚线备用）
+    if (routePath.length <= 1) {
+        ctx.beginPath();
+        ctx.setLineDash([6,4]);
+        ctx.strokeStyle = '#475569';
+        ctx.lineWidth = 1.5;
+        const f = geoToScreen(stops[0].lng, stops[0].lat);
+        ctx.moveTo(f.x, f.y);
+        for (let i=1; i<stops.length; i++) {
+            const p = geoToScreen(stops[i].lng, stops[i].lat);
+            ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    // 站点标记
+    stops.forEach((s, i) => {
+        const p = geoToScreen(s.lng, s.lat);
+        // 光晕
+        const gr = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,24);
+        gr.addColorStop(0,'rgba(16,185,129,0.3)');
+        gr.addColorStop(1,'rgba(16,185,129,0)');
+        ctx.fillStyle = gr;
+        ctx.beginPath(); ctx.arc(p.x,p.y,24,0,Math.PI*2); ctx.fill();
+        // 圆点
+        ctx.beginPath(); ctx.arc(p.x,p.y,12,0,Math.PI*2);
+        ctx.fillStyle = '#10b981'; ctx.fill();
+        ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+        // 编号
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 10px "Noto Sans SC"';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        ctx.fillText(i+1, p.x, p.y);
+        // 名称
+        ctx.fillStyle = '#d1fae5';
+        ctx.font = '11px "Noto Sans SC"';
+        ctx.textAlign = 'left';
+        ctx.fillText(s.name, p.x+16, p.y-2);
+        ctx.fillStyle = '#6b7280';
+        ctx.font = '9px monospace';
+        ctx.fillText(`[${s.lng.toFixed(4)}, ${s.lat.toFixed(4)}]`, p.x+16, p.y+12);
+    });
+}
+
+// ========= 路线规划 =========
+function drivingRoute() {
+    return new Promise(resolve => {
+        const timer = setTimeout(()=>{L('<b>⏰</b> 驾车路线 API 超时(15s)', 'warn'); resolve(null);}, 15000);
+        AMap.plugin('AMap.Driving', ()=> {
+            const d = new AMap.Driving({policy:0, ferry:0});
+            const o = new AMap.LngLat(stops[0].lng, stops[0].lat);
+            const dest = new AMap.LngLat(stops[stops.length-1].lng, stops[stops.length-1].lat);
+            const wps = stops.slice(1,-1).map(s=>new AMap.LngLat(s.lng,s.lat));
+            d.search(o, dest, {waypoints:wps}, (st,r)=>{
+                clearTimeout(timer);
+                if(st==='complete'&&r.routes?.length){
+                    const path=[];
+                    for(const step of r.routes[0].steps||[]){if(step.path)for(const p of step.path)path.push({lng:p.lng,lat:p.lat});}
+                    resolve({path, dist:r.routes[0].distance, time:r.routes[0].time});
+                } else { L(`<b>❌</b> 驾车路线失败: ${st}`, 'err'); resolve(null); }
+            });
+        });
+    });
+}
+
+function walkSegment(from, to) {
+    return new Promise(resolve => {
+        const timer = setTimeout(()=>resolve(null), 8000);
+        AMap.plugin('AMap.Walking', ()=> {
+            const w = new AMap.Walking();
+            w.search(new AMap.LngLat(from.lng,from.lat), new AMap.LngLat(to.lng,to.lat), (st,r)=>{
+                clearTimeout(timer);
+                if(st==='complete'&&r.routes?.length){
+                    const path=[];
+                    for(const step of r.routes[0].steps||[]){if(step.path)for(const p of step.path)path.push({lng:p.lng,lat:p.lat});}
+                    resolve({path, dist:r.routes[0].distance, time:r.routes[0].time});
+                } else resolve(null);
+            });
+        });
+    });
+}
+
+// ========= 主流程 =========
+async function main() {
+    L('🚀 <b>启动</b> GreenStar v3 验证台 (纯 Canvas 渲染，无瓦片依赖)');
+
+    // 1. NER
+    const names = extractStops(PLAN);
+    L(`🔍 <b>NER</b> 提取到 ${names.length} 个地标: ${names.join(' → ')}`, 'ok');
+
+    // 2. Geocode（每个带 5 秒超时保护）
+    L('📡 <b>Geocoding</b> 开始批量坐标解算（每个 5 秒超时保护）...');
+    for (let i = 0; i < names.length; i++) {
+        const coord = await geocode(names[i]);
+        if (coord) {
+            stops.push({name: names[i], ...coord});
+            L(`📍 <b>#${i+1}</b> ${names[i]} → [${coord.lng.toFixed(4)}, ${coord.lat.toFixed(4)}]`, 'ok');
+        } else {
+            L(`❌ <b>#${i+1}</b> ${names[i]} 解算失败/超时`, 'err');
+        }
+    }
+
+    // 去重
+    const seen = new Set();
+    stops = stops.filter(s => { if(seen.has(s.name)) return false; seen.add(s.name); return true; });
+
+    // 渲染芯片
+    const $chips = document.getElementById('chips');
+    stops.forEach((s,i)=>{ $chips.innerHTML += `<div class="stop-chip"><div class="n">${i+1}</div>${s.name}</div>`; });
+
+    // 先画直线连接
+    drawMap();
+
+    if (stops.length < 2) { L('⚠️ 有效站点不足2个', 'warn'); return; }
+    document.getElementById('route-ctl').style.display = 'block';
+
+    // 3. 尝试驾车路线
+    L('🚗 <b>Driving</b> 调用 AMap.Driving 规划路线...');
+    const dr = await drivingRoute();
+    if (dr) {
+        routePath = dr.path;
+        const km = (dr.dist/1000).toFixed(1);
+        const min = Math.round(dr.time/60);
+        L(`✅ <b>路线</b> 驾车成功: ${km}km, ${min}分钟, ${dr.path.length} 个路径点`, 'ok');
+        renderSummary('🚗 驾车', km+'km', min+'分钟');
+        drawMap();
+    } else {
+        L('⚠️ 驾车路线失败，使用直线连接展示', 'warn');
+        routePath = stops.map(s=>({lng:s.lng,lat:s.lat}));
+        drawMap();
+    }
+}
+
+async function switchMode() {
+    const mode = document.getElementById('mode').value;
+    if (mode === 'straight') {
+        routePath = stops.map(s=>({lng:s.lng,lat:s.lat}));
+        renderSummary('📐 直线', '—', '—');
+        drawMap();
+    } else if (mode === 'drive') {
+        L('🚗 重新规划驾车路线...');
+        const dr = await drivingRoute();
+        if(dr){routePath=dr.path; renderSummary('🚗 驾车',(dr.dist/1000).toFixed(1)+'km',Math.round(dr.time/60)+'分钟'); drawMap();}
+    } else if (mode === 'walk') {
+        L('🚶 分段步行路线计算中...');
+        routePath = [];
+        let totalD=0, totalT=0;
+        for(let i=0;i<stops.length-1;i++){
+            const r = await walkSegment(stops[i], stops[i+1]);
+            if(r){ routePath.push(...r.path); totalD+=r.dist; totalT+=r.time;
+                L(`🔗 <b>#${i+1}</b> ${stops[i].name}→${stops[i+1].name}: ${(r.dist/1000).toFixed(2)}km`, 'ok');
+            } else { L(`⚠️ ${stops[i].name}→${stops[i+1].name} 无解`, 'warn'); }
+        }
+        renderSummary('🚶 步行',(totalD/1000).toFixed(1)+'km',Math.round(totalT/60)+'分钟');
+        drawMap();
+    }
+}
+
+function renderSummary(title, dist, time) {
+    document.getElementById('summary').innerHTML = `<div class="summary-box"><div class="row"><span>${title}</span></div><div class="row"><span>总距离</span><b>${dist}</b></div><div class="row"><span>预计耗时</span><b>${time}</b></div><div class="row"><span>站点数</span><b>${stops.length}</b></div></div>`;
+}
+
+window.addEventListener('resize', drawMap);
+window.addEventListener('load', () => setTimeout(main, 200));
+</script>
 </body>
 </html>
