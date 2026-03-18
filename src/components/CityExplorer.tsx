@@ -35,6 +35,9 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
   // 主题关键词（3D 标签状态）
   const [selectedKeywords, setSelectedKeywords] = useState<string[]>([]);
+  const [customKwInput, setCustomKwInput] = useState('');
+  const [customKeywords, setCustomKeywords] = useState<string[]>([]);
+
   const PREDEFINED_KEYWORDS = [
     '🍷 酒吧', '☕ 咖啡馆', '🏛️ 博物馆', '📸 热门打卡', 
     '🛍️ 购物休闲', '🏞️ 自然探索', '🍜 特色美食', '🛌 舒适住宿'
@@ -53,6 +56,22 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     setSelectedKeywords(prev => 
       prev.includes(kw) ? prev.filter(k => k !== kw) : [...prev, kw]
     );
+  };
+
+  const handleAddCustomKeyword = (e: React.FormEvent) => {
+    e.preventDefault();
+    const val = customKwInput.trim();
+    if (!val) return;
+    
+    // 如果还没存过，加到候选池
+    if (!customKeywords.includes(val) && !PREDEFINED_KEYWORDS.includes(val)) {
+      setCustomKeywords(prev => [...prev, val]);
+    }
+    // 并自动选中
+    if (!selectedKeywords.includes(val)) {
+      setSelectedKeywords(prev => [...prev, val]);
+    }
+    setCustomKwInput('');
   };
 
   // 栈顶 = 当前层级
@@ -242,7 +261,7 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
       <div className="px-5 mt-3 relative z-30">
         <div className="flex gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none items-center">
           <span className="text-xs font-black text-gray-500 shrink-0 mr-1"><i className="bi bi-stars text-emerald-500"></i>AI 规划偏好:</span>
-          {PREDEFINED_KEYWORDS.map(kw => {
+          {[...PREDEFINED_KEYWORDS, ...customKeywords].map(kw => {
             const isSelected = selectedKeywords.includes(kw);
             return (
               <button
@@ -258,6 +277,23 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
               </button>
             );
           })}
+          
+          {/* 自定义增加关键词表单 */}
+          <form onSubmit={handleAddCustomKeyword} className="shrink-0 flex items-center bg-white/50 backdrop-blur-md rounded-2xl pl-3 pr-1 py-1 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] border border-white/50 transition-all focus-within:ring-2 focus-within:ring-emerald-400 focus-within:bg-white/80 h-[34px]">
+            <input 
+              value={customKwInput} 
+              onChange={e => setCustomKwInput(e.target.value)} 
+              placeholder="自定义..." 
+              className="bg-transparent border-none outline-none text-xs w-16 text-emerald-800 placeholder:text-gray-400 font-bold"
+            />
+            <button 
+              type="submit" 
+              disabled={!customKwInput.trim()}
+              className="w-6 h-6 rounded-xl bg-emerald-500 text-white flex items-center justify-center active:scale-90 transition-transform disabled:opacity-50 disabled:active:scale-100"
+            >
+              <i className="bi bi-plus text-sm"></i>
+            </button>
+          </form>
         </div>
       </div>
 
