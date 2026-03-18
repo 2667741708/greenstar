@@ -6,12 +6,15 @@
     <title>GreenStar 路线规划可视化验证台</title>
     <!-- ============================================================================
     文件: test_route_map.html
-    基准版本: 新建（无基线）
+    基准版本: test_route_map.html (初版 - 地图瓦片渲染空白)
     修改内容 / Changes:
-      [新建] 独立 HTML 页面，在浏览器环境中验证"攻略 -> NER提取 -> 地理编码 -> 路线规划 -> 地图渲染"全链路
-      [NEW] Standalone HTML page for E2E verification of plan-to-route pipeline in browser environment
+      [修复] CSS Grid 布局在高德 AMap 容器中可能导致的尺寸计算零值问题
+      [修复] 增加地图初始化后的 resize 强刷操作
+      [修复] 增加 Clash 代理可能阻断高德瓦片的诊断输出
+      [FIX] CSS Grid layout may cause zero-size issue for AMap container
+      [FIX] Added post-init resize force-refresh for map tiles
+      [FIX] Added Clash proxy diagnostics for AMap tile servers
     ============================================================================ -->
-    <!-- 高德安全配置 -->
     <script type="text/javascript">
         window._AMapSecurityConfig = {
             securityJsCode: 'fa5b4914b560026b23e2c7ae1bc757d4',
@@ -21,37 +24,33 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans SC', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
-        .header { background: linear-gradient(135deg, #065f46, #0d9488); padding: 20px 30px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-        .header h1 { font-size: 22px; font-weight: 700; }
-        .header span { font-size: 12px; opacity: 0.7; }
-        .container { display: grid; grid-template-columns: 400px 1fr; height: calc(100vh - 72px); }
-        .panel { padding: 20px; overflow-y: auto; background: #1e293b; border-right: 1px solid #334155; }
-        .panel h2 { font-size: 16px; color: #10b981; margin-bottom: 12px; font-weight: 700; }
-        #map-container { width: 100%; height: 100%; }
-        .log-entry { padding: 8px 12px; margin-bottom: 6px; border-radius: 10px; font-size: 12px; line-height: 1.6; animation: slideIn 0.3s ease; }
+        body { font-family: 'Noto Sans SC', sans-serif; background: #0f172a; color: #e2e8f0; height: 100vh; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #065f46, #0d9488); padding: 16px 24px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); height: 64px; flex-shrink: 0; }
+        .header h1 { font-size: 20px; font-weight: 700; }
+        .header span { font-size: 11px; opacity: 0.7; }
+        .main-wrapper { display: flex; height: calc(100vh - 64px); }
+        .panel { width: 420px; min-width: 420px; padding: 16px; overflow-y: auto; background: #1e293b; border-right: 1px solid #334155; flex-shrink: 0; }
+        .panel h2 { font-size: 15px; color: #10b981; margin-bottom: 10px; font-weight: 700; }
+        .map-wrapper { flex: 1; position: relative; }
+        #map-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+        .log-entry { padding: 7px 10px; margin-bottom: 5px; border-radius: 8px; font-size: 11px; line-height: 1.5; animation: slideIn 0.3s ease; }
         .log-entry.info { background: #1e3a5f; border-left: 3px solid #3b82f6; }
         .log-entry.success { background: #14532d; border-left: 3px solid #22c55e; }
         .log-entry.error { background: #450a0a; border-left: 3px solid #ef4444; }
         .log-entry.warn { background: #422006; border-left: 3px solid #f59e0b; }
-        .log-entry .label { font-weight: 700; margin-right: 6px; }
-        .stop-card { background: #334155; border-radius: 12px; padding: 12px 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; transition: all 0.2s; cursor: pointer; }
+        .log-entry .label { font-weight: 700; margin-right: 4px; }
+        .stop-card { background: #334155; border-radius: 10px; padding: 10px 14px; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; transition: all 0.2s; cursor: pointer; }
         .stop-card:hover { background: #475569; transform: translateX(4px); }
-        .stop-card .idx { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #059669); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; flex-shrink: 0; }
-        .stop-card .name { font-weight: 700; font-size: 14px; }
+        .stop-card .idx { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #059669); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; }
+        .stop-card .name { font-weight: 700; font-size: 13px; }
         .stop-card .coord { font-size: 10px; color: #94a3b8; }
-        .btn { padding: 12px 24px; border: none; border-radius: 12px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; width: 100%; margin-top: 12px; }
-        .btn-primary { background: linear-gradient(135deg, #10b981, #0d9488); color: white; }
-        .btn-primary:hover { box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4); transform: translateY(-1px); }
-        .btn-secondary { background: #334155; color: #94a3b8; }
-        .btn-secondary:hover { background: #475569; color: white; }
-        .summary { background: linear-gradient(135deg, #065f46, #0d9488); padding: 16px; border-radius: 16px; margin-top: 16px; }
-        .summary h3 { font-size: 14px; margin-bottom: 8px; }
-        .summary .row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-        .section-divider { height: 1px; background: #334155; margin: 16px 0; }
-        #route-selector { margin-top: 12px; }
-        #route-selector select { width: 100%; padding: 10px; border-radius: 10px; background: #334155; color: white; border: 1px solid #475569; font-size: 13px; }
+        .section-divider { height: 1px; background: #334155; margin: 14px 0; }
+        #route-selector { margin-top: 10px; }
+        #route-selector select { width: 100%; padding: 8px; border-radius: 8px; background: #334155; color: white; border: 1px solid #475569; font-size: 12px; }
+        .summary { background: linear-gradient(135deg, #065f46, #0d9488); padding: 14px; border-radius: 14px; margin-top: 14px; }
+        .summary h3 { font-size: 13px; margin-bottom: 6px; }
+        .summary .row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 3px; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -61,7 +60,7 @@
             <span>攻略NER提取 → 高德地理编码 → 多站点路线规划 → 实时地图渲染</span>
         </div>
     </div>
-    <div class="container">
+    <div class="main-wrapper">
         <div class="panel">
             <h2>📋 验证日志</h2>
             <div id="log-container"></div>
@@ -77,12 +76,14 @@
             </div>
             <div id="summary-container"></div>
         </div>
-        <div id="map-container"></div>
+        <div class="map-wrapper">
+            <div id="map-container"></div>
+        </div>
     </div>
 
     <script>
     // =========================================================================
-    // 核心函数复刻（来自 src/services/routePlanner.ts 的纯 JS 移植版本）
+    // NER 提取函数（复刻自 src/services/routePlanner.ts，含括号清洗修复）
     // =========================================================================
     function extractStopsFromPlan(planText) {
         const stops = [];
@@ -97,7 +98,6 @@
         for (const pattern of patterns) {
             let match;
             while ((match = pattern.exec(planText)) !== null) {
-                // 清洗残留的嵌套括号标记
                 const name = match[1].trim().replace(/[【】「」『』《》\[\]]/g, '').trim();
                 if (name.length >= 2 && name.length <= 15 &&
                     !name.includes('建议') && !name.includes('提示') &&
@@ -128,13 +128,13 @@
     // 全局状态
     // =========================================================================
     let mapInstance = null;
-    let resolvedStops = [];   // { name, lnglat: AMap.LngLat }
+    let resolvedStops = [];
     let drivingPolyline = null;
     let walkingPolylines = [];
     let stopMarkers = [];
 
     // =========================================================================
-    // 模拟 AI 攻略文本（来自上一轮实验的真实 LLM 产出）
+    // AI 攻略模拟文本（真实 LLM 产出）
     // =========================================================================
     const MOCK_AI_PLAN = `
 清晨前往 **【成都大熊猫繁育研究基地】** 观看熊猫，随后地铁直达 **【天府广场】**。
@@ -148,27 +148,65 @@
     // 初始化
     // =========================================================================
     async function init() {
-        log('<span class="label">🚀 启动</span>GreenStar 地理可视化验证台正在加载...');
+        log('<span class="label">🚀 启动</span>GreenStar 路线规划可视化验证台正在加载...');
 
-        // 1. 初始化地图
+        // 检测 AMap 是否可用
+        if (typeof AMap === 'undefined') {
+            log('<span class="label">❌ 致命</span>高德地图 JS API 未加载！请检查网络连接或 Clash 代理是否阻断了 webapi.amap.com', 'error');
+            return;
+        }
+
+        // 检查地图容器尺寸
+        const container = document.getElementById('map-container');
+        const rect = container.getBoundingClientRect();
+        log(`<span class="label">📐 容器</span>地图容器尺寸: ${Math.round(rect.width)}×${Math.round(rect.height)}px`);
+
+        if (rect.width < 10 || rect.height < 10) {
+            log('<span class="label">⚠️ 尺寸</span>地图容器尺寸异常（宽或高为0），尝试强制修复...', 'warn');
+            container.style.width = (window.innerWidth - 420) + 'px';
+            container.style.height = (window.innerHeight - 64) + 'px';
+        }
+
+        // 初始化地图（使用 2D 视角以提高兼容性）
         mapInstance = new AMap.Map('map-container', {
             zoom: 12,
-            center: [104.0668, 30.5728], // 成都市中心
-            viewMode: '3D',
-            pitch: 40,
+            center: [104.0668, 30.5728],
+            viewMode: '2D',
             mapStyle: 'amap://styles/darkblue',
         });
+
+        // 强制触发 resize 确保瓦片加载
+        setTimeout(() => {
+            mapInstance.resize && mapInstance.resize();
+            log('<span class="label">🔄 Resize</span>已强制触发地图 resize 刷新瓦片渲染', 'info');
+        }, 500);
+
+        // 地图加载完成事件
+        mapInstance.on('complete', function() {
+            log('<span class="label">✅ 地图</span>高德地图瓦片加载渲染完成！', 'success');
+        });
+
+        // 瓦片连通性诊断
+        setTimeout(async () => {
+            try {
+                const tileTest = await fetch('https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x=1&y=1&z=1', { mode: 'no-cors' });
+                log('<span class="label">🌐 瓦片</span>高德瓦片服务器连通性: 握手成功', 'success');
+            } catch (e) {
+                log('<span class="label">⚠️ 瓦片</span>高德瓦片服务器可能被代理阻断 (Clash/VPN)，请尝试将 *.is.autonavi.com 加入直连规则', 'warn');
+            }
+        }, 1000);
+
         AMap.plugin(['AMap.ToolBar'], function() {
             mapInstance.addControl(new AMap.ToolBar({ position: 'RB' }));
         });
-        log('<span class="label">✅ 地图</span>高德3D地图引擎挂载成功 (成都市中心坐标)', 'success');
+        log('<span class="label">✅ 地图</span>高德地图引擎挂载成功 (成都市中心坐标)', 'success');
 
-        // 2. NER 提取
+        // NER 提取
         log('<span class="label">🔍 NER</span>正在对 AI 攻略文本执行地名实体多源提取...');
         const stopNames = extractStopsFromPlan(MOCK_AI_PLAN);
         log(`<span class="label">✅ NER</span>提取到 <b>${stopNames.length}</b> 个纯净地标锚点: ${stopNames.join(' → ')}`, 'success');
 
-        // 3. 批量地理编码
+        // 批量地理编码
         log('<span class="label">📡 Geocoding</span>启动高德 AMap.Geocoder 批量坐标解算...');
         const geocoder = new AMap.Geocoder({ city: '成都' });
 
@@ -187,7 +225,7 @@
             }
         }
 
-        // 去重（可能同名被不同正则捕获两次）
+        // 去重
         const seen = new Set();
         resolvedStops = resolvedStops.filter(s => {
             if (seen.has(s.name)) return false;
@@ -195,7 +233,7 @@
             return true;
         });
 
-        // 4. 绘制站点标记
+        // 绘制站点标记
         renderStopMarkers();
         renderStopCards();
 
@@ -204,7 +242,7 @@
             return;
         }
 
-        // 5. 开始规划路线
+        // 开始规划路线
         document.getElementById('route-selector').style.display = 'block';
         log('<span class="label">🗺️</span>站点解析完毕，正在自动规划 <b>驾车</b> 路线...', 'info');
         await planDrivingRoute();
@@ -233,13 +271,13 @@
             const markerDiv = document.createElement('div');
             markerDiv.style.cssText = 'display:flex;flex-direction:column;align-items:center;cursor:pointer;';
             markerDiv.innerHTML = `
-                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.3);">${idx + 1}</div>
-                <div style="margin-top:4px;background:white;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);">${stop.name}</div>
+                <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#10b981,#059669);border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:13px;box-shadow:0 4px 12px rgba(0,0,0,0.3);">${idx + 1}</div>
+                <div style="margin-top:3px;background:white;padding:2px 6px;border-radius:5px;font-size:10px;font-weight:700;color:#065f46;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.15);">${stop.name}</div>
             `;
             const marker = new AMap.Marker({
                 position: stop.lnglat,
                 content: markerDiv,
-                offset: new AMap.Pixel(-18, -18),
+                offset: new AMap.Pixel(-16, -16),
                 zIndex: 100 + idx,
             });
             marker.setMap(mapInstance);
@@ -413,8 +451,12 @@
         `;
     }
 
-    // 启动
-    init().catch(err => log('致命错误: ' + err.message, 'error'));
+    // 等 DOM 完全就绪后再启动
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            init().catch(err => log('致命错误: ' + err.message, 'error'));
+        }, 300);
+    });
     </script>
 </body>
 </html>
