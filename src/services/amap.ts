@@ -30,6 +30,7 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
           type: CONSTANTS.POI_TYPE_STRING, // 严格使用中文分类名或数字编码，非模糊 keyword
           pageSize: 15,
           pageIndex: 1,
+          extensions: 'all', // 必须设置为 all 才能返回 photos 图片等详细信息
         });
 
         // 如果传入了精准搜索词（非空），进行全城文本搜索；如果没传，根据当前地点周边半径检索

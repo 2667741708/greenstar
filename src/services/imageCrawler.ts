@@ -60,15 +60,15 @@ export const fetchPOIImage = async (
   lng: number, 
   existingUrl?: string
 ): Promise<string> => {
-  // 如果已有有效图片 URL，直接返回
+  // 如果已有有效图片 URL（如高德原生提供），直接返回
   if (existingUrl && existingUrl.trim()) return existingUrl;
 
-  // 尝试维基共享资源
+  // 尝试维基共享资源检索真实图片
   const wikiImg = await searchWikimediaImage(`${name} ${city}`);
   if (wikiImg) return wikiImg;
 
-  // 兜底：高德静态地图卫星缩略图
-  return generateStaticMapUrl(lat, lng);
+  // 如果连维基百科也没有图片，则返回空字符串，让组件回退显示高品质分类 Icon，而不是强行塞入一个无效链接
+  return '';
 };
 
 /**
