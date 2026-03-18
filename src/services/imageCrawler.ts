@@ -14,7 +14,7 @@ const AMAP_KEY = '040c3af03bab9232ab67e0d232838b28';
  */
 const searchWikimediaImage = async (keyword: string): Promise<string> => {
   try {
-    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(keyword)}&gsrlimit=3&prop=imageinfo&iiprop=url|size&iiurlwidth=400&format=json&origin=*`;
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrsearch=${encodeURIComponent(keyword)}&gsrlimit=3&prop=imageinfo&iiprop=url|size&iiurlwidth=400&format=json&origin=*`;
     const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
     if (!res.ok) return '';
     const data = await res.json();

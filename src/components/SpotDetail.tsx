@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Spot } from '../types';
 
 interface SpotDetailProps {
@@ -11,9 +11,32 @@ interface SpotDetailProps {
 export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, onClose, onCheckIn, isPro }) => {
   const [imgError, setImgError] = useState(false);
   const [isImgLoading, setIsImgLoading] = useState(true);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleCameraCheckIn = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Simulate real checkin after photo is taken
+      onCheckIn(spot);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300" onClick={onClose}>
+      <input 
+        type="file" 
+        accept="image/*" 
+        capture="environment" 
+        ref={fileInputRef} 
+        onChange={handleFileChange} 
+        style={{ display: 'none' }} 
+      />
       <div className="w-full max-w-lg bg-white rounded-t-[3rem] sm:rounded-[3rem] shadow-2xl overflow-hidden animate-slide-up relative" onClick={e => e.stopPropagation()}>
         <div className="absolute top-6 right-6 z-20">
           <button onClick={onClose} className="w-10 h-10 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors hover:bg-black/40"><i className="bi bi-x-lg"></i></button>
@@ -54,7 +77,9 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, onClose, onCheckIn
             {spot.tags.map((tag, idx) => (<span key={idx} className="text-[10px] font-bold text-gray-500 bg-gray-100 px-3 py-1.5 rounded-xl">#{tag}</span>))}
           </div>
           <div className="pt-6 flex gap-3">
-             <button onClick={() => onCheckIn(spot)} disabled={spot.checkedIn} className={`flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 ${spot.checkedIn ? 'bg-gray-100 text-gray-400 shadow-none' : (isPro ? 'bg-amber-500 text-white shadow-amber-200' : 'bg-emerald-600 text-white shadow-emerald-200')}`}>{spot.checkedIn ? '已点亮足迹' : '立即实地打卡'}</button>
+             <button onClick={handleCameraCheckIn} disabled={spot.checkedIn} className={`flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 ${spot.checkedIn ? 'bg-gray-100 text-gray-400 shadow-none' : (isPro ? 'bg-amber-500 text-white shadow-amber-200' : 'bg-emerald-600 text-white shadow-emerald-200')}`}>
+               {spot.checkedIn ? '已点亮足迹' : <span><i className="bi bi-camera mr-2"></i>立即实地打卡</span>}
+             </button>
              <button className="px-6 py-4 bg-gray-100 rounded-2xl text-gray-600 hover:bg-gray-200 transition-all"><i className="bi bi-send-fill"></i></button>
           </div>
         </div>
