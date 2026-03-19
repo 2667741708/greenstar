@@ -42,8 +42,22 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   const [showAiJournal, setShowAiJournal] = useState(false);
 
   const PREDEFINED_KEYWORDS = [
-    '🍷 酒吧', '☕ 咖啡馆', '🏛️ 博物馆', '📸 热门打卡', 
-    '🛍️ 购物休闲', '🏞️ 自然探索', '🍜 特色美食', '🛌 舒适住宿'
+    // 住宿
+    '🏨 精品酒店', '🏡 特色民宿', '🛏️ 青年旅舍',
+    // 玩乐
+    '🐱 猫咖', '🐶 狗咖', '🎮 电竞网咖', '🎭 剧本杀', '🎤 KTV', '🎪 密室逃脱', '🎳 台球馆',
+    // 二次元 & 潮玩
+    '🎌 漫展/二次元', '🎨 手办模型店', '🕹️ 游戏厅', '🧸 玩具店/盲盒',
+    // 文艺
+    '📚 独立书店', '🖼️ 画廊美术馆', '🏛️ 博物馆', '🎵 LiveHouse', '🎬 文艺影院', '🎨 文创园区',
+    // 逛街
+    '🛍️ 潮牌买手店', '💄 美妆集合店', '🏪 复古中古店', '🎁 伴手礼',
+    // 美食
+    '🍜 特色小吃', '🍰 甜品烘焙', '🍷 精酿啤酒', '☕ 咖啡馆', '🍵 茶馆', '🧋 奶茶',
+    // 户外
+    '🚴 骑行路线', '🧗 攀岩蹦床', '🏕️ 露营地', '🌸 赏花打卡',
+    // 打卡
+    '📸 网红拍照', '🌃 夜景机位', '⛩️ 古镇老街', '🍷 酒吧',
   ];
 
   // 同步 spots 与 keywords 到父组件供 PlanPanel 使用
@@ -172,6 +186,43 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     loadSubRegions(city.name, 'city');
     updateCityUnlockedStatus(city.id);
   }, [city.id]);
+
+  // 当选中标签变化时，用标签关键词重新搜索 POI
+  useEffect(() => {
+    if (selectedKeywords.length === 0) {
+      // 没有选中标签时，恢复默认全品类搜索
+      fetchCitySpots('', currentRegion.center, currentRegion.name);
+      return;
+    }
+    // 有选中标签时，用所有选中标签的文字（去emoji）作为关键词并行搜索，合并结果
+    const doTagSearch = async () => {
+      setLoading(true);
+      setLoadingStep(`正在按兴趣标签搜索...`);
+      try {
+        const keywords = selectedKeywords.map(kw => kw.replace(/^[^\u4e00-\u9fa5A-Za-z]+/, '').trim());
+        const promises = keywords.map(kw => 
+          searchPOI(currentRegion.name, kw, currentRegion.center).catch(() => [] as Spot[])
+        );
+        const results = await Promise.all(promises);
+        // 合并去重（按 id）
+        const merged = new Map<string, Spot>();
+        results.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
+        const finalSpots = Array.from(merged.values());
+        setSpots(finalSpots);
+        if (finalSpots.length > 0) {
+          setLoadingStep(`正在抓取真实地点图片...`);
+          const images = await batchFetchPOIImages(finalSpots, currentRegion.name);
+          setSpots(prev => prev.map((s, i) => ({ ...s, imageUrl: images[i] || s.imageUrl || '' })));
+        }
+      } catch (err) {
+        console.error('[TagSearch] failed:', err);
+      } finally {
+        setLoading(false);
+        setLoadingStep('');
+      }
+    };
+    doTagSearch();
+  }, [selectedKeywords, currentRegion.name]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
