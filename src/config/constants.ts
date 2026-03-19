@@ -8,7 +8,7 @@ export const CONSTANTS = {
     STYLE_PRO: 'amap://styles/darkblue',
     STYLE_NORMAL: 'amap://styles/whitesmoke',
   },
-  POI_TYPE_STRING: '风景名胜|餐饮服务|购物服务|生活服务|体育休闲服务|公园广场|博物馆|咖啡厅',
+  POI_TYPE_STRING: '风景名胜|餐饮服务|购物服务|生活服务|体育休闲服务|公园广场|博物馆|咖啡厅|住宿服务|酒吧|休闲场所',
   SEARCH_RADIUS: {
     city: 5000,
     district: 3000,

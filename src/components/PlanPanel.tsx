@@ -43,6 +43,7 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
   const [hasSaved, setHasSaved] = useState(false);
   const [startPoint, setStartPoint] = useState('');
   const [endPoint, setEndPoint] = useState('');
+  const [focusedField, setFocusedField] = useState<'start' | 'end'>('start');
 
   const thinkingRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -236,20 +237,68 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
               type="text" 
               value={startPoint} 
               onChange={e => setStartPoint(e.target.value)} 
-              placeholder="起点 (如: 某大酒店)" 
-              className="w-1/2 bg-white/20 border-white/30 text-white rounded-xl py-2 px-3 backdrop-blur-md outline-none focus:bg-white/30 transition-all placeholder:text-white/60 text-xs" 
+              onFocus={() => setFocusedField('start')}
+              placeholder="✨ 点此选出发地，再点下方标签" 
+              className={`w-1/2 bg-white/20 border-2 text-white rounded-xl py-2 px-3 backdrop-blur-md outline-none transition-all placeholder:text-white/50 text-xs ${focusedField === 'start' ? 'border-white/70 bg-white/30 shadow-[0_0_12px_rgba(255,255,255,0.3)]' : 'border-white/10'}`}
               disabled={isStreaming}
             />
             <input 
               type="text" 
               value={endPoint} 
               onChange={e => setEndPoint(e.target.value)} 
-              placeholder="终点 (如: 高铁站)" 
-              className="w-1/2 bg-white/20 border-white/30 text-white rounded-xl py-2 px-3 backdrop-blur-md outline-none focus:bg-white/30 transition-all placeholder:text-white/60 text-xs" 
+              onFocus={() => setFocusedField('end')}
+              placeholder="✨ 点此选目的地，再点下方标签" 
+              className={`w-1/2 bg-white/20 border-2 text-white rounded-xl py-2 px-3 backdrop-blur-md outline-none transition-all placeholder:text-white/50 text-xs ${focusedField === 'end' ? 'border-white/70 bg-white/30 shadow-[0_0_12px_rgba(255,255,255,0.3)]' : 'border-white/10'}`}
               disabled={isStreaming}
             />
           </div>
-          <div className="mt-3 flex items-center justify-between text-white/60 text-[10px]">
+
+          {/* 浮动标签区：高德 POI 实况快捷选择 */}
+          {currentSpots && currentSpots.length > 0 && (
+            <div className="mt-4 flex flex-col gap-2 z-10 relative">
+              <span className="text-[10px] text-emerald-100 font-bold flex items-center">
+                <i className="bi bi-stars mr-1"></i> 热门推荐 · 点击填入{focusedField === 'start' ? '「出发地」' : '「目的地」'}:
+              </span>
+              <div className="flex flex-wrap gap-2 max-h-[140px] overflow-y-auto scrollbar-thin scrollbar-thumb-white/20">
+                {[...currentSpots].sort((a, b) => {
+                  // 优先级排序：住 > 玩 > 逛 > 其他
+                  const getPriority = (s: typeof a) => {
+                    if (s.category === 'Hotel' || s.name.includes('酒店') || s.name.includes('宾馆') || s.name.includes('民宿')) return 0;
+                    if (s.category === 'Scenic' || s.category === 'Park' || s.category === 'Museum' || s.name.includes('公园') || s.name.includes('博物') || s.name.includes('景')) return 1;
+                    if (s.name.includes('广场') || s.name.includes('商场') || s.name.includes('步行街') || s.category === 'Cafe' || s.name.includes('咖啡')) return 2;
+                    if (s.category === 'Restaurant' || s.name.includes('餐') || s.name.includes('食')) return 3;
+                    return 4;
+                  };
+                  return getPriority(a) - getPriority(b);
+                }).slice(0, 50).map(spot => {
+                  let icon = 'bi-geo-alt';
+                  if (spot.category === 'Restaurant' || spot.name.includes('餐') || spot.name.includes('食')) icon = 'bi-shop';
+                  else if (spot.category === 'Cafe' || spot.name.includes('咖啡')) icon = 'bi-cup-hot';
+                  else if (spot.category === 'Park' || spot.name.includes('公园')) icon = 'bi-tree';
+                  else if (spot.category === 'Museum' || spot.name.includes('博物')) icon = 'bi-bank';
+                  else if (spot.category === 'Hotel' || spot.name.includes('酒店') || spot.name.includes('宾馆')) icon = 'bi-building';
+                  else if (spot.name.includes('酒吧') || spot.name.includes('Live')) icon = 'bi-cup-straw';
+
+                  return (
+                    <button 
+                      key={spot.id}
+                      onClick={() => {
+                        if (focusedField === 'start') setStartPoint(spot.name);
+                        else setEndPoint(spot.name);
+                      }}
+                       title={spot.category}
+                      className="px-3 py-1.5 bg-white/10 hover:bg-white/30 text-white border border-white/20 rounded-full text-[11px] font-medium backdrop-blur-md transition-all flex items-center gap-1.5 active:scale-95 shadow-sm"
+                    >
+                      <i className={`bi ${icon}`}></i>
+                      {spot.name}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-white/70 text-[10px]">
             <span><i className="bi bi-database-fill mr-1"></i>搭载 {currentSpots?.length || 0} 个高德核心坐标源</span>
             {currentKeywords && currentKeywords.length > 0 && <span><i className="bi bi-tag-fill mr-1"></i>聚焦主题: {currentKeywords.join(' / ')}</span>}
           </div>

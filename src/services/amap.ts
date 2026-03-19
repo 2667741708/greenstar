@@ -28,7 +28,7 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
           city: city, // 城市名或 citycode
           citylimit: false, // 必须设为 false 才能支持海外（如新加坡、吉隆坡）的 POI 跨区域模糊检索
           type: CONSTANTS.POI_TYPE_STRING, // 严格使用中文分类名或数字编码，非模糊 keyword
-          pageSize: 15,
+          pageSize: 50,
           pageIndex: 1,
           extensions: 'all', // 必须设置为 all 才能返回 photos 图片等详细信息
         });
@@ -41,17 +41,20 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
         searchFn((status: string, result: any) => {
           if (status === 'complete' && result.info === 'OK' && result.poiList) {
             const pois = result.poiList.pois || [];
-            const spots: Spot[] = pois.slice(0, 10).map((poi: any) => {
+            const spots: Spot[] = pois.map((poi: any) => {
               // 模拟评分和分类映射
               const ratingStr = poi.biz_ext?.rating || (4 + Math.random()).toFixed(1);
               const rating = parseFloat(ratingStr) > 5 ? 5 : parseFloat(ratingStr);
               
               let category = 'Landmark';
               if (poi.type) {
-                if (poi.type.includes('餐厅') || poi.type.includes('美食')) category = 'Restaurant';
+                if (poi.type.includes('酒店') || poi.type.includes('宾馆') || poi.type.includes('民宿') || poi.type.includes('住宿')) category = 'Hotel';
+                else if (poi.type.includes('餐厅') || poi.type.includes('美食')) category = 'Restaurant';
                 else if (poi.type.includes('咖啡')) category = 'Cafe';
                 else if (poi.type.includes('公园')) category = 'Park';
                 else if (poi.type.includes('博物馆')) category = 'Museum';
+                else if (poi.type.includes('购物') || poi.type.includes('商场') || poi.type.includes('步行街')) category = 'Shopping';
+                else if (poi.type.includes('风景') || poi.type.includes('名胜')) category = 'Scenic';
               }
 
               // 提取首个图片
