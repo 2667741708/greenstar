@@ -17,6 +17,7 @@ import { fetchRealWorldData } from '../services/crawler';
 import RouteVisualizer from './explore/RouteVisualizer';
 import { fetchWeatherForecast } from '../mcp-services/weatherService';
 import { fetchTravelContent } from '../mcp-services/travelContentService';
+import { useUserTier } from '../hooks/useUserTier';
 
 interface PlanPanelProps {
   setLoading: (loading: boolean) => void;
@@ -44,6 +45,7 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
   const [startPoint, setStartPoint] = useState('');
   const [endPoint, setEndPoint] = useState('');
   const [focusedField, setFocusedField] = useState<'start' | 'end'>('start');
+  const { tier } = useUserTier();
 
   const thinkingRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -141,11 +143,14 @@ export const PlanPanel: React.FC<PlanPanelProps> = ({
     }
 
     // Step 2: 整理高德 POI 数据
-    setLoadingStep(`正在整理 ${targetDestination} 的地理数据...`);
+    const maxAiSpots = tier === 'plus' ? 10 : tier === 'pro' ? 20 : 50;
+    const aiSpots = currentSpots ? currentSpots.slice(0, maxAiSpots) : [];
+    
+    setLoadingStep(`[AI保护] 正在精选 ${aiSpots.length} 个核心坐标源注入引擎...`);
     
     let poiText = '';
-    if (currentSpots && currentSpots.length > 0) {
-      poiText = currentSpots.map((s, i) => 
+    if (aiSpots.length > 0) {
+      poiText = aiSpots.map((s, i) => 
         `${i + 1}. ${s.name} — ${s.description || '无描述'} [分类: ${s.category}] [评分: ${s.rating}] [标签: ${s.tags.join(', ')}]${s.isAIGenerated ? ' (AI检索)' : ' (高德实体)'}`
       ).join('\n');
     }

@@ -10,6 +10,19 @@ import { SpotDetail } from './SpotDetail';
 import { DiscoverCard } from './DiscoverCard';
 import { PhotoGalleryOverlay } from './explore/PhotoGalleryOverlay';
 import { AiJournalModal } from './explore/AiJournalModal';
+import { useUserTier } from '../hooks/useUserTier';
+import { TagManagerModal, TagGroup } from './TagManagerModal';
+
+const DEFAULT_TAG_GROUPS: TagGroup[] = [
+  { label: '住宿', icon: 'bi-house-heart', tags: ['精品酒店', '特色民宿', '青年旅舍'] },
+  { label: '玩乐', icon: 'bi-controller', tags: ['猫咖', '狗咖', '电竞网咖', '剧本杀', 'KTV', '密室逃脱', '台球馆'] },
+  { label: '二次元', icon: 'bi-stars', tags: ['漫展', '手办模型店', '游戏厅', '玩具店', '盲盒'] },
+  { label: '文艺', icon: 'bi-book', tags: ['独立书店', '画廊美术馆', '博物馆', 'LiveHouse', '文艺影院', '文创园区'] },
+  { label: '逛街', icon: 'bi-bag', tags: ['潮牌买手店', '美妆集合店', '复古中古店', '伴手礼'] },
+  { label: '美食', icon: 'bi-egg-fried', tags: ['特色小吃', '甜品烘焙', '精酿啤酒', '咖啡馆', '茶馆', '奶茶'] },
+  { label: '户外', icon: 'bi-tree', tags: ['骑行路线', '攀岩蹦床', '露营地', '赏花打卡'] },
+  { label: '打卡', icon: 'bi-camera', tags: ['网红拍照', '夜景机位', '古镇老街', '酒吧'] },
+];
 
 interface CityExplorerProps {
   city: CityInfo;
@@ -26,6 +39,10 @@ interface CityExplorerProps {
 export const CityExplorer: React.FC<CityExplorerProps> = ({ 
   city, isPro, onBack, setLoading, setLoadingStep, setErrorMsg, updateCityUnlockedStatus, onSpotsUpdate, onKeywordsUpdate 
 }) => {
+  const { tier } = useUserTier();
+  const maxTagsDisplay = tier === 'plus' ? 10 : tier === 'pro' ? 20 : Infinity;
+  const maxSpotsDisplay = tier === 'plus' ? 10 : tier === 'pro' ? 20 : 150;
+
   const [spots, setSpots] = useState<Spot[]>([]);
   const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
@@ -40,25 +57,45 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   const [customKwInput, setCustomKwInput] = useState('');
   const [customKeywords, setCustomKeywords] = useState<string[]>([]);
   const [showAiJournal, setShowAiJournal] = useState(false);
+  const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
 
-  const PREDEFINED_KEYWORDS = [
-    // 住宿
-    '🏨 精品酒店', '🏡 特色民宿', '🛏️ 青年旅舍',
-    // 玩乐
-    '🐱 猫咖', '🐶 狗咖', '🎮 电竞网咖', '🎭 剧本杀', '🎤 KTV', '🎪 密室逃脱', '🎳 台球馆',
-    // 二次元 & 潮玩
-    '🎌 漫展/二次元', '🎨 手办模型店', '🕹️ 游戏厅', '🧸 玩具店/盲盒',
-    // 文艺
-    '📚 独立书店', '🖼️ 画廊美术馆', '🏛️ 博物馆', '🎵 LiveHouse', '🎬 文艺影院', '🎨 文创园区',
-    // 逛街
-    '🛍️ 潮牌买手店', '💄 美妆集合店', '🏪 复古中古店', '🎁 伴手礼',
-    // 美食
-    '🍜 特色小吃', '🍰 甜品烘焙', '🍷 精酿啤酒', '☕ 咖啡馆', '🍵 茶馆', '🧋 奶茶',
-    // 户外
-    '🚴 骑行路线', '🧗 攀岩蹦床', '🏕️ 露营地', '🌸 赏花打卡',
-    // 打卡
-    '📸 网红拍照', '🌃 夜景机位', '⛩️ 古镇老街', '🍷 酒吧',
-  ];
+  // 动态标签组管理
+  const [isEditingTags, setIsEditingTags] = useState(false);
+  const [tagGroups, setTagGroups] = useState<TagGroup[]>(() => {
+    try {
+      const saved = localStorage.getItem('greenstar_tag_groups');
+      return saved ? JSON.parse(saved) : DEFAULT_TAG_GROUPS;
+    } catch {
+      return DEFAULT_TAG_GROUPS;
+    }
+  });
+
+  const handleSaveTags = (newGroups: TagGroup[]) => {
+    setTagGroups(newGroups);
+    localStorage.setItem('greenstar_tag_groups', JSON.stringify(newGroups));
+    setIsEditingTags(false);
+  };
+  
+  const handleResetTags = () => {
+    setTagGroups(DEFAULT_TAG_GROUPS);
+    localStorage.removeItem('greenstar_tag_groups');
+    setIsEditingTags(false);
+  };
+
+  // 根据当前版本限制，计算可见的标签组与标签
+  const visibleTagGroups = React.useMemo(() => {
+    let count = 0;
+    return tagGroups.map(g => {
+      if (count >= maxTagsDisplay) return { ...g, tags: [] };
+      const available = maxTagsDisplay - count;
+      const visibleTags = g.tags.slice(0, available);
+      count += visibleTags.length;
+      return { ...g, tags: visibleTags };
+    }).filter(g => g.tags.length > 0);
+  }, [tagGroups, maxTagsDisplay]);
+
+  // 所有标签平铺列表（用于兼容旧逻辑）
+  const PREDEFINED_KEYWORDS = tagGroups.flatMap(g => g.tags);
 
   // 同步 spots 与 keywords 到父组件供 PlanPanel 使用
   useEffect(() => {
@@ -208,11 +245,18 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         const merged = new Map<string, Spot>();
         results.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
         const finalSpots = Array.from(merged.values());
-        setSpots(finalSpots);
-        if (finalSpots.length > 0) {
-          setLoadingStep(`正在抓取真实地点图片...`);
-          const images = await batchFetchPOIImages(finalSpots, currentRegion.name);
-          setSpots(prev => prev.map((s, i) => ({ ...s, imageUrl: images[i] || s.imageUrl || '' })));
+        
+        // 应用版本对应的地点数量限制
+        const limitedSpots = finalSpots.slice(0, maxSpotsDisplay);
+        setSpots(limitedSpots);
+        
+        // 后台异步加载图片，不让加载框阻塞用户查看卡片
+        if (limitedSpots.length > 0) {
+          batchFetchPOIImages(limitedSpots, currentRegion.name)
+            .then(images => {
+              setSpots(prev => prev.map((s, i) => ({ ...s, imageUrl: images[i] || s.imageUrl || '' })));
+            })
+            .catch(console.error);
         }
       } catch (err) {
         console.error('[TagSearch] failed:', err);
@@ -331,27 +375,47 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         </div>
       </div>
 
-      {/* 3D 悬浮关键词多选标签 */}
+      {/* 分组可展开兴趣标签 */}
       <div className="px-5 mt-3 relative z-30">
-        <div className="flex gap-2 overflow-x-auto pb-4 pt-1 scrollbar-none items-center">
-          <span className="text-xs font-black text-gray-500 shrink-0 mr-1"><i className="bi bi-stars text-emerald-500"></i>AI 规划偏好:</span>
-          {[...PREDEFINED_KEYWORDS, ...customKeywords].map(kw => {
-            const isSelected = selectedKeywords.includes(kw);
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-xs font-black text-gray-500"><i className="bi bi-stars text-emerald-500"></i> 兴趣探索:</span>
+          <button 
+            onClick={() => setIsEditingTags(true)} 
+            className="w-5 h-5 rounded-md hover:bg-gray-100 text-gray-400 hover:text-emerald-500 flex items-center justify-center transition-colors"
+            title="自定义标签库"
+          >
+            <i className="bi bi-gear-fill text-xs"></i>
+          </button>
+          {selectedKeywords.length > 0 && (
+            <button onClick={() => setSelectedKeywords([])} className="text-[10px] text-red-400 hover:text-red-500 font-bold ml-auto">清空全部</button>
+          )}
+        </div>
+        {/* 分组头部横向滚动 */}
+        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+          {visibleTagGroups.map(group => {
+            const isExpanded = expandedGroups.includes(group.label);
+            const selectedCount = group.tags.filter(t => selectedKeywords.includes(t)).length;
             return (
               <button
-                key={kw}
-                onClick={() => toggleKeyword(kw)}
-                className={`shrink-0 px-4 py-2 rounded-2xl text-xs font-bold transition-all duration-300 transform backdrop-blur-md whitespace-nowrap
-                  ${isSelected 
-                    ? 'bg-emerald-500/90 text-white shadow-[0_8px_16px_-4px_rgba(16,185,129,0.4)] scale-105 -translate-y-1' 
-                    : 'bg-white/70 text-gray-600 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.1)] hover:-translate-y-0.5'
-                  } active:scale-95 active:translate-y-0`}
+                key={group.label}
+                onClick={() => setExpandedGroups(prev => prev.includes(group.label) ? prev.filter(g => g !== group.label) : [...prev, group.label])}
+                className={`shrink-0 px-4 py-2 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap
+                  ${isExpanded
+                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-200'
+                    : selectedCount > 0 
+                      ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                      : 'bg-white/80 text-gray-500 border border-gray-100 hover:border-emerald-200'
+                  }`}
               >
-                {kw}
+                <i className={`bi ${group.icon}`}></i>
+                {group.label}
+                {selectedCount > 0 && !isExpanded && (
+                  <span className="w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] flex items-center justify-center">{selectedCount}</span>
+                )}
+                <i className={`bi bi-chevron-${isExpanded ? 'up' : 'down'} text-[10px]`}></i>
               </button>
             );
           })}
-          
           {/* 自定义增加关键词表单 */}
           <form onSubmit={handleAddCustomKeyword} className="shrink-0 flex items-center bg-white/50 backdrop-blur-md rounded-2xl pl-3 pr-1 py-1 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] border border-white/50 transition-all focus-within:ring-2 focus-within:ring-emerald-400 focus-within:bg-white/80 h-[34px]">
             <input 
@@ -369,7 +433,60 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
             </button>
           </form>
         </div>
+        {/* 展开的分组标签 */}
+        {visibleTagGroups.filter(g => expandedGroups.includes(g.label)).map(group => (
+          <div key={group.label} className="mt-2 pb-2 border-b border-gray-100 last:border-0">
+            <div className="flex flex-wrap gap-2">
+              {group.tags.map(tag => {
+                const isSelected = selectedKeywords.includes(tag);
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => toggleKeyword(tag)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200
+                      ${isSelected
+                        ? 'bg-emerald-500 text-white shadow-md shadow-emerald-200 scale-105'
+                        : 'bg-gray-50 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 border border-gray-100'
+                      } active:scale-95`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+        {/* 自定义标签池 */}
+        {customKeywords.length > 0 && (
+          <div className="mt-2 flex flex-wrap gap-2">
+            {customKeywords.map(tag => {
+              const isSelected = selectedKeywords.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  onClick={() => toggleKeyword(tag)}
+                  className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200
+                    ${isSelected
+                      ? 'bg-emerald-500 text-white shadow-md shadow-emerald-200 scale-105'
+                      : 'bg-gray-50 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 border border-gray-100 border-dashed'
+                    } active:scale-95`}
+                >
+                  {tag}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
+
+      {isEditingTags && (
+        <TagManagerModal 
+          groups={tagGroups}
+          onSave={handleSaveTags}
+          onClose={() => setIsEditingTags(false)}
+          onReset={handleResetTags}
+        />
+      )}
 
       {/* 面包屑导航 */}
       <div className="px-5 mt-2 flex items-center gap-1 overflow-x-auto scrollbar-none text-xs">

@@ -67,7 +67,6 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-full bg-[#f8faf9] text-gray-900 overflow-hidden">
       <Header 
-        isPro={isPro} 
         onRefreshLocation={refreshLocation} 
         onUpgradeKey={handleUpgradeKey} 
       />
