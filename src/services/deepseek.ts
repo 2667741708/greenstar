@@ -27,7 +27,7 @@ const fetchOpenAICompatible = async (url: string, key: string, model: string, pr
   return res.json();
 };
 
-export const callDeepSeek = async (prompt: string, jsonMode = false, timeoutMs = 30000): Promise<string> => {
+export const callDeepSeek = async (prompt: string, jsonMode = false, timeoutMs = 120000): Promise<string> => {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   
@@ -62,7 +62,7 @@ export interface StreamCallbacks {
 export const streamDeepSeek = async (
   prompt: string,
   callbacks: StreamCallbacks,
-  timeoutMs = 120000
+  timeoutMs = 300000
 ): Promise<void> => {
   const executeStream = async (url: string, key: string, model: string, useThinking: boolean) => {
     const controller = new AbortController();
