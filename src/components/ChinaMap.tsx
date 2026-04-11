@@ -71,39 +71,42 @@ export const ChinaMap: React.FC<ChinaMapProps> = ({ cities, isPro, onCitySelect,
     }
   };
 
+  const glassClass = isPro ? 'glass-panel text-white' : 'glass-panel-light text-slate-800';
+
   return (
-    <div className="h-full flex flex-col pt-4 relative animate-in fade-in duration-500">
+    <div className="h-full flex flex-col pt-4 relative stagger-in">
+      <div className="ambient-glow top-0 left-0 hidden md:block"></div>
       <div className="px-5 mb-4 relative z-30">
-        <div className="bg-white/70 backdrop-blur-xl rounded-[2rem] p-2 pl-5 flex items-center gap-3 shadow-lg border border-white group focus-within:ring-2 focus-within:ring-emerald-500/20 transition-all">
-          <i className="bi bi-globe-americas text-emerald-600"></i>
+        <div className={`${glassClass} p-3 pl-6 flex items-center gap-4 group focus-within:ring-2 focus-within:ring-[var(--color-accent-lilac)]/30 transition-all`}>
+          <i className="bi bi-globe-americas text-[var(--color-accent-lilac)] text-lg"></i>
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-bold text-gray-400 uppercase">星系总览</p>
-            <p className="text-sm font-bold text-gray-800 truncate">全中国漫游</p>
+            <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest">星系总览</p>
+            <p className="text-sm font-black truncate">全中国漫游</p>
           </div>
-          <form onSubmit={handleSearch} className="flex gap-1 pr-1">
+          <form onSubmit={handleSearch} className="flex gap-2 pr-1">
             <input 
               type="text" 
               value={searchQuery} 
               onChange={e => setSearchQuery(e.target.value)} 
               placeholder="搜索全球任意城市/国家..." 
-              className="w-36 bg-emerald-50/50 rounded-2xl px-3 py-2 text-[10px] border-none outline-none focus:bg-emerald-100 transition-colors" 
+              className={`w-40 rounded-2xl px-4 py-2 text-xs border border-white/10 outline-none transition-colors ${isPro ? 'bg-white/10 text-white placeholder:text-white/40 focus:bg-white/20' : 'bg-black/5 text-slate-800 placeholder:text-slate-400 focus:bg-black/10'}`} 
             />
-            <button type="submit" className="w-8 h-8 bg-emerald-600 text-white rounded-2xl active:scale-90 transition-transform"><i className="bi bi-search text-sm"></i></button>
+            <button type="submit" className="w-10 h-10 bg-[var(--color-accent-lilac)] text-white rounded-2xl shadow-[0_0_15px_var(--color-accent-lilac)] active:scale-95 transition-transform"><i className="bi bi-search"></i></button>
           </form>
         </div>
       </div>
       
-      <div className="flex-1 px-4 relative pb-24">
-        <div className="h-full bg-white rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden group">
-          <div className="absolute inset-0 bg-blue-50/50 z-0 flex items-center justify-center">
-            <i className="bi bi-map text-6xl text-gray-200 animate-pulse"></i>
+      <div className="flex-1 px-6 relative pb-24 z-10">
+        <div className="h-full w-full rounded-[2.5rem] relative overflow-hidden group shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)] ring-1 ring-white/10">
+          <div className="absolute inset-0 bg-[#0f172a]/50 z-0 flex items-center justify-center">
+            <i className="bi bi-map text-6xl text-white/5 animate-pulse"></i>
           </div>
           <div id="china-map-container" className="w-full h-full relative z-10"></div>
           
           <div className="absolute top-6 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
-            <div className="bg-white/90 backdrop-blur py-2 px-6 rounded-full shadow-lg border border-white flex items-center gap-2">
-              <i className="bi bi-info-circle-fill text-emerald-500"></i>
-              <span className="text-xs font-bold text-gray-700">点击地图图钉或搜索城市进入漫游</span>
+            <div className={`${glassClass} py-2.5 px-6 rounded-full flex items-center gap-3 backdrop-blur-2xl`}>
+              <i className="bi bi-info-circle-fill text-[var(--color-accent-pink)] shadow-[0_0_10px_var(--color-accent-pink)] rounded-full"></i>
+              <span className="text-xs font-bold tracking-wide">点击地图图钉或搜索城市进入漫游</span>
             </div>
           </div>
         </div>

@@ -358,8 +358,13 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     }, 1500);
   };
 
+  const glassClass = isPro ? 'glass-panel text-white' : 'glass-panel-light text-slate-800';
+
   return (
-    <div className="flex flex-col h-full animate-in slide-in-from-right-8 duration-500">
+    <div className="flex flex-col h-full stagger-in relative">
+      {/* 氛围包裹点睛层 (Ambient Blurs) */}
+      <div className="ambient-glow top-[-10%] right-[-10%]"></div>
+      {isPro && <div className="ambient-glow bottom-[-10%] left-[-10%]" style={{ background: 'radial-gradient(circle, var(--color-accent-pink) 0%, transparent 70%)'}}></div>}
       {selectedSpot && (
         <SpotDetail 
           spot={selectedSpot} 
@@ -369,8 +374,8 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         />
       )}
 
-      <div className="px-5 mt-4 relative z-30">
-        <div className="bg-white/70 backdrop-blur-xl rounded-[2rem] p-2 pl-5 flex items-center gap-3 shadow-lg border border-white group transition-all">
+      <div className="px-6 mt-6 relative z-30">
+        <div className={`${glassClass} p-3 pl-6 flex items-center gap-4 group transition-all`}>
           <button onClick={() => {
             if (explorationStack.length > 0) {
               handleBreadcrumbClick(explorationStack.length - 2);
@@ -381,29 +386,29 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
             <i className="bi bi-arrow-left text-gray-600"></i>
           </button>
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-bold text-gray-400 uppercase">当前跃迁点</p>
-            <p className="text-sm font-bold text-gray-800 truncate">
+            <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest">当前跃迁点</p>
+            <p className="text-lg font-black truncate">
               {currentRegion.name} 
-              {currentRegion.name !== city.name && <span className="text-xs text-gray-400 ml-1">({city.name})</span>}
+              {currentRegion.name !== city.name && <span className="text-xs opacity-50 ml-2">({city.name})</span>}
             </p>
           </div>
-          <form onSubmit={handleSearch} className="flex gap-1 pr-1 shrink-0">
+          <form onSubmit={handleSearch} className="flex gap-2 pr-1 shrink-0">
             <input 
               type="text" 
               value={keyword} 
               onChange={e => setKeyword(e.target.value)} 
-              placeholder="搜任意类型（公厕/药店）" 
-              className="w-28 bg-emerald-50/50 rounded-2xl px-3 py-2 text-[10px] border-none outline-none focus:bg-emerald-100 transition-colors" 
+              placeholder="搜任意..." 
+              className={`w-32 rounded-2xl px-4 py-2 text-xs border border-white/10 outline-none transition-colors ${isPro ? 'bg-white/10 text-white placeholder:text-white/40 focus:bg-white/20' : 'bg-black/5 text-slate-800 placeholder:text-slate-400 focus:bg-black/10'}`} 
             />
-            <button type="submit" className="w-8 h-8 bg-emerald-600 text-white rounded-2xl active:scale-90 transition-transform"><i className="bi bi-search text-sm"></i></button>
+            <button type="submit" className="w-10 h-10 bg-[var(--color-accent-sage)] text-white shadow-[0_0_15px_var(--color-accent-sage)] rounded-2xl active:scale-95 transition-transform"><i className="bi bi-search"></i></button>
           </form>
         </div>
       </div>
 
       {/* 分组可展开兴趣标签 */}
-      <div className="px-5 mt-3 relative z-30">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-xs font-black text-gray-500"><i className="bi bi-stars text-emerald-500"></i> 兴趣探索:</span>
+      <div className="px-6 mt-4 relative z-30">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-sm font-black opacity-60"><i className="bi bi-stars text-[var(--color-accent-pink)]"></i> 兴趣探索:</span>
           <button 
             onClick={() => setIsEditingTags(true)} 
             className="w-5 h-5 rounded-md hover:bg-gray-100 text-gray-400 hover:text-emerald-500 flex items-center justify-center transition-colors"
@@ -424,35 +429,35 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
               <button
                 key={group.label}
                 onClick={() => setExpandedGroups(prev => prev.includes(group.label) ? prev.filter(g => g !== group.label) : [...prev, group.label])}
-                className={`shrink-0 px-4 py-2 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-1.5 whitespace-nowrap
+                className={`shrink-0 px-5 py-2.5 rounded-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 whitespace-nowrap
                   ${isExpanded
-                    ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-200'
+                    ? 'bg-[var(--color-accent-lilac)] text-white shadow-[0_4px_15px_rgba(168,85,247,0.3)] scale-105'
                     : selectedCount > 0 
-                      ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
-                      : 'bg-white/80 text-gray-500 border border-gray-100 hover:border-emerald-200'
+                      ? 'bg-purple-50 text-[var(--color-accent-lilac)] ring-1 ring-[var(--color-accent-lilac)]/30'
+                      : 'bg-white/60 text-slate-500 hover:bg-white border border-white hover:border-purple-200'
                   }`}
               >
-                <i className={`bi ${group.icon}`}></i>
+                <i className={`bi ${group.icon} ${isExpanded ? '' : 'text-[var(--color-accent-lilac)]'}`}></i>
                 {group.label}
                 {selectedCount > 0 && !isExpanded && (
-                  <span className="w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] flex items-center justify-center">{selectedCount}</span>
+                  <span className="w-5 h-5 rounded-full bg-[var(--color-accent-lilac)] text-white text-[10px] flex items-center justify-center shadow-inner">{selectedCount}</span>
                 )}
-                <i className={`bi bi-chevron-${isExpanded ? 'up' : 'down'} text-[10px]`}></i>
+                <i className={`bi bi-chevron-${isExpanded ? 'up' : 'down'} text-[10px] opacity-60 ml-1`}></i>
               </button>
             );
           })}
           {/* 自定义增加关键词表单 */}
-          <form onSubmit={handleAddCustomKeyword} className="shrink-0 flex items-center bg-white/50 backdrop-blur-md rounded-2xl pl-3 pr-1 py-1 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] border border-white/50 transition-all focus-within:ring-2 focus-within:ring-emerald-400 focus-within:bg-white/80 h-[34px]">
+          <form onSubmit={handleAddCustomKeyword} className={`shrink-0 flex items-center rounded-2xl pl-4 pr-1 py-1 shadow-sm border transition-all h-[38px] ${isPro ? 'bg-white/5 border-white/10 focus-within:ring-white/20' : 'bg-white/50 border-white/50 focus-within:ring-black/10'}`}>
             <input 
               value={customKwInput} 
               onChange={e => setCustomKwInput(e.target.value)} 
               placeholder="自定义..." 
-              className="bg-transparent border-none outline-none text-xs w-16 text-emerald-800 placeholder:text-gray-400 font-bold"
+              className={`bg-transparent border-none outline-none text-xs w-20 font-bold ${isPro ? 'text-white placeholder:text-white/40' : 'text-slate-800 placeholder:text-slate-400'}`}
             />
             <button 
               type="submit" 
               disabled={!customKwInput.trim()}
-              className="w-6 h-6 rounded-xl bg-emerald-500 text-white flex items-center justify-center active:scale-90 transition-transform disabled:opacity-50 disabled:active:scale-100"
+              className="w-7 h-7 rounded-xl bg-[var(--color-accent-lilac)] text-white shadow-[0_0_10px_var(--color-accent-lilac)] flex items-center justify-center active:scale-90 transition-transform disabled:opacity-30 disabled:shadow-none"
             >
               <i className="bi bi-plus text-sm"></i>
             </button>
@@ -468,10 +473,10 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
                   <button
                     key={tag}
                     onClick={() => toggleKeyword(tag)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200
+                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200
                       ${isSelected
-                        ? 'bg-emerald-500 text-white shadow-md shadow-emerald-200 scale-105'
-                        : 'bg-gray-50 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 border border-gray-100'
+                        ? 'bg-[var(--color-accent-pink)] text-slate-900 shadow-[0_4px_15px_rgba(245,158,11,0.3)] scale-105'
+                        : 'bg-white/60 text-slate-600 hover:bg-amber-50 hover:text-[var(--color-accent-pink)] border border-white'
                       } active:scale-95`}
                   >
                     {tag}
@@ -490,10 +495,10 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
                 <button
                   key={tag}
                   onClick={() => toggleKeyword(tag)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200
+                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200
                     ${isSelected
-                      ? 'bg-emerald-500 text-white shadow-md shadow-emerald-200 scale-105'
-                      : 'bg-gray-50 text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 border border-gray-100 border-dashed'
+                      ? 'bg-[var(--color-accent-pink)] text-slate-900 shadow-[0_4px_15px_rgba(245,158,11,0.3)] scale-105'
+                      : 'bg-white/40 text-slate-600 hover:bg-amber-50 hover:text-[var(--color-accent-pink)] border border-dashed border-slate-300'
                     } active:scale-95`}
                 >
                   {tag}
@@ -538,11 +543,11 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         ))}
       </div>
 
-      <div className="px-5 mt-4 flex justify-between items-center z-30">
-        <h2 className="text-2xl font-black tracking-tight"><span className="text-emerald-500">发现</span>周边</h2>
-        <div className="bg-gray-100 p-1 rounded-2xl flex gap-1 shadow-inner shrink-0 ml-4">
-          <button onClick={() => setViewMode('list')} className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${viewMode === 'list' ? 'bg-white shadow pointer-events-none' : 'text-gray-500 hover:text-gray-700'}`}><i className="bi bi-list-ul mr-1"></i>列表</button>
-          <button onClick={() => setViewMode('map')} className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${viewMode === 'map' ? 'bg-white shadow pointer-events-none' : 'text-gray-500 hover:text-gray-700'}`}><i className="bi bi-map mr-1"></i>地图</button>
+      <div className="px-6 mt-8 flex justify-between items-center z-30">
+        <h2 className="text-[length:var(--text-title)] font-black tracking-tighter"><span className="text-gradient-premium">发现</span> 周边</h2>
+        <div className={`p-1.5 rounded-2xl flex gap-1 shadow-inner shrink-0 ml-4 ${isPro ? 'bg-white/10' : 'bg-black/5'}`}>
+          <button onClick={() => setViewMode('list')} className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${viewMode === 'list' ? (isPro ? 'bg-white text-black' : 'bg-white text-black shadow-md') : 'opacity-50 hover:opacity-100'}`}><i className="bi bi-list-ul mr-1"></i>List</button>
+          <button onClick={() => setViewMode('map')} className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${viewMode === 'map' ? (isPro ? 'bg-white text-black' : 'bg-white text-black shadow-md') : 'opacity-50 hover:opacity-100'}`}><i className="bi bi-map mr-1"></i>Map</button>
         </div>
       </div>
 
@@ -573,22 +578,22 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
             )}
           </div>
         ) : (
-          <div className="h-full px-4 relative">
-             <div className="h-full bg-white rounded-[3rem] border-4 border-white shadow-2xl relative overflow-hidden">
+          <div className="h-full px-6 relative pb-6">
+             <div className="h-full w-full rounded-[2.5rem] shadow-2xl relative overflow-hidden ring-1 ring-white/20">
                 <div id="city-map-container" className="w-full h-full"></div>
                 {selectedSpot && (
                   <div className="absolute bottom-6 left-6 right-6 z-10 animate-slide-up">
-                    <div className="bg-white/90 backdrop-blur-xl p-5 rounded-[2.5rem] shadow-2xl border border-white flex gap-4 items-center">
-                      <div className="w-16 h-16 bg-emerald-100 rounded-2xl overflow-hidden shrink-0 flex items-center justify-center">
-                        {selectedSpot.imageUrl ? (<img src={selectedSpot.imageUrl} className="w-full h-full object-cover" referrerPolicy="no-referrer" />) : (<div className="w-full h-full flex items-center justify-center text-emerald-600"><i className={`bi bi-geo-alt-fill text-2xl`}></i></div>)}
+                    <div className={`${glassClass} p-5 rounded-[2rem] flex gap-4 items-center`}>
+                      <div className="w-16 h-16 bg-black/10 rounded-2xl overflow-hidden shrink-0 flex items-center justify-center">
+                        {selectedSpot.imageUrl ? (<img src={selectedSpot.imageUrl} className="w-full h-full object-cover" referrerPolicy="no-referrer" />) : (<div className="w-full h-full flex items-center justify-center opacity-50"><i className={`bi bi-geo-alt-fill text-2xl`}></i></div>)}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="font-black text-gray-900 truncate text-sm">{selectedSpot.name}</h4>
+                        <h4 className="font-black truncate text-base">{selectedSpot.name}</h4>
                         <div className="flex gap-2 mt-2">
-                          <button onClick={() => handleCheckIn(selectedSpot)} disabled={selectedSpot.checkedIn} className={`flex-1 py-1.5 rounded-lg text-[9px] font-black transition-all ${selectedSpot.checkedIn ? 'bg-gray-100 text-gray-400' : 'bg-emerald-600 text-white shadow-sm shadow-emerald-100'}`}>打卡</button>
+                          <button onClick={() => handleCheckIn(selectedSpot)} disabled={selectedSpot.checkedIn} className={`flex-1 py-2 rounded-xl text-xs font-black transition-all ${selectedSpot.checkedIn ? 'bg-white/20 opacity-50' : 'bg-[var(--color-accent-lilac)] text-white shadow-[0_4px_15px_rgba(168,85,247,0.4)] hover:brightness-110'}`}>打卡</button>
                         </div>
                       </div>
-                      <button onClick={() => setSelectedSpot(null)} className="absolute top-3 right-3 text-gray-300 hover:text-gray-400 transition-colors"><i className="bi bi-x-circle-fill text-lg"></i></button>
+                      <button onClick={() => setSelectedSpot(null)} className="absolute top-3 right-3 opacity-30 hover:opacity-100 transition-opacity"><i className="bi bi-x-circle-fill text-lg"></i></button>
                     </div>
                   </div>
                 )}

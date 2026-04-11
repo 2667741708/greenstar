@@ -24,10 +24,10 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, setActiveTab, i
             <button 
               key={item.id} 
               onClick={() => setActiveTab(item.id as ViewState)} 
-              className={`flex flex-col items-center justify-center p-3 relative flex-1 transition-all duration-500 overflow-hidden ${isActive ? (isPro ? 'text-amber-600' : 'text-emerald-600') : 'text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full'}`}
+              className={`flex flex-col items-center justify-center p-3 relative flex-1 transition-all duration-500 overflow-hidden ${isActive ? (isPro ? 'text-accent-pink' : 'text-accent-sage') : 'text-[#A0AEC0] hover:text-[#4A5568] hover:bg-white/50 rounded-full'}`}
             >
               {isActive && (
-                <div className={`absolute inset-0 transition-opacity duration-300 rounded-full ${isPro ? 'bg-amber-100/60' : 'bg-emerald-100/60'}`}></div>
+                <div className={`absolute inset-0 transition-opacity duration-300 rounded-full ${isPro ? 'bg-accent-pink/20' : 'bg-accent-sage/20'}`}></div>
               )}
               <div className={`relative z-10 flex flex-col items-center transition-transform duration-300 ${isActive ? '-translate-y-0.5' : ''}`}>
                 <i className={`bi bi-${item.icon}${isActive ? '-fill' : ''} text-[22px] drop-shadow-sm`}></i>

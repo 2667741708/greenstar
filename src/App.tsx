@@ -99,7 +99,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-[#f8faf9] text-gray-900 overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden transition-colors duration-500 relative">
       <Header 
         onRefreshLocation={refreshLocation} 
         onUpgradeKey={handleUpgradeKey} 
@@ -108,12 +108,12 @@ const App: React.FC = () => {
       {/* 定位信息条：实时显示当前地址 */}
       {/* Location info bar: show current address in real-time */}
       {location && (
-        <div className="px-4 py-1.5 bg-emerald-50/80 backdrop-blur-sm text-xs text-emerald-700 flex items-center gap-2 border-b border-emerald-100">
-          <i className="bi bi-geo-alt-fill text-emerald-500" />
-          <span className="truncate flex-1">{geoAddress}</span>
+        <div className="px-5 py-2 glass-panel-light !rounded-none !border-x-0 !border-t-0 flex items-center gap-3 z-40 relative shadow-sm">
+          <i className="bi bi-geo-alt-fill text-accent-pink shadow-[0_0_8px_var(--color-accent-pink)]" />
+          <span className="truncate flex-1 text-xs font-bold font-mono tracking-wider opacity-80">{geoAddress}</span>
           <button 
             onClick={refreshLocation} 
-            className="ml-auto text-emerald-500 hover:text-emerald-700 transition-colors shrink-0"
+            className="ml-auto opacity-40 hover:opacity-100 hover:text-[var(--color-accent-indigo)] transition-all shrink-0 active:scale-90"
             title="重新定位"
           >
             <i className="bi bi-arrow-clockwise" />
@@ -152,12 +152,12 @@ const App: React.FC = () => {
 
         {/* 当直接点击了底部的'探索' Tab，但还没有选择城市时，回退到中国地图 */}
         {activeTab === 'city-explorer' && !currentCity && (
-          <div className="h-full flex items-center justify-center flex-col opacity-50 p-6 space-y-4 text-center">
-            <i className="bi bi-compass text-6xl text-emerald-300"></i>
-            <h2 className="text-xl font-bold text-gray-400">尚未锁定探索星球</h2>
+          <div className="h-full flex items-center justify-center flex-col opacity-50 p-6 space-y-4 text-center stagger-in">
+            <i className="bi bi-compass text-6xl text-accent-lilac drop-shadow-md"></i>
+            <h2 className="text-xl font-bold tracking-widest uppercase text-[#2D3748]">尚未锁定探索星球</h2>
             <button 
               onClick={() => setActiveTab('china-map')} 
-              className="bg-emerald-100 text-emerald-600 px-6 py-3 rounded-full font-bold shadow-sm"
+              className="bg-gradient-to-r from-accent-pink to-accent-lilac text-white hover:brightness-110 px-8 py-3 rounded-full font-bold shadow-[0_10px_30px_rgba(241,181,203,0.4)] transition-all active:scale-95 hover-magnetic"
             >
               返回星系图选点
             </button>

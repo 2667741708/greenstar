@@ -50,9 +50,9 @@ export const useGeolocation = (onLocationFound?: (lat: number, lng: number, addr
           setError('定位失败，请检查浏览器权限');
           const fallback = { lat: 31.2304, lng: 121.4737 }; // 上海
           setLocation(fallback);
-          setAddress("上海市 (默认参考点)");
+          setAddress("上海定位失败，降级显示参考点");
           setCity("上海市");
-          onLocationFound?.(fallback.lat, fallback.lng, "上海市", "上海市");
+          // 移除 onLocationFound?.(...) 以防止定位失败时自动跳转到上海
           setLoading(false);
         },
         // 高精度模式参数

@@ -1,103 +1,142 @@
 /* ============================================================================
  * 文件: src/index.css
- * 基准版本: index.css (使用 CDN + @tailwind 旧指令)
- * 修改内容 / Changes:
- *   [修改] 替换为 Tailwind v4 本地构建 @import "tailwindcss"
- *   [修改] Google Fonts 移至 index.html <link> 标签加载
- *   [MODIFY] Use Tailwind v4 local build with @import "tailwindcss"
- *   [MODIFY] Google Fonts moved to HTML <link> tag
+ * 基准版本: index.css (基于 v4_frontend_design_skill.md 规范重构)
+ * 目标风格: 原型 B (Cinematic / Glassmorphism) 配合极值对比度与流体排版
  * ============================================================================ */
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+
+  /* Premium Design Tokens (Monet & Marble) */
+  --color-glass-base: rgba(250, 250, 250, 0.6); /* 珍珠岩白半透 */
+  --color-glass-surface: rgba(255, 255, 255, 0.4);
+  --color-glass-border: rgba(255, 255, 255, 0.5);
+  
+  --color-accent-pink: #F1B5CB; /* 睡莲粉 */
+  --color-accent-lilac: #B9C0E5; /* 日出丁香 */
+  --color-accent-sage: #9DC183; /* 柔和鼠尾草 */
+  --color-accent-blue: #7A9BB8; /* 微明蓝 */
+
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Fluid Typo (Tailwind v4 格式) */
+  --text-hero: clamp(3rem, 6vw, 6rem);
+  --text-display: clamp(2rem, 4vw, 4rem);
+  --text-title: clamp(1.2rem, 2vw, 2rem);
+}
+
 body {
-  font-family: 'Noto+Sans+SC', sans-serif;
-  background-color: #f0fdf4;
+  font-family: var(--font-sans);
+  background-color: #F7F7F9; /* 珍珠白基底 */
+  background-image: 
+    radial-gradient(ellipse at 10% 20%, rgba(241, 181, 203, 0.15) 0%, transparent 40%), /* 粉色光晕 */
+    radial-gradient(ellipse at 80% 80%, rgba(185, 192, 229, 0.2) 0%, transparent 40%), /* 丁香光晕 */
+    radial-gradient(ellipse at 50% 50%, rgba(157, 193, 131, 0.1) 0%, transparent 50%), /* 鼠尾草光晕 */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.05 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  color: #2D3748; /* 深灰替代纯白，保持阅读舒适 */
   overscroll-behavior-y: contain;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
+/* ==========================================
+ * 组件类 (Components)
+ * ========================================== */
 
-.star-shine {
-  animation: shine 2s infinite;
-}
-
-@keyframes shine {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
-}
-
-.custom-marker {
-  width: 32px;
-  height: 32px;
-  background: #059669;
-  border-radius: 50% 50% 50% 0;
-  transform: rotate(-45deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid white;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-}
-
-.custom-marker i {
-  transform: rotate(45deg);
-  color: white;
-  font-size: 14px;
-}
-
-/* Markdown Style Overrides */
-.markdown-content h1, .markdown-content h2 { 
-  font-weight: 800; 
-  margin-top: 1.5rem; 
-  margin-bottom: 0.5rem; 
-  color: #065f46; 
-}
-.markdown-content p { 
-  margin-bottom: 1rem; 
-  line-height: 1.6; 
-}
-.markdown-content ul { 
-  list-style-type: disc; 
-  padding-left: 1.5rem; 
-  margin-bottom: 1rem; 
-}
-.markdown-content li { 
-  margin-bottom: 0.5rem; 
-}
-.markdown-content strong { 
-  color: #064e3b; 
-  font-weight: 700; 
-}
-
-/* Photo Gallery Stack Animation */
-.stack-card {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.4s ease;
-}
-.stack-card:hover {
-  transform: scale(1.08) translate(-15px, -5px) rotate(0deg) !important;
-  z-index: 100 !important;
-}
-
-/* Glassmorphism Panel styles for Premium feel */
+/* 极致毛玻璃面板 (Premium Glassmorphism - Light Monet) */
 .glass-panel {
-  background: linear-gradient(145deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255,255,255,0.6);
-  border-top: 1px solid rgba(255,255,255,0.9);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+  backdrop-filter: blur(48px);
+  -webkit-backdrop-filter: blur(48px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
 }
 
-/* SVG gradient stroke or elegant glow for AI */
-.glowing-ai {
-  background: -webkit-linear-gradient(right, #3b82f6, #a855f7);
+/* 亮色模式玻璃 (维持统一明亮体系) */
+.glass-panel-light {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 100%);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-radius: 24px;
+  color: #2D3748;
+}
+
+/* 渐变文本 (柔和水彩系) */
+.text-gradient-premium {
+  background: linear-gradient(135deg, var(--color-accent-pink), var(--color-accent-lilac));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0px 0px 8px rgba(168, 85, 247, 0.6));
+}
+
+/* 光晕容器 (Orb) */
+.ambient-glow {
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, var(--color-accent-lilac) 0%, transparent 70%);
+  filter: blur(120px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+  will-change: transform;
+}
+
+/* ==========================================
+ * 交互与动画 (Micro-interactions)
+ * ========================================== */
+
+/* 磁性悬浮卡片 */
+.hover-magnetic {
+  transition: transform 0.6s var(--ease-premium), box-shadow 0.6s var(--ease-premium);
+}
+.hover-magnetic:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* 交错入场基础类 (Staggered Entrance) */
+.stagger-in {
+  opacity: 0;
+  animation: slideUpFade 0.8s var(--ease-premium) forwards;
+}
+
+@keyframes slideUpFade {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 高德地图覆写 */
+.amap-logo, .amap-copyright {
+  display: none !important; /* 隐藏高德 logo 以追求纯净 UI，但需注意商用合规 */
+}
+
+/* 地图 Marker 交互动画 */
+.custom-marker {
+  transition: transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
+}
+.custom-marker:hover {
+  transform: scale(1.15) rotate(-45deg);
+}
+
+/* Markdown 排版系统覆盖 */
+.markdown-content h1, .markdown-content h2 { 
+  font-weight: 800; 
+  letter-spacing: -0.03em;
+  margin-top: 2rem; 
+  margin-bottom: 0.75rem; 
+  color: inherit;
+}
+.markdown-content p { 
+  margin-bottom: 1.2rem; 
+  line-height: 1.8; 
+  color: #4A5568; /* 中度灰阶适配亮色背景 */
+}
+.markdown-content strong {
+  font-weight: 700;
+  color: #2D3748;
 }

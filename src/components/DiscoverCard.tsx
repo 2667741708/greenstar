@@ -11,8 +11,8 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ spot, onClick }) => 
   const [isImgLoading, setIsImgLoading] = useState(true);
 
   return (
-    <div onClick={() => onClick(spot)} className="bg-white rounded-[2.5rem] p-5 shadow-sm border border-gray-50 flex gap-5 group hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
-      <div className="w-28 h-28 bg-gray-100 rounded-3xl shrink-0 relative overflow-hidden shadow-inner flex items-center justify-center">
+    <div onClick={() => onClick(spot)} className="glass-panel-light p-5 flex gap-5 group hover-magnetic cursor-pointer">
+      <div className="w-28 h-28 bg-[rgba(255,255,255,0.3)] rounded-3xl shrink-0 relative overflow-hidden shadow-inner flex items-center justify-center border border-white/40">
         {isImgLoading && !imgError && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
         )}
@@ -26,7 +26,7 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ spot, onClick }) => 
             loading="lazy"
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-emerald-50 text-emerald-200 text-3xl">
+          <div className="w-full h-full flex items-center justify-center bg-white/10 text-slate-400 text-3xl">
             <i className={`bi ${spot.category.toLowerCase().includes('cafe') ? 'bi-cup-hot' : 'bi-camera'}`}></i>
           </div>
         )}
@@ -35,22 +35,22 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ spot, onClick }) => 
       <div className="flex-1 flex flex-col justify-between py-1 min-w-0">
         <div>
           <div className="flex items-center gap-2">
-            <h3 className="font-black text-lg text-gray-900 truncate">{spot.name}</h3>
+            <h3 className="font-black text-lg text-slate-800 truncate group-hover:text-[var(--color-accent-lilac)] transition-colors">{spot.name}</h3>
             {spot.isAIGenerated && (
-              <span className="shrink-0 inline-flex items-center gap-0.5 text-[9px] font-black text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full border border-purple-100 animate-pulse">
-                <i className="bi bi-robot"></i> AI智荐
+              <span className="shrink-0 inline-flex items-center gap-1 text-[9px] font-black text-white bg-[var(--color-accent-lilac)] px-2 py-0.5 rounded-full shadow-[0_0_8px_var(--color-accent-lilac)] animate-pulse">
+                <i className="bi bi-stars"></i> AI智荐
               </span>
             )}
           </div>
-          <p className="text-[11px] text-gray-400 mt-1 line-clamp-2 leading-relaxed font-medium">{spot.description}</p>
+          <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed font-medium">{spot.description}</p>
         </div>
-        <div className="flex items-center justify-between mt-3">
-          <span className="text-[9px] font-black text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">{spot.distance ? `${(spot.distance / 1000).toFixed(1)}KM` : 'NEARBY'}</span>
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between mt-4">
+          <span className="text-[10px] font-black text-slate-700 bg-white/50 border border-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">{spot.distance ? `${(spot.distance / 1000).toFixed(1)}KM` : 'NEARBY'}</span>
+          <div className="flex items-center gap-3">
             {spot.dataSource && (
-              <span className="text-[8px] font-bold text-gray-300">{spot.dataSource}</span>
+              <span className="text-[9px] font-bold text-slate-400/50 uppercase tracking-wider">{spot.dataSource}</span>
             )}
-            <div className="flex items-center gap-1 text-amber-400 text-[10px] font-black"><i className="bi bi-star-fill"></i> {spot.rating}</div>
+            <div className="flex items-center gap-1 text-[var(--color-accent-pink)] text-xs font-black"><i className="bi bi-star-fill drop-shadow-md"></i> {spot.rating}</div>
           </div>
         </div>
       </div>
