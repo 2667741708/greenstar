@@ -195,13 +195,17 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         result = await generateFallbackPOIs(name, realWorldText, center);
       }
       
-      // 图片分级策略：Pro 用户使用 standard 图（600px），普通用户保持 thumb（200px）
+      // 图片分级策略：Pro 用户升级为 standard 图（600px），普通用户保持 thumb（200px）
       // Tiered image: Pro gets standard (600px), normal user keeps thumb (200px)
       if (isPro) {
-        result = result.map(s => ({
-          ...s,
-          imageUrl: s.imageUrlHD ? (s.imageUrlHD.split('?')[0] + '?x-oss-process=image/resize,w_600/quality,q_85') : s.imageUrl
-        }));
+        result = result.map(s => {
+          let upgradedUrl = s.imageUrlHD || s.imageUrl || '';
+          // 仅当 URL 是阿里云 OSS 或高德原生图床时，才注入 OSS 处理参数
+          if (upgradedUrl.includes('autonavi.com') && !upgradedUrl.includes('webrd') && !upgradedUrl.includes('staticmap')) {
+            upgradedUrl = upgradedUrl.split('?')[0] + '?x-oss-process=image/resize,w_600/quality,q_85';
+          }
+          return { ...s, imageUrl: upgradedUrl };
+        });
       }
 
       setSpots(result);

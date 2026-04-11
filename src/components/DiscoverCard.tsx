@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Spot } from '../types';
 
 interface DiscoverCardProps {
@@ -9,6 +9,12 @@ interface DiscoverCardProps {
 export const DiscoverCard: React.FC<DiscoverCardProps> = ({ spot, onClick }) => {
   const [imgError, setImgError] = useState(false);
   const [isImgLoading, setIsImgLoading] = useState(true);
+
+  // 监听 imageUrl 变化以重置状态，接受来自外层异步的爬虫图片更新
+  useEffect(() => {
+    setImgError(false);
+    setIsImgLoading(true);
+  }, [spot.imageUrl]);
 
   return (
     <div onClick={() => onClick(spot)} className="glass-panel-light p-5 flex gap-5 group hover-magnetic cursor-pointer">
