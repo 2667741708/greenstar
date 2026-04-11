@@ -40,17 +40,20 @@ const App: React.FC = () => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [autoLocated, setAutoLocated] = useState(false); // 防止重复自动跳转
 
-  // 全局数据
   const [cities, setCities] = useState<CityInfo[]>(CHINA_CITIES);
   const [currentCity, setCurrentCity] = useState<CityInfo | null>(null);
   const [globalSpots, setGlobalSpots] = useState<any[]>([]);
   const [globalKeywords, setGlobalKeywords] = useState<string[]>([]);
+  
+  // 使用 ref 来避免异步回调中的闭包陷阱（Stale Closure）
+  const autoLocatedRef = React.useRef(false);
 
   // 定位自动跳转：定位成功后自动构造当前位置 CityInfo 并进入 CityExplorer
   // Auto-locate: construct CityInfo from GPS and jump to CityExplorer
   const { location, address: geoAddress, city: geoCity, refreshLocation } = useGeolocation(
     (lat, lng, addr, cityName) => {
-      if (cityName && !autoLocated) {
+      // 通过 ref 获取最新状态，若用户已手动交互则放弃强制跳转
+      if (cityName && !autoLocatedRef.current) {
         const autoCity: CityInfo = {
           id: `geo-${Date.now()}`,
           name: cityName,
@@ -61,6 +64,7 @@ const App: React.FC = () => {
         };
         setCurrentCity(autoCity);
         setActiveTab('city-explorer');
+        autoLocatedRef.current = true;
         setAutoLocated(true);
       }
     }
@@ -90,6 +94,10 @@ const App: React.FC = () => {
   const handleCitySelect = (city: CityInfo) => {
     setCurrentCity(city);
     setActiveTab('city-explorer');
+    // 手动点击城市后，立即阻断后续可能还在 pending 的定位强制跳转
+    // Block pending geo-location jumps once user manually interacts
+    autoLocatedRef.current = true;
+    setAutoLocated(true);
   };
 
   const updateCityUnlockedStatus = (cityId: string) => {
