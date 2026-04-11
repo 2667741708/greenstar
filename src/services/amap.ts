@@ -36,34 +36,65 @@ const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: numbe
 };
 
 /**
- * 生成高德高清静态地图 URL（兜底图片）
- * Generate AMap high-resolution static map URL as fallback image
- * 分辨率: 750x400 (高德免费版支持的最大尺寸)
- * Resolution: 750x400 (max supported by AMap free tier)
+ * 生成高德静态地图 URL（指定分辨率）
+ * Generate AMap static map URL at specified resolution
  */
-const generateStaticMapUrl = (lat: number, lng: number): string => {
-  // size=750*400 是高德静态图 API 的最大分辨率
-  // zoom=16 提供街道级细节
-  return `https://restapi.amap.com/v3/staticmap?location=${lng},${lat}&zoom=16&size=750*400&markers=mid,,A:${lng},${lat}&key=${AMAP_KEY}`;
+const generateStaticMapUrl = (lat: number, lng: number, width: number = 750, height: number = 400): string => {
+  return `https://restapi.amap.com/v3/staticmap?location=${lng},${lat}&zoom=16&size=${width}*${height}&markers=mid,,A:${lng},${lat}&key=${AMAP_KEY}`;
 };
 
 /**
- * 从高德 POI photos URL 中提取高清原图链接
- * Extract HD original image URL from AMap POI photo URL
+ * 三级图片 URL 生成器
+ * Tiered image URL generator
  *
- * 高德返回的 photos URL 通常托管在阿里云 OSS，带有裁剪/压缩参数：
- * 例如: https://xxx.amap.com/images/xxx.jpg?x-oss-process=image/resize,w_400
- * 移除 ?x-oss-process... 后缀即可获取原图
+ * 从高德 POI photos URL 生成三个等级的图片链接：
+ * Generate three tiers of image URLs from AMap POI photos:
  *
- * AMap photo URLs are hosted on Alibaba Cloud OSS with resize params.
- * Removing the ?x-oss-process suffix returns the original full-res image.
+ * | 等级 Tier  | 用途 Usage        | OSS 参数            | 大小 Approx |
+ * |-----------|------------------|--------------------|-----------|
+ * | thumb     | 列表卡片缩略图      | resize,w_200       | ~15KB     |
+ * | standard  | Pro用户列表        | resize,w_600       | ~60KB     |
+ * | hd        | 详情页全屏/预取     | 无参数(原图)        | ~200KB    |
  */
-const extractHDPhotoUrl = (url: string): string => {
-  if (!url) return '';
-  // 移除 OSS 图片处理参数，保留原图 URL
-  // Strip OSS image processing parameters to get original image
-  const cleanUrl = url.split('?')[0];
-  return cleanUrl;
+interface TieredImageUrls {
+  thumb: string;      // 缩略图：普通用户列表用
+  standard: string;   // 标准图：Pro用户列表用
+  hd: string;         // 原图：详情页/全屏查看用
+}
+
+const generateTieredImageUrls = (
+  photos: Array<{ url: string }> | null,
+  lat: number,
+  lng: number
+): TieredImageUrls => {
+  if (photos && photos.length > 0 && photos[0].url) {
+    const rawUrl = photos[0].url;
+    // 移除 OSS 图片处理参数，获取原图基址
+    // Strip OSS params to get base URL
+    const baseUrl = rawUrl.split('?')[0];
+
+    return {
+      // 缩略图: 强制 200px 宽 + JPEG 75% 压缩
+      // Thumbnail: force 200px width + JPEG 75% quality
+      thumb: `${baseUrl}?x-oss-process=image/resize,w_200/quality,q_75`,
+      // 标准图: 600px 宽 + JPEG 85% 压缩
+      // Standard: 600px width + JPEG 85% quality
+      standard: `${baseUrl}?x-oss-process=image/resize,w_600/quality,q_85`,
+      // 原图: 无处理参数
+      // HD original: no processing params
+      hd: baseUrl,
+    };
+  }
+
+  // 无图 POI：用静态地图生成两级兜底
+  // No photos: use static map with two resolution tiers
+  const thumbMap = generateStaticMapUrl(lat, lng, 300, 200);
+  const hdMap = generateStaticMapUrl(lat, lng, 750, 400);
+  return {
+    thumb: thumbMap,
+    standard: hdMap,
+    hd: hdMap,
+  };
 };
 
 // ============================================================
@@ -150,11 +181,17 @@ const _searchPOIFromAmap = (
                 else if (poi.type.includes('风景') || poi.type.includes('名胜')) category = 'Scenic';
               }
 
-              // 图片来源优先级：高德原生 photos 原图 → 高清静态地图 URL 兜底
-              // Image priority: AMap native photos (HD original) → high-res static map fallback
-              const imageUrl = (poi.photos && poi.photos.length > 0)
-                ? extractHDPhotoUrl(poi.photos[0].url)
-                : generateStaticMapUrl(poi.location.lat, poi.location.lng);
+              // 三级图片 URL 生成：缩略图 / 标准图 / 原图
+              // Tiered image URLs: thumbnail / standard / HD original
+              const tieredUrls = generateTieredImageUrls(
+                poi.photos,
+                poi.location.lat,
+                poi.location.lng
+              );
+
+              // 默认使用缩略图（普通用户快速出图，调用方可根据 isPro 切探为 standard）
+              // Default to thumbnail (fast for normal users; caller can switch to standard for Pro)
+              const imageUrl = tieredUrls.thumb;
 
               return {
                 id: poi.id,
@@ -162,6 +199,8 @@ const _searchPOIFromAmap = (
                 description: poi.address || poi.type || '热门地点',
                 category: category,
                 imageUrl: imageUrl,
+                imageUrlThumb: tieredUrls.thumb,
+                imageUrlHD: tieredUrls.hd,
                 coordinates: {
                   lat: poi.location.lat,
                   lng: poi.location.lng

@@ -16,6 +16,7 @@ import {
   fileToBase64, generateThumbnail, saveCheckin, getCheckinsBySpot, 
   CheckInRecord 
 } from '../services/checkinStore';
+import { getHDImageUrl } from '../services/poiCache';
 
 interface SpotDetailProps {
   spot: Spot;
@@ -32,12 +33,27 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, cityName = '未知
   const [isSaving, setIsSaving] = useState(false);
   const [history, setHistory] = useState<CheckInRecord[]>([]);
   const [viewingPhoto, setViewingPhoto] = useState<string | null>(null);
+  const [hdCoverUrl, setHdCoverUrl] = useState<string>('');  // HD 缓存封面 URL
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // 加载该地点的历史打卡记录
   useEffect(() => {
     getCheckinsBySpot(spot.id).then(setHistory);
   }, [spot.id]);
+
+  // 从 IndexedDB 加载 HD 封面（缓存命中返回 blob URL，否则回退网络 URL）
+  // Load HD cover from IndexedDB cache (blob URL if hit, network URL if miss)
+  useEffect(() => {
+    const loadHD = async () => {
+      if (spot.imageUrlHD) {
+        const url = await getHDImageUrl(spot.imageUrlHD);
+        setHdCoverUrl(url);
+      } else if (spot.imageUrl) {
+        setHdCoverUrl(spot.imageUrl);
+      }
+    };
+    loadHD();
+  }, [spot.id, spot.imageUrlHD, spot.imageUrl]);
 
   const handleCameraCheckIn = () => {
     fileInputRef.current?.click();
@@ -102,10 +118,12 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, cityName = '未知
           <button onClick={onClose} className="w-10 h-10 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors hover:bg-black/40"><i className="bi bi-x-lg"></i></button>
         </div>
 
-        {/* 封面高清大图（点击可全屏查看） */}
-        {/* Cover HD image (click to view fullscreen) */}
+        {/* 封面高清大图（优先 HD 缓存，点击可全屏查看） */}
+        {/* Cover HD image (prefer cached HD, click to view fullscreen) */}
         <div className="h-80 bg-gray-100 relative overflow-hidden group cursor-pointer" onClick={() => {
-          const imgSrc = (spot.photos && spot.photos.length > 0) ? spot.photos[spot.photos.length - 1] : spot.imageUrl;
+          // 全屏查看使用 HD 图片
+          // Fullscreen view uses HD image
+          const imgSrc = (spot.photos && spot.photos.length > 0) ? spot.photos[spot.photos.length - 1] : (hdCoverUrl || spot.imageUrl);
           if (imgSrc) setViewingPhoto(imgSrc);
         }}>
           {isImgLoading && !imgError && (
@@ -113,9 +131,9 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, cityName = '未知
               <i className="bi bi-image text-4xl text-gray-300"></i>
             </div>
           )}
-          {!imgError && ((spot.photos && spot.photos.length > 0) || spot.imageUrl) ? (
+          {!imgError && ((spot.photos && spot.photos.length > 0) || hdCoverUrl || spot.imageUrl) ? (
             <img 
-              src={spot.photos && spot.photos.length > 0 ? spot.photos[spot.photos.length - 1] : spot.imageUrl} 
+              src={spot.photos && spot.photos.length > 0 ? spot.photos[spot.photos.length - 1] : (hdCoverUrl || spot.imageUrl)} 
               className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${isImgLoading ? 'opacity-0' : 'opacity-100'}`} 
               onLoad={() => setIsImgLoading(false)}
               onError={() => { setImgError(true); setIsImgLoading(false); }} 

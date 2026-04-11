@@ -20,7 +20,7 @@ import { fetchRealWorldData } from '../services/crawler';
 import { generateFallbackPOIs } from '../services/deepseek';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
-import { clearCityCache } from '../services/poiCache';
+import { clearCityCache, prefetchHDImages } from '../services/poiCache';
 import { SpotDetail } from './SpotDetail';
 import { DiscoverCard } from './DiscoverCard';
 import { PhotoGalleryOverlay } from './explore/PhotoGalleryOverlay';
@@ -194,9 +194,22 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         result = await generateFallbackPOIs(name, realWorldText, center);
       }
       
-      // 图片已在 amap.ts 层通过高德 photos + 静态地图 URL 兜底，无需额外爬虫
-      // Images are handled in amap.ts (AMap photos + static map URL fallback)
+      // 图片分级策略：Pro 用户使用 standard 图（600px），普通用户保持 thumb（200px）
+      // Tiered image: Pro gets standard (600px), normal user keeps thumb (200px)
+      if (isPro) {
+        result = result.map(s => ({
+          ...s,
+          imageUrl: s.imageUrlHD ? (s.imageUrlHD.split('?')[0] + '?x-oss-process=image/resize,w_600/quality,q_85') : s.imageUrl
+        }));
+      }
+
       setSpots(result);
+
+      // Pro 用户：后台静默预取 HD 原图到 IndexedDB
+      // Pro user: silently prefetch HD images to IndexedDB in background
+      if (isPro && result.length > 0) {
+        prefetchHDImages(result).catch(e => console.warn('[HD Prefetch] Error:', e));
+      }
     } catch (err: any) {
       // 高德崩溃时尝试 RAG 兜底
       setLoadingStep(`检索异常，正在启动备用智能引擎...`);
