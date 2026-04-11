@@ -36,11 +36,22 @@ const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: numbe
 };
 
 /**
- * 生成高德静态地图 URL（指定分辨率）
- * Generate AMap static map URL at specified resolution
+ * 生成高德瓦片地图 URL（无需 Web 服务 Key，直接访问瓦片服务）
+ * Generate AMap tile map URL (no Web API key required)
+ *
+ * 原静态地图 API 返回 USERKEY_PLAT_NOMATCH(10009)——Key 仅绑定 JS API 平台。
+ * 改用瓦片服务: webrd01.is.autonavi.com，无需 Key，返回 512x512 高清瓦片。
+ * Static map API returns 10009 — key bound to JS API only.
+ * Switched to tile service: no key needed, returns 512x512 HD tiles.
  */
-const generateStaticMapUrl = (lat: number, lng: number, width: number = 750, height: number = 400): string => {
-  return `https://restapi.amap.com/v3/staticmap?location=${lng},${lat}&zoom=16&size=${width}*${height}&markers=mid,,A:${lng},${lat}&key=${AMAP_KEY}`;
+const generateTileMapUrl = (lat: number, lng: number, zoom: number = 15): string => {
+  const n = Math.pow(2, zoom);
+  const x = Math.floor((lng + 180) / 360 * n);
+  const latRad = lat * Math.PI / 180;
+  const y = Math.floor((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n);
+  // scale=2 返回 512x512 高清瓦片；style=8 标准地图
+  // scale=2 returns 512x512 HD tile; style=8 standard map
+  return `https://webrd0${(x % 4) + 1}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=2&style=8&x=${x}&y=${y}&z=${zoom}`;
 };
 
 /**
@@ -86,10 +97,10 @@ const generateTieredImageUrls = (
     };
   }
 
-  // 无图 POI：用静态地图生成两级兜底
-  // No photos: use static map with two resolution tiers
-  const thumbMap = generateStaticMapUrl(lat, lng, 300, 200);
-  const hdMap = generateStaticMapUrl(lat, lng, 750, 400);
+  // 无图 POI：用地图瓦片生成两级兜底
+  // No photos: use tile map with two zoom tiers
+  const thumbMap = generateTileMapUrl(lat, lng, 14);  // 街区级 (~36KB)
+  const hdMap = generateTileMapUrl(lat, lng, 16);      // 街道级 (~50KB)
   return {
     thumb: thumbMap,
     standard: hdMap,

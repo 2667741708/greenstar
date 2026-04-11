@@ -146,13 +146,25 @@ export const streamDeepSeek = async (
 };
 
 // ============================================================================
-// 修改基准: deepseek.ts (原始版本 36 行)
+// 修改基准: deepseek.ts @ 1e4484c (228行)
 // 修改内容 / Changes:
 //   [追加] generateFallbackPOIs() — 基于真实网络爬虫数据的 RAG 结构化提取
+//   [修复] AI 兜底 POI 增加静态地图图片 URL（thumb + HD），解决图片空白问题
 //   [APPEND] generateFallbackPOIs() — RAG-based structured extraction from real crawled data
+//   [FIX] AI fallback POIs now include static map image URLs (thumb + HD)
 // ============================================================================
 
 import { Spot } from '../types';
+
+// 高德瓦片地图 URL 生成（无需 Web 服务 Key，独立于 amap.ts 避免循环依赖）
+// AMap tile map URL generator (no key needed, independent of amap.ts)
+const makeTileMapUrl = (lat: number, lng: number, zoom: number): string => {
+  const n = Math.pow(2, zoom);
+  const x = Math.floor((lng + 180) / 360 * n);
+  const latRad = lat * Math.PI / 180;
+  const y = Math.floor((1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n);
+  return `https://webrd0${(x % 4) + 1}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=2&style=8&x=${x}&y=${y}&z=${zoom}`;
+};
 
 /**
  * 基于真实网络爬虫数据的 RAG 兜底 POI 生成
@@ -204,22 +216,31 @@ ${realWorldText.substring(0, 3000)}
 
     if (!Array.isArray(parsed)) return [];
 
-    return parsed.slice(0, 8).map((item: any, index: number) => ({
-      id: `ai-${regionName}-${index}-${Date.now()}`,
-      name: item.name || `${regionName}地标${index + 1}`,
-      description: item.description || '由 AI 基于网络资料提取',
-      category: item.category || 'Landmark',
-      imageUrl: '',
-      coordinates: {
-        lat: typeof item.lat === 'number' ? item.lat : center.lat + (Math.random() - 0.5) * 0.02,
-        lng: typeof item.lng === 'number' ? item.lng : center.lng + (Math.random() - 0.5) * 0.02,
-      },
-      rating: typeof item.rating === 'number' ? Math.min(item.rating, 5) : 4.2,
-      tags: Array.isArray(item.tags) ? item.tags.slice(0, 3) : ['AI检索'],
-      checkedIn: false,
-      isAIGenerated: true,
-      dataSource: '维基百科 + DeepSeek',
-    }));
+    return parsed.slice(0, 8).map((item: any, index: number) => {
+      const lat = typeof item.lat === 'number' ? item.lat : center.lat + (Math.random() - 0.5) * 0.02;
+      const lng = typeof item.lng === 'number' ? item.lng : center.lng + (Math.random() - 0.5) * 0.02;
+
+      // 使用高德瓦片地图为 AI 兜底 POI 生成分级图片
+      // Generate tiered tile map images for AI fallback POIs
+      const thumbUrl = makeTileMapUrl(lat, lng, 14);   // 街区级缩略图
+      const hdUrl = makeTileMapUrl(lat, lng, 16);       // 街道级高清
+
+      return {
+        id: `ai-${regionName}-${index}-${Date.now()}`,
+        name: item.name || `${regionName}地标${index + 1}`,
+        description: item.description || '由 AI 基于网络资料提取',
+        category: item.category || 'Landmark',
+        imageUrl: thumbUrl,          // 默认使用缩略图
+        imageUrlThumb: thumbUrl,     // 缩略图: 300x200
+        imageUrlHD: hdUrl,           // 高清图: 750x400
+        coordinates: { lat, lng },
+        rating: typeof item.rating === 'number' ? Math.min(item.rating, 5) : 4.2,
+        tags: Array.isArray(item.tags) ? item.tags.slice(0, 3) : ['AI检索'],
+        checkedIn: false,
+        isAIGenerated: true,
+        dataSource: '维基百科 + DeepSeek',
+      };
+    });
   } catch (err: any) {
     console.error('[RAG] generateFallbackPOIs failed:', err.message);
     return [];
