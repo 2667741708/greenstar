@@ -1,9 +1,9 @@
 // ============================================================================
 // 文件: src/services/amap.ts
-// 基准版本: 此前针对双引擎搜索修改的版本
+// 基准版本: 此前针对 API Key 替换修改的版本
 // 修改内容 / Changes:
-//   [修复] 替换 REST Web Service 调用的 API Key 为专属的 Web 服务 Key
-//   [FIX] Replace REST Web Service API Key with dedicated Web Service Key to prevent auth errors
+//   [修复] JS API 及 REST API 中的兴趣标签检索链路，区分 isUserSearch 以进入正确的接口
+//   [FIX] Route tag filtering to nearby/around API instead of global text search to resolve 0-match bug
 // ============================================================================
 
 import { Spot } from '../types';
@@ -155,11 +155,12 @@ const _searchPOIFromAmap = (
           extensions: 'all',
         });
 
-        // 有关键词时全城文本搜索；无关键词时周边半径检索
-        // keyword → city-wide text search; no keyword → nearby radius search
-        const searchFn = keyword 
+        // 区分场景：
+        // 1. 用户主动文本跨区搜索 (isUserSearch = true) -> 全城/全国文本检索 placeSearch.search
+        // 2. 标签/分类探测浏览 (isUserSearch = false) -> 本地半径聚合 placeSearch.searchNearBy
+        const searchFn = options.isUserSearch && keyword
           ? (cb: any) => placeSearch.search(keyword, cb)
-          : (cb: any) => placeSearch.searchNearBy('', [center.lng, center.lat], radius, cb);
+          : (cb: any) => placeSearch.searchNearBy(keyword || '', [center.lng, center.lat], radius, cb);
 
         searchFn((status: string, result: any) => {
           if (status === 'complete' && result.info === 'OK' && result.poiList) {
@@ -259,20 +260,25 @@ const _searchPOIFromREST = async (
   // 构建 REST API URL
   // Build REST API URL
   let url: string;
-  if (keyword) {
-    // 关键词搜索使用 v5/place/text
+  if (options.isUserSearch && keyword) {
+    // 1. 用户跨区主动文本搜索 -> v5/place/text
+    // User global text search -> v5/place/text
     url = `https://restapi.amap.com/v5/place/text?key=${AMAP_KEY}&keywords=${encodeURIComponent(keyword)}&region=${encodeURIComponent(city)}&page_size=${pageSize}&page_num=${page}&show_fields=photos,business`;
   } else {
-    // 周边搜索使用 v5/place/around
+    // 2. 标签/探测浏览 -> v5/place/around
+    // Tag / local browse -> v5/place/around
     url = `https://restapi.amap.com/v5/place/around?key=${AMAP_KEY}&location=${center.lng},${center.lat}&radius=${radius}&page_size=${pageSize}&page_num=${page}&show_fields=photos,business`;
     
-    // 非用户搜索时添加类型过滤
-    // Add type filter for non-user searches
+    // 如果存在分类限定，加上分类
     if (!options.isUserSearch && !options.type) {
-      // v5 API 使用 types 参数（分类编码）
       url += `&types=110000|050000|060000|100000|080000|140000`;
     } else if (options.type) {
       url += `&types=${options.type}`;
+    }
+
+    // 如果通过标签携带了 keyword，加上 keywords 进行叠加过滤
+    if (keyword) {
+      url += `&keywords=${encodeURIComponent(keyword)}`;
     }
   }
 
