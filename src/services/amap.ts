@@ -1,8 +1,28 @@
+// ============================================================================
+// 文件: src/services/amap.ts
+// 基准版本: amap.ts @ 650ddca (180行)
+// 修改内容 / Changes:
+//   [重构] searchPOI 增加 options 参数，支持动态 radius/type/page
+//   [新增] 三层过滤逻辑: 正面限定 + 负面排除 + 用户搜索透传
+//   [新增] 无图 POI 自动拼接高德静态地图 URL 作为兜底图片
+//   [新增] IndexedDB 缓存层接入（getCachedPOI / setCachedPOI）
+//   [新增] searchPOIPaginated() — 渐进式多页加载
+//   [REFACTOR] searchPOI with options: dynamic radius/type/page
+//   [NEW] 3-layer filter: positive list + negative exclude + user search bypass
+//   [NEW] Static map URL fallback for POIs without photos
+//   [NEW] IndexedDB cache integration
+//   [NEW] searchPOIPaginated() for multi-page loading
+// ============================================================================
+
 import { Spot } from '../types';
 import { CONSTANTS } from '../config/constants';
+import { buildCacheKey, getCachedPOI, setCachedPOI } from './poiCache';
 
 // 声明全局变量 AMap
+// Declare global AMap variable
 declare const AMap: any;
+
+const AMAP_KEY = '040c3af03bab9232ab67e0d232838b28';
 
 const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number) => {
   const R = 6371e3;
@@ -15,34 +35,84 @@ const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: numbe
   return R * c; 
 };
 
-export const searchPOI = (city: string, keyword: string, center: { lat: number; lng: number }): Promise<Spot[]> => {
+/**
+ * 生成高德静态地图缩略图 URL（兜底图片）
+ * Generate AMap static map thumbnail URL as fallback image
+ */
+const generateStaticMapUrl = (lat: number, lng: number): string => {
+  return `https://restapi.amap.com/v3/staticmap?location=${lng},${lat}&zoom=15&size=200*200&markers=mid,,A:${lng},${lat}&key=${AMAP_KEY}`;
+};
+
+// ============================================================
+// searchPOI 参数接口
+// Search options interface
+// ============================================================
+export interface SearchPOIOptions {
+  radius?: number;         // 搜索半径（米），默认按层级动态计算
+  type?: string;           // 高德 POI 分类编码/名称，空则使用正面列表
+  pageIndex?: number;      // 分页页码，默认 1
+  pageSize?: number;       // 每页条数，默认 50
+  isUserSearch?: boolean;  // 是否为用户主动搜索（true = 绕过三层过滤）
+}
+
+/**
+ * 内部函数：直接调用高德 PlaceSearch API
+ * Internal: raw AMap PlaceSearch call
+ */
+const _searchPOIFromAmap = (
+  city: string,
+  keyword: string,
+  center: { lat: number; lng: number },
+  options: SearchPOIOptions = {}
+): Promise<Spot[]> => {
   return new Promise((resolve, reject) => {
     if (typeof AMap === 'undefined') {
       reject(new Error('高德地图 JS API 未加载成功'));
       return;
     }
 
+    // ============================================================
+    // 三层过滤 Layer 1: 确定 type 参数
+    // Three-layer filter Layer 1: determine type parameter
+    // ============================================================
+    let searchType: string;
+    if (options.isUserSearch) {
+      // Layer 3: 用户主动搜索 — 全分类透传，不限制
+      // User explicit search: bypass all filters
+      searchType = '';
+    } else if (options.type) {
+      // 标签精准搜索 — 使用调用方传入的分类编码
+      // Tag-based search: use caller-provided category code
+      searchType = options.type;
+    } else {
+      // Layer 1: 默认浏览 — 使用正面类型限定列表
+      // Default browse: use positive-list filter
+      searchType = CONSTANTS.POI_TYPE_POSITIVE;
+    }
+
+    const radius = options.radius || CONSTANTS.SEARCH_RADIUS.city;
+
     AMap.plugin(['AMap.PlaceSearch'], () => {
       try {
         const placeSearch = new AMap.PlaceSearch({
-          city: city, // 城市名或 citycode
-          citylimit: false, // 必须设为 false 才能支持海外（如新加坡、吉隆坡）的 POI 跨区域模糊检索
-          type: CONSTANTS.POI_TYPE_STRING, // 严格使用中文分类名或数字编码，非模糊 keyword
-          pageSize: 50,
-          pageIndex: 1,
-          extensions: 'all', // 必须设置为 all 才能返回 photos 图片等详细信息
+          city: city,
+          citylimit: false,
+          type: searchType,
+          pageSize: options.pageSize || 50,
+          pageIndex: options.pageIndex || 1,
+          extensions: 'all',
         });
 
-        // 如果传入了精准搜索词（非空），进行全城文本搜索；如果没传，根据当前地点周边半径检索
+        // 有关键词时全城文本搜索；无关键词时周边半径检索
+        // keyword → city-wide text search; no keyword → nearby radius search
         const searchFn = keyword 
           ? (cb: any) => placeSearch.search(keyword, cb)
-          : (cb: any) => placeSearch.searchNearBy('', [center.lng, center.lat], 5000, cb); // 半径设置为 5km，防止越界
+          : (cb: any) => placeSearch.searchNearBy('', [center.lng, center.lat], radius, cb);
 
         searchFn((status: string, result: any) => {
           if (status === 'complete' && result.info === 'OK' && result.poiList) {
             const pois = result.poiList.pois || [];
-            const spots: Spot[] = pois.map((poi: any) => {
-              // 模拟评分和分类映射
+            let spots: Spot[] = pois.map((poi: any) => {
               const ratingStr = poi.biz_ext?.rating || (4 + Math.random()).toFixed(1);
               const rating = parseFloat(ratingStr) > 5 ? 5 : parseFloat(ratingStr);
               
@@ -57,15 +127,18 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
                 else if (poi.type.includes('风景') || poi.type.includes('名胜')) category = 'Scenic';
               }
 
-              // 提取首个图片
-              const imageUrl = poi.photos && poi.photos.length > 0 ? poi.photos[0].url : '';
+              // 图片来源优先级：高德原生 photos → 静态地图 URL 兜底
+              // Image priority: AMap native photos → static map URL fallback
+              const imageUrl = (poi.photos && poi.photos.length > 0)
+                ? poi.photos[0].url
+                : generateStaticMapUrl(poi.location.lat, poi.location.lng);
 
               return {
                 id: poi.id,
                 name: poi.name,
                 description: poi.address || poi.type || '热门地点',
                 category: category,
-                imageUrl: imageUrl, // 使用高德 POI 图片，不再依赖 AI 画图
+                imageUrl: imageUrl,
                 coordinates: {
                   lat: poi.location.lat,
                   lng: poi.location.lng
@@ -76,6 +149,18 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
                 distance: calculateDistance(center.lat, center.lng, poi.location.lat, poi.location.lng)
               };
             });
+
+            // ============================================================
+            // 三层过滤 Layer 2: 负面排除（非用户主动搜索时执行）
+            // Layer 2: negative exclude (skip for user explicit search)
+            // ============================================================
+            if (!options.isUserSearch) {
+              spots = spots.filter(spot => {
+                const typeStr = (spot.tags || []).join(' ') + ' ' + (spot.description || '');
+                return !CONSTANTS.POI_TYPE_EXCLUDE.some(exclude => typeStr.includes(exclude));
+              });
+            }
+
             resolve(spots);
           } else if (status === 'no_data') {
             resolve([]);
@@ -90,6 +175,83 @@ export const searchPOI = (city: string, keyword: string, center: { lat: number; 
     });
   });
 };
+
+/**
+ * 带缓存的 POI 搜索（主接口）
+ * Cached POI search (main public API)
+ *
+ * 流程: 检查缓存 → 缓存命中直接返回 → 未命中调用高德 → 写入缓存
+ * Flow: check cache → hit: return → miss: call AMap → write cache
+ */
+export const searchPOI = async (
+  city: string,
+  keyword: string,
+  center: { lat: number; lng: number },
+  options: SearchPOIOptions = {}
+): Promise<Spot[]> => {
+  const radius = options.radius || CONSTANTS.SEARCH_RADIUS.city;
+  const type = options.type || (options.isUserSearch ? '' : CONSTANTS.POI_TYPE_POSITIVE);
+  const page = options.pageIndex || 1;
+  const cacheKey = buildCacheKey(city, keyword, type, radius, page);
+
+  // Step 1: 检查 IndexedDB 缓存
+  // Check IndexedDB cache
+  const cached = await getCachedPOI(cacheKey);
+  if (cached) {
+    console.log(`[POI Cache HIT] ${cacheKey.substring(0, 40)}... (${cached.length} spots)`);
+    return cached;
+  }
+
+  // Step 2: 缓存未命中，调用高德 API
+  // Cache miss: call AMap API
+  const spots = await _searchPOIFromAmap(city, keyword, center, { ...options, radius });
+
+  // Step 3: 写入缓存（异步，不阻塞返回）
+  // Write to cache asynchronously
+  setCachedPOI(cacheKey, spots, city).catch(e => console.warn('[POI Cache] Write failed:', e));
+
+  return spots;
+};
+
+/**
+ * 渐进式多页 POI 加载
+ * Progressive multi-page POI loading
+ *
+ * 自动翻页直到无更多数据或达到 maxPages 上限
+ */
+export const searchPOIPaginated = async (
+  city: string,
+  keyword: string,
+  center: { lat: number; lng: number },
+  options: SearchPOIOptions & { maxPages?: number } = {}
+): Promise<Spot[]> => {
+  const maxPages = options.maxPages || 3;
+  const allSpots: Spot[] = [];
+  const seenIds = new Set<string>();
+  const pageSize = options.pageSize || 50;
+
+  for (let page = 1; page <= maxPages; page++) {
+    const spots = await searchPOI(city, keyword, center, { ...options, pageIndex: page });
+    if (spots.length === 0) break;
+
+    for (const s of spots) {
+      if (!seenIds.has(s.id)) {
+        seenIds.add(s.id);
+        allSpots.push(s);
+      }
+    }
+
+    // 不足一页说明已是最后一页
+    // Less than a full page means no more pages
+    if (spots.length < pageSize) break;
+  }
+
+  return allSpots;
+};
+
+// ============================================================
+// 以下函数保持不变 / Functions below are unchanged
+// ============================================================
 
 export const reverseGeocode = (lat: number, lng: number): Promise<{ address: string; city: string }> => {
   return new Promise((resolve, reject) => {

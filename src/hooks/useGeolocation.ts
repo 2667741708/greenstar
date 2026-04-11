@@ -1,5 +1,16 @@
+// ============================================================================
+// 文件: src/hooks/useGeolocation.ts
+// 基准版本: useGeolocation.ts @ 650ddca (53行)
+// 修改内容 / Changes:
+//   [调整] 启用高精度定位模式 (enableHighAccuracy: true)
+//   [调整] 增加 timeout: 10s, maximumAge: 60s 参数
+//   [ADJUST] Enable high-accuracy positioning mode
+//   [ADJUST] Add timeout: 10s, maximumAge: 60s parameters
+// ============================================================================
+
 import { useState, useEffect } from 'react';
 import { reverseGeocode } from '../services/amap';
+import { CONSTANTS } from '../config/constants';
 
 export const useGeolocation = (onLocationFound?: (lat: number, lng: number, address: string, city: string) => void) => {
   const [location, setLocation] = useState<{ lat: number; lng: number } | null>(null);
@@ -13,6 +24,8 @@ export const useGeolocation = (onLocationFound?: (lat: number, lng: number, addr
       setLoading(true);
       setError(null);
       navigator.geolocation.getCurrentPosition(
+        // 高精度定位成功回调
+        // High-accuracy positioning success callback
         async (pos) => {
           const loc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
           setLocation(loc);
@@ -24,7 +37,11 @@ export const useGeolocation = (onLocationFound?: (lat: number, lng: number, addr
           } catch (err) {
             const fallbackAddr = `📍 ${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)}`;
             setAddress(fallbackAddr);
-            onLocationFound?.(loc.lat, loc.lng, fallbackAddr, '');
+            // 逆地理编码失败时，使用默认城市名确保自动跳转仍可触发
+            // Fallback to default city name to ensure auto-locate still triggers
+            const fallbackCity = CONSTANTS.DEFAULT_LOCATION.name;
+            setCity(fallbackCity);
+            onLocationFound?.(loc.lat, loc.lng, fallbackAddr, fallbackCity);
           } finally {
             setLoading(false);
           }
@@ -37,6 +54,13 @@ export const useGeolocation = (onLocationFound?: (lat: number, lng: number, addr
           setCity("上海市");
           onLocationFound?.(fallback.lat, fallback.lng, "上海市", "上海市");
           setLoading(false);
+        },
+        // 高精度模式参数
+        // High-accuracy mode parameters
+        {
+          enableHighAccuracy: true,  // 启用GPS/WiFi高精度定位
+          timeout: 10000,            // 10秒超时
+          maximumAge: 60000,         // 60秒内复用缓存位置
         }
       );
     } else {

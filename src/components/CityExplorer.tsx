@@ -1,11 +1,26 @@
+// ============================================================================
+// 文件: src/components/CityExplorer.tsx
+// 基准版本: CityExplorer.tsx @ 650ddca (592行)
+// 修改内容 / Changes:
+//   [改造] fetchCitySpots 增加 options 参数，支持 isUserSearch 透传
+//   [改造] doTagSearch 使用 POI_TAG_TYPE_MAP 精准编码 + 动态半径
+//   [改造] handleSearch 标记 isUserSearch: true (绕过三层过滤)
+//   [移除] batchFetchPOIImages 调用（图片已在 amap.ts 层兜底静态图）
+//   [新增] clearCityCache 导入，用于手动刷新缓存
+//   [MODIFY] fetchCitySpots with options for isUserSearch bypass
+//   [MODIFY] doTagSearch with POI_TAG_TYPE_MAP + dynamic radius
+//   [MODIFY] handleSearch marks isUserSearch: true
+//   [REMOVE] batchFetchPOIImages calls (images now handled in amap.ts)
+//   [NEW] clearCityCache import for manual cache refresh
+// ============================================================================
 import React, { useState, useEffect } from 'react';
 import { Spot, CityInfo, RegionNode } from '../types';
-import { searchPOI, getSubDistricts } from '../services/amap';
+import { searchPOI, getSubDistricts, SearchPOIOptions } from '../services/amap';
 import { fetchRealWorldData } from '../services/crawler';
 import { generateFallbackPOIs } from '../services/deepseek';
-import { batchFetchPOIImages } from '../services/imageCrawler';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
+import { clearCityCache } from '../services/poiCache';
 import { SpotDetail } from './SpotDetail';
 import { DiscoverCard } from './DiscoverCard';
 import { PhotoGalleryOverlay } from './explore/PhotoGalleryOverlay';
@@ -153,12 +168,22 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     setSelectedSpot
   );
 
-  const fetchCitySpots = async (searchKw: string = '', center: {lat: number, lng: number}, name: string) => {
+  const fetchCitySpots = async (
+    searchKw: string = '',
+    center: {lat: number, lng: number},
+    name: string,
+    searchOptions: SearchPOIOptions = {}
+  ) => {
     setLoading(true);
     setLoadingStep(`正在检索 ${name} 的地理星图...`);
     try {
-      // 第一引擎：高德实体检索
-      let result = await searchPOI(name, searchKw, center);
+      // 动态半径：根据当前区域层级自动计算
+      // Dynamic radius based on current region level
+      const radius = CONSTANTS.SEARCH_RADIUS[currentRegion.level] || CONSTANTS.SEARCH_RADIUS.city;
+
+      // 第一引擎：高德实体检索（含缓存层、三层过滤）
+      // Primary engine: AMap PlaceSearch (with cache + 3-layer filter)
+      let result = await searchPOI(name, searchKw, center, { radius, ...searchOptions });
       
       // 第二引擎：当高德返回空时，启动 RAG 兜底
       if (result.length === 0) {
@@ -169,32 +194,17 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         result = await generateFallbackPOIs(name, realWorldText, center);
       }
       
-      // 先立即展示数据（用户先看到内容）
+      // 图片已在 amap.ts 层通过高德 photos + 静态地图 URL 兜底，无需额外爬虫
+      // Images are handled in amap.ts (AMap photos + static map URL fallback)
       setSpots(result);
-      
-      // 异步补充缺失图片（爬虫抓取，不阻塞主流程）
-      if (result.length > 0) {
-        setLoadingStep(`正在抓取真实地点图片...`);
-        const images = await batchFetchPOIImages(result, name);
-        setSpots(prev => prev.map((s, i) => ({
-          ...s,
-          imageUrl: images[i] || s.imageUrl || ''
-        })));
-      }
     } catch (err: any) {
-      // 高德崩溃时也尝试 RAG 兜底
+      // 高德崩溃时尝试 RAG 兜底
       setLoadingStep(`检索异常，正在启动备用智能引擎...`);
       try {
         const realWorldText = await fetchRealWorldData(name, searchKw);
         const fallback = await generateFallbackPOIs(name, realWorldText, center);
         if (fallback.length > 0) {
           setSpots(fallback);
-          // 为兜底数据也抓取图片
-          const images = await batchFetchPOIImages(fallback, name);
-          setSpots(prev => prev.map((s, i) => ({
-            ...s,
-            imageUrl: images[i] || s.imageUrl || ''
-          })));
         } else {
           setErrorMsg(`检索失败: ${err.message}`);
         }
@@ -224,22 +234,30 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
     updateCityUnlockedStatus(city.id);
   }, [city.id]);
 
-  // 当选中标签变化时，用标签关键词重新搜索 POI
+  // 当选中标签变化时，用标签精准分类编码搜索 POI
+  // When selected tags change, search POI using precise AMap category codes
   useEffect(() => {
     if (selectedKeywords.length === 0) {
       // 没有选中标签时，恢复默认全品类搜索
       fetchCitySpots('', currentRegion.center, currentRegion.name);
       return;
     }
-    // 有选中标签时，用所有选中标签的文字（去emoji）作为关键词并行搜索，合并结果
     const doTagSearch = async () => {
       setLoading(true);
       setLoadingStep(`正在按兴趣标签搜索...`);
       try {
         const keywords = selectedKeywords.map(kw => kw.replace(/^[^\u4e00-\u9fa5A-Za-z]+/, '').trim());
-        const promises = keywords.map(kw => 
-          searchPOI(currentRegion.name, kw, currentRegion.center).catch(() => [] as Spot[])
-        );
+        const radius = CONSTANTS.SEARCH_RADIUS[currentRegion.level] || CONSTANTS.SEARCH_RADIUS.city;
+
+        // 标签 → 高德分类编码映射，提升搜索精准度
+        // Tag → AMap category code mapping for precision
+        const promises = keywords.map(kw => {
+          const typeCode = CONSTANTS.POI_TAG_TYPE_MAP[kw] || '';
+          return searchPOI(currentRegion.name, kw, currentRegion.center, {
+            type: typeCode,
+            radius,
+          }).catch(() => [] as Spot[]);
+        });
         const results = await Promise.all(promises);
         // 合并去重（按 id）
         const merged = new Map<string, Spot>();
@@ -249,15 +267,7 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         // 应用版本对应的地点数量限制
         const limitedSpots = finalSpots.slice(0, maxSpotsDisplay);
         setSpots(limitedSpots);
-        
-        // 后台异步加载图片，不让加载框阻塞用户查看卡片
-        if (limitedSpots.length > 0) {
-          batchFetchPOIImages(limitedSpots, currentRegion.name)
-            .then(images => {
-              setSpots(prev => prev.map((s, i) => ({ ...s, imageUrl: images[i] || s.imageUrl || '' })));
-            })
-            .catch(console.error);
-        }
+        // 图片已在 amap.ts 层兜底，无需额外爬虫调用
       } catch (err) {
         console.error('[TagSearch] failed:', err);
       } finally {
@@ -270,7 +280,9 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    fetchCitySpots(keyword, currentRegion.center, currentRegion.name);
+    // 用户主动搜索：绕过三层过滤，透传高德全分类
+    // User explicit search: bypass 3-layer filter, pass-through all categories
+    fetchCitySpots(keyword, currentRegion.center, currentRegion.name, { isUserSearch: true });
   };
 
   const handleRegionClick = (region: any) => {
@@ -367,8 +379,8 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
               type="text" 
               value={keyword} 
               onChange={e => setKeyword(e.target.value)} 
-              placeholder="找景点/美食..." 
-              className="w-24 bg-emerald-50/50 rounded-2xl px-3 py-2 text-[10px] border-none outline-none focus:bg-emerald-100 transition-colors" 
+              placeholder="搜任意类型（公厕/药店）" 
+              className="w-28 bg-emerald-50/50 rounded-2xl px-3 py-2 text-[10px] border-none outline-none focus:bg-emerald-100 transition-colors" 
             />
             <button type="submit" className="w-8 h-8 bg-emerald-600 text-white rounded-2xl active:scale-90 transition-transform"><i className="bi bi-search text-sm"></i></button>
           </form>

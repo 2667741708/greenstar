@@ -1,3 +1,14 @@
+// ============================================================================
+// 文件: src/App.tsx
+// 基准版本: App.tsx @ 650ddca (151行)
+// 修改内容 / Changes:
+//   [新增] 定位自动跳转：定位成功后自动构造 CityInfo 进入 CityExplorer
+//   [新增] 定位信息条：在 Header 下方显示当前实时地址
+//   [新增] POI 缓存过期清理逻辑（App mount 时执行一次）
+//   [NEW] Auto-locate: construct CityInfo from GPS and jump to CityExplorer
+//   [NEW] Location info bar below Header showing current address
+//   [NEW] Purge expired POI cache on App mount
+// ============================================================================
 import React, { useState, useEffect, useCallback } from 'react';
 import { ViewState, CityInfo } from './types';
 import { CHINA_CITIES } from './config/cities';
@@ -9,6 +20,7 @@ import { PlanPanel } from './components/PlanPanel';
 import { ProfilePanel } from './components/ProfilePanel';
 import { LoadingOverlay } from './components/LoadingOverlay';
 import { useGeolocation } from './hooks/useGeolocation';
+import { purgeExpiredCache } from './services/poiCache';
 
 declare global {
   interface AIStudio {
@@ -26,17 +38,39 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [autoLocated, setAutoLocated] = useState(false); // 防止重复自动跳转
 
   // 全局数据
   const [cities, setCities] = useState<CityInfo[]>(CHINA_CITIES);
   const [currentCity, setCurrentCity] = useState<CityInfo | null>(null);
-  const [globalSpots, setGlobalSpots] = useState<any[]>([]); // 全局 spots 供 PlanPanel 使用
-  const [globalKeywords, setGlobalKeywords] = useState<string[]>([]); // 全屏联动主题关键词
+  const [globalSpots, setGlobalSpots] = useState<any[]>([]);
+  const [globalKeywords, setGlobalKeywords] = useState<string[]>([]);
 
-  const { refreshLocation } = useGeolocation();
+  // 定位自动跳转：定位成功后自动构造当前位置 CityInfo 并进入 CityExplorer
+  // Auto-locate: construct CityInfo from GPS and jump to CityExplorer
+  const { location, address: geoAddress, city: geoCity, refreshLocation } = useGeolocation(
+    (lat, lng, addr, cityName) => {
+      if (cityName && !autoLocated) {
+        const autoCity: CityInfo = {
+          id: `geo-${Date.now()}`,
+          name: cityName,
+          province: '',
+          coordinates: { lat, lng },
+          description: addr,
+          isUnlocked: true,
+        };
+        setCurrentCity(autoCity);
+        setActiveTab('city-explorer');
+        setAutoLocated(true);
+      }
+    }
+  );
 
   useEffect(() => {
     checkKeyStatus();
+    // App mount 时清理过期 POI 缓存
+    // Purge expired POI cache on app mount
+    purgeExpiredCache().catch(console.warn);
   }, []);
 
   const checkKeyStatus = async () => {
@@ -70,6 +104,22 @@ const App: React.FC = () => {
         onRefreshLocation={refreshLocation} 
         onUpgradeKey={handleUpgradeKey} 
       />
+
+      {/* 定位信息条：实时显示当前地址 */}
+      {/* Location info bar: show current address in real-time */}
+      {location && (
+        <div className="px-4 py-1.5 bg-emerald-50/80 backdrop-blur-sm text-xs text-emerald-700 flex items-center gap-2 border-b border-emerald-100">
+          <i className="bi bi-geo-alt-fill text-emerald-500" />
+          <span className="truncate flex-1">{geoAddress}</span>
+          <button 
+            onClick={refreshLocation} 
+            className="ml-auto text-emerald-500 hover:text-emerald-700 transition-colors shrink-0"
+            title="重新定位"
+          >
+            <i className="bi bi-arrow-clockwise" />
+          </button>
+        </div>
+      )}
 
       <main className="flex-1 overflow-y-auto relative z-10">
         <LoadingOverlay loadingStep={loadingStep} isPro={isPro} />
