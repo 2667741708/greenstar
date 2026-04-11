@@ -102,8 +102,12 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, cityName = '未知
           <button onClick={onClose} className="w-10 h-10 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors hover:bg-black/40"><i className="bi bi-x-lg"></i></button>
         </div>
 
-        {/* 封面图 */}
-        <div className="h-64 bg-gray-100 relative overflow-hidden group">
+        {/* 封面高清大图（点击可全屏查看） */}
+        {/* Cover HD image (click to view fullscreen) */}
+        <div className="h-80 bg-gray-100 relative overflow-hidden group cursor-pointer" onClick={() => {
+          const imgSrc = (spot.photos && spot.photos.length > 0) ? spot.photos[spot.photos.length - 1] : spot.imageUrl;
+          if (imgSrc) setViewingPhoto(imgSrc);
+        }}>
           {isImgLoading && !imgError && (
             <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
               <i className="bi bi-image text-4xl text-gray-300"></i>

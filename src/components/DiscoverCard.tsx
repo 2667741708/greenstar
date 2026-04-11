@@ -12,7 +12,7 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ spot, onClick }) => 
 
   return (
     <div onClick={() => onClick(spot)} className="bg-white rounded-[2.5rem] p-5 shadow-sm border border-gray-50 flex gap-5 group hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer">
-      <div className="w-24 h-24 bg-gray-100 rounded-3xl shrink-0 relative overflow-hidden shadow-inner flex items-center justify-center">
+      <div className="w-28 h-28 bg-gray-100 rounded-3xl shrink-0 relative overflow-hidden shadow-inner flex items-center justify-center">
         {isImgLoading && !imgError && (
           <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
         )}
@@ -23,6 +23,7 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ spot, onClick }) => 
             onLoad={() => setIsImgLoading(false)}
             onError={() => { setImgError(true); setIsImgLoading(false); }} 
             referrerPolicy="no-referrer"
+            loading="lazy"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-emerald-50 text-emerald-200 text-3xl">

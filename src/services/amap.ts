@@ -36,11 +36,34 @@ const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: numbe
 };
 
 /**
- * 生成高德静态地图缩略图 URL（兜底图片）
- * Generate AMap static map thumbnail URL as fallback image
+ * 生成高德高清静态地图 URL（兜底图片）
+ * Generate AMap high-resolution static map URL as fallback image
+ * 分辨率: 750x400 (高德免费版支持的最大尺寸)
+ * Resolution: 750x400 (max supported by AMap free tier)
  */
 const generateStaticMapUrl = (lat: number, lng: number): string => {
-  return `https://restapi.amap.com/v3/staticmap?location=${lng},${lat}&zoom=15&size=200*200&markers=mid,,A:${lng},${lat}&key=${AMAP_KEY}`;
+  // size=750*400 是高德静态图 API 的最大分辨率
+  // zoom=16 提供街道级细节
+  return `https://restapi.amap.com/v3/staticmap?location=${lng},${lat}&zoom=16&size=750*400&markers=mid,,A:${lng},${lat}&key=${AMAP_KEY}`;
+};
+
+/**
+ * 从高德 POI photos URL 中提取高清原图链接
+ * Extract HD original image URL from AMap POI photo URL
+ *
+ * 高德返回的 photos URL 通常托管在阿里云 OSS，带有裁剪/压缩参数：
+ * 例如: https://xxx.amap.com/images/xxx.jpg?x-oss-process=image/resize,w_400
+ * 移除 ?x-oss-process... 后缀即可获取原图
+ *
+ * AMap photo URLs are hosted on Alibaba Cloud OSS with resize params.
+ * Removing the ?x-oss-process suffix returns the original full-res image.
+ */
+const extractHDPhotoUrl = (url: string): string => {
+  if (!url) return '';
+  // 移除 OSS 图片处理参数，保留原图 URL
+  // Strip OSS image processing parameters to get original image
+  const cleanUrl = url.split('?')[0];
+  return cleanUrl;
 };
 
 // ============================================================
@@ -127,10 +150,10 @@ const _searchPOIFromAmap = (
                 else if (poi.type.includes('风景') || poi.type.includes('名胜')) category = 'Scenic';
               }
 
-              // 图片来源优先级：高德原生 photos → 静态地图 URL 兜底
-              // Image priority: AMap native photos → static map URL fallback
+              // 图片来源优先级：高德原生 photos 原图 → 高清静态地图 URL 兜底
+              // Image priority: AMap native photos (HD original) → high-res static map fallback
               const imageUrl = (poi.photos && poi.photos.length > 0)
-                ? poi.photos[0].url
+                ? extractHDPhotoUrl(poi.photos[0].url)
                 : generateStaticMapUrl(poi.location.lat, poi.location.lng);
 
               return {
