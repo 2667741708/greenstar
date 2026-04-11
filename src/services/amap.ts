@@ -249,6 +249,112 @@ const _searchPOIFromAmap = (
   });
 };
 
+// ============================================================
+// 降级引擎：高德 Web REST API（当 JS API 因网络/代理不可用时自动切换）
+// Fallback engine: AMap Web REST API (auto-switch when JS API unavailable)
+//
+// 使用高德 v5/place/around API 进行周边搜索
+// 返回包含真实照片(photos)的 POI 数据
+// Uses AMap v5/place/around API for nearby search
+// Returns POIs with real photos just like JS API
+// ============================================================
+const _searchPOIFromREST = async (
+  city: string,
+  keyword: string,
+  center: { lat: number; lng: number },
+  options: SearchPOIOptions = {}
+): Promise<Spot[]> => {
+  const radius = options.radius || CONSTANTS.SEARCH_RADIUS.city;
+  const page = options.pageIndex || 1;
+  const pageSize = options.pageSize || 50;
+
+  // 构建 REST API URL
+  // Build REST API URL
+  let url: string;
+  if (keyword) {
+    // 关键词搜索使用 v5/place/text
+    url = `https://restapi.amap.com/v5/place/text?key=${AMAP_KEY}&keywords=${encodeURIComponent(keyword)}&region=${encodeURIComponent(city)}&page_size=${pageSize}&page_num=${page}&show_fields=photos,business`;
+  } else {
+    // 周边搜索使用 v5/place/around
+    url = `https://restapi.amap.com/v5/place/around?key=${AMAP_KEY}&location=${center.lng},${center.lat}&radius=${radius}&page_size=${pageSize}&page_num=${page}&show_fields=photos,business`;
+    
+    // 非用户搜索时添加类型过滤
+    // Add type filter for non-user searches
+    if (!options.isUserSearch && !options.type) {
+      // v5 API 使用 types 参数（分类编码）
+      url += `&types=110000|050000|060000|100000|080000|140000`;
+    } else if (options.type) {
+      url += `&types=${options.type}`;
+    }
+  }
+
+  console.log('[REST API] Falling back to Web REST API:', url.substring(0, 80) + '...');
+
+  const resp = await fetch(url, { 
+    signal: AbortSignal.timeout(10000),
+    referrerPolicy: 'no-referrer' 
+  });
+  if (!resp.ok) throw new Error(`REST API HTTP ${resp.status}`);
+  const data = await resp.json();
+
+  if (data.status !== '1' || !data.pois || data.pois.length === 0) {
+    console.warn('[REST API] No results:', data.info || data.infocode);
+    return [];
+  }
+
+  let spots: Spot[] = data.pois.map((poi: any) => {
+    // v5 REST API location 格式为 "lng,lat" 字符串
+    const [lngStr, latStr] = (poi.location || '0,0').split(',');
+    const poiLat = parseFloat(latStr);
+    const poiLng = parseFloat(lngStr);
+
+    // 评分
+    const ratingStr = poi.business?.rating || (4 + Math.random()).toFixed(1);
+    const rating = Math.min(parseFloat(ratingStr), 5);
+
+    // 分类
+    let category = 'Landmark';
+    const typeStr = poi.type || '';
+    if (typeStr.includes('酒店') || typeStr.includes('宾馆') || typeStr.includes('民宿')) category = 'Hotel';
+    else if (typeStr.includes('餐厅') || typeStr.includes('美食')) category = 'Restaurant';
+    else if (typeStr.includes('咖啡')) category = 'Cafe';
+    else if (typeStr.includes('公园')) category = 'Park';
+    else if (typeStr.includes('博物馆')) category = 'Museum';
+    else if (typeStr.includes('购物') || typeStr.includes('商场') || typeStr.includes('步行街')) category = 'Shopping';
+    else if (typeStr.includes('风景') || typeStr.includes('名胜')) category = 'Scenic';
+
+    // REST API v5 photos 格式: [{url: string}]
+    const photos = poi.photos && poi.photos.length > 0 ? poi.photos : null;
+    const tieredUrls = generateTieredImageUrls(photos, poiLat, poiLng);
+
+    return {
+      id: poi.id || `rest-${Date.now()}-${Math.random()}`,
+      name: poi.name,
+      description: poi.address || typeStr || '热门地点',
+      category: category,
+      imageUrl: tieredUrls.thumb,
+      imageUrlThumb: tieredUrls.thumb,
+      imageUrlHD: tieredUrls.hd,
+      coordinates: { lat: poiLat, lng: poiLng },
+      rating: rating,
+      tags: typeStr ? typeStr.split(';').slice(0, 2).map((t: string) => t.split('|').pop() || t) : [],
+      checkedIn: false,
+      distance: calculateDistance(center.lat, center.lng, poiLat, poiLng),
+    };
+  });
+
+  // 负面排除（非用户搜索）
+  if (!options.isUserSearch) {
+    spots = spots.filter(spot => {
+      const info = (spot.tags || []).join(' ') + ' ' + (spot.description || '');
+      return !CONSTANTS.POI_TYPE_EXCLUDE.some(ex => info.includes(ex));
+    });
+  }
+
+  console.log(`[REST API] Got ${spots.length} spots for ${city}`);
+  return spots;
+};
+
 /**
  * 带缓存的 POI 搜索（主接口）
  * Cached POI search (main public API)
@@ -275,13 +381,26 @@ export const searchPOI = async (
     return cached;
   }
 
-  // Step 2: 缓存未命中，调用高德 API
-  // Cache miss: call AMap API
-  const spots = await _searchPOIFromAmap(city, keyword, center, { ...options, radius });
+  // Step 2: 双引擎搜索 — JS API 优先，失败降级 REST API
+  // Dual-engine search: prefer JS API, auto-fallback to REST API
+  let spots: Spot[];
+  try {
+    spots = await _searchPOIFromAmap(city, keyword, center, { ...options, radius });
+  } catch (jsErr: any) {
+    console.warn(`[AMap JS] ${jsErr.message}, 降级到 REST API / falling back to REST API`);
+    try {
+      spots = await _searchPOIFromREST(city, keyword, center, { ...options, radius });
+    } catch (restErr: any) {
+      console.error(`[REST API] Also failed: ${restErr.message}`);
+      return [];  // 双引擎均失败，返回空让上层 RAG 兜底
+    }
+  }
 
   // Step 3: 写入缓存（异步，不阻塞返回）
   // Write to cache asynchronously
-  setCachedPOI(cacheKey, spots, city).catch(e => console.warn('[POI Cache] Write failed:', e));
+  if (spots.length > 0) {
+    setCachedPOI(cacheKey, spots, city).catch(e => console.warn('[POI Cache] Write failed:', e));
+  }
 
   return spots;
 };
