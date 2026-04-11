@@ -1,17 +1,9 @@
 // ============================================================================
 // 文件: src/services/amap.ts
-// 基准版本: amap.ts @ 650ddca (180行)
+// 基准版本: 此前针对双引擎搜索修改的版本
 // 修改内容 / Changes:
-//   [重构] searchPOI 增加 options 参数，支持动态 radius/type/page
-//   [新增] 三层过滤逻辑: 正面限定 + 负面排除 + 用户搜索透传
-//   [新增] 无图 POI 自动拼接高德静态地图 URL 作为兜底图片
-//   [新增] IndexedDB 缓存层接入（getCachedPOI / setCachedPOI）
-//   [新增] searchPOIPaginated() — 渐进式多页加载
-//   [REFACTOR] searchPOI with options: dynamic radius/type/page
-//   [NEW] 3-layer filter: positive list + negative exclude + user search bypass
-//   [NEW] Static map URL fallback for POIs without photos
-//   [NEW] IndexedDB cache integration
-//   [NEW] searchPOIPaginated() for multi-page loading
+//   [修复] 替换 REST Web Service 调用的 API Key 为专属的 Web 服务 Key
+//   [FIX] Replace REST Web Service API Key with dedicated Web Service Key to prevent auth errors
 // ============================================================================
 
 import { Spot } from '../types';
@@ -20,7 +12,7 @@ import { buildCacheKey, getCachedPOI, setCachedPOI } from './poiCache';
 
 import { loadAMap } from './amapLoader';
 
-const AMAP_KEY = '040c3af03bab9232ab67e0d232838b28';
+const AMAP_KEY = '0e59aae0d84f39b4665eba7acc9f49a9';
 
 const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number) => {
   const R = 6371e3;

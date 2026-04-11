@@ -2,11 +2,11 @@
 // 文件: src/services/imageCrawler.ts
 // 基准版本: 新建文件（无基线版本）
 // 修改内容 / Changes:
-//   [新建] 多源图片爬虫服务：维基共享资源 + 高德静态地图兜底
-//   [NEW] Multi-source image crawler: Wikimedia Commons + AMap static map fallback
+//   [修复] 替换高德静态图接口兜底所用的 Key 为专属 Web Service API Key
+//   [FIX] Replace static map fallback API Key with dedicated Web Service API Key
 // ============================================================================
 
-const AMAP_KEY = '040c3af03bab9232ab67e0d232838b28';
+const AMAP_KEY = '0e59aae0d84f39b4665eba7acc9f49a9';
 
 /**
  * 从维基共享资源搜索地点图片
