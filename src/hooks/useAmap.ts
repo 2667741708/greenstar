@@ -58,9 +58,9 @@ export const useAmap = (
     if (cities && cities.length > 0) {
       cities.forEach(city => {
         const div = document.createElement('div');
-        div.className = `flex flex-col items-center cursor-pointer hover:scale-110 transition-transform ${city.isUnlocked ? 'opacity-100' : 'opacity-80'}`;
+        div.className = `flex flex-col items-center cursor-pointer hover:scale-110 transition-transform opacity-100`;
         div.innerHTML = `
-          <div class="w-8 h-8 rounded-full shadow-lg ${city.isUnlocked ? (isPro ? 'bg-amber-500' : 'bg-emerald-500') : 'bg-gray-400'} border-2 border-white flex items-center justify-center text-white text-sm relative z-10">
+          <div class="w-8 h-8 rounded-full shadow-lg ${isPro ? 'bg-[var(--color-accent-lilac)]' : 'bg-[var(--color-accent-pink)]'} border-2 border-white flex items-center justify-center text-white text-sm relative z-10">
             <i class="bi bi-geo-alt-fill"></i>
           </div>
           <div class="mt-1 px-2 py-0.5 bg-white/90 backdrop-blur-sm rounded-md shadow-sm text-xs font-bold text-gray-800 border border-gray-100 whitespace-nowrap">${city.name}</div>
