@@ -18,9 +18,7 @@ import { Spot } from '../types';
 import { CONSTANTS } from '../config/constants';
 import { buildCacheKey, getCachedPOI, setCachedPOI } from './poiCache';
 
-// 声明全局变量 AMap
-// Declare global AMap variable
-declare const AMap: any;
+import { loadAMap } from './amapLoader';
 
 const AMAP_KEY = '040c3af03bab9232ab67e0d232838b28';
 
@@ -84,17 +82,18 @@ const generateTieredImageUrls = (
     // Strip OSS params to get base URL
     const baseUrl = rawUrl.split('?')[0];
 
-    return {
-      // 缩略图: 强制 200px 宽 + JPEG 75% 压缩
-      // Thumbnail: force 200px width + JPEG 75% quality
-      thumb: `${baseUrl}?x-oss-process=image/resize,w_200/quality,q_75`,
-      // 标准图: 600px 宽 + JPEG 85% 压缩
-      // Standard: 600px width + JPEG 85% quality
-      standard: `${baseUrl}?x-oss-process=image/resize,w_600/quality,q_85`,
-      // 原图: 无处理参数
-      // HD original: no processing params
-      hd: baseUrl,
-    };
+    // 检测是否支持阿里云 OSS 处理 (Autonavi 域名)
+    const isOss = baseUrl.includes('autonavi.com') || baseUrl.includes('aliyuncs.com');
+
+    if (isOss) {
+      return {
+        thumb: `${baseUrl}?x-oss-process=image/resize,w_200/quality,q_75`,
+        standard: `${baseUrl}?x-oss-process=image/resize,w_600/quality,q_85`,
+        hd: baseUrl,
+      };
+    } else {
+      return { thumb: baseUrl, standard: baseUrl, hd: baseUrl };
+    }
   }
 
   // 无图 POI：用地图瓦片生成两级兜底
@@ -131,31 +130,27 @@ const _searchPOIFromAmap = (
   options: SearchPOIOptions = {}
 ): Promise<Spot[]> => {
   return new Promise((resolve, reject) => {
-    if (typeof AMap === 'undefined') {
-      reject(new Error('高德地图 JS API 未加载成功'));
-      return;
-    }
+    loadAMap().then((AMap) => {
+      // ============================================================
+      // 三层过滤 Layer 1: 确定 type 参数
+      // Three-layer filter Layer 1: determine type parameter
+      // ============================================================
+      let searchType: string;
+      if (options.isUserSearch) {
+        // Layer 3: 用户主动搜索 — 全分类透传，不限制
+        // User explicit search: bypass all filters
+        searchType = '';
+      } else if (options.type) {
+        // 标签精准搜索 — 使用调用方传入的分类编码
+        // Tag-based search: use caller-provided category code
+        searchType = options.type;
+      } else {
+        // Layer 1: 默认浏览 — 使用正面类型限定列表
+        // Default browse: use positive-list filter
+        searchType = CONSTANTS.POI_TYPE_POSITIVE;
+      }
 
-    // ============================================================
-    // 三层过滤 Layer 1: 确定 type 参数
-    // Three-layer filter Layer 1: determine type parameter
-    // ============================================================
-    let searchType: string;
-    if (options.isUserSearch) {
-      // Layer 3: 用户主动搜索 — 全分类透传，不限制
-      // User explicit search: bypass all filters
-      searchType = '';
-    } else if (options.type) {
-      // 标签精准搜索 — 使用调用方传入的分类编码
-      // Tag-based search: use caller-provided category code
-      searchType = options.type;
-    } else {
-      // Layer 1: 默认浏览 — 使用正面类型限定列表
-      // Default browse: use positive-list filter
-      searchType = CONSTANTS.POI_TYPE_POSITIVE;
-    }
-
-    const radius = options.radius || CONSTANTS.SEARCH_RADIUS.city;
+      const radius = options.radius || CONSTANTS.SEARCH_RADIUS.city;
 
     AMap.plugin(['AMap.PlaceSearch'], () => {
       try {
@@ -245,7 +240,8 @@ const _searchPOIFromAmap = (
       } catch (err) {
         reject(err);
       }
-    });
+    }); // closes AMap.plugin
+    }).catch((err: any) => reject(new Error('高德地图 JS API 加载异常: ' + err.message)));
   });
 };
 
@@ -447,11 +443,8 @@ export const searchPOIPaginated = async (
 
 export const reverseGeocode = (lat: number, lng: number): Promise<{ address: string; city: string }> => {
   return new Promise((resolve, reject) => {
-    if (typeof AMap === 'undefined') {
-      reject(new Error('高德地图 JS API 未加载成功'));
-      return;
-    }
-    AMap.plugin(['AMap.Geocoder'], () => {
+    loadAMap().then((AMap) => {
+      AMap.plugin(['AMap.Geocoder'], () => {
       try {
         const geocoder = new AMap.Geocoder();
         geocoder.getAddress([lng, lat], (status: string, result: any) => {
@@ -471,16 +464,14 @@ export const reverseGeocode = (lat: number, lng: number): Promise<{ address: str
         reject(err);
       }
     });
+    }).catch((err: any) => reject(new Error('高德地图 JS API 加载异常: ' + err.message)));
   });
 };
 
 export const geocode = (address: string): Promise<{ lat: number, lng: number, formattedAddress: string, city: string }> => {
   return new Promise((resolve, reject) => {
-     if (typeof AMap === 'undefined') {
-        reject(new Error('高德地图 JS API 未加载成功'));
-        return;
-      }
-      AMap.plugin(['AMap.Geocoder'], () => {
+      loadAMap().then((AMap) => {
+        AMap.plugin(['AMap.Geocoder'], () => {
         try {
           const geocoder = new AMap.Geocoder();
           geocoder.getLocation(address, (status: string, result: any) => {
@@ -501,17 +492,15 @@ export const geocode = (address: string): Promise<{ lat: number, lng: number, fo
         } catch (err) {
           reject(err);
         }
-      });
+      }); // closes AMap.plugin
+      }).catch((err: any) => reject(new Error('高德地图 JS API 加载异常: ' + err.message)));
   });
 };
 
 export const getSubDistricts = (keyword: string, level: string = 'city'): Promise<any[]> => {
   return new Promise((resolve, reject) => {
-    if (typeof AMap === 'undefined') {
-      reject(new Error('高德地图 JS API 未加载成功'));
-      return;
-    }
-    AMap.plugin('AMap.DistrictSearch', () => {
+    loadAMap().then((AMap) => {
+      AMap.plugin('AMap.DistrictSearch', () => {
       try {
         const districtSearch = new AMap.DistrictSearch({
           level: level,
@@ -528,6 +517,7 @@ export const getSubDistricts = (keyword: string, level: string = 'city'): Promis
       } catch (err) {
         reject(err);
       }
-    });
+    }); // closes AMap.plugin
+    }).catch((err: any) => reject(new Error('高德地图 JS API 加载异常: ' + err.message)));
   });
 };

@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Spot, CityInfo } from '../types';
-
-declare const AMap: any;
+import { loadAMap } from '../services/amapLoader';
 
 export const useAmap = (
   containerId: string, 
@@ -19,35 +18,36 @@ export const useAmap = (
 
   useEffect(() => {
     if (!document.getElementById(containerId)) return;
-    if (typeof AMap === 'undefined') return;
 
-    if (!mapInstance.current) {
-      mapInstance.current = new AMap.Map(containerId, {
-        zoom: zoom,
-        center: center ? [center.lng, center.lat] : [105, 35],
-        viewMode: '3D',
-        pitch: 45,
-        mapStyle: isPro ? 'amap://styles/darkblue' : 'amap://styles/whitesmoke'
-      });
-      
-      mapInstance.current.on('click', () => onSpotSelect(null));
+    loadAMap().then((AMap) => {
+      if (!mapInstance.current) {
+        mapInstance.current = new AMap.Map(containerId, {
+          zoom: zoom,
+          center: center ? [center.lng, center.lat] : [105, 35],
+          viewMode: '3D',
+          pitch: 45,
+          mapStyle: isPro ? 'amap://styles/darkblue' : 'amap://styles/whitesmoke'
+        });
+        
+        mapInstance.current.on('click', () => onSpotSelect(null));
 
-      AMap.plugin(['AMap.ToolBar'], function() {
-        mapInstance.current.addControl(new AMap.ToolBar({ position: 'RB' }));
-      });
-    } else if (center) {
-      mapInstance.current.setZoomAndCenter(zoom, [center.lng, center.lat], false, 800);
-    }
+        AMap.plugin(['AMap.ToolBar'], function() {
+          mapInstance.current.addControl(new AMap.ToolBar({ position: 'RB' }));
+        });
+      } else if (center) {
+        mapInstance.current.setZoomAndCenter(zoom, [center.lng, center.lat], false, 800);
+      }
 
-    // 更新主题
-    mapInstance.current.setMapStyle(isPro ? 'amap://styles/darkblue' : 'amap://styles/whitesmoke');
+      // 更新主题
+      mapInstance.current.setMapStyle(isPro ? 'amap://styles/darkblue' : 'amap://styles/whitesmoke');
 
-    // 绘制 Markers
-    updateMarkers();
+      // 绘制 Markers
+      updateMarkers(AMap);
+    }).catch(console.error);
 
   }, [center, zoom, isPro, spots, cities, selectedSpot]);
 
-  const updateMarkers = () => {
+  const updateMarkers = (AMap: any) => {
     if (!mapInstance.current) return;
     
     // 清除旧 Markers
@@ -104,17 +104,17 @@ export const useAmap = (
         if (spot.checkedIn && spot.photos && spot.photos.length > 0) {
           // New High-Fidelity Polaroid Marker
           const countBadge = spot.photos.length > 1 
-            ? `<div style="position: absolute; top: -8px; right: -8px; background: #ef4444; color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white; z-index: 10; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">\${spot.photos.length}</div>` 
+            ? `<div style="position: absolute; top: -8px; right: -8px; background: #ef4444; color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; border: 2px solid white; z-index: 10; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">${spot.photos.length}</div>` 
             : '';
             
           markerContent = `
             <div class="glass-panel" style="width: 110px; height: 120px; padding: 6px; border-radius: 12px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; box-shadow: 0 10px 25px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.2s;">
-              \${countBadge}
+              ${countBadge}
               <div style="width: 100%; height: 75px; background: #f1f5f9; border-radius: 8px; overflow: hidden;">
-                <img src="\${spot.photos[spot.photos.length - 1]}" style="width: 100%; height: 100%; object-fit: cover;" alt="\${spot.name}" />
+                <img src="${spot.photos[spot.photos.length - 1]}" style="width: 100%; height: 100%; object-fit: cover;" alt="${spot.name}" />
               </div>
               <div style="width: 100%; padding-top: 4px; text-align: center;">
-                <div style="font-size: 11px; font-weight: 800; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1;">\${spot.name}</div>
+                <div style="font-size: 11px; font-weight: 800; color: #1e293b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1;">${spot.name}</div>
                 <div style="font-size: 9px; font-weight: 600; color: #64748b; margin-top: 2px;">Day 1</div>
               </div>
               
