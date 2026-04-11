@@ -18,6 +18,7 @@ import { Spot, CityInfo, RegionNode } from '../types';
 import { searchPOI, getSubDistricts, SearchPOIOptions } from '../services/amap';
 import { fetchRealWorldData } from '../services/crawler';
 import { generateFallbackPOIs } from '../services/deepseek';
+import { batchFetchPOIImages } from '../services/imageCrawler';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
 import { clearCityCache, prefetchHDImages } from '../services/poiCache';
@@ -205,6 +206,19 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
       setSpots(result);
 
+      // 后台异步补充真实的高清图片（维基共享资源等），替换地图瓦片兜底图
+      // Async fetch real HD photos to replace AMap tile maps
+      if (result.length > 0) {
+        batchFetchPOIImages(result, name)
+          .then(images => {
+            setSpots(prev => prev.map((s, i) => {
+              const newImg = images[i];
+              return newImg ? { ...s, imageUrl: newImg, imageUrlHD: newImg, imageUrlThumb: newImg } : s;
+            }));
+          })
+          .catch(err => console.error('[HD Fetch Error]', err));
+      }
+
       // Pro 用户：后台静默预取 HD 原图到 IndexedDB
       // Pro user: silently prefetch HD images to IndexedDB in background
       if (isPro && result.length > 0) {
@@ -218,6 +232,13 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         const fallback = await generateFallbackPOIs(name, realWorldText, center);
         if (fallback.length > 0) {
           setSpots(fallback);
+          // 为 RAG 兜底数据异步补充图片
+          batchFetchPOIImages(fallback, name).then(images => {
+            setSpots(prev => prev.map((s, i) => {
+              const newImg = images[i];
+              return newImg ? { ...s, imageUrl: newImg, imageUrlHD: newImg, imageUrlThumb: newImg } : s;
+            }));
+          }).catch(console.error);
         } else {
           setErrorMsg(`检索失败: ${err.message}`);
         }
@@ -280,7 +301,18 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         // 应用版本对应的地点数量限制
         const limitedSpots = finalSpots.slice(0, maxSpotsDisplay);
         setSpots(limitedSpots);
-        // 图片已在 amap.ts 层兜底，无需额外爬虫调用
+        
+        // 后台异步补充真实图片，覆盖瓦片地图兜底
+        if (limitedSpots.length > 0) {
+          batchFetchPOIImages(limitedSpots, currentRegion.name)
+            .then(images => {
+              setSpots(prev => prev.map((s, i) => {
+                const newImg = images[i];
+                return newImg ? { ...s, imageUrl: newImg, imageUrlHD: newImg, imageUrlThumb: newImg } : s;
+              }));
+            })
+            .catch(console.error);
+        }
       } catch (err) {
         console.error('[TagSearch] failed:', err);
       } finally {

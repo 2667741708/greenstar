@@ -60,8 +60,16 @@ export const fetchPOIImage = async (
   lng: number, 
   existingUrl?: string
 ): Promise<string> => {
-  // 如果已有有效图片 URL（如高德原生提供），直接返回
-  if (existingUrl && existingUrl.trim()) return existingUrl;
+  // 如果已有有效图片 URL（如高德原生真实图片），直接返回
+  // 排除我们内部兜底的瓦片地图(webrd0)和静态地图(staticmap)，确保这些假图片仍然去外网爬取真图
+  if (
+    existingUrl && 
+    existingUrl.trim() && 
+    !existingUrl.includes('webrd0') && 
+    !existingUrl.includes('staticmap')
+  ) {
+    return existingUrl;
+  }
 
   // 尝试维基共享资源检索真实图片
   const wikiImg = await searchWikimediaImage(`${name} ${city}`);
