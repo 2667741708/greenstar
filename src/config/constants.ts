@@ -164,5 +164,60 @@ export const CONSTANTS = {
   // POI cache time-to-live: 24 hours
   POI_CACHE_TTL: 24 * 60 * 60 * 1000,
 
+  // ============================================================
+  // 推荐引擎配置 (Recommendation Engine Config)
+  // 修改基准: constants.ts @ 当前版本 (169行)
+  // 修改内容: 新增 DISTANCE_SEGMENTS / SORT_WEIGHTS / SCENE_RULES 三个推荐引擎配置块
+  // Changes: Added recommendation engine config: distance segments, sort weights, scene inference rules
+  // ============================================================
+
+  // 距离分段阈值（米）— 用于将 POI 按可达性分组
+  // Distance segment thresholds (meters) for accessibility grouping
+  DISTANCE_SEGMENTS: [
+    { key: 'walkable',  label: '步行可达',     maxMeters: 1000 },
+    { key: 'bikeable',  label: '骑车/打车范围', maxMeters: 3000 },
+    { key: 'driveable', label: '值得专程去',    maxMeters: 10000 },
+    { key: 'far',       label: '远程目的地',    maxMeters: Infinity },
+  ] as Array<{ key: string; label: string; maxMeters: number }>,
+
+  // 排序权重矩阵 — 控制多维度排序的优先级
+  // Sort weight matrix for multi-dimensional ranking
+  // 最终得分 = rating * W_RATING + hasPhoto * W_PHOTO + hasCost * W_COST + distancePenalty * W_DISTANCE
+  SORT_WEIGHTS: {
+    W_RATING: 10,        // 评分权重 (满分5分 → 最高贡献50)
+    W_PHOTO: 5,          // 有照片加分
+    W_COST: 3,           // 有人均消费数据加分 (信息透明度)
+    W_OPEN_TIME: 2,      // 有营业时间数据加分
+    W_DISTANCE: -0.001,  // 距离惩罚 (每米 -0.001 分)
+    MIN_QUALITY_RATING: 4.0,  // 推荐质量门槛: 评分低于此值不进入精选推荐
+  },
+
+  // 场景/风格推断规则 — 从高德 type 字符串和 name 推断人类可读的风格标签
+  // Scene inference rules: infer human-readable style tags from AMap type + name
+  SCENE_RULES: [
+    { keywords: ['精酿', '啤酒', '鲜啤'],  scene: '精酿啤酒' },
+    { keywords: ['威士忌', 'whiskey', 'WHISKEY'], scene: '威士忌' },
+    { keywords: ['鸡尾酒', 'cocktail'],    scene: '鸡尾酒' },
+    { keywords: ['清吧'],                  scene: '清吧' },
+    { keywords: ['LiveHouse', 'livehouse', 'LIVE', '现场'], scene: 'LiveHouse' },
+    { keywords: ['民谣'],                  scene: '民谣酒吧' },
+    { keywords: ['小酒馆', '酒馆'],         scene: '小酒馆' },
+    { keywords: ['酒吧'],                  scene: '酒吧' },
+    { keywords: ['咖啡', 'coffee', 'COFFEE'], scene: '咖啡馆' },
+    { keywords: ['猫咖', '猫'],            scene: '猫咖' },
+    { keywords: ['密室', '逃脱'],          scene: '密室逃脱' },
+    { keywords: ['剧本杀'],               scene: '剧本杀' },
+    { keywords: ['火锅'],                 scene: '火锅' },
+    { keywords: ['烧烤', '烤肉', '串串'],  scene: '烧烤' },
+    { keywords: ['日料', '寿司'],         scene: '日料' },
+    { keywords: ['茶馆', '茶室', '茶'],   scene: '茶馆' },
+    { keywords: ['书店', '书吧'],         scene: '书店' },
+    { keywords: ['博物馆'],               scene: '博物馆' },
+    { keywords: ['公园'],                 scene: '公园' },
+    { keywords: ['景区', '风景', '名胜'], scene: '景区' },
+    { keywords: ['酒店', '宾馆'],         scene: '酒店' },
+    { keywords: ['民宿', '客栈'],         scene: '民宿' },
+  ] as Array<{ keywords: string[]; scene: string }>,
+
   DEFAULT_LOCATION: { lat: 31.2304, lng: 121.4737, name: '上海市' },
 };

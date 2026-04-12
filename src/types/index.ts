@@ -28,6 +28,13 @@ export interface Spot {
   cost?: string;                // 商业指标：人均消费
   openTime?: string;            // 商业指标：营业时间
   aiGroup?: string;             // AI 精选分组标记 (must_visit | dining | leisure)
+  // 推荐引擎输出字段 (Recommendation engine output)
+  // 修改基准: types/index.ts @ 当前版本 (61行)
+  // 修改内容: 新增 scene/score/segment 推荐元数据
+  // Changes: Added scene/score/segment recommendation metadata
+  scene?: string;               // 推断的场景风格 (精酿啤酒 | 小酒馆 | 咖啡馆 等)
+  score?: number;               // 多维度加权得分
+  segment?: string;             // 距离分段 key (walkable | bikeable | driveable | far)
 }
 
 export interface CityInfo {
