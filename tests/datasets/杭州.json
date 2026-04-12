@@ -11,35 +11,71 @@
   },
   "ground_truth": {
     "must_visit": [
+      "西湖",
+      "灵隐寺",
+      "雷峰塔",
+      "西溪国家湿地公园",
+      "千岛湖",
+      "宋城",
+      "河坊街",
+      "六和塔",
+      "岳王庙",
+      "白堤",
+      "苏堤",
+      "断桥",
+      "三潭印月",
+      "太子湾公园",
+      "龙井村",
+      "九溪烟树",
+      "云栖竹径",
+      "中国茶叶博物馆",
+      "胡雪岩故居",
+      "京杭大运河杭州段",
       "清河坊历史文化特色街区",
       "钱江龙",
       "吴山景区",
-      "留香荀令·SANFEN三分茶(杭州大厦店)",
       "运河海底世界",
       "武林广场-八少女音乐喷泉",
-      "武林广场",
-      "西湖文化广场",
       "弥陀寺公园",
       "杭州运河游船"
     ],
     "dining": [
-      "杭州星都宾馆",
+      "楼外楼",
+      "知味观",
+      "奎元馆",
+      "新白鹿餐厅",
+      "外婆家",
+      "杭州酒家",
+      "山外山",
+      "福缘居酒楼",
+      "菊英面店",
+      "方老大面",
+      "游埠豆浆",
+      "新丰小吃",
+      "咬不得高祖生煎",
+      "老头儿油爆虾",
+      "绿茶餐厅",
       "SECTION COFFEE沙县咖啡(湖墅南路店)",
       "緩奏咖啡店",
       "Neighborhood coffee(马塍支路店)",
-      "星巴克臻选(杭州大厦D座店)",
-      "星巴克(文化广场银泰百货店)",
-      "星巴克(浙江广播电视中心店)",
       "Peet's Coffee皮爷咖啡(杭州大厦店)",
       "Ct.coffee(杭州大厦店)",
       "rich coffee發财猫咖啡"
     ],
     "leisure": [
+      "河坊街夜市",
+      "南山路酒吧街",
+      "大麦巷LiveHouse",
+      "青芝坞清吧",
+      "东信和创园",
+      "晓书馆",
+      "湖畔居茶楼",
+      "杭州大剧院",
+      "南宋御街",
+      "单向空间",
       "温莎KTV(湖墅南路店)",
       "ONE PARTY KTV",
-      "TR Music Lounge",
-      "A+运动俱乐部(白马店)",
-      "万丽国际娱乐会所"
+      "TR Music Lounge"
     ]
   },
   "sources": {
@@ -6008,8 +6044,546 @@
     "total_amap_pois": 341,
     "total_baike_spots": 25,
     "total_ctrip_spots": 57,
-    "ground_truth_must_visit": 10,
-    "ground_truth_dining": 10,
-    "ground_truth_leisure": 5
+    "ground_truth_must_visit": 27,
+    "ground_truth_dining": 21,
+    "ground_truth_leisure": 13
+  },
+  "ground_truth_original": {
+    "must_visit": [
+      "清河坊历史文化特色街区",
+      "钱江龙",
+      "吴山景区",
+      "留香荀令·SANFEN三分茶(杭州大厦店)",
+      "运河海底世界",
+      "武林广场-八少女音乐喷泉",
+      "武林广场",
+      "西湖文化广场",
+      "弥陀寺公园",
+      "杭州运河游船"
+    ],
+    "dining": [
+      "杭州星都宾馆",
+      "SECTION COFFEE沙县咖啡(湖墅南路店)",
+      "緩奏咖啡店",
+      "Neighborhood coffee(马塍支路店)",
+      "星巴克臻选(杭州大厦D座店)",
+      "星巴克(文化广场银泰百货店)",
+      "星巴克(浙江广播电视中心店)",
+      "Peet's Coffee皮爷咖啡(杭州大厦店)",
+      "Ct.coffee(杭州大厦店)",
+      "rich coffee發财猫咖啡"
+    ],
+    "leisure": [
+      "温莎KTV(湖墅南路店)",
+      "ONE PARTY KTV",
+      "TR Music Lounge",
+      "A+运动俱乐部(白马店)",
+      "万丽国际娱乐会所"
+    ]
+  },
+  "ai_enhancement": {
+    "ai_generated_gt": {
+      "must_visit": [
+        "西湖",
+        "灵隐寺",
+        "雷峰塔",
+        "西溪国家湿地公园",
+        "千岛湖",
+        "宋城",
+        "河坊街",
+        "六和塔",
+        "岳王庙",
+        "白堤",
+        "苏堤",
+        "断桥",
+        "三潭印月",
+        "太子湾公园",
+        "龙井村",
+        "九溪烟树",
+        "云栖竹径",
+        "中国茶叶博物馆",
+        "胡雪岩故居",
+        "京杭大运河杭州段"
+      ],
+      "dining": [
+        "楼外楼",
+        "知味观",
+        "奎元馆",
+        "新白鹿餐厅",
+        "外婆家",
+        "杭州酒家",
+        "山外山",
+        "福缘居酒楼",
+        "菊英面店",
+        "方老大面",
+        "游埠豆浆",
+        "新丰小吃",
+        "咬不得高祖生煎",
+        "老头儿油爆虾",
+        "绿茶餐厅"
+      ],
+      "leisure": [
+        "河坊街夜市",
+        "南山路酒吧街",
+        "大麦巷LiveHouse",
+        "青芝坞清吧",
+        "东信和创园",
+        "晓书馆",
+        "湖畔居茶楼",
+        "杭州大剧院",
+        "南宋御街",
+        "单向空间"
+      ]
+    },
+    "cleaned_gt": {
+      "must_visit": [
+        "清河坊历史文化特色街区",
+        "钱江龙",
+        "吴山景区",
+        "运河海底世界",
+        "武林广场-八少女音乐喷泉",
+        "武林广场",
+        "西湖文化广场",
+        "弥陀寺公园",
+        "杭州运河游船"
+      ],
+      "dining": [
+        "SECTION COFFEE沙县咖啡(湖墅南路店)",
+        "緩奏咖啡店",
+        "Neighborhood coffee(马塍支路店)",
+        "Peet's Coffee皮爷咖啡(杭州大厦店)",
+        "Ct.coffee(杭州大厦店)",
+        "rich coffee發财猫咖啡"
+      ],
+      "leisure": [
+        "温莎KTV(湖墅南路店)",
+        "ONE PARTY KTV",
+        "TR Music Lounge"
+      ]
+    },
+    "verified_spots": [
+      {
+        "name": "杭州西湖风景名胜区",
+        "original_query": "西湖",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "coordinates": {
+          "lng": 120.121358,
+          "lat": 30.222692
+        },
+        "address": "西湖街道龙井路1号",
+        "verified": true
+      },
+      {
+        "name": "灵隐寺",
+        "original_query": "灵隐寺",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": "周一至周日 07:30-17:30",
+        "coordinates": {
+          "lng": 120.101406,
+          "lat": 30.240826
+        },
+        "address": "法云弄1号",
+        "verified": true
+      },
+      {
+        "name": "雷峰塔景区",
+        "original_query": "雷峰塔",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "11月1日-次年3月15日:08:00-17:30开放(17:00停止售票)；3月16日-4月30日:08:00-19:00开放(18:30停止售票)；5月1日-10月31日:08:00-20:00开放(19:30停止售票)；",
+        "coordinates": {
+          "lng": 120.148849,
+          "lat": 30.230934
+        },
+        "address": "南山路15号",
+        "verified": true
+      },
+      {
+        "name": "西溪国家湿地公园",
+        "original_query": "西溪国家湿地公园",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "4月1日至10月8日:周一至周日:7:30-18:30，10月9日至次年3月31日:周一至周日:8:00-17:30",
+        "coordinates": {
+          "lng": 120.061159,
+          "lat": 30.255079
+        },
+        "address": "天目山路518号",
+        "verified": true
+      },
+      {
+        "name": "千岛湖风景区",
+        "original_query": "千岛湖",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00；中心湖区:开园时间:8:00-16:00；游船入园时间:8:00-14:30；快艇入园时间:8:00-16:00 东南湖区:开园时间:8:00-15:00；游船入园时间:8:00-13:30；快艇入园时间:8:00-15:00",
+        "coordinates": {
+          "lng": 119.055172,
+          "lat": 29.545082
+        },
+        "address": "千岛湖镇",
+        "verified": true
+      },
+      {
+        "name": "杭州宋城",
+        "original_query": "宋城",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "9:30-21:00,4月11日-12日:9:30-22:20",
+        "coordinates": {
+          "lng": 120.098741,
+          "lat": 30.169795
+        },
+        "address": "之江路148号",
+        "verified": true
+      },
+      {
+        "name": "河坊街",
+        "original_query": "河坊街",
+        "type": "地名地址信息;交通地名;道路名",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "coordinates": {
+          "lng": 120.16863,
+          "lat": 30.2401
+        },
+        "address": "上城区",
+        "verified": true
+      },
+      {
+        "name": "六和塔文化公园",
+        "original_query": "六和塔",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 07:00-17:30 最晚进入16:55；86591401",
+        "coordinates": {
+          "lng": 120.131487,
+          "lat": 30.196338
+        },
+        "address": "之江路16号(近钱塘江)",
+        "verified": true
+      },
+      {
+        "name": "杭州西湖风景名胜区-岳王庙",
+        "original_query": "岳王庙",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 07:30-17:30 最晚进入17:15",
+        "coordinates": {
+          "lng": 120.13459,
+          "lat": 30.252443
+        },
+        "address": "北山街80号",
+        "verified": true
+      },
+      {
+        "name": "杭州西湖风景名胜区-白堤",
+        "original_query": "白堤",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "coordinates": {
+          "lng": 120.149189,
+          "lat": 30.255701
+        },
+        "address": "西湖街道龙井路1号杭州西湖风景名胜区内(东北角)",
+        "verified": true
+      },
+      {
+        "name": "苏堤",
+        "original_query": "苏堤",
+        "type": "地名地址信息;交通地名;道路名",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "coordinates": {
+          "lng": 120.135764,
+          "lat": 30.251448
+        },
+        "address": "西湖区",
+        "verified": true
+      },
+      {
+        "name": "杭州西湖风景名胜区-断桥残雪",
+        "original_query": "断桥",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "coordinates": {
+          "lng": 120.151347,
+          "lat": 30.258151
+        },
+        "address": "龙井路1号杭州西湖风景名胜区内(东北角)",
+        "verified": true
+      },
+      {
+        "name": "杭州西湖风景名胜区-三潭印月",
+        "original_query": "三潭印月",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-17:00 最晚进入16:00",
+        "coordinates": {
+          "lng": 120.145369,
+          "lat": 30.238845
+        },
+        "address": "龙井路1号杭州西湖风景名胜区内(东北角)",
+        "verified": true
+      },
+      {
+        "name": "杭州西湖风景名胜区-太子湾公园",
+        "original_query": "太子湾公园",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "coordinates": {
+          "lng": 120.142177,
+          "lat": 30.22547
+        },
+        "address": "南星街道南山路1-1号",
+        "verified": true
+      },
+      {
+        "name": "龙井村(公交站)",
+        "original_query": "龙井村",
+        "type": "交通设施服务;公交车站;公交车站相关",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "coordinates": {
+          "lng": 120.106641,
+          "lat": 30.218168
+        },
+        "address": "27B路",
+        "verified": true
+      },
+      {
+        "name": "杭州西湖风景名胜区-九溪烟树",
+        "original_query": "九溪烟树",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "coordinates": {
+          "lng": 120.11335,
+          "lat": 30.202395
+        },
+        "address": "龙井村杭州西湖风景名胜区内(近九溪路)",
+        "verified": true
+      },
+      {
+        "name": "云栖竹径",
+        "original_query": "云栖竹径",
+        "type": "地名地址信息;交通地名;道路名",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "coordinates": {
+          "lng": 120.087147,
+          "lat": 30.189233
+        },
+        "address": "西湖区",
+        "verified": true
+      },
+      {
+        "name": "中国茶叶博物馆(双峰馆区)",
+        "original_query": "中国茶叶博物馆",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一,周三至周日 09:00-16:30；周二 全天关闭；周二闭馆，节假日除外；",
+        "coordinates": {
+          "lng": 120.120532,
+          "lat": 30.232381
+        },
+        "address": "龙井路88号",
+        "verified": true
+      },
+      {
+        "name": "胡雪岩旧居",
+        "original_query": "胡雪岩故居",
+        "type": "风景名胜;风景名胜;纪念馆",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "4月1日-10月31日:08:00-17:00；11月1日-次年3月31日:08:00-16:30",
+        "coordinates": {
+          "lng": 120.172906,
+          "lat": 30.237273
+        },
+        "address": "元宝街18号",
+        "verified": true
+      },
+      {
+        "name": "京杭运河",
+        "original_query": "京杭大运河杭州段",
+        "type": "地名地址信息;自然地名;河流",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "coordinates": {
+          "lng": 120.227884,
+          "lat": 30.260091
+        },
+        "address": "上城区",
+        "verified": true
+      },
+      {
+        "name": "楼外楼(城市阳台店)",
+        "original_query": "楼外楼",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "104.00",
+        "open_time": "周一至周日 10:00-14:00,16:00-22:00",
+        "coordinates": {
+          "lng": 120.216049,
+          "lat": 30.240918
+        },
+        "address": "之江路1068号(市民中心地铁站N3B口步行390米)",
+        "verified": true
+      },
+      {
+        "name": "知味观(湖滨总店)",
+        "original_query": "知味观",
+        "type": "餐饮服务;中餐厅;中餐厅|餐饮服务;糕饼店;糕饼店",
+        "rating": 4.8,
+        "cost": "68.00",
+        "open_time": "周一至周日 10:30-21:00",
+        "coordinates": {
+          "lng": 120.163591,
+          "lat": 30.252629
+        },
+        "address": "仁和路83-1号",
+        "verified": true
+      },
+      {
+        "name": "奎元馆(钱江新城市民中心店)",
+        "original_query": "奎元馆",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.6,
+        "cost": "45.00",
+        "open_time": "周一至周日 09:00-20:00",
+        "coordinates": {
+          "lng": 120.210211,
+          "lat": 30.245394
+        },
+        "address": "解放东路18号杭州钱江新城市民中心H座南区F1层",
+        "verified": true
+      },
+      {
+        "name": "新白鹿餐厅(湖滨88店)",
+        "original_query": "新白鹿餐厅",
+        "type": "餐饮服务;中餐厅;浙江菜",
+        "rating": 4.7,
+        "cost": "69.00",
+        "open_time": "周一至周日 10:30-14:30,16:00-21:00",
+        "coordinates": {
+          "lng": 120.162138,
+          "lat": 30.255253
+        },
+        "address": "平海路124号(湖滨88店)",
+        "verified": true
+      },
+      {
+        "name": "外婆家(西湖断桥店)",
+        "original_query": "外婆家",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.6,
+        "cost": "100.00",
+        "open_time": "周六至周日 10:00-22:00；周一至周五 10:00-21:30",
+        "coordinates": {
+          "lng": 120.152107,
+          "lat": 30.259746
+        },
+        "address": "北山街10号",
+        "verified": true
+      },
+      {
+        "name": "杭州酒家(延安路店)",
+        "original_query": "杭州酒家",
+        "type": "餐饮服务;中餐厅;综合酒楼",
+        "rating": 4.8,
+        "cost": "77.00",
+        "open_time": "周一至周五 11:00-14:00,17:00-20:30；周六至周日 11:00-14:00,16:30-20:30",
+        "coordinates": {
+          "lng": 120.164014,
+          "lat": 30.251744
+        },
+        "address": "延安路205号1-3层(龙翔桥地铁站C口步行270米)",
+        "verified": true
+      },
+      {
+        "name": "山外山菜馆(玉泉路店)",
+        "original_query": "山外山",
+        "type": "餐饮服务;中餐厅;浙江菜",
+        "rating": 4.7,
+        "cost": "126.00",
+        "open_time": "周一至周日 10:30-14:00,16:30-20:30",
+        "coordinates": {
+          "lng": 120.120827,
+          "lat": 30.256104
+        },
+        "address": "玉泉路8号植物园北门内(近灵隐路)",
+        "verified": true
+      },
+      {
+        "name": "福缘居酒楼",
+        "original_query": "福缘居酒楼",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.6,
+        "cost": "90.00",
+        "open_time": "周一至周日 11:00-14:00,16:30-21:00",
+        "coordinates": {
+          "lng": 120.17666,
+          "lat": 30.238945
+        },
+        "address": "河坊街35号(江城路地铁站D口步行110米)",
+        "verified": true
+      },
+      {
+        "name": "菊英面店(四季青店)",
+        "original_query": "菊英面店",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "27.00",
+        "open_time": "周一至周日 06:00-18:00",
+        "coordinates": {
+          "lng": 120.196711,
+          "lat": 30.247009
+        },
+        "address": "杭海路96号中洲大酒店裙楼一楼",
+        "verified": true
+      },
+      {
+        "name": "方老大",
+        "original_query": "方老大面",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.7,
+        "cost": "54.00",
+        "open_time": "周一至周日 07:00-20:00",
+        "coordinates": {
+          "lng": 120.176152,
+          "lat": 30.235695
+        },
+        "address": "江城路629号(地铁站H口步行350米)",
+        "verified": true
+      }
+    ],
+    "not_found_spots": [],
+    "enhance_time": "2026-04-12T16:51:42.838635"
   }
 }

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CityExplorer - 照片回忆打卡 & 专属 AI 巡游日记 (Standalone Test)</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-none {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+    /* Simple Leaflet/AMap mock container */
+    #map-container {
+      width: 100%;
+      height: 100%;
+      background: #e5e7eb; /* Fallback */
+      z-index: 0;
+    }
+    
+    .animate-slide-up {
+      animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .animate-in {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* AMap styling simulation */
+    .amap-marker {
+      position: absolute;
+    }
+    .stack-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.4s ease;
+    }
+    .stack-card:hover { /* 放大悬停交互 */
+      transform: scale(1.08) translate(-15px, -5px) rotate(0deg) !important;
+      z-index: 100 !important;
+    }
+    .glass-panel {
+      background: linear-gradient(145deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-top: 1px solid rgba(255,255,255,0.9);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+    /* SVG stroke for AI icon */
+    .glowing-ai {
+      background: -webkit-linear-gradient(right, #3b82f6, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0px 0px 8px rgba(168, 85, 247, 0.6));
+    }
+  </style>
+</head>
+<body class="bg-gray-100 relative">
+
+  <!-- AMap Simulation Area -->
+  <div id="map-container" class="relative overflow-hidden w-full h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=2670&auto=format&fit=crop');">
+    <!-- Overlay to make the map look more '3D/techy' -->
+    <div class="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
+    <div class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
+    
+    <!-- Render Virtual Markers Here -->
+    <div id="markers-layer" class="absolute inset-0 z-10"></div>
+  </div>
+
+  <!-- Top UI -->
+  <div class="absolute top-0 left-0 right-0 p-5 z-20 flex justify-between items-center pointer-events-none">
+    <div class="bg-white/80 backdrop-blur-xl rounded-[2rem] p-3 pl-6 pr-6 shadow-xl border border-white flex gap-3 pointer-events-auto">
+      <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center">
+        <i class="bi bi-compass text-emerald-600 text-xl"></i>
+      </div>
+      <div>
+        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">探索星球</p>
+        <h2 class="font-black text-gray-800 tracking-tight text-lg">东京 (Tokyo)</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Photo Gallery Layer (Right Sidebar) -->
+  <div id="gallery-layer" class="absolute top-28 right-0 bottom-36 w-2/3 max-w-[320px] pointer-events-none z-30 flex flex-col items-end">
+    <!-- Scrollable Gallery Area -->
+    <div class="flex-1 w-full overflow-y-auto overflow-x-hidden scrollbar-none pointer-events-auto flex flex-col items-center gap-[-40px] pt-10 pb-32 relative mask-image-[linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] pr-4 sm:pr-8" id="gallery-stack" style="display: none;">
+      <!-- Generated Photo Cards -->
+    </div>
+  </div>
+
+  <!-- Bottom Action Area -->
+  <div class="absolute bottom-10 inset-x-0 z-40 pointer-events-none flex flex-col items-center justify-end">
+    <!-- Generate AI Journal Button -->
+    <button id="ai-journal-btn" class="pointer-events-auto bg-white/90 backdrop-blur-xl px-8 py-4 rounded-full shadow-2xl border border-white flex items-center justify-center gap-3 hover:bg-white transition-all hover:scale-105 active:scale-95 group" style="display: none;">
+      <i data-lucide="camera" class="w-6 h-6 text-orange-500"></i>
+      <span class="text-base font-bold text-slate-800">Check In</span>
+    </button>
+  </div>
+
+  <!-- Spot Detail Modal (Hidden by default) -->
+  <div id="spot-modal" class="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/60 backdrop-blur-sm animate-in hidden transition-all" onclick="closeSpotModal()">
+    <!-- File Input for Camera / Gallery (MULTIPLE PHOTOS) -->
+    <input type="file" accept="image/*" multiple id="camera-input" class="hidden" />
+    
+    <div class="w-full max-w-lg bg-white rounded-t-[3rem] sm:rounded-[3rem] shadow-2xl overflow-hidden relative max-h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+      <div class="absolute top-6 right-6 z-20">
+        <button onclick="closeSpotModal()" class="w-10 h-10 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors hover:bg-black/40"><i class="bi bi-x-lg"></i></button>
+      </div>
+      
+      <div class="h-64 bg-gray-100 relative overflow-hidden group shrink-0">
+        <img id="spot-modal-img" src="" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" />
+        <div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/10"></div>
+      </div>
+      
+      <div class="px-8 pb-10 pt-6 space-y-5 overflow-y-auto">
+        <div class="space-y-2 text-center">
+          <span id="spot-modal-category" class="text-[10px] font-black uppercase tracking-widest text-emerald-600 bg-emerald-50 px-4 py-1.5 rounded-full"></span>
+          <h2 id="spot-modal-name" class="text-3xl font-black text-gray-900 leading-tight"></h2>
+          <div class="flex items-center justify-center gap-1 text-amber-400 text-sm">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+          </div>
+        </div>
+        <p id="spot-modal-desc" class="text-sm text-gray-600 leading-relaxed font-medium text-center px-4"></p>
+        
+        <div class="pt-6 flex gap-3">
+           <button id="btn-checkin" onclick="triggerCamera()" class="flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 bg-emerald-600 text-white shadow-emerald-200">
+             <span><i class="bi bi-camera mr-2"></i>记录专属回忆</span>
+           </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Journal Modal (Hidden by default) -->
+  <div id="ai-journal-modal" class="fixed inset-x-0 bottom-0 top-auto z-[200] flex items-end justify-center pointer-events-none sm:p-6 pb-0 animate-in hidden transition-all">
+    <!-- Black opaque fade behind modal for focus -->
+    <div class="fixed inset-0 bg-black/40 backdrop-blur-sm pointer-events-auto" onclick="closeJournal()"></div>
+
+    <div class="w-full max-w-lg bg-[#eef1ed]/95 backdrop-blur-3xl rounded-t-[2.5rem] sm:rounded-[2.5rem] shadow-[0_-20px_60px_rgb(0,0,0,0.15)] overflow-hidden animate-slide-up relative flex flex-col border border-white/80 pointer-events-auto max-h-[75vh]">
+      
+      <!-- Top Handle -->
+      <div class="w-full flex justify-center pt-3 pb-1">
+        <div class="w-12 h-1.5 bg-gray-300 rounded-full"></div>
+      </div>
+
+      <div class="px-8 pt-4 pb-2 relative z-10 shrink-0 flex justify-between items-start">
+        <div class="pr-10">
+          <p id="journal-date" class="text-xs font-medium text-slate-500 mb-1"></p>
+          <h2 class="text-[32px] sm:text-4xl font-serif font-black text-slate-900 leading-[1.1] tracking-tight">
+            AI Generated<br/>Travel Diary
+          </h2>
+        </div>
+        <div class="pt-2 text-[32px] font-black glowing-ai flex items-center gap-1">AI <i data-lucide="sparkles" class="w-6 h-6 text-purple-400"></i></div>
+      </div>
+
+      <div class="flex-1 overflow-y-auto px-8 pb-32 relative z-10">
+        <div id="journal-loader" class="h-40 flex flex-col items-center justify-center py-12 text-slate-400">
+          <i data-lucide="loader-2" class="w-8 h-8 animate-spin text-purple-400 mb-4"></i>
+          <p class="font-bold text-sm bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500 animate-pulse">
+            Weaving your journey into a tapestry of wonder...
+          </p>
+        </div>
+
+        <div id="journal-content" class="space-y-6 animate-in hidden duration-700">
+          <div class="font-serif text-slate-800 leading-[1.8] text-[17px]">
+            <p id="journal-text" class="whitespace-pre-wrap"></p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Toolbar inside modal -->
+      <div class="absolute bottom-0 inset-x-0 bg-white/90 backdrop-blur-xl border-t border-gray-100 flex justify-around p-4 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] pb-8 z-20">
+         <div class="flex flex-col items-center opacity-40"><i data-lucide="compass" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold">Explore</span></div>
+         <div class="flex flex-col items-center opacity-100 text-slate-900"><i data-lucide="map" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold">Journey</span></div>
+         <div class="flex flex-col items-center opacity-40"><i data-lucide="image" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold">Photos</span></div>
+         <div class="flex flex-col items-center opacity-40"><i data-lucide="user" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold">Profile</span></div>
+         <div class="flex flex-col items-center opacity-40 glowing-ai"><i data-lucide="sparkles" class="w-6 h-6 mb-1"></i><span class="text-[10px] font-bold">AI Insight</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const mockSpots = [
+      { id: '1', name: '浅草寺 (Senso-ji)', category: '历史沉淀', desc: '东京历史最悠久的寺庙，穿越雷门感受江户时代的繁华与神圣。', top: '30%', left: '60%', imgUrl: 'https://images.unsplash.com/photo-1542931287-023b922fa89b?q=80&w=600' },
+      { id: '2', name: '涩谷十字路口', category: '城市脉搏', desc: '世界上最繁忙的十字路口，体验东京如同庞大机器般精准的秩序。', top: '55%', left: '42%', imgUrl: 'https://images.unsplash.com/photo-1542051842857-cb200d7204dc?q=80&w=600' },
+      { id: '3', name: '秋叶原 (Akihabara)', category: '极客圣地', desc: '二次元与电子产品的最高殿堂，霓虹灯下的赛博朋克现实版。', top: '45%', left: '55%', imgUrl: 'https://images.unsplash.com/photo-1531737212413-667205e1cda7?q=80&w=600' },
+      { id: '4', name: '新宿御苑', category: '自然绿洲', desc: '东京繁华中心的一块巨大翡翠，四季流转间尽显日式园林之美。', top: '48%', left: '38%', imgUrl: 'https://images.unsplash.com/photo-1558862107-d49ef2a04d72?q=80&w=600' },
+      { id: '5', name: '蓝瓶咖啡 (Blue Bottle)', category: '人气咖啡', desc: '在喧嚣城市中找到一杯手冲的宁静，极简主义的现代咖啡体验。', top: '65%', left: '45%', imgUrl: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=600' }
+    ];
+
+    let myMemories = [];
+    let activeSpotId = null;
+
+    // Initialization
+    function renderMapMarkers() {
+      const layer = document.getElementById('markers-layer');
+      layer.innerHTML = '';
+      
+      mockSpots.forEach((spot) => {
+        const marker = document.createElement('div');
+        marker.className = 'amap-marker absolute -translate-x-1/2 -translate-y-[100%] cursor-pointer';
+        marker.style.top = spot.top;
+        marker.style.left = spot.left;
+        
+        // Render different marker depending on if checked in
+        const checkedInRecord = myMemories.find(m => m.id === spot.id);
+        
+        if (checkedInRecord && checkedInRecord.photos.length > 0) {
+          // HUGE Polaroid custom marker matching mockup 1
+          marker.innerHTML = `
+            <div class="p-1.5 pb-2 bg-white/95 backdrop-blur-md shadow-[0_15px_35px_rgb(0,0,0,0.2)] rounded-lg transform scale-100 hover:scale-110 transition-all origin-bottom z-50 hover:z-50" style="width: 110px; height: 120px;">
+              <div class="w-full h-[76px] bg-gray-100 overflow-hidden rounded-md relative">
+                <img src="${checkedInRecord.photos[0]}" class="w-full h-full object-cover" />
+                <div class="absolute bottom-1 right-1 bg-black/60 backdrop-blur-md text-white font-bold text-[9px] px-1.5 py-0.5 rounded-sm">${checkedInRecord.photos.length}</div>
+              </div>
+              <div class="mt-1 flex justify-between items-end px-1">
+                <div class="text-[11px] font-black text-gray-900 leading-tight truncate uppercase w-[65%]">${spot.name}</div>
+                <div class="text-[8px] text-gray-400 font-medium">Day 1</div>
+              </div>
+            </div>
+            <!-- Arrow tip below the polaroid to point to the route -->
+            <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white/95 rotate-45 shadow-sm -z-10"></div>
+            <!-- Route Pulse Dot -->
+            <div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-4 h-4 bg-blue-300 rounded-full border-2 border-white shadow-lg animate-pulse" style="display:none;"></div>
+          `;
+          marker.style.zIndex = '50';
+        } else {
+          // Default generic pin
+          marker.innerHTML = `
+            <div class="custom-marker transition-all duration-300 scale-100 hover:scale-125" style="background: #0d9488; border: 2px solid white; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+              <i class="bi bi-geo-alt-fill text-white text-xs"></i>
+            </div>
+          `;
+          marker.style.zIndex = '10';
+        }
+
+        marker.onclick = () => openSpotModal(spot.id);
+        layer.appendChild(marker);
+      });
+    }
+
+    function openSpotModal(id) {
+      activeSpotId = id;
+      const spot = mockSpots.find(s => s.id === id);
+      const isCheckedIn = myMemories.find(m => m.id === id);
+
+      document.getElementById('spot-modal-name').innerText = spot.name;
+      document.getElementById('spot-modal-category').innerText = spot.category;
+      document.getElementById('spot-modal-desc').innerText = spot.desc;
+      
+      const imgEl = document.getElementById('spot-modal-img');
+      imgEl.src = isCheckedIn ? isCheckedIn.photos[isCheckedIn.photos.length - 1] : spot.imgUrl;
+
+      const btn = document.getElementById('btn-checkin');
+      if (isCheckedIn) {
+        btn.className = "flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 bg-emerald-600 text-white shadow-emerald-200";
+        btn.innerHTML = `<span><i class="bi bi-camera mr-2"></i>再传几张回忆</span>`;
+      } else {
+        btn.className = "flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 bg-emerald-600 text-white shadow-emerald-200";
+        btn.innerHTML = `<span><i class="bi bi-camera mr-2"></i>记录专属回忆</span>`;
+      }
+
+      const modal = document.getElementById('spot-modal');
+      modal.classList.remove('hidden');
+    }
+
+    function closeSpotModal() {
+      document.getElementById('spot-modal').classList.add('hidden');
+      activeSpotId = null;
+    }
+
+    function triggerCamera() {
+      document.getElementById('camera-input').click();
+    }
+
+    document.getElementById('camera-input').addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      if (files.length > 0 && activeSpotId) {
+        const now = new Date();
+        const timestamp = now.toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' }) + ' ' + 
+                          now.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false });
+        
+        const photoUrls = files.map(f => URL.createObjectURL(f));
+        const existingRecord = myMemories.find(m => m.id === activeSpotId);
+
+        if (existingRecord) {
+          existingRecord.photos.push(...photoUrls);
+          existingRecord.timestamp = timestamp;
+        } else {
+          myMemories.push({
+            id: activeSpotId,
+            photos: photoUrls,
+            timestamp: timestamp
+          });
+        }
+
+        // 刷新视图
+        closeSpotModal();
+        renderMapMarkers();
+        updateGalleryUI();
+        
+        // Reset file input
+        e.target.value = '';
+      }
+    });
+
+    function updateGalleryUI() {
+      const container = document.getElementById('gallery-stack');
+      const btn = document.getElementById('ai-journal-btn');
+      
+      if (myMemories.length > 0) {
+        container.style.display = 'flex';
+        btn.style.display = 'flex';
+        container.innerHTML = `
+          <div class="text-[10px] font-semibold text-slate-500/80 -rotate-90 absolute left-[-40px] top-[50%] tracking-widest pointer-events-none whitespace-nowrap">
+            ← Scroll for Memories →
+          </div>
+        `;
+        
+        // 展示所有的图片作为独立的叠放卡片
+        let cardIndex = 0;
+        
+        // 展平所有回忆到一个数组
+        const allPhotos = [];
+        myMemories.forEach(mem => {
+          mem.photos.forEach(photoUrl => {
+            allPhotos.push({
+              memId: mem.id,
+              photoUrl: photoUrl,
+              timestamp: mem.timestamp
+            });
+          });
+        });
+
+        allPhotos.forEach((photoObj, i) => {
+          const spot = mockSpots.find(s => s.id === photoObj.memId);
+          const card = document.createElement('div');
+          
+          const mt = i === 0 ? '0px' : '-80px';
+          const r = i % 2 === 0 ? '-4deg' : '5deg';
+          const x = i % 3 === 0 ? '-10px' : '10px';
+          const z = i;
+
+          card.className = `stack-card w-full sm:w-[220px] max-w-[240px] glass-panel p-3 pb-4 rounded-2xl relative cursor-pointer flex-shrink-0 origin-bottom right-0 ml-auto`;
+          card.style.marginTop = mt;
+          card.style.transform = `rotate(${r}) translateX(${x})`;
+          card.style.zIndex = z;
+          
+          card.onclick = () => openSpotModal(photoObj.memId);
+
+          card.innerHTML = `
+            <div class="w-full aspect-[4/3] bg-slate-100 rounded-[12px] overflow-hidden relative shadow-inner">
+              <img src="${photoObj.photoUrl}" class="w-full h-full object-cover" />
+            </div>
+            <div class="mt-3 text-left pointer-events-none pl-1">
+              <h4 class="font-bold text-slate-800 text-[14px] truncate leading-tight">${photoObj.name}</h4>
+              <p class="text-[10px] text-slate-500 font-medium tracking-wide mt-0.5">${photoObj.timestamp}</p>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        // 滚动到底部（最新的照片）
+        setTimeout(() => { container.scrollTop = container.scrollHeight; }, 50);
+      }
+    }
+
+    // AI Journal Logic
+    // Only open the modal, without loading photos inside, just like Image 1
+    document.getElementById('ai-journal-btn').addEventListener('click', () => {
+      document.getElementById('ai-journal-modal').classList.remove('hidden');
+      document.getElementById('journal-loader').style.display = 'flex';
+      document.getElementById('journal-content').classList.add('hidden');
+      
+      const now = new Date();
+      document.getElementById('journal-date').innerText = 'October 12-16, 2023';
+
+      // Mock generation delay
+      setTimeout(() => {
+        document.getElementById('journal-loader').style.display = 'none';
+        document.getElementById('journal-content').classList.remove('hidden');
+        
+        const spotNames = myMemories.map(m => mockSpots.find(s => s.id === m.id).name).join(' and ');
+        
+        const textStr = `The journey through the heart of the city was a tapestry of wonder. We began in ${mockSpots[1].name}, its historic alleys echoing with centuries of tales. Then, the rugged majesty of ${spotNames} embraced us, where waterfalls cascaded like liquid silver. Each moment was a breath of fresh alpine air...`;
+        
+        document.getElementById('journal-text').innerText = textStr;
+      }, 1500);
+    });
+
+    function closeJournal() {
+      document.getElementById('ai-journal-modal').classList.add('hidden');
+    }
+
+    // INIT
+    renderMapMarkers();
+
+  </script>
+</body>
+</html>

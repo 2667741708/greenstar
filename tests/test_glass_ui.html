@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenStar - 毛玻璃实景路线 UI 测试台 (免API消耗)</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script type="text/javascript">
+        window._AMapSecurityConfig = { securityJsCode: 'fa5b4914b560026b23e2c7ae1bc757d4' };
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=040c3af03bab9232ab67e0d232838b28&plugin=AMap.Geocoder,AMap.Driving,AMap.Walking"></script>
+
+    <style>
+        .leaflet-container { background: #f8fafc !important; }
+        .leaflet-tile-pane {
+            filter: grayscale(40%) opacity(0.6) contrast(0.8) sepia(10%) hue-rotate(180deg) brightness(1.1); 
+            /* Tweaked the tile pane to look like a very pale, washed-out blue/gray map */
+            transition: all 0.5s ease;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.25); }
+        .custom-stop-icon { background: none; border: none; overflow: visible !important; }
+        /* System Log Expand Modal styles */
+        #log-modal { display: none; }
+        #log-modal.active { display: flex; }
+    </style>
+</head>
+<body class="fixed inset-0 z-[100] flex font-sans bg-[#f8fafc] overflow-hidden text-slate-800">
+
+    <!-- 背景地图容器 -->
+    <div id="gs-map-container" class="absolute inset-0 z-0 bg-[#f8fafc]" style="width: 100%; height: 100%;"></div>
+
+    <!-- 悬浮毛玻璃控制面板 - City Wanderer 风格 -->
+    <div class="relative z-10 w-[420px] max-w-[90vw] h-full p-5 sm:p-6 flex flex-col gap-6 backdrop-blur-[24px] bg-white/50 border-r border-white/60 shadow-[8px_0_40px_-5px_rgba(0,0,0,0.1)] overflow-y-auto custom-scrollbar">
+        
+        <!-- 全局导航 Header -->
+        <div class="flex justify-between items-center mt-1 mb-2">
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="bi bi-geo-alt-fill text-white text-xs"></i>
+                </div>
+                <span class="font-black text-slate-800 tracking-tight text-lg">City Wanderer</span>
+            </div>
+            <div class="flex gap-2.5">
+                <button class="w-8 h-8 rounded-full bg-slate-900/5 hover:bg-slate-900/10 flex items-center justify-center transition-colors">
+                    <i class="bi bi-search text-slate-700"></i>
+                </button>
+                <button class="w-8 h-8 rounded-full bg-slate-900/5 hover:bg-slate-900/10 flex items-center justify-center transition-colors">
+                    <i class="bi bi-person text-slate-700"></i>
+                </button>
+            </div>
+        </div>
+
+        <h1 class="text-2xl font-black text-slate-800 tracking-tight -mt-2">Smart Route Planner</h1>
+
+        <!-- My Routes (三种路线模式大卡片) -->
+        <div class="flex flex-col gap-3">
+            <h2 class="text-sm font-bold text-slate-800 tracking-wide mb-1">My Routes</h2>
+            
+            <!-- Card 1: Drive -->
+            <div onclick="setRouteMode('drive')" id="card-drive" class="relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md bg-white/95 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-white">
+                <div class="flex gap-4 items-center">
+                    <div id="icon-drive" class="w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-lg shadow-blue-500/30 bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8]">
+                        <i class="bi bi-car-front-fill text-xl"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-slate-800 text-[15px] truncate">Fast Drive Route</h3>
+                            <button class="text-slate-400 hover:text-slate-600"><i class="bi bi-three-dots-vertical"></i></button>
+                        </div>
+                        <div class="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mt-0.5" id="stats-drive">
+                            <i class="bi bi-compass text-slate-400"></i> <span class="dist">~</span> <span>•</span> <i class="bi bi-geo-alt-fill text-slate-400"></i> <span class="count">0</span> stops <span>•</span> <span class="time">~</span>
+                        </div>
+                        <div class="flex gap-2 mt-3 items-center">
+                            <div class="flex bg-slate-100/80 rounded-lg p-1 gap-1 text-slate-400 text-xs">
+                                <i class="bi bi-map px-1"></i> <i class="bi bi-person px-1"></i> <i class="bi bi-layers px-1"></i>
+                            </div>
+                            <div class="flex-1"></div>
+                            <button class="bg-slate-100 hover:bg-slate-200 p-1.5 rounded-lg text-slate-500 transition-colors"><i class="bi bi-eye-fill"></i></button>
+                            <button id="btn-edit-drive" class="p-1.5 rounded-lg text-white shadow-md transition-colors bg-blue-600 shadow-blue-600/20"><i class="bi bi-pencil-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Walk -->
+            <div onclick="setRouteMode('walk')" id="card-walk" class="relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md bg-white/40 hover:bg-white/60 border-white/60">
+                <div class="flex gap-4 items-center">
+                    <div id="icon-walk" class="w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-none bg-gradient-to-br from-[#a855f7] to-[#7e22ce]">
+                        <i class="bi bi-cup-hot-fill text-xl"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-slate-800 text-[15px] truncate">Art & Cafe Tour</h3>
+                            <button class="text-slate-400 hover:text-slate-600"><i class="bi bi-three-dots-vertical"></i></button>
+                        </div>
+                        <div class="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mt-0.5" id="stats-walk">
+                            <i class="bi bi-compass text-slate-400"></i> <span class="dist">~</span> <span>•</span> <i class="bi bi-geo-alt-fill text-slate-400"></i> <span class="count">0</span> stops <span>•</span> <span class="time">~</span>
+                        </div>
+                        <div class="flex gap-2 mt-3 items-center">
+                            <div class="flex bg-slate-100/80 rounded-lg p-1 gap-1 text-slate-400 text-xs">
+                                <i class="bi bi-map px-1"></i> <i class="bi bi-cup-hot-fill px-1"></i> <i class="bi bi-camera-fill px-1"></i>
+                            </div>
+                            <div class="flex-1"></div>
+                            <button class="bg-slate-100 hover:bg-slate-200 p-1.5 rounded-lg text-slate-500 transition-colors"><i class="bi bi-eye-fill"></i></button>
+                            <button id="btn-edit-walk" class="p-1.5 rounded-lg text-white shadow-md transition-colors bg-slate-300"><i class="bi bi-pencil-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Straight -->
+            <div onclick="setRouteMode('straight')" id="card-straight" class="relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md bg-white/40 hover:bg-white/60 border-white/60">
+                <div class="flex gap-4 items-center">
+                    <div id="icon-straight" class="w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-none bg-gradient-to-br from-[#14b8a6] to-[#0f766e]">
+                        <i class="bi bi-building text-xl"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-slate-800 text-[15px] truncate">Direct Connect</h3>
+                            <button class="text-slate-400 hover:text-slate-600"><i class="bi bi-three-dots-vertical"></i></button>
+                        </div>
+                        <div class="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mt-0.5" id="stats-straight">
+                            <i class="bi bi-compass text-slate-400"></i> <span class="dist">~</span> <span>•</span> <i class="bi bi-geo-alt-fill text-slate-400"></i> <span class="count">0</span> stops <span>•</span> <span class="time">~</span>
+                        </div>
+                        <div class="flex gap-2 mt-3 items-center">
+                            <div class="flex bg-slate-100/80 rounded-lg p-1 gap-1 text-slate-400 text-xs">
+                                <i class="bi bi-map px-1"></i> <i class="bi bi-building px-1"></i>
+                            </div>
+                            <div class="flex-1"></div>
+                            <button class="bg-slate-100 hover:bg-slate-200 p-1.5 rounded-lg text-slate-500 transition-colors"><i class="bi bi-eye-fill"></i></button>
+                            <button id="btn-edit-straight" class="p-1.5 rounded-lg text-white shadow-md transition-colors bg-slate-300"><i class="bi bi-pencil-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Summary (高度还原的设计模块) -->
+        <div class="flex flex-col gap-3">
+            <h2 class="text-sm font-bold text-slate-800 tracking-wide mb-1">Data Summary</h2>
+            
+            <!-- Today's Travel -->
+            <div class="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] p-5 rounded-[1.5rem] shadow-lg shadow-blue-500/20 text-white flex justify-between items-center border border-white/20">
+                <div>
+                    <h3 class="font-semibold text-[16px] mb-2 tracking-wide">Today's Travel</h3>
+                    <div class="text-[13px] font-medium text-blue-50 flex gap-3 opacity-90">
+                        <span id="summary-dist">...</span>
+                        <span class="text-blue-300">|</span>
+                        <span id="summary-time">...</span>
+                        <span class="text-blue-300">|</span>
+                        <span id="summary-count">... points</span>
+                    </div>
+                </div>
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-md shadow-inner text-white">
+                    <i class="bi bi-pin-map-fill text-lg"></i>
+                </div>
+            </div>
+
+            <!-- Nearby Highlights -->
+            <div class="bg-gradient-to-r from-[#70529f] to-[#a482cc] p-4 rounded-[1.5rem] shadow-lg shadow-purple-500/20 text-white border border-white/20">
+                <h3 class="font-semibold text-[15px] mb-3 tracking-wide">Nearby Highlights</h3>
+                <div class="flex justify-between items-center">
+                    <div class="flex flex-col items-center gap-1 group cursor-pointer w-14">
+                        <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
+                            <i class="bi bi-bank text-lg"></i>
+                        </div>
+                        <span class="text-[9px] text-center leading-tight opacity-90">Eiffel<br/>Tower</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 group cursor-pointer w-14">
+                        <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
+                            <i class="bi bi-building text-lg"></i>
+                        </div>
+                        <span class="text-[9px] text-center leading-tight opacity-90">Louvre<br/>Museum</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 group cursor-pointer w-14">
+                        <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
+                            <i class="bi bi-cup-hot-fill text-lg"></i>
+                        </div>
+                        <span class="text-[9px] text-center leading-tight opacity-90">Cafe de<br/>Flore</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 group cursor-pointer w-14">
+                        <div class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
+                            <i class="bi bi-map text-lg"></i>
+                        </div>
+                        <span class="text-[9px] text-center leading-tight opacity-90">Musee<br/>d'Orsay</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Processing Log -->
+            <div class="bg-gradient-to-r from-[#0d9488] to-[#14b8a6] p-4 rounded-[1.5rem] shadow-lg shadow-teal-500/20 text-white border border-white/20 flex flex-col relative overflow-hidden group">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="font-semibold text-[15px] tracking-wide mb-1">System Tracking Log</h3>
+                        <div class="text-[11px] font-medium text-teal-100 flex items-center gap-2">
+                            <span class="text-white font-bold tracking-wider">Active</span>
+                            <span class="text-teal-300">|</span>
+                            <span id="log-count">0 events</span>
+                        </div>
+                    </div>
+                    <button onclick="toggleLogModal(true)" class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center border border-white/10 transition-colors shadow-sm" title="Expand Log">
+                        <i class="bi bi-arrows-angle-expand"></i>
+                    </button>
+                </div>
+                
+                <div class="mt-3 text-[10px] font-mono opacity-80 truncate bg-black/10 px-3 py-1.5 rounded-lg border border-white/5" id="last-log-msg">
+                    System initialized...
+                </div>
+            </div>
+        </div>
+
+        <!-- 展开的路线详情步骤 -->
+        <div id="route-steps-container" class="hidden bg-white/70 p-5 rounded-[1.5rem] shadow-sm border border-white/80 backdrop-blur-md flex-col mt-2">
+            <h3 class="font-bold text-slate-800 text-[14px] mb-4">Navigation Instructions</h3>
+            <div id="route-steps-list" class="flex-1 space-y-4">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 增强型全屏模态框：系统执行日志 -->
+    <div id="log-modal" class="absolute inset-0 z-[200] items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 sm:p-8">
+        <div class="w-full max-w-2xl h-[80vh] flex flex-col rounded-3xl bg-white shadow-2xl overflow-hidden border border-slate-200">
+            <!-- Header -->
+            <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center"><i class="bi bi-check-circle-fill"></i></div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-800">System Processing Log</h2>
+                        <p class="text-xs text-slate-500">Deep Tracking & Engine Metrics</p>
+                    </div>
+                </div>
+                <button onclick="toggleLogModal(false)" class="p-2 bg-slate-200 hover:bg-slate-300 rounded-full transition-colors text-slate-600">
+                    <i class="bi bi-arrows-angle-contract"></i>
+                </button>
+            </div>
+            <!-- Body -->
+            <div id="log-container-full" class="flex-1 bg-slate-900 p-6 overflow-y-auto font-mono text-sm tracking-wide custom-scrollbar space-y-3">
+                <!-- 全量日志渲染这里 -->
+            </div>
+        </div>
+    </div>
+
+<script>
+// ========= 全局状态 =========
+let fullLogsHTML = '';
+let totalLogEvents = 0;
+function toggleLogModal(show) {
+    const m = document.getElementById('log-modal');
+    if (show) m.classList.add('active');
+    else m.classList.remove('active');
+}
+
+const PLAN = `清晨前往 **【成都大熊猫繁育研究基地】** 观看熊猫，随后地铁直达 **【天府广场】**。
+步行至 **「人民公园」** 鹤鸣茶社体验盖碗茶，然后前往 **【太古里】** 与 **【春熙路】** 打卡。
+下午前往 **「宽窄巷子」** 游览，然后步行至 **【青羊宫】**。
+傍晚前往 **武侯祠**，最后夜游打卡 **「锦里古街」** 结束行程。`;
+
+let stops = [];
+let routePath = [];
+let routeMode = 'drive';
+
+let lMap = null;
+let markersGroup = null;
+let pathLayer = null;
+
+// ========= 日志引擎 =========
+let logId = 0;
+function addLog(msgHTML, type = 'info') {
+    const containerFull = document.getElementById('log-container-full');
+    let icon = 'ℹ️'; let colorClass = 'text-slate-300';
+    if (type === 'success') { icon = '✅'; colorClass = 'text-green-400'; }
+    if (type === 'error') { icon = '❌'; colorClass = 'text-red-400'; }
+    if (type === 'warning') { icon = '⚠️'; colorClass = 'text-yellow-400'; }
+
+    const time = new Date().toLocaleTimeString('zh-CN', { hour12: false });
+    const logHTML = `
+        <div class="flex items-start gap-4 hover:bg-white/5 p-2 rounded-lg transition-colors border border-transparent hover:border-white/10">
+            <div class="text-slate-500 text-xs mt-0.5 w-16 shrink-0">${time}</div>
+            <div class="shrink-0 mt-0.5">${icon}</div>
+            <div class="flex-1 break-all leading-relaxed ${colorClass}">
+                ${msgHTML}
+            </div>
+        </div>
+    `;
+    
+    containerFull.innerHTML += logHTML;
+    containerFull.scrollTop = containerFull.scrollHeight;
+    
+    totalLogEvents++;
+    document.getElementById('log-count').innerText = totalLogEvents + " events";
+    document.getElementById('last-log-msg').innerHTML = msgHTML;
+}
+
+// ========= 算法核心 =========
+function extractStops(text) {
+    const pats = [/\*\*([^*]{2,15})\*\*/g, /「([^」]{2,15})」/g, /【([^】]{2,15})】/g, /→\s*([^\s→,，。]{2,12})/g, /前往\s*([^\s,，。（(]{2,12})/g];
+    const seen = new Set(), out = [];
+    const rejects = ['建议', '提示', '注意', '推荐', '公里', '小时', '分钟', '雷区', '备受推崇', '体验', '漫步', '打卡', '指南', '路线', '安排', '概览', '交通', '接驳', '大盘', '避雷', '预警', '消费', '预算', '花销', '详情', '隐性', '踩坑', '必须', '重点', '方案', '上午', '下午', '晚上'];
+    for (const p of pats) { let m; while ((m = p.exec(text)) !== null) { const n = m[1].trim().replace(/[【】「」『』《》\[\]]/g,'').trim(); if (n.length>=2&&n.length<=10&&!rejects.some(w=>n.includes(w))&&!seen.has(n)){seen.add(n);out.push(n);} } }
+    return out.slice(0, 10);
+}
+
+const geocode = name => new Promise(resolve => {
+    const timer = setTimeout(() => resolve(null), 1500);
+    try {
+        const g = new AMap.Geocoder({city:'成都'});
+        g.getLocation(name, (s, r) => {
+            clearTimeout(timer);
+            if (s==='complete'&&r.geocodes?.length) { const loc=r.geocodes[0].location; resolve({lng:loc.getLng(),lat:loc.getLat()}); }
+            else resolve(null);
+        });
+    } catch(e) { clearTimeout(timer); resolve(null); }
+});
+
+const drivingRoute = (vStops) => new Promise(resolve => {
+    const timer = setTimeout(()=>resolve(null), 15000);
+    AMap.plugin('AMap.Driving', ()=> {
+        const d = new AMap.Driving({policy:0, ferry:0});
+        const o = new AMap.LngLat(vStops[0].lng, vStops[0].lat);
+        const dest = new AMap.LngLat(vStops[vStops.length-1].lng, vStops[vStops.length-1].lat);
+        const wps = vStops.slice(1,-1).map(s=>new AMap.LngLat(s.lng,s.lat));
+        d.search(o, dest, {waypoints:wps}, (st,r)=>{
+            clearTimeout(timer);
+            if(st==='complete'&&r.routes?.length){
+                const path=[];
+                let steps = [];
+                for(const step of r.routes[0].steps||[]){
+                    if(step.path)for(const p of step.path)path.push({lng:p.lng,lat:p.lat});
+                    if(step.instruction) steps.push({ instruction: step.instruction, distance: step.distance });
+                }
+                resolve({path, dist:r.routes[0].distance, time:r.routes[0].time, steps});
+            } else { resolve(null); }
+        });
+    });
+});
+
+const walkSegment = (from, to) => new Promise(resolve => {
+    const timer = setTimeout(()=>resolve(null), 8000);
+    AMap.plugin('AMap.Walking', ()=> {
+        const w = new AMap.Walking();
+        w.search(new AMap.LngLat(from.lng,from.lat), new AMap.LngLat(to.lng,to.lat), (st,r)=>{
+            clearTimeout(timer);
+            if(st==='complete'&&r.routes?.length){
+                const path=[];
+                let steps = [];
+                for(const step of r.routes[0].steps||[]){
+                    if(step.path)for(const p of step.path)path.push({lng:p.lng,lat:p.lat});
+                    if(step.instruction) steps.push({ instruction: step.instruction, distance: step.distance });
+                }
+                resolve({path, dist:r.routes[0].distance, time:r.routes[0].time, steps});
+            } else resolve(null);
+        });
+    });
+});
+
+// ========= 渲染逻辑 =========
+function get3DEmojiForName(name) {
+    if (name.includes('熊猫')) return '🐼';
+    if (name.includes('宫') || name.includes('祠') || name.includes('寺')) return '🏯';
+    if (name.includes('公园') || name.includes('鹤鸣')) return '🍵';
+    if (name.includes('太古里') || name.includes('春熙路') || name.includes('商圈')) return '🛍️';
+    if (name.includes('巷') || name.includes('街') || name.includes('里')) return '🏮';
+    if (name.includes('广场') || name.includes('中心')) return '🏙️';
+    return '📌';
+}
+
+function renderSteps() {
+    const container = document.getElementById('route-steps-container');
+    const list = document.getElementById('route-steps-list');
+    
+    if (!currentSteps || currentSteps.length === 0) {
+        container.classList.remove('flex');
+        container.classList.add('hidden');
+        return;
+    }
+    
+    container.classList.remove('hidden');
+    container.classList.add('flex');
+    list.innerHTML = '';
+    
+    currentSteps.slice(0, 15).forEach((step, i) => { 
+        list.innerHTML += `
+            <div class="flex items-start gap-3 pl-1 relative">
+                <div class="relative flex flex-col items-center mt-0.5">
+                    <div class="w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_6px_rgba(59,130,246,0.6)] z-10 border border-white"></div>
+                    ${i !== currentSteps.length - 1 ? '<div class="absolute top-2 w-[1.5px] h-[calc(100%+12px)] bg-blue-200"></div>' : ''}
+                </div>
+                <div class="flex-1 pb-1">
+                    <p class="text-[12px] font-medium text-slate-700 leading-snug">${step.instruction}</p>
+                    ${step.distance ? `<p class="text-[10px] text-slate-400 mt-1 font-mono">${step.distance} m</p>` : ''}
+                </div>
+            </div>
+        `;
+    });
+}
+
+function updateSummary(dist, time, count) {
+    document.getElementById('summary-dist').innerText = dist;
+    document.getElementById('summary-time').innerText = time;
+    document.getElementById('summary-count').innerText = count + " stops";
+}
+
+function drawMap() {
+    if(!lMap) return;
+    markersGroup.clearLayers();
+    if(pathLayer) { lMap.removeLayer(pathLayer); pathLayer = null; }
+    
+    if (stops.length === 0) return;
+    
+    if (routePath.length > 1) {
+        const latlngs = routePath.map(p => [p.lat, p.lng]);
+        pathLayer = L.polyline(latlngs, {
+            color: routeMode === 'straight' ? '#94a3b8' : '#0d9488', // Teal color for the route
+            weight: routeMode === 'straight' ? 3 : 5,
+            dashArray: routeMode === 'straight' ? '8, 8' : undefined,
+            opacity: 0.9, lineJoin: 'round'
+        }).addTo(lMap);
+    }
+    
+    const bounds = L.latLngBounds();
+    
+    stops.forEach((s, idx) => {
+        const emoji3D = get3DEmojiForName(s.name);
+        
+        const iconHtml = `
+            <div style="position: relative; display: flex; align-items: center; pointer-events: none; width: 250px;">
+                <!-- 3D Illustration Emoji -->
+                <div style="position: absolute; top: -38px; left:-8px; font-size: 32px; filter: drop-shadow(0px 10px 8px rgba(0,0,0,0.3)); z-index: 20;">
+                    ${emoji3D}
+                </div>
+                
+                <!-- 3D 风格的小水滴图标 (SVG) -->
+                <div style="filter: drop-shadow(0px 8px 6px rgba(13, 148, 136, 0.4)); flex-shrink: 0; z-index: 10">
+                    <svg width="32" height="42" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0C5.373 0 0 5.373 0 12C0 21 12 36 12 36C12 36 24 21 24 12C24 5.373 18.627 0 12 0Z" fill="url(#grad1)"/>
+                        <circle cx="12" cy="12" r="5" fill="white"/>
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0f766e;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <!-- 旁边的地点名称文字牌 -->
+                <div style="background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); padding: 4px 10px; border-radius: 8px; margin-left: -5px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid rgba(255,255,255,1); z-index: 5;">
+                    <span style="font-size:10px; font-weight:900; color:#0d9488; margin-right:4px;">${idx+1}</span>
+                    <span style="font-size:12px; font-weight:bold; color:#334155;">${s.name}</span>
+                </div>
+            </div>
+        `;
+        const customIcon = L.divIcon({ html: iconHtml, className: 'custom-stop-icon', iconSize: [32, 42], iconAnchor: [16, 42] });
+        L.marker([s.lat, s.lng], {icon: customIcon}).addTo(markersGroup);
+        bounds.extend([s.lat, s.lng]);
+    });
+    
+    if (routePath.length > 0) routePath.forEach(p => bounds.extend([p.lat, p.lng]));
+    if (stops.length > 0) lMap.fitBounds(bounds, {padding: [60, 60]});
+}
+
+// ========= 核心控制流 =========
+let currentSteps = []; // 保存当前模式的转向步骤
+
+async function runRouting() {
+    routePath = [];
+    currentSteps = [];
+    if (stops.length > 1) {
+        if (routeMode === 'drive') {
+            addLog('唤醒深度驾车网络规划模型...', 'info');
+            if (dr) {
+                routePath = dr.path;
+                currentSteps = dr.steps || [];
+                const distStr = (dr.dist / 1000).toFixed(1) + ' km';
+                const timeStr = Math.round(dr.time / 60) + ' 分钟';
+                updateSummary(distStr, timeStr, stops.length);
+                updateCardStats('drive', distStr, timeStr, stops.length);
+                addLog(`驾车规划完成: <b>${distStr}</b>`, 'success');
+            }
+        } else if (routeMode === 'walk') {
+            addLog('实例化图网络分段步行分析...', 'info');
+            let totalD = 0, totalT = 0;
+            for (let i = 0; i < stops.length - 1; i++) {
+                const r = await walkSegment(stops[i], stops[i + 1]);
+                if (r) { routePath.push(...r.path); totalD += r.dist; totalT += r.time; currentSteps.push(...(r.steps || [])); }
+            }
+            const distStr = (totalD / 1000).toFixed(1) + ' km';
+            const timeStr = Math.round(totalT / 60) + ' 分钟';
+            updateSummary(distStr, timeStr, stops.length);
+            updateCardStats('walk', distStr, timeStr, stops.length);
+            addLog(`步行拟合完成: <b>${distStr}</b>`, 'success');
+        } else {
+            routePath = stops.map(s => ({ lat: s.lat, lng: s.lng }));
+            currentSteps = stops.map((s, i) => ({ instruction: i===0?'起点：'+s.name : '飞向：'+s.name }));
+            updateSummary('直线预估', '无偏差', stops.length);
+            updateCardStats('straight', '直线预估', '无偏差', stops.length);
+            addLog('已切换无界直线向量模式', 'info');
+        }
+    }
+    drawMap();
+    renderSteps();
+}
+
+function updateCardStats(mode, dist, time, count) {
+    const el = document.getElementById('stats-' + mode);
+    if(el) {
+        el.querySelector('.dist').innerText = dist;
+        el.querySelector('.count').innerText = count;
+        el.querySelector('.time').innerText = time;
+    }
+}
+
+async function setRouteMode(mode) {
+    if (routeMode === mode) return;
+    routeMode = mode;
+    ['drive', 'walk', 'straight'].forEach(m => {
+        const card = document.getElementById('card-' + m);
+        const icon = document.getElementById('icon-' + m);
+        const btnEdit = document.getElementById('btn-edit-' + m);
+        
+        if (m === mode) {
+            card.className = "relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md bg-white/95 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-white";
+            if(m==='drive') { icon.classList.add('shadow-blue-500/30'); btnEdit.className="p-1.5 rounded-lg text-white shadow-md transition-colors bg-blue-600 shadow-blue-600/20"; }
+            if(m==='walk') { icon.classList.add('shadow-purple-500/30'); btnEdit.className="p-1.5 rounded-lg text-white shadow-md transition-colors bg-purple-600 shadow-purple-600/20"; }
+            if(m==='straight') { icon.classList.add('shadow-teal-500/30'); btnEdit.className="p-1.5 rounded-lg text-white shadow-md transition-colors bg-teal-600 shadow-teal-600/20"; }
+            icon.classList.remove('shadow-none');
+        } else {
+            card.className = "relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md bg-white/40 hover:bg-white/60 border-white/60";
+            icon.classList.add('shadow-none');
+            icon.classList.remove('shadow-blue-500/30', 'shadow-purple-500/30', 'shadow-teal-500/30');
+            btnEdit.className="p-1.5 rounded-lg text-white shadow-md transition-colors bg-slate-300";
+        }
+    });
+    if (stops.length > 1) {
+        await runRouting();
+    }
+}
+
+async function init() {
+    addLog('初始化 Leaflet 实景引擎...', 'info');
+    lMap = L.map('gs-map-container', { zoomControl: false, attributionControl: false }).setView([30.6574, 104.0659], 12);
+    L.control.zoom({position: 'topright'}).addTo(lMap);
+    L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+        subdomains: ['1', '2', '3', '4'], maxZoom: 18,
+    }).addTo(lMap);
+    markersGroup = L.layerGroup().addTo(lMap);
+    addLog('实景地图加载就绪！', 'success');
+
+    const names = extractStops(PLAN);
+    addLog(`NER 提取到 <b>${names.length}</b> 个有效锚点`, 'success');
+    addLog('坐标解算并发进行中...', 'info');
+    
+    stops = [];
+    const seen = new Set();
+    for (const name of names) {
+        if (seen.has(name)) continue;
+        seen.add(name);
+        const coord = await geocode(name);
+        if (coord) {
+            stops.push({ name, ...coord });
+            addLog(`[精确定位] <b>${name}</b>`, 'success');
+        } else {
+            addLog(`[定位失败] <b>${name}</b>`, 'error');
+        }
+    }
+    
+    await runRouting();
+}
+
+window.addEventListener('load', () => setTimeout(init, 500));
+</script>
+</body>
+</html>
