@@ -474,11 +474,38 @@ export const searchPOIPaginated = async (
   return allSpots;
 };
 
-// ============================================================
-// 以下函数保持不变 / Functions below are unchanged
-// ============================================================
+// 修改基准: amap.ts @ 当前版本 (561行)
+// 修改内容: reverseGeocode 增加 REST API 降级, 解决 JS API 加载失败时显示原始坐标的问题
+// Changes: Added REST API fallback for reverseGeocode when JS API fails
+export const reverseGeocode = async (lat: number, lng: number): Promise<{ address: string; city: string }> => {
+  // 优先尝试 JS API
+  try {
+    return await _reverseGeocodeJS(lat, lng);
+  } catch (jsErr) {
+    console.warn('[Geocode] JS API failed, falling back to REST:', jsErr);
+  }
+  // REST API 降级
+  try {
+    const resp = await fetch(
+      `https://restapi.amap.com/v3/geocode/regeo?key=${AMAP_KEY}&location=${lng},${lat}&extensions=base`,
+      { signal: AbortSignal.timeout(8000) }
+    );
+    const data = await resp.json();
+    if (data.status === '1' && data.regeocode) {
+      const comp = data.regeocode.addressComponent || {};
+      const city = comp.city || comp.province || '';
+      return {
+        address: data.regeocode.formatted_address || `${lat.toFixed(4)}, ${lng.toFixed(4)}`,
+        city: typeof city === 'string' ? city : (Array.isArray(city) ? '' : String(city)),
+      };
+    }
+  } catch (restErr) {
+    console.error('[Geocode] REST fallback also failed:', restErr);
+  }
+  return { address: `${lat.toFixed(4)}, ${lng.toFixed(4)}`, city: '未知城市' };
+};
 
-export const reverseGeocode = (lat: number, lng: number): Promise<{ address: string; city: string }> => {
+const _reverseGeocodeJS = (lat: number, lng: number): Promise<{ address: string; city: string }> => {
   return new Promise((resolve, reject) => {
     loadAMap().then((AMap) => {
       AMap.plugin(['AMap.Geocoder'], () => {
@@ -487,7 +514,6 @@ export const reverseGeocode = (lat: number, lng: number): Promise<{ address: str
         geocoder.getAddress([lng, lat], (status: string, result: any) => {
           if (status === 'complete' && result?.regeocode) {
             const regeo = result.regeocode;
-            // 获取城市名：由于直辖市没有 city 字段，取 province 字段
             const city = regeo.addressComponent.city || regeo.addressComponent.province;
             resolve({
               address: regeo.formattedAddress || `${lat.toFixed(4)}, ${lng.toFixed(4)}`,
@@ -505,7 +531,35 @@ export const reverseGeocode = (lat: number, lng: number): Promise<{ address: str
   });
 };
 
-export const geocode = (address: string): Promise<{ lat: number, lng: number, formattedAddress: string, city: string }> => {
+// 修改基准: amap.ts @ 当前版本
+// 修改内容: geocode 增加 REST API 降级
+// Changes: Added REST API fallback for geocode
+export const geocode = async (address: string): Promise<{ lat: number, lng: number, formattedAddress: string, city: string }> => {
+  // 优先 JS API
+  try {
+    return await _geocodeJS(address);
+  } catch (jsErr) {
+    console.warn('[Geocode] JS API failed, falling back to REST:', jsErr);
+  }
+  // REST 降级
+  const resp = await fetch(
+    `https://restapi.amap.com/v3/geocode/geo?key=${AMAP_KEY}&address=${encodeURIComponent(address)}`,
+    { signal: AbortSignal.timeout(8000) }
+  );
+  const data = await resp.json();
+  if (data.status === '1' && data.geocodes?.length) {
+    const first = data.geocodes[0];
+    const [lng, lat] = (first.location || '0,0').split(',').map(Number);
+    return {
+      lat, lng,
+      formattedAddress: first.formatted_address || address,
+      city: first.city || first.province || '',
+    };
+  }
+  throw new Error(`地理编码失败: ${address}`);
+};
+
+const _geocodeJS = (address: string): Promise<{ lat: number, lng: number, formattedAddress: string, city: string }> => {
   return new Promise((resolve, reject) => {
       loadAMap().then((AMap) => {
         AMap.plugin(['AMap.Geocoder'], () => {
@@ -514,7 +568,6 @@ export const geocode = (address: string): Promise<{ lat: number, lng: number, fo
           geocoder.getLocation(address, (status: string, result: any) => {
             if (status === 'complete' && result.geocodes.length) {
               const first = result.geocodes[0];
-              // 支持提取海外国家名作为 fallback，避免海外城市全是空字符串导致名称折叠
               const city = first.addressComponent?.city || first.addressComponent?.province || first.addressComponent?.country || '';
               resolve({
                  lat: first.location.lat,
@@ -529,7 +582,7 @@ export const geocode = (address: string): Promise<{ lat: number, lng: number, fo
         } catch (err) {
           reject(err);
         }
-      }); // closes AMap.plugin
+      });
       }).catch((err: any) => reject(new Error('高德地图 JS API 加载异常: ' + err.message)));
   });
 };

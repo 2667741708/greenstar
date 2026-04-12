@@ -1,6 +1,14 @@
 // ============================================================================
-// Internal MCP Service: Virtual Weather API Wrapper
+// 文件: src/mcp-services/weatherService.ts
+// 基准版本: weatherService.ts @ 当前版本 (84行, Open-Meteo + 11城市硬编码)
+// 修改内容 / Changes:
+//   [重构] 天气数据源从 Open-Meteo 切换到高德天气 API (v3/weather/weatherInfo)
+//   [重构] 移除硬编码城市坐标字典, 改为高德 adcode 自动解析 (覆盖全国所有城市)
+//   [REFACTOR] Weather source: Open-Meteo → AMap Weather API (v3/weather/weatherInfo)
+//   [REFACTOR] Remove hardcoded city coords, use AMap adcode auto-resolve (covers all cities)
 // ============================================================================
+
+const AMAP_KEY = '0e59aae0d84f39b4665eba7acc9f49a9';
 
 export interface WeatherForecast {
   date: string;
@@ -8,76 +16,99 @@ export interface WeatherForecast {
   temperatureMin: number;
   weatherCode: number;
   description: string;
+  // 高德天气扩展字段
+  dayWeather?: string;
+  nightWeather?: string;
+  dayWind?: string;
+  dayPower?: string;
 }
 
-const WMO_CODES: Record<number, string> = {
-  0: '晴朗无云',
-  1: '主要晴朗',
-  2: '部分多云',
-  3: '阴天',
-  45: '起雾',
-  48: '沉积雾',
-  51: '微毛毛雨',
-  53: '中等毛毛雨',
-  55: '密集毛毛雨',
-  61: '微雨',
-  63: '中雨',
-  65: '大雨',
-  71: '微雪',
-  73: '中雪',
-  75: '大雪',
-  95: '雷雨',
-};
-
-// Map city name to approx coordinates (fallback simulation since geocoding city names without keys can fail)
-const CITY_COORDS: Record<string, { lat: number, lng: number }> = {
-  '北京': { lat: 39.9042, lng: 116.4074 },
-  '上海': { lat: 31.2304, lng: 121.4737 },
-  '广州': { lat: 23.1291, lng: 113.2644 },
-  '深圳': { lat: 22.5431, lng: 114.0579 },
-  '成都': { lat: 30.5728, lng: 104.0668 },
-  '重庆': { lat: 29.5630, lng: 106.5516 },
-  '杭州': { lat: 30.2741, lng: 120.1551 },
-  '西安': { lat: 34.3416, lng: 108.9398 },
-  '武汉': { lat: 30.5928, lng: 114.3055 },
-  '南京': { lat: 32.0603, lng: 118.7969 },
-  '呼和浩特': { lat: 40.8423, lng: 111.7489 }
-};
-
+/**
+ * 从高德天气 API 获取天气预报
+ * 高德 v3/weather/weatherInfo 支持全国所有城市, 无需坐标字典
+ *
+ * @param cityName 城市名 (如 "秦皇岛" / "厦门" / "成都")
+ * @returns 未来 3 天天气预报
+ */
 export const fetchWeatherForecast = async (cityName: string): Promise<WeatherForecast[]> => {
   try {
-    let lat = 39.9042;
-    let lng = 116.4074; // default beijing
-    
-    // Find matching city
-    for (const city in CITY_COORDS) {
-      if (cityName.includes(city) || city.includes(cityName)) {
-        lat = CITY_COORDS[city].lat;
-        lng = CITY_COORDS[city].lng;
-        break;
-      }
+    // Step 1: 先通过高德地理编码获取 adcode
+    const adcode = await _resolveAdcode(cityName);
+    if (!adcode) {
+      console.warn(`[Weather] 无法解析城市 adcode: ${cityName}`);
+      return [];
     }
 
-    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia%2FShanghai`);
-    const data = await res.json();
-    
-    if (!data.daily) return [];
+    // Step 2: 调用高德天气 API (extensions=all 返回预报)
+    const resp = await fetch(
+      `https://restapi.amap.com/v3/weather/weatherInfo?key=${AMAP_KEY}&city=${adcode}&extensions=all`,
+      { signal: AbortSignal.timeout(8000) }
+    );
+    const data = await resp.json();
 
-    const forecasts: WeatherForecast[] = [];
-    for (let i = 0; i < 3; i++) {
-      const code = data.daily.weathercode[i];
-      forecasts.push({
-        date: data.daily.time[i],
-        temperatureMax: data.daily.temperature_2m_max[i],
-        temperatureMin: data.daily.temperature_2m_min[i],
-        weatherCode: code,
-        description: WMO_CODES[code] || '未知天气'
-      });
+    if (data.status !== '1' || !data.forecasts?.length) {
+      console.warn('[Weather] AMap weather API returned no data:', data.info);
+      return [];
     }
-    
-    return forecasts;
+
+    const forecast = data.forecasts[0];
+    const casts = forecast.casts || [];
+
+    // 取前 3 天
+    return casts.slice(0, 3).map((c: any) => ({
+      date: c.date,
+      temperatureMax: parseFloat(c.daytemp) || 0,
+      temperatureMin: parseFloat(c.nighttemp) || 0,
+      weatherCode: _mapWeatherToCode(c.dayweather),
+      description: `${c.dayweather}转${c.nightweather}`,
+      dayWeather: c.dayweather,
+      nightWeather: c.nightweather,
+      dayWind: c.daywind,
+      dayPower: c.daypower,
+    }));
   } catch (err) {
-    console.error('Weather MCP failed:', err);
+    console.error('[Weather] AMap weather fetch failed:', err);
     return [];
   }
 };
+
+/**
+ * 通过高德地理编码获取城市 adcode
+ */
+async function _resolveAdcode(cityName: string): Promise<string> {
+  try {
+    const resp = await fetch(
+      `https://restapi.amap.com/v3/geocode/geo?key=${AMAP_KEY}&address=${encodeURIComponent(cityName)}`,
+      { signal: AbortSignal.timeout(5000) }
+    );
+    const data = await resp.json();
+    if (data.status === '1' && data.geocodes?.length) {
+      // adcode 通常是 6 位, 取前 6 位即市级编码
+      const adcode = data.geocodes[0].adcode || '';
+      return adcode;
+    }
+  } catch {
+    // 静默失败
+  }
+  return '';
+}
+
+/**
+ * 将高德天气描述映射到 WMO weather code (兼容旧接口)
+ */
+function _mapWeatherToCode(weather: string): number {
+  if (!weather) return 0;
+  const map: Record<string, number> = {
+    '晴': 0, '少云': 1, '晴间多云': 1, '多云': 2,
+    '阴': 3, '雾': 45, '霾': 48,
+    '小雨': 61, '中雨': 63, '大雨': 65, '暴雨': 65,
+    '阵雨': 61, '雷阵雨': 95, '雷阵雨并伴有冰雹': 95,
+    '小雪': 71, '中雪': 73, '大雪': 75, '暴雪': 75,
+    '雨夹雪': 71, '阵雪': 71,
+    '浮尘': 48, '扬沙': 48, '沙尘暴': 48,
+  };
+  for (const [key, code] of Object.entries(map)) {
+    if (weather.includes(key)) return code;
+  }
+  return 0;
+}
