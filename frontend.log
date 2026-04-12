@@ -29,4 +29,5 @@
 17:02:20 [vite] (client) hmr update /src/index.css, /src/App.tsx, /src/components/CityExplorer.tsx, /src/components/PlanPanel.tsx, /src/components/SpotDetail.tsx, /src/componen17:02:20 [vite] 17:02:43 [vite] (client) page reload src/services/recommendEngine.ts
 17:50:10 [vite] (client) hmr update /src/components/CityExplorer.tsx, /src/index.css
 21:32:07 [vite] (client) hmr update /src/index.css, /src/App.tsx, /src/compo21:32:07 [vite] (client) hmr update /src/index.css, /s21:32:31 [vite] (client) hmr update /src/inde21:32:31 [vite] (client) hmr update /src/index.css, /src/App.tsx, /src/components/Cit21:33:00 [vite] (client) hmr update /src/index.css, /src/components/PlanPanel.tsx
-PlanPanel.tsx
+22:44:27 [vite22:44:27 [vite] (client) hmr update /src/index.css, /src/components/PlanPanel.tsx, /src/components/Cit22:44:45 [vite] (client) hmr update /src/index.css, /src/App.tsx, /src/components/CityExplorer.tsx, /src/componen22:44:59 [vite] (22:44:59 [vite] (client) hmr update /src/index.css, /src/App.tsx, /src/components/22:46:48 [vite] (client) hmr update /src/components/ProfilePanel.tsx, /src/index.css
+23:42:14 [vite] (client) hmr update /src/index.c23:42:14 [vite] (client) hmr update /src/index.css, /src/components/CityExplorer.tsx, /src/components/PlanPanel.tsx

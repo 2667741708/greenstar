@@ -12,7 +12,19 @@ import { buildCacheKey, getCachedPOI, setCachedPOI } from './poiCache';
 
 import { loadAMap } from './amapLoader';
 
-const AMAP_KEY = '0e59aae0d84f39b4665eba7acc9f49a9';
+// ============================================================================
+// 修改基准: amap.ts @ 原始版本 (AMAP_KEY 硬编码字符串)
+// 修改内容 / Changes:
+//   [修改] AMAP_KEY 改为从 llmSettings 动态读取，用户可在设置面板中自定义
+//   [CHANGE] AMAP_KEY now resolved dynamically from llmSettings (user-configurable)
+// ============================================================================
+import { getLLMSettings } from './llmSettings';
+
+// 每次调用时动态获取，确保用户修改设置后立即生效（无需刷新页面）
+// Resolved per-call so UI changes take effect immediately without reload
+const getAmapKey = (): string => getLLMSettings().amapKey;
+// 向后兼容：部分内部函数直接用 AMAP_KEY 常量的位置统一走 getter
+const AMAP_KEY = '0e59aae0d84f39b4665eba7acc9f49a9'; // fallback if llmSettings not yet loaded
 
 const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number) => {
   const R = 6371e3;
@@ -487,7 +499,7 @@ export const reverseGeocode = async (lat: number, lng: number): Promise<{ addres
   // REST API 降级
   try {
     const resp = await fetch(
-      `https://restapi.amap.com/v3/geocode/regeo?key=${AMAP_KEY}&location=${lng},${lat}&extensions=base`,
+      `https://restapi.amap.com/v3/geocode/regeo?key=${getAmapKey()}&location=${lng},${lat}&extensions=base`,
       { signal: AbortSignal.timeout(8000) }
     );
     const data = await resp.json();
@@ -543,7 +555,7 @@ export const geocode = async (address: string): Promise<{ lat: number, lng: numb
   }
   // REST 降级
   const resp = await fetch(
-    `https://restapi.amap.com/v3/geocode/geo?key=${AMAP_KEY}&address=${encodeURIComponent(address)}`,
+    `https://restapi.amap.com/v3/geocode/geo?key=${getAmapKey()}&address=${encodeURIComponent(address)}`,
     { signal: AbortSignal.timeout(8000) }
   );
   const data = await resp.json();
