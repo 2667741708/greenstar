@@ -326,7 +326,7 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         // Changes: Added 2nd round keyword-only search (no type filter) to catch POIs with wrong category registration
         //   e.g.: "梵猫苑猫咖" registered as "餐饮相关" instead of "咖啡厅(050500)", missed by type+keyword joint search
 
-        // 第一轮: 精准分类搜索 (type + keyword)
+        // 第一轮: 精准分类搜索 (type + keyword, around API)
         const precisePromises = keywords.map(kw => {
           const typeCode = CONSTANTS.POI_TAG_TYPE_MAP[kw] || '';
           return searchPOI(currentRegion.name, kw, currentRegion.center, {
@@ -335,24 +335,42 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
           }).catch(() => [] as Spot[]);
         });
 
-        // 第二轮: 纯关键词搜索 (不限 type, 捕获分类注册不准确但名称匹配的 POI)
+        // 第二轮: 纯关键词搜索 (不限 type, around API, 捕获分类注册不准确的 POI)
         const fallbackPromises = keywords.map(kw =>
           searchPOI(currentRegion.name, kw, currentRegion.center, {
             type: '',
             radius,
-            isUserSearch: true, // 绕过三层过滤, 由后续合并去重时统一处理
+            isUserSearch: true, // 绕过三层过滤
           }).catch(() => [] as Spot[])
         );
 
-        const [preciseResults, fallbackResults] = await Promise.all([
+        // 第三轮: 全城文本搜索 (text API, 不限半径, 覆盖全城)
+        // 修改基准: CityExplorer.tsx @ 当前版本 (728行)
+        // 修改内容: 新增第三轮全城文本搜索, 使用 REST /api/poi/text 路径
+        //   解决 around 搜索半径 (30km) 导致全城景点覆盖率不足的结构性缺陷
+        //   例: 成都搜索中心在高新区, 宽窄巷子 (>15km) 在 around 搜索范围外
+        // Changes: Added 3rd round citywide text search via REST /api/poi/text
+        //   Fixes structural coverage gap where around search radius (30km) misses citywide landmarks
+        //   e.g.: Chengdu center at Gaoxin, Kuanzhai Alley (>15km away) outside around radius
+        const citywidePromises = keywords.map(kw =>
+          searchPOI(currentRegion.name, `${currentRegion.name} ${kw}`, currentRegion.center, {
+            type: '',
+            isUserSearch: true, // 触发 REST text search 路径, 不限半径
+            pageSize: 25,       // 全城搜索限制每轮 25 条
+          }).catch(() => [] as Spot[])
+        );
+
+        const [preciseResults, fallbackResults, citywideResults] = await Promise.all([
           Promise.all(precisePromises),
           Promise.all(fallbackPromises),
+          Promise.all(citywidePromises),
         ]);
 
-        // 合并去重（按 id, 精准搜索结果优先）
+        // 三轮合并去重（按 id, 精准搜索 > 纯关键词 > 全城文本）
         const merged = new Map<string, Spot>();
         preciseResults.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
         fallbackResults.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
+        citywideResults.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
         const finalSpots = Array.from(merged.values());
         
         // 应用版本对应的地点数量限制

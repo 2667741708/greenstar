@@ -40,10 +40,16 @@ TEST_CITIES = [
 # Source 1: 高德 POI (AMap)
 # ============================================================
 def fetch_amap_pois(city_name, lat, lng, radius=30000):
-    """从高德 API 多维度拉取 POI 数据"""
+    """从高德 API 多维度拉取 POI 数据 (around + text 双阶段)"""
+    # 修改基准: build_test_dataset.py @ 当前版本 (409行)
+    # 修改内容: 新增第二阶段全城文本搜索, 用 v3/place/text 按城市名搜索
+    #   解决 around 搜索中心偏移导致全城景点缺失 (如成都宽窄巷子、秦皇岛鸽子窝)
+    # Changes: Added stage 2 citywide text search via v3/place/text
+    #   Fixes citywide landmark coverage gap due to around center bias
     dimensions = ['110000', '080000', '140000', '050500', '060000', '050000', '100000']
     all_pois = []
 
+    # 阶段 1: around 搜索 (以中心点为圆心)
     for dim in dimensions:
         try:
             resp = requests.get("https://restapi.amap.com/v3/place/around", params={
@@ -59,8 +65,30 @@ def fetch_amap_pois(city_name, lat, lng, radius=30000):
             if data.get("status") == "1":
                 all_pois.extend(data.get("pois", []))
         except Exception as e:
-            print(f"    [WARN] AMap dim={dim} failed: {e}")
-        time.sleep(0.3)  # 避免 QPS 限制
+            print(f"    [WARN] AMap around dim={dim} failed: {e}")
+        time.sleep(0.3)
+
+    # 阶段 2: 全城文本搜索 (不限半径, 以城市名为范围)
+    text_keywords = [
+        f"{city_name}景点", f"{city_name}美食", f"{city_name}酒吧",
+        f"{city_name}咖啡", f"{city_name}博物馆", f"{city_name}公园",
+    ]
+    for kw in text_keywords:
+        try:
+            resp = requests.get("https://restapi.amap.com/v3/place/text", params={
+                "key": AMAP_KEY,
+                "keywords": kw,
+                "city": city_name,
+                "offset": 25,
+                "page": 1,
+                "extensions": "all",
+            }, timeout=15)
+            data = resp.json()
+            if data.get("status") == "1":
+                all_pois.extend(data.get("pois", []))
+        except Exception as e:
+            print(f"    [WARN] AMap text kw={kw} failed: {e}")
+        time.sleep(0.3)
 
     # 去重
     seen = set()

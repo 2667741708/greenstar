@@ -6,7 +6,7 @@
       "lng": 104.0668
     },
     "adcode": "510100",
-    "build_time": "2026-04-12T16:34:39.185034",
+    "build_time": "2026-04-12T17:51:38.836784",
     "builder": "build_test_dataset.py"
   },
   "ground_truth": {
@@ -33,10 +33,19 @@
       "西岭雪山",
       "环球中心东广场",
       "生机之塔",
+      "成都桂溪公园骑行起点",
       "桂溪生态公园",
       "双子塔夜景打卡点",
       "交子公园",
-      "交子之环"
+      "交子之环",
+      "锦城公园",
+      "铁像寺水街",
+      "天府绿道",
+      "大源中央公园",
+      "中和湿地公园",
+      "成都江滩公园",
+      "东湖公园",
+      "三圣花乡旅游区"
     ],
     "dining": [
       "陈麻婆豆腐(骡马市店)",
@@ -56,26 +65,27 @@
       "王妈手撕烤兔(玉林店)",
       "悦百味·品质川菜(大魔方店)",
       "Wine Tale 叙酒(大魔方店)",
+      "超级姜胖胖韩式自助烤肉(环球中心)",
       "皮马聊亚洲热炒店(大魔方店)",
       "新蓉庭.新派融合川菜(锦城店)",
-      "许家菜樽宴(大魔方店)",
-      "Wanwea万蔚·云宴",
-      "烤匠麻辣烤鱼(环球中心店)"
+      "成都美食街(建设巷店)",
+      "Helens海伦司小酒馆(成都春熙坊店)",
+      "贰麻酒馆(万科天荟店)"
     ],
     "leisure": [
       "九眼桥酒吧街",
       "锦里古街夜市",
       "成都小酒馆（玉林店）",
-      "方所书店（太古里店）",
+      "方所书店（远洋太古里店）",
       "鹤鸣茶社（人民公园）",
       "东郊记忆文创园",
-      "梅花剧社（川剧变脸演出）",
-      "兰桂坊成都",
+      "成都欢乐谷（夜场及演出）",
+      "贰麻酒馆（339电视塔店）",
       "三联韬奋书店（宽窄巷子店）",
-      "MAO Livehouse成都",
-      "中影紫荆国际影城4K激光IMAX环球中心旗舰店",
-      "寰映影城(成都招商大魔方店)",
-      "后仰喜剧(成都大魔方招商花园城)"
+      "成都音乐坊LiveHouse集群",
+      "成都兰桂坊酒吧",
+      "小酒馆(玉林西路店)",
+      "PP·PEUAPEU·佩佩·乐园(成都兰桂坊店)"
     ]
   },
   "sources": {
@@ -1377,22 +1387,6 @@
         "source": "amap"
       },
       {
-        "name": "嘉贝乐智趣成长乐园",
-        "address": "天府大道北段1777号成都大魔方招商花园城L3层",
-        "type": "体育休闲服务;休闲场所;游乐场",
-        "rating": 3.9,
-        "cost": [],
-        "open_time": "周一至周日 10:00-21:00",
-        "tel": [],
-        "photos_count": 3,
-        "distance": 441.0,
-        "coordinates": {
-          "lng": 104.071031,
-          "lat": 30.574376
-        },
-        "source": "amap"
-      },
-      {
         "name": "GREEN EARTH(新世纪环球购物中心店)",
         "address": "天府大道北段1700号环球中心3F层",
         "type": "体育休闲服务;娱乐场所;娱乐场所",
@@ -1677,6 +1671,22 @@
         "coordinates": {
           "lng": 104.064794,
           "lat": 30.568315
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Nobody·Chill Bar",
+        "address": "成都高新区招商大魔方佰利荟1-105(红鼎艳1楼电梯斜对面)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": "76.00",
+        "open_time": "周一至周日 20:00-02:00",
+        "tel": "13308028221",
+        "photos_count": 3,
+        "distance": 542.0,
+        "coordinates": {
+          "lng": 104.07194,
+          "lat": 30.574833
         },
         "source": "amap"
       },
@@ -3777,22 +3787,6 @@
         "source": "amap"
       },
       {
-        "name": "江见山高级西服礼服西装定制租赁",
-        "address": "环球中心E3区15楼1520号",
-        "type": "购物服务;专卖店;专营店",
-        "rating": 4.2,
-        "cost": [],
-        "open_time": "周一至周日 09:30-20:00",
-        "tel": "19150359936",
-        "photos_count": 3,
-        "distance": 370.0,
-        "coordinates": {
-          "lng": 104.064894,
-          "lat": 30.569902
-        },
-        "source": "amap"
-      },
-      {
         "name": "Aqara Home智能家居体验馆(成都大魔方招商花园城店)",
         "address": "招商大魔方花园城B馆LG1029号",
         "type": "购物服务;家居建材市场;家居建材市场",
@@ -3937,22 +3931,6 @@
         "source": "amap"
       },
       {
-        "name": "JINS(成都新世纪环球店)",
-        "address": "天府大道中段1700号环球中心A馆2楼",
-        "type": "购物服务;专卖店;眼镜店",
-        "rating": 4.1,
-        "cost": [],
-        "open_time": "周一至周日 10:00-22:00",
-        "tel": "028-68730854",
-        "photos_count": 3,
-        "distance": 395.0,
-        "coordinates": {
-          "lng": 104.064685,
-          "lat": 30.569745
-        },
-        "source": "amap"
-      },
-      {
         "name": "轩 尼斯门窗成都环球中心直营店",
         "address": "石羊街道环球中心N2区4-405",
         "type": "购物服务;家居建材市场;建材五金市场",
@@ -4045,6 +4023,38 @@
         "coordinates": {
           "lng": 104.070425,
           "lat": 30.57094
+        },
+        "source": "amap"
+      },
+      {
+        "name": "优衣库(环球中心店)",
+        "address": "天府大道北段1700号新世纪环球中心2层2FB02",
+        "type": "购物服务;服装鞋帽皮具店;品牌服装店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "028-67872146",
+        "photos_count": 3,
+        "distance": 405.0,
+        "coordinates": {
+          "lng": 104.064814,
+          "lat": 30.569585
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Tissot天梭表(成都大魔方招商花园城店)",
+        "address": "天府大道北段1777号成都大魔方招商花园城L1层",
+        "type": "购物服务;专卖店;钟表店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "028-63918837",
+        "photos_count": 3,
+        "distance": 413.0,
+        "coordinates": {
+          "lng": 104.070926,
+          "lat": 30.573881
         },
         "source": "amap"
       },
@@ -4721,18 +4731,18 @@
         "source": "amap"
       },
       {
-        "name": "大魔方･云曦天际S设计师酒店(成都金融城环球中心店)",
-        "address": "天府大道北段1777号招商玺荟4栋27楼2703",
-        "type": "住宿服务;宾馆酒店;宾馆酒店",
-        "rating": 4.6,
-        "cost": [],
-        "open_time": [],
-        "tel": "15928459202",
+        "name": "iGELATO意大利手工冰淇淋(成都SKP店)",
+        "address": "天府大道北段2001号成都skp北馆D2250",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.3,
+        "cost": "49.00",
+        "open_time": "周一至周日 10:00-22:00 2026-02-02至2026-03-02 00:00-24:00",
+        "tel": "18728330910",
         "photos_count": 3,
-        "distance": 519.0,
+        "distance": 433.0,
         "coordinates": {
-          "lng": 104.071513,
-          "lat": 30.575102
+          "lng": 104.070813,
+          "lat": 30.571002
         },
         "source": "amap"
       },
@@ -4749,6 +4759,22 @@
         "coordinates": {
           "lng": 104.071414,
           "lat": 30.575209
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都上古七莲酒店(大魔方店)",
+        "address": "天府大道1777号4幢28层2811号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "028-86262848;19382088058",
+        "photos_count": 3,
+        "distance": 518.0,
+        "coordinates": {
+          "lng": 104.071394,
+          "lat": 30.575256
         },
         "source": "amap"
       },
@@ -4785,38 +4811,6 @@
         "source": "amap"
       },
       {
-        "name": "成都交子国际酒店",
-        "address": "天府大道北段1677号3栋",
-        "type": "住宿服务;宾馆酒店;五星级宾馆",
-        "rating": 4.4,
-        "cost": [],
-        "open_time": [],
-        "tel": "028-83229999",
-        "photos_count": 3,
-        "distance": 610.0,
-        "coordinates": {
-          "lng": 104.070689,
-          "lat": 30.577149
-        },
-        "source": "amap"
-      },
-      {
-        "name": "坦途青年旅舍(成都SKP店)",
-        "address": "桂溪街道天府大道北段1777号招商玺荟4栋2801",
-        "type": "住宿服务;旅馆招待所;青年旅舍",
-        "rating": 4.6,
-        "cost": [],
-        "open_time": [],
-        "tel": "18200245008",
-        "photos_count": 3,
-        "distance": 522.0,
-        "coordinates": {
-          "lng": 104.071599,
-          "lat": 30.575023
-        },
-        "source": "amap"
-      },
-      {
         "name": "山河千鸟|揽都·琉璃星河设计师酒店",
         "address": "科华南路1372号",
         "type": "住宿服务;住宿服务相关;住宿服务相关",
@@ -4845,54 +4839,6 @@
         "coordinates": {
           "lng": 104.071376,
           "lat": 30.575234
-        },
-        "source": "amap"
-      },
-      {
-        "name": "蔚霖酒店(成都金融城环球中心店)",
-        "address": "天府大道北段1777号2栋2单元",
-        "type": "住宿服务;宾馆酒店;宾馆酒店",
-        "rating": 4.6,
-        "cost": [],
-        "open_time": [],
-        "tel": "19982057389",
-        "photos_count": 3,
-        "distance": 603.0,
-        "coordinates": {
-          "lng": 104.072311,
-          "lat": 30.575422
-        },
-        "source": "amap"
-      },
-      {
-        "name": "海王波塞冬·electronic sports高空电竞酒店(金融城演艺中心店)",
-        "address": "招商玺荟2栋2单元(心岛地铁站出入口旁)",
-        "type": "住宿服务;住宿服务相关;住宿服务相关",
-        "rating": 4.7,
-        "cost": [],
-        "open_time": [],
-        "tel": "17711439926;19182030587",
-        "photos_count": 3,
-        "distance": 608.0,
-        "coordinates": {
-          "lng": 104.072463,
-          "lat": 30.575276
-        },
-        "source": "amap"
-      },
-      {
-        "name": "大魔方·秋野子设计师酒店(成都金融城演艺中心心岛地铁站店)",
-        "address": "天府大道北段1777号成都大魔方招商花园城L1层",
-        "type": "住宿服务;宾馆酒店;宾馆酒店",
-        "rating": 4.5,
-        "cost": [],
-        "open_time": [],
-        "tel": "15828420774",
-        "photos_count": 3,
-        "distance": 642.0,
-        "coordinates": {
-          "lng": 104.07287,
-          "lat": 30.575253
         },
         "source": "amap"
       },
@@ -4945,18 +4891,18 @@
         "source": "amap"
       },
       {
-        "name": "CHCAN春灿公寓(成都环球中心店)",
-        "address": "天府大道北段1777号招商玺荟2栋2单元41层15号",
-        "type": "住宿服务;住宿服务相关;住宿服务相关",
-        "rating": 4.6,
+        "name": "成都寰玺国际酒店公寓(金融城环球中心店)",
+        "address": "天府大道1777号招商玺荟2栋2单元",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
         "cost": [],
         "open_time": [],
-        "tel": "18384977749",
+        "tel": "19980771198",
         "photos_count": 3,
-        "distance": 603.0,
+        "distance": 623.0,
         "coordinates": {
-          "lng": 104.072413,
-          "lat": 30.575265
+          "lng": 104.072455,
+          "lat": 30.575565
         },
         "source": "amap"
       },
@@ -4993,18 +4939,18 @@
         "source": "amap"
       },
       {
-        "name": "奥特兰蒂斯行政公寓(成都金融城环球中心店)",
-        "address": "天府大道北段1768号招商玺荟8栋7单元0楼大厅",
-        "type": "住宿服务;住宿服务相关;住宿服务相关",
-        "rating": 4.6,
+        "name": "成都米娅民宿(世纪城新会展店)",
+        "address": "天府大道北段1777号成都大魔方招商花园城",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 0.0,
         "cost": [],
         "open_time": [],
-        "tel": "028-61366066;18582589939",
+        "tel": "17316640292",
         "photos_count": 3,
-        "distance": 601.0,
+        "distance": 539.0,
         "coordinates": {
-          "lng": 104.072318,
-          "lat": 30.575378
+          "lng": 104.071675,
+          "lat": 30.575225
         },
         "source": "amap"
       },
@@ -5025,34 +4971,18 @@
         "source": "amap"
       },
       {
-        "name": "成都沐汐酒店公寓",
-        "address": "蜀锦路119号奥克斯广场12号楼6楼604",
+        "name": "九号院酒店(成都世纪城新会展中心店)",
+        "address": "天府大道北段1777号招商玺荟2栋2单元",
         "type": "住宿服务;住宿服务相关;住宿服务相关",
-        "rating": 3.9,
+        "rating": 4.6,
         "cost": [],
         "open_time": [],
-        "tel": "15082654724;17780060502",
+        "tel": "19196473797",
         "photos_count": 3,
-        "distance": 582.0,
+        "distance": 606.0,
         "coordinates": {
-          "lng": 104.063337,
-          "lat": 30.577103
-        },
-        "source": "amap"
-      },
-      {
-        "name": "成都爱丽思酒店",
-        "address": "益州大道北段805-807号奥克斯国际公馆6层",
-        "type": "住宿服务;宾馆酒店;四星级宾馆",
-        "rating": 4.7,
-        "cost": [],
-        "open_time": [],
-        "tel": "028-65068666;028-65172998;028-65173003",
-        "photos_count": 3,
-        "distance": 719.0,
-        "coordinates": {
-          "lng": 104.06043,
-          "lat": 30.576214
+          "lng": 104.07234,
+          "lat": 30.575428
         },
         "source": "amap"
       },
@@ -5085,22 +5015,6 @@
         "coordinates": {
           "lng": 104.060438,
           "lat": 30.576221
-        },
-        "source": "amap"
-      },
-      {
-        "name": "豪悦酒店(成都金融城环球中心店)",
-        "address": "锦城大道666号奥克斯公寓楼5号楼10楼",
-        "type": "住宿服务;宾馆酒店;宾馆酒店",
-        "rating": 4.8,
-        "cost": [],
-        "open_time": [],
-        "tel": "028-85550559",
-        "photos_count": 3,
-        "distance": 719.0,
-        "coordinates": {
-          "lng": 104.060398,
-          "lat": 30.57618
         },
         "source": "amap"
       },
@@ -5169,22 +5083,6 @@
         "source": "amap"
       },
       {
-        "name": "米娅轻奢服务公寓(环球中心店)",
-        "address": "天府大道1777号招商玺荟2栋2单元11楼1104号",
-        "type": "住宿服务;住宿服务相关;住宿服务相关",
-        "rating": 4.3,
-        "cost": [],
-        "open_time": [],
-        "tel": "17302874913;19980883937;+861056320612,46902484",
-        "photos_count": 3,
-        "distance": 642.0,
-        "coordinates": {
-          "lng": 104.072857,
-          "lat": 30.57527
-        },
-        "source": "amap"
-      },
-      {
         "name": "翊果果酒店(成都环球购物中心店)",
         "address": "天府大道北段1777号招商玺会2栋2单元4211室",
         "type": "住宿服务;宾馆酒店;宾馆酒店",
@@ -5201,66 +5099,18 @@
         "source": "amap"
       },
       {
-        "name": "成都云翼HYPER电竞酒店",
-        "address": "武侯区高新区天府大道北1777号2栋2单元11层1121号",
-        "type": "住宿服务;宾馆酒店;宾馆酒店",
-        "rating": 4.3,
-        "cost": [],
-        "open_time": [],
-        "tel": "17313054589",
-        "photos_count": 3,
-        "distance": 675.0,
-        "coordinates": {
-          "lng": 104.073211,
-          "lat": 30.575321
-        },
-        "source": "amap"
-      },
-      {
-        "name": "威斯凯尔奥特酒店(成都环球中心店)",
-        "address": "锦城大道666号奥克斯广场5号楼1层",
-        "type": "住宿服务;宾馆酒店;宾馆酒店",
-        "rating": 4.4,
-        "cost": [],
-        "open_time": [],
-        "tel": "028-83382392;028-85137000",
-        "photos_count": 3,
-        "distance": 718.0,
-        "coordinates": {
-          "lng": 104.060391,
-          "lat": 30.576152
-        },
-        "source": "amap"
-      },
-      {
-        "name": "马丁酒店公寓(锦城万达广场店)",
-        "address": "锦城大道666号奥克斯广场5栋11层(同爱丽思酒店一栋楼)",
+        "name": "瑞豪雅致酒店(双子塔环球中心店)",
+        "address": "交子南二路23号(孵化园地铁站A口步行460米)",
         "type": "住宿服务;宾馆酒店;宾馆酒店",
         "rating": 4.7,
         "cost": [],
         "open_time": [],
-        "tel": "18180680370;+861056320612,26967",
+        "tel": "028-61032888;13668210423",
         "photos_count": 3,
-        "distance": 713.0,
+        "distance": 775.0,
         "coordinates": {
-          "lng": 104.060467,
-          "lat": 30.576168
-        },
-        "source": "amap"
-      },
-      {
-        "name": "网鱼电竞酒店(成都双子塔环球中心店)",
-        "address": "益州大道北段777号3栋6层601号",
-        "type": "住宿服务;住宿服务相关;住宿服务相关",
-        "rating": 4.9,
-        "cost": [],
-        "open_time": [],
-        "tel": "15528105878",
-        "photos_count": 3,
-        "distance": 764.0,
-        "coordinates": {
-          "lng": 104.061984,
-          "lat": 30.578275
+          "lng": 104.061896,
+          "lat": 30.578345
         },
         "source": "amap"
       },
@@ -5277,6 +5127,38 @@
         "coordinates": {
           "lng": 104.060475,
           "lat": 30.576125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "璞朵行政酒店公寓(成都奥克斯广场环球中心店)",
+        "address": "锦城大道666号奥克斯广场国际公馆5栋21楼",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "19130817110",
+        "photos_count": 3,
+        "distance": 717.0,
+        "coordinates": {
+          "lng": 104.060452,
+          "lat": 30.576216
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北思卡尔公寓(环球中心店)",
+        "address": "蜀锦路与交子南一路交叉口西北80米",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "15802861707",
+        "photos_count": 3,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 104.063677,
+          "lat": 30.57774
         },
         "source": "amap"
       },
@@ -5313,6 +5195,22 @@
         "source": "amap"
       },
       {
+        "name": "云栖瑞枫公寓(锦城万达店)",
+        "address": "蜀锦路175号奥克斯广场8号楼",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "18728489460",
+        "photos_count": 3,
+        "distance": 682.0,
+        "coordinates": {
+          "lng": 104.061475,
+          "lat": 30.576875
+        },
+        "source": "amap"
+      },
+      {
         "name": "如家精选酒店(成都高新环球中心店)",
         "address": "锦尚西一路311号",
         "type": "住宿服务;宾馆酒店;经济型连锁酒店",
@@ -5325,6 +5223,22 @@
         "coordinates": {
           "lng": 104.061433,
           "lat": 30.578503
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老友居公寓(成都奥克斯广场店)",
+        "address": "锦城大道775号成都锦城万达广场西区7F层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "18030444352",
+        "photos_count": 3,
+        "distance": 685.0,
+        "coordinates": {
+          "lng": 104.06154,
+          "lat": 30.576975
         },
         "source": "amap"
       },
@@ -5425,22 +5339,6 @@
         "source": "amap"
       },
       {
-        "name": "成都缘客居酒店公寓",
-        "address": "锦城大道666号奥克斯广场7号楼18层1801号室",
-        "type": "住宿服务;住宿服务相关;住宿服务相关",
-        "rating": 3.7,
-        "cost": [],
-        "open_time": [],
-        "tel": "15983450651",
-        "photos_count": 3,
-        "distance": 696.0,
-        "coordinates": {
-          "lng": 104.06067,
-          "lat": 30.576161
-        },
-        "source": "amap"
-      },
-      {
         "name": "橙堡精选酒店(成都金融城环球中心店)",
         "address": "中航国际交流中心C座3栋1001号",
         "type": "住宿服务;宾馆酒店;宾馆酒店",
@@ -5505,6 +5403,22 @@
         "source": "amap"
       },
       {
+        "name": "锦弘瑞城公寓(成都环球中心店)",
+        "address": "锦城大道775号成都锦城万达广场西区6F层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "17882153896",
+        "photos_count": 3,
+        "distance": 687.0,
+        "coordinates": {
+          "lng": 104.061438,
+          "lat": 30.576907
+        },
+        "source": "amap"
+      },
+      {
         "name": "客莱登酒店公寓(成都奥克斯广场店)",
         "address": "蜀锦路195号奥克斯广场7号楼804",
         "type": "住宿服务;宾馆酒店;宾馆酒店",
@@ -5517,6 +5431,2006 @@
         "coordinates": {
           "lng": 104.060802,
           "lat": 30.576968
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夏威夷酒店(益州大道北段)",
+        "address": "锦城大道666号奥克斯广场5栋8层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "028-65730777",
+        "photos_count": 3,
+        "distance": 711.0,
+        "coordinates": {
+          "lng": 104.060439,
+          "lat": 30.576103
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都恒美酒店公寓",
+        "address": "益州大道北段777号锦上西一路中航国际交流中心3栋13层2号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "18181404200",
+        "photos_count": 3,
+        "distance": 774.0,
+        "coordinates": {
+          "lng": 104.062003,
+          "lat": 30.5784
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都天义豪酒店公寓",
+        "address": "蜀锦路奥克斯宽庭6号楼2002室",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "15983486615;19136301873",
+        "photos_count": 3,
+        "distance": 746.0,
+        "coordinates": {
+          "lng": 104.060682,
+          "lat": 30.576956
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都蜜语时光精品酒店(环球中心店)",
+        "address": "益州大道北段777号中航国际交流中心3栋5F",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "19828920797",
+        "photos_count": 3,
+        "distance": 790.0,
+        "coordinates": {
+          "lng": 104.061929,
+          "lat": 30.578533
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北尧民宿(环岛路分店)",
+        "address": "环岛路湾流汇复地金融岛环岛路1288号湾流汇",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,5663631",
+        "photos_count": 3,
+        "distance": 862.0,
+        "coordinates": {
+          "lng": 104.075802,
+          "lat": 30.572884
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都辉盛庭国际公寓-大堂",
+        "address": "环岛路1288号成都辉盛庭国际公寓",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 854.0,
+        "coordinates": {
+          "lng": 104.075716,
+          "lat": 30.572829
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都居佳里公寓",
+        "address": "环岛路1288号A2湾流汇",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "15198104976;+861056320612,15211225",
+        "photos_count": 3,
+        "distance": 876.0,
+        "coordinates": {
+          "lng": 104.075944,
+          "lat": 30.572812
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都金融城双子塔",
+        "address": "高新区锦晖西一街55号(金融城地铁站出入口旁)",
+        "type": "商务住宅;楼宇;商务写字楼",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.064759,
+          "lat": 30.582588
+        },
+        "source": "amap"
+      },
+      {
+        "name": "锦城公园",
+        "address": "益州大道北段1666号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.052308,
+          "lat": 30.570449
+        },
+        "source": "amap"
+      },
+      {
+        "name": "铁像寺水街",
+        "address": "铁像寺路88号",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "00:00-24:00,2026年春节期间09:30-22:00",
+        "tel": "028-65292065",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.050038,
+          "lat": 30.557844
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天府绿道",
+        "address": "益州大道中段694号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "028-68850000",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.076812,
+          "lat": 30.56275
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大源中央公园",
+        "address": "成都高新区天府二街777号(大源地铁站D口旁)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "13281029115",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.049182,
+          "lat": 30.549059
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中和湿地公园",
+        "address": "朝阳横街北50米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "028-60990000",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.095422,
+          "lat": 30.565879
+        },
+        "source": "amap"
+      },
+      {
+        "name": "铁像寺",
+        "address": "铁像寺路66号",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-16:30",
+        "tel": "028-85323576;028-86036140",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.049006,
+          "lat": 30.557092
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都江滩公园",
+        "address": "世纪城路",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00；泳池开放时间: 周六-周日10:00-21:00 周一-周五9:00-20:30",
+        "tel": "028-36061556",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.080905,
+          "lat": 30.555514
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东湖公园",
+        "address": "二环路东五段301号(东湖公园地铁站A口旁)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "028-85568847",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.087899,
+          "lat": 30.616051
+        },
+        "source": "amap"
+      },
+      {
+        "name": "UPARK公园",
+        "address": "富华北路666号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 10:00-02:00",
+        "tel": "028-83235307;028-87675877",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.039721,
+          "lat": 30.554564
+        },
+        "source": "amap"
+      },
+      {
+        "name": "春熙路步行街",
+        "address": "春熙路街道",
+        "type": "购物服务;特色商业街;特色商业街",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "028-86666947",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.077774,
+          "lat": 30.655544
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都武侯祠博物馆",
+        "address": "武侯祠大街231号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "028-85535951",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.047992,
+          "lat": 30.646168
+        },
+        "source": "amap"
+      },
+      {
+        "name": "望江楼公园",
+        "address": "望江路30号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "028-85223389",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.092217,
+          "lat": 30.629277
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三圣花乡旅游区",
+        "address": [],
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "00:00-24:00,2026年2月16日至2月23日00:00-24:00",
+        "tel": "028-84676767;028-84678221",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.13371,
+          "lat": 30.571996
+        },
+        "source": "amap"
+      },
+      {
+        "name": "人民公园",
+        "address": "小南街8号(人民公园地铁站B口步行250米)",
+        "type": "风景名胜;风景名胜;国家级景点",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "6月至9月 周一至周日 06:00-22:30；1月至5月,10月至12月 周一至周日 06:03-22:00",
+        "tel": "028-86132021",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.057641,
+          "lat": 30.65699
+        },
+        "source": "amap"
+      },
+      {
+        "name": "锦城湖4号公园",
+        "address": "锦城湖立交附近",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 09:00-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.051545,
+          "lat": 30.565324
+        },
+        "source": "amap"
+      },
+      {
+        "name": "近慈寺",
+        "address": "剑南大道北段899号",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "6月至9月 周一至周日 08:30-17:30；1月至5月,10月至12月 周一至周日 09:00-17:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.047054,
+          "lat": 30.574105
+        },
+        "source": "amap"
+      },
+      {
+        "name": "顺兴成都小吃(乐天百货成都环球中心店)",
+        "address": "天府大道北段1700号环球中心1F层",
+        "type": "餐饮服务;中餐厅;四川菜(川菜)",
+        "rating": 3.9,
+        "cost": "31.00",
+        "open_time": [],
+        "tel": "13541247413",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.064775,
+          "lat": 30.569625
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都美食街(建设巷店)",
+        "address": "猛追湾街道建设巷12号",
+        "type": "购物服务;特色商业街;特色商业街|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.7,
+        "cost": "58.00",
+        "open_time": "周一至周日 10:30-23:00",
+        "tel": "13102213178",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.102816,
+          "lat": 30.671142
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都美食(浆洗街社区店)",
+        "address": "浆洗街社区东南门东北60米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "17360189776;18980461429",
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.058263,
+          "lat": 30.639425
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都小吃",
+        "address": "方正街18号方正街18号院",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.083325,
+          "lat": 30.667525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "巴蜀桃源民间川菜成都小吃",
+        "address": "逸都路6号伊藤洋华堂(双楠店)",
+        "type": "餐饮服务;中餐厅;四川菜(川菜)",
+        "rating": 3.9,
+        "cost": "43.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.021196,
+          "lat": 30.646253
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老成都小吃(锦丽苑店)",
+        "address": "水碾河路46号锦丽苑",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.6,
+        "cost": "21.00",
+        "open_time": "周一至周日 09:00-21:30",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.097695,
+          "lat": 30.648245
+        },
+        "source": "amap"
+      },
+      {
+        "name": "李鲜森成都小吃(有粉有面)",
+        "address": "彭镇红石菜园路二段526号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.5,
+        "cost": "16.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.853599,
+          "lat": 30.547067
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都小吃",
+        "address": "隆都大道与鼎新街交叉口南20米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.0,
+        "cost": "48.00",
+        "open_time": [],
+        "tel": "13541052635",
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.617562,
+          "lat": 30.551057
+        },
+        "source": "amap"
+      },
+      {
+        "name": "太婆面庄·成都小吃",
+        "address": "建设南路163号附106.108号万科魔方街(东郊记忆旁)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": "17.00",
+        "open_time": "00:00-24:00,2026年2月16日至2月23日00:00-24:00",
+        "tel": "13072891961",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.126592,
+          "lat": 30.669052
+        },
+        "source": "amap"
+      },
+      {
+        "name": "皇城熙客·川菜·成都小吃(三圣街2号院店)",
+        "address": "锦江区三圣街20号(春熙路地铁站E2口步行400米)",
+        "type": "餐饮服务;中餐厅;四川菜(川菜)",
+        "rating": 4.5,
+        "cost": "40.00",
+        "open_time": "周一至周日 11:30-14:30,17:00-21:30 2026-02-15至2026-02-20 周一至周日 全天关闭",
+        "tel": "028-81306220;13068714210;13281585209",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.079733,
+          "lat": 30.649582
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都小吃冒节子肥肠粉(北打铜街小区21号院店)",
+        "address": "北打铜街小区21号院东门旁",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.1,
+        "cost": "18.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13881791512;15928615987",
+        "photos_count": 2,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.071979,
+          "lat": 30.670086
+        },
+        "source": "amap"
+      },
+      {
+        "name": "酸菜牛肉面(成都美食栏目隆重推荐唐昌分店)",
+        "address": "郫都区郫都区宁馨街",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 3.9,
+        "cost": "23.00",
+        "open_time": "周一至周日 06:00-20:00",
+        "tel": "15108250688",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.82334,
+          "lat": 30.916797
+        },
+        "source": "amap"
+      },
+      {
+        "name": "皇城熙客·川菜·成都小吃(武侯祠锦里店)",
+        "address": "武侯祠大街123号附27号",
+        "type": "餐饮服务;中餐厅;四川菜(川菜)",
+        "rating": 4.3,
+        "cost": "39.00",
+        "open_time": "周一至周日 10:00-24:00",
+        "tel": "17781691279",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.05158,
+          "lat": 30.645437
+        },
+        "source": "amap"
+      },
+      {
+        "name": "71号豆汤饭·成都小吃(国色天乡店)",
+        "address": "国色天乡奥特莱斯(江宁南路店)",
+        "type": "餐饮服务;中餐厅;四川菜(川菜)",
+        "rating": 4.0,
+        "cost": "22.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.824885,
+          "lat": 30.721659
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都美食街(建设巷店)(暂停营业)",
+        "address": "建设支巷与建设巷交叉口东20米",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.6,
+        "cost": "49.00",
+        "open_time": "周一至周日 08:30-20:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.102875,
+          "lat": 30.671275
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都特色小吃",
+        "address": "红星路3段99号银石广场B2层(春熙路地铁站B口旁)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.0,
+        "cost": "24.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.080275,
+          "lat": 30.653075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都蓝城悦榕美食文化酒店(武侯祠锦里店)",
+        "address": "永丰路16号(衣冠庙地铁站A口步行380米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "028-85358818",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.049691,
+          "lat": 30.631348
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都SKP美食大道打车点",
+        "address": "锦悦东路1538号(锦城广场东地铁站B口步行320米)",
+        "type": "汽车服务;汽车服务相关;汽车服务相关",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.070975,
+          "lat": 30.568575
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都地标美食",
+        "address": "新华大道双林路与双林路交叉口东40米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.109051,
+          "lat": 30.653692
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都爵品餐饮(光明苑店)",
+        "address": "长城路二段499号4栋1层120号",
+        "type": "餐饮服务;中餐厅;四川菜(川菜)",
+        "rating": 3.8,
+        "cost": "137.00",
+        "open_time": "周一至周日 00:00-23:45",
+        "tel": "13072828000",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.98704,
+          "lat": 30.551592
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都美食鲜商贸有限公司",
+        "address": "阳光路与阳光北路交叉口东北120米",
+        "type": "公司企业;公司;公司",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "18000574262",
+        "photos_count": 2,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.028222,
+          "lat": 30.746269
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老成都一碗美味海味面(华润幸福里店)",
+        "address": "菱安路266号附118号华润幸福里2期",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": "16.00",
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "13880354456",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.117265,
+          "lat": 30.609985
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都名小吃Q水餃館",
+        "address": "芙蓉中路797号",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 10:30-23:00",
+        "tel": "18116563726",
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.154119,
+          "lat": 30.600717
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都名小吃(龙湖时代天街店)",
+        "address": "合信路与合信南路交叉口东200米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.921502,
+          "lat": 30.752206
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都威柒餐饮有限公司",
+        "address": "国华街与泰宁一路交叉口西北60米",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.08093,
+          "lat": 30.582293
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都ORO酒吧",
+        "address": "顺城大街74号锦官城国服商场",
+        "type": "体育休闲服务;休闲场所;休闲场所",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 20:00-06:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.071542,
+          "lat": 30.658284
+        },
+        "source": "amap"
+      },
+      {
+        "name": "D.N.A酒吧(成都店)",
+        "address": "东大街下东大街段258号2栋2层1号206-210号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "028-63044325;17310819019",
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.082179,
+          "lat": 30.649624
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Color Palette酒吧(成都光环凯悦尚萃酒店)",
+        "address": "通源街229号成都光环凯悦尚萃酒店7楼",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.1,
+        "cost": "122.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.112309,
+          "lat": 30.635358
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都兰桂坊酒吧",
+        "address": "水津街兰桂坊下沉广场(东门大桥地铁站A口步行390米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.9,
+        "cost": "95.00",
+        "open_time": "周一至周日 20:00-05:30",
+        "tel": "13551394623",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.085299,
+          "lat": 30.645769
+        },
+        "source": "amap"
+      },
+      {
+        "name": "尖牙酒吧(成都店)",
+        "address": "一环路西一段与菊乐路交叉口西北140米",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": "68.00",
+        "open_time": "周一至周日 15:00-03:00",
+        "tel": "13281038301",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.040475,
+          "lat": 30.647275
+        },
+        "source": "amap"
+      },
+      {
+        "name": "黑森林酒吧(成都鹭洲里店)",
+        "address": "天府二街1083号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "90.00",
+        "open_time": "周一至周日 18:00-02:00",
+        "tel": "028-83388806",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.041405,
+          "lat": 30.55072
+        },
+        "source": "amap"
+      },
+      {
+        "name": "iE音乐酒吧(成都龙泉天街店)",
+        "address": "安逸街与巴适巷交叉口西北100米",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": "57.00",
+        "open_time": "周一至周日 19:30-03:30",
+        "tel": "028-60216891",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.249405,
+          "lat": 30.575934
+        },
+        "source": "amap"
+      },
+      {
+        "name": "井酒吧(成都太古里)",
+        "address": "中纱帽街8号成都太古里L1层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": "147.00",
+        "open_time": "周一至周日 17:00-01:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.084579,
+          "lat": 30.651432
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小酒馆(玉林西路店)",
+        "address": "玉林西路55号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.8,
+        "cost": "68.00",
+        "open_time": "周一 19:00-02:00；周二至周日 15:00-02:00 2026-02-15至2026-02-18 周一至周日 全天关闭；2026-02-19至2026-02-23 周一至周日 19:00-02:00",
+        "tel": "028-85568552",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.056407,
+          "lat": 30.629532
+        },
+        "source": "amap"
+      },
+      {
+        "name": "九眼桥酒吧街",
+        "address": "致民东路19号南河苑(九眼桥码头遗址附近)",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.6,
+        "cost": "138.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.087296,
+          "lat": 30.64048
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贰麻酒馆(兰桂坊店)",
+        "address": "水津街1号2栋1层1601-16032层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.7,
+        "cost": "129.00",
+        "open_time": "周一至周日 18:00-04:00",
+        "tel": "028-81299179",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.084639,
+          "lat": 30.643683
+        },
+        "source": "amap"
+      },
+      {
+        "name": "辰色酒馆(成都339店)",
+        "address": "猛追湾街166号栋1层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.7,
+        "cost": "75.00",
+        "open_time": "周一至周日 19:00-05:00",
+        "tel": "18137115910",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.094994,
+          "lat": 30.662445
+        },
+        "source": "amap"
+      },
+      {
+        "name": "OrangutanBunker猩猩地堡(兰桂坊店)",
+        "address": "水津街1号兰桂坊12栋2层212号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.6,
+        "cost": "89.00",
+        "open_time": "周一至周日 21:30-05:00",
+        "tel": "17303842531",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.084663,
+          "lat": 30.644906
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都DNA CLUB",
+        "address": "人民中路一段15号(骡马市地铁站D口步行230米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.7,
+        "cost": "279.00",
+        "open_time": "周一至周日 20:00-05:00",
+        "tel": "17814609963",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.066717,
+          "lat": 30.664768
+        },
+        "source": "amap"
+      },
+      {
+        "name": "KEZEEChannel(阳光新业中心店)",
+        "address": "阳光新业中心6F(牛王庙地铁站G口步行180米)",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.8,
+        "cost": "286.00",
+        "open_time": "周一至周日 20:00-02:30",
+        "tel": "18137115910",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.090361,
+          "lat": 30.642869
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PP·PEUAPEU·佩佩·乐园(成都兰桂坊店)",
+        "address": "水津街2栋1号楼一层1901-1905",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.8,
+        "cost": "105.00",
+        "open_time": "周一至周日 20:00-05:00",
+        "tel": "18010673080",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.084758,
+          "lat": 30.643172
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贰麻酒馆(地下城Live店)",
+        "address": "双林路339号1栋1层20、21号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.7,
+        "cost": "127.00",
+        "open_time": "周一至周日 18:00-04:00 2026-02-16至2026-02-16 周一至周日 全天关闭",
+        "tel": "028-81717179",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.093856,
+          "lat": 30.662361
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PH成都",
+        "address": "东大街下东大街段258号西部国际金融中心2层",
+        "type": "生活服务;美容美发店;美容美发店|体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.7,
+        "cost": "350.00",
+        "open_time": "周一至周日 21:00-05:00",
+        "tel": "17310819019;18639632939",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.083644,
+          "lat": 30.648653
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兰桂坊OT CLUB·综合娱乐空间",
+        "address": "下西顺城大街75号3层附1号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": "84.00",
+        "open_time": "周一至周日 20:00-05:00",
+        "tel": "15802898797",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.07155,
+          "lat": 30.658239
+        },
+        "source": "amap"
+      },
+      {
+        "name": "HIB HUB公社(成都兰桂坊店)",
+        "address": "水津街1号2栋",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.7,
+        "cost": "102.00",
+        "open_time": "周一至周日 20:00-04:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.084685,
+          "lat": 30.644244
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Helens海伦司小酒馆(成都春熙坊店)",
+        "address": "总府路29号1栋二楼",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.7,
+        "cost": "64.00",
+        "open_time": "周一至周四,周日 19:00-03:30；周五至周六 19:00-04:00",
+        "tel": "17607240952",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.078197,
+          "lat": 30.658534
+        },
+        "source": "amap"
+      },
+      {
+        "name": "硬米深夜酒馆(水街店)",
+        "address": "盛华北路116号铁像寺水街二期7栋2单元1层12",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.7,
+        "cost": "103.00",
+        "open_time": "周一至周日 10:00-03:00",
+        "tel": "19141350869",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.050822,
+          "lat": 30.557512
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贰麻酒馆(万科天荟店)",
+        "address": "成华大道杉板桥路369号1栋1单元1层373-375-377",
+        "type": "体育休闲服务;娱乐场所;酒吧|餐饮服务;中餐厅;中餐厅",
+        "rating": 4.7,
+        "cost": "121.00",
+        "open_time": "周一至周日 18:00-04:00 2026-02-16至2026-02-16 周一至周日 全天关闭",
+        "tel": "028-86119179",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.125179,
+          "lat": 30.666946
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ENCORE CDC无里安可",
+        "address": "王家巷25号附107号(抚琴地铁站D口步行480米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.7,
+        "cost": "106.00",
+        "open_time": "周一至周日 20:30-04:00",
+        "tel": "028-83338380",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.046015,
+          "lat": 30.676889
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小咖咖啡(成都分公司)",
+        "address": "东大路333号光环T1(东大路地铁站G口步行420米)",
+        "type": "公司企业;公司;公司",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.110907,
+          "lat": 30.636597
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克咖啡(成都银泰中心7F店)",
+        "address": "天府大道北段99号",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.6,
+        "cost": "29.00",
+        "open_time": "周一至周五 06:45-22:00；周六至周日 08:00-22:00",
+        "tel": "028-65170857",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.070022,
+          "lat": 30.584978
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(成都复城国际T1店)",
+        "address": "天府二街668号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.3,
+        "cost": "14.00",
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.055118,
+          "lat": 30.550511
+        },
+        "source": "amap"
+      },
+      {
+        "name": "% Arabica阿拉比卡咖啡(SKP店)",
+        "address": "天府大道北段2001号成都SKP F1层",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "42.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "19946253547",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.070504,
+          "lat": 30.56817
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(成都锦城万达店)",
+        "address": "锦城大道666号锦城万达1F集市内",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.3,
+        "cost": "13.00",
+        "open_time": "周一至周日 08:00-19:00",
+        "tel": "15928541160",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.062054,
+          "lat": 30.576183
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(成都环球中心E2店)",
+        "address": "天府大道北段1700号环球中心E2大厅",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.3,
+        "cost": "11.00",
+        "open_time": "周一至周四 07:30-20:00；周五至周日 08:00-18:00",
+        "tel": "18228059864",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.065193,
+          "lat": 30.568119
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Peet's Coffee皮爷咖啡(成都交子大道店)",
+        "address": "交子大道193号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "37.00",
+        "open_time": "周六至周日 08:00-22:00；周一至周五 07:30-22:00",
+        "tel": "19150324536",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.057791,
+          "lat": 30.582083
+        },
+        "source": "amap"
+      },
+      {
+        "name": "LEMIEL COFFEE(中海国际中心店)",
+        "address": "交子大道333号中海国际中心E座F1层",
+        "type": "餐饮服务;中餐厅;中餐厅|餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.8,
+        "cost": "75.00",
+        "open_time": "周一至周日 09:00-24:00",
+        "tel": "028-87799888",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.055432,
+          "lat": 30.581664
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都博物馆",
+        "address": "小河街1号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": "周一至周日 09:00-20:30 最晚进入20:00 01-01至02-15 周二至周四,周日 09:00-17:00 最晚进入16:30；02-17至02-22 周二至周四,周日 09:00-17:00 最晚进入16:30；02-24至12-31 周二至周四,周日 09:00-17:00 最晚进入16:30；01-01至02-15 周五至周六 09:00-20:30 最晚进入20:00；02-17至02-22 周五至周六 09:00-20:30 最晚进入20:00；02-24至12-31 周五至周六 09:00-20:30 最晚进入20:00；01-01至02-15 周一 全天关闭；02-17至02-22 周一 全天关闭；02-24至12-31 周一 全天关闭；02-16至02-16 周一至周日 09:00-18:30 最晚进入18:00；02-23至02-23 周一至周日 09:00-18:30 最晚进入18:00",
+        "tel": "028-68277011",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.063749,
+          "lat": 30.657297
+        },
+        "source": "amap"
+      },
+      {
+        "name": "四川博物院",
+        "address": "青华路5号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周二至周日 09:00-17:00 最晚进入16:00；周一 全天关闭；每周一闭馆(国家法定节假日除外）",
+        "tel": "028-65521888;028-65521581",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.034127,
+          "lat": 30.660792
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都自然博物馆",
+        "address": "成华大道十里店路88号(十里店地铁站B口步行110米)",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "9月至12月 周二至周日 09:00-17:00 最晚进入16:30；周一至周日 09:00-18:30 最晚进入18:00 01-01至02-14 周二至周日 09:00-17:00 最晚进入16:30；02-24至07-07 周二至周日 09:00-17:00 最晚进入16:30；01-01至02-14 周一 全天关闭；02-24至12-31 周一 全天关闭；07-08至08-31 周二至周五,周日 09:00-18:00 最晚进入17:30；07-08至08-31 周六 09:00-19:30 最晚进入19:00；02-16至02-16 周一至周日 09:00-17:00 最晚进入16:30；02-15至02-15 周一至周日 09:00-19:00 最晚进入18:30；02-17至02-23 周一至周日 09:00-19:00 最晚进入18:30",
+        "tel": "028-60828500",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.144295,
+          "lat": 30.67821
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都大运会博物馆",
+        "address": "体育公园路16号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周二至周日10:00-17:00(16:30停止入场法定节假日除外)",
+        "tel": "028-60630377",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.249907,
+          "lat": 30.594945
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都大学博物馆",
+        "address": "成洛大道2025号成都大学",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-16:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.188863,
+          "lat": 30.650452
+        },
+        "source": "amap"
+      },
+      {
+        "name": "四川省三都博物馆",
+        "address": "华府大道二段99号(骑龙地铁站A口步行380米)",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-11:30，13:00-17:30",
+        "tel": "028-85769123",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.040689,
+          "lat": 30.524925
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都永陵博物馆",
+        "address": "永陵路10号永陵公园",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 07:00-22:00；文物保护区:8:30-18:00（17:30 停止售票） 综合馆:8:30-18:00（17:30 停止入馆） 园林保护区:7:00-22:00",
+        "tel": "028-81290168",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.047175,
+          "lat": 30.674375
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都杜甫草堂博物馆",
+        "address": "青华路37号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "周一至周日 08:30-18:00",
+        "tel": "028-68921800;028-87345202;028-87327392",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.028514,
+          "lat": 30.660153
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都绿舟博物馆",
+        "address": "光华大道二段601号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "028-87071953;028-87071957",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.927859,
+          "lat": 30.671297
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都武侯祠博物馆文物区",
+        "address": "武侯祠大街231号成都武侯祠博物馆内",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.048658,
+          "lat": 30.64542
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都川剧艺术博物馆(暂停开放)",
+        "address": "华兴正街54号(市二医院地铁站A口步行440米)",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.080315,
+          "lat": 30.659687
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都体育学院武侯校区博物馆",
+        "address": "一环路西一段19号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "028-85070937",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.044983,
+          "lat": 30.647631
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都十二月市博物馆",
+        "address": "金海岸公寓西北门南60米",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周二至周日 10:00-21:00；节假日营业时间以官方通知为准",
+        "tel": "028-60717535",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.085846,
+          "lat": 30.64963
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都锦绣博物馆",
+        "address": "金牛电子商务大厦",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.998425,
+          "lat": 30.716675
+        },
+        "source": "amap"
+      },
+      {
+        "name": "遇见博物馆·成都馆",
+        "address": "桂溪街道天府大道天府软件园C1楼成都当代美术馆",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "01/01-01/20 周二-周日 10:00-18:00开放；01/21 全天不开放；01/22-12/31 周二-周日 10:00-18:00开放；元旦节,春节,清明节,劳动节,端午节,中秋节,国庆节 10:00-18:00开放",
+        "tel": "4001508800",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.070635,
+          "lat": 30.541737
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都大熊猫博物馆",
+        "address": "熊猫大道1375号成都大熊猫繁育研究基地内(东南角)",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周二至周日 09:00-17:00 最晚进入16:30；周一 全天关闭；周一闭馆（国家法定假日除外）",
+        "tel": "028-83500156",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.146609,
+          "lat": 30.733489
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都爱情博物馆",
+        "address": "总府路12号茂业百货F7层",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.078463,
+          "lat": 30.657595
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天府四川金融博物馆",
+        "address": "游乐园滨河路8号(红星桥地铁站A口步行380米)",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周五:10:00-17:30(17:00停止入场)",
+        "tel": "028-64867476",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.093463,
+          "lat": 30.668341
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都蜀锦织绣博物馆",
+        "address": "草堂东路18号锦绣工场古玩城3号楼",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:30-18:30 最晚进入18:00",
+        "tel": "028-87337990",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.037045,
+          "lat": 30.657296
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都静涛博物馆",
+        "address": "芳邻路2号附26号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周二至周日 09:30-17:30；节假日营业时间以官方通知为准",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.042867,
+          "lat": 30.654994
+        },
+        "source": "amap"
+      },
+      {
+        "name": "四川大学博物馆",
+        "address": "望江路19号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一 全天关闭；周二至周日 09:00-17:00 最晚进入16:30；周一闭馆，法定节假日除外 06-19至06-21 周一至周日 09:00-17:00 最晚进入16:30；周一闭馆，法定节假日除外",
+        "tel": "028-85412313",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.090711,
+          "lat": 30.636303
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都隋唐窑址博物馆",
+        "address": "一环路西二段31号附2号",
+        "type": "科教文化服务;博物馆;博物馆|风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周二至周日 09:00-17:00,节假日以官方通知为准",
+        "tel": "028-87760973",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.040977,
+          "lat": 30.663457
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都生命奥秘博物馆(今站购物中心店)",
+        "address": "春熙路天府广场负一楼B07今站购物中心",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一,周四至周日 10:00-21:30 最晚进入20:30；周二至周三 10:00-18:00 最晚进入17:00",
+        "tel": "028-86162515",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.066505,
+          "lat": 30.657579
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都永陵博物馆文物保护区",
+        "address": "永陵路10号永陵公园",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.0468,
+          "lat": 30.674311
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老成都民俗公园(人民南路四段)",
+        "address": "二环路南二段214-216号附近",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.066831,
+          "lat": 30.619993
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都露天音乐公园",
+        "address": "北星大道一段1500号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 06:00-22:00",
+        "tel": "028-83572993",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.078655,
+          "lat": 30.726133
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海合安成都极地海洋公园",
+        "address": "天府新区海洋路68号",
+        "type": "风景名胜;公园广场;水族馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:30-17:00",
+        "tel": "028-66588888",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.073287,
+          "lat": 30.49487
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都熊猫海洋公园",
+        "address": "北湖生态公园湖光路188号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周五:9:30-18:00(17:00停止检票)；周末(节假日)9:00-18:30(17:00停止检票)",
+        "tel": "028-61388888",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.15449,
+          "lat": 30.719321
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成都西湖生态公园",
+        "address": "沙渠街道罗熊路北150米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.754694,
+          "lat": 30.503338
+        },
+        "source": "amap"
+      },
+      {
+        "name": "龙泉山城市森林公园",
+        "address": "茶店街道",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00；具体营业状态以当天开放情况为准",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.378946,
+          "lat": 30.591528
+        },
+        "source": "amap"
+      },
+      {
+        "name": "青龙湖湿地公园",
+        "address": "十陵风景区内",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.183631,
+          "lat": 30.646345
+        },
+        "source": "amap"
+      },
+      {
+        "name": "棠湖公园",
+        "address": "棠湖西路一段2号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 06:30-21:30",
+        "tel": "028-85803025",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.918481,
+          "lat": 30.570315
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东安湖体育公园",
+        "address": "东安街道体育公园路16号、18号、20号、22号",
+        "type": "体育休闲服务;运动场馆;综合体育馆",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "028-88424008;028-88462726",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.248359,
+          "lat": 30.598399
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浣花溪公园",
+        "address": "草堂街道青华路9号(近杜甫草堂)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 06:00-22:00 最晚进入22:00",
+        "tel": "028-87384099",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.029022,
+          "lat": 30.657467
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兴隆湖湿地公园",
+        "address": "天府新区",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.08042,
+          "lat": 30.393487
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天府艺术公园",
+        "address": "金泉街道金牛大道金牛坝路388号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "周一至周日 08:00-17:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.022692,
+          "lat": 30.711411
+        },
+        "source": "amap"
+      },
+      {
+        "name": "塔子山公园",
+        "address": "迎晖路222号(塔子山公园地铁站D口步行293米)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "6月至9月 周一至周日 06:30-22:00；1月至5月,10月至12月 周一至周日 07:00-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.124023,
+          "lat": 30.6344
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东安湖公园",
+        "address": "龙泉街道都市汽车城大道四段辅路",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "028-83476860",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.244966,
+          "lat": 30.589811
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北湖生态公园",
+        "address": "龙潭街道环湖路5号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-17:00",
+        "tel": "028-62275604",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.154455,
+          "lat": 30.718909
+        },
+        "source": "amap"
+      },
+      {
+        "name": "花舞人间都市农业主题公园",
+        "address": "新蒲路梨花溪1号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 08:30-17:00 2026-02-17至2026-02-23 周一至周日 08:30-17:30",
+        "tel": "028-82555666",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.807472,
+          "lat": 30.385305
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鲁家滩湿地公园",
+        "address": "和盛镇春林路",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "028-82767897",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.774798,
+          "lat": 30.689937
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹿森林公园",
+        "address": "白鹿镇小夫路与塘坝二路交叉口",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 103.912388,
+          "lat": 31.189009
+        },
+        "source": "amap"
+      },
+      {
+        "name": "文化公园",
+        "address": "琴台路73号(青羊宫地铁站C口旁)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "028-87769637",
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.043118,
+          "lat": 30.660523
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天府公园",
+        "address": "天府新区天府大道南二段与杭州路交叉口南",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-18:00 最晚进入17:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 0.0,
+        "coordinates": {
+          "lng": 104.072372,
+          "lat": 30.432313
         },
         "source": "amap"
       }
@@ -5921,12 +7835,6 @@
         "type": "餐饮服务;餐饮相关场所;餐饮相关"
       },
       {
-        "name": "成都旅游集散中心广场",
-        "source": "ctrip_approx_成都旅游",
-        "rating": 4.0,
-        "type": "风景名胜;公园广场;城市广场"
-      },
-      {
         "name": "成都天台山旅游景区",
         "source": "ctrip_approx_成都旅游",
         "rating": 4.6,
@@ -5945,22 +7853,10 @@
         "type": "风景名胜;风景名胜;风景名胜"
       },
       {
-        "name": "成都龙泉山丹景台旅游景区丹景阁",
-        "source": "ctrip_approx_成都旅游",
-        "rating": 4.0,
-        "type": "风景名胜;风景名胜;风景名胜"
-      },
-      {
         "name": "成都市蒲江成佳茶乡旅游景区",
         "source": "ctrip_approx_成都旅游",
         "rating": 4.2,
         "type": "风景名胜;风景名胜;国家级景点"
-      },
-      {
-        "name": "成都·海滨城旅游景区",
-        "source": "ctrip_approx_成都旅游",
-        "rating": 4.2,
-        "type": "风景名胜;风景名胜相关;旅游景点"
       },
       {
         "name": "都江堰景区",
@@ -6005,6 +7901,12 @@
         "type": "风景名胜;风景名胜相关;旅游景点"
       },
       {
+        "name": "成都大熊猫繁育研究基地",
+        "source": "ctrip_approx_成都旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
         "name": "宽窄巷子景区-窄径",
         "source": "ctrip_approx_成都旅游",
         "rating": 4.3,
@@ -6027,15 +7929,27 @@
         "source": "ctrip_approx_成都旅游",
         "rating": 4.7,
         "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "凤凰湖旅游景区",
+        "source": "ctrip_approx_成都旅游",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "都江堰熊猫谷",
+        "source": "ctrip_approx_成都旅游",
+        "rating": 4.8,
+        "type": "风景名胜;公园广场;动物园"
       }
     ]
   },
   "stats": {
-    "total_amap_pois": 340,
+    "total_amap_pois": 459,
     "total_baike_spots": 25,
     "total_ctrip_spots": 58,
-    "ground_truth_must_visit": 26,
-    "ground_truth_dining": 22,
+    "ground_truth_must_visit": 35,
+    "ground_truth_dining": 23,
     "ground_truth_leisure": 13
   },
   "ground_truth_original": {
@@ -6049,27 +7963,36 @@
       "交子公园",
       "桂溪生态公园东区",
       "交子之环",
-      "宽窄巷子景区",
-      "南苑小树林"
+      "锦城公园",
+      "铁像寺水街",
+      "天府绿道",
+      "大源中央公园",
+      "中和湿地公园",
+      "铁像寺",
+      "成都江滩公园",
+      "东湖公园",
+      "望江楼公园",
+      "三圣花乡旅游区",
+      "人民公园"
     ],
     "dining": [
+      "LEMIEL COFFEE(中海国际中心店)",
       "悦百味·品质川菜(大魔方店)",
       "Wine Tale 叙酒(大魔方店)",
       "超级姜胖胖韩式自助烤肉(环球中心)",
       "皮马聊亚洲热炒店(大魔方店)",
       "新蓉庭.新派融合川菜(锦城店)",
-      "星巴克臻选成都锦城万达广场店",
-      "许家菜樽宴(大魔方店)",
-      "Wanwea万蔚·云宴",
-      "烤匠麻辣烤鱼(环球中心店)",
-      "喜茶(成都环球中心店)"
+      "成都美食街(建设巷店)",
+      "Helens海伦司小酒馆(成都春熙坊店)",
+      "贰麻酒馆(万科天荟店)",
+      "星巴克臻选成都锦城万达广场店"
     ],
     "leisure": [
-      "中影紫荆国际影城4K激光IMAX环球中心旗舰店",
-      "寰映影城(成都招商大魔方店)",
-      "艾丽树·童话森林(环球中心店)",
-      "后仰喜剧(成都大魔方招商花园城)",
-      "电竞蜂网咖·折扣(大魔方店)"
+      "成都兰桂坊酒吧",
+      "小酒馆(玉林西路店)",
+      "PP·PEUAPEU·佩佩·乐园(成都兰桂坊店)",
+      "LEMIEL COFFEE(中海国际中心店)",
+      "中影紫荆国际影城4K激光IMAX环球中心旗舰店"
     ]
   },
   "ai_enhancement": {
@@ -6117,38 +8040,52 @@
         "九眼桥酒吧街",
         "锦里古街夜市",
         "成都小酒馆（玉林店）",
-        "方所书店（太古里店）",
+        "方所书店（远洋太古里店）",
         "鹤鸣茶社（人民公园）",
         "东郊记忆文创园",
-        "梅花剧社（川剧变脸演出）",
-        "兰桂坊成都",
+        "成都欢乐谷（夜场及演出）",
+        "贰麻酒馆（339电视塔店）",
         "三联韬奋书店（宽窄巷子店）",
-        "MAO Livehouse成都"
+        "成都音乐坊LiveHouse集群"
       ]
     },
     "cleaned_gt": {
       "must_visit": [
         "环球中心东广场",
         "生机之塔",
+        "成都桂溪公园骑行起点",
         "桂溪生态公园",
+        "桂溪生态公园西区",
         "双子塔夜景打卡点",
         "交子公园",
+        "桂溪生态公园东区",
         "交子之环",
-        "宽窄巷子景区"
+        "锦城公园",
+        "铁像寺水街",
+        "天府绿道",
+        "大源中央公园",
+        "中和湿地公园",
+        "铁像寺",
+        "成都江滩公园",
+        "东湖公园",
+        "望江楼公园",
+        "三圣花乡旅游区",
+        "人民公园"
       ],
       "dining": [
         "悦百味·品质川菜(大魔方店)",
         "Wine Tale 叙酒(大魔方店)",
+        "超级姜胖胖韩式自助烤肉(环球中心)",
         "皮马聊亚洲热炒店(大魔方店)",
         "新蓉庭.新派融合川菜(锦城店)",
-        "许家菜樽宴(大魔方店)",
-        "Wanwea万蔚·云宴",
-        "烤匠麻辣烤鱼(环球中心店)"
+        "成都美食街(建设巷店)",
+        "Helens海伦司小酒馆(成都春熙坊店)",
+        "贰麻酒馆(万科天荟店)"
       ],
       "leisure": [
-        "中影紫荆国际影城4K激光IMAX环球中心旗舰店",
-        "寰映影城(成都招商大魔方店)",
-        "后仰喜剧(成都大魔方招商花园城)"
+        "成都兰桂坊酒吧",
+        "小酒馆(玉林西路店)",
+        "PP·PEUAPEU·佩佩·乐园(成都兰桂坊店)"
       ]
     },
     "verified_spots": [
@@ -6574,6 +8511,6 @@
       }
     ],
     "not_found_spots": [],
-    "enhance_time": "2026-04-12T16:51:09.101439"
+    "enhance_time": "2026-04-12T17:54:02.192976"
   }
 }
