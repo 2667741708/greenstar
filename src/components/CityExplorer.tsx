@@ -17,7 +17,7 @@ import React, { useState, useEffect } from 'react';
 import { Spot, CityInfo, RegionNode } from '../types';
 import { searchPOI, getSubDistricts, SearchPOIOptions } from '../services/amap';
 import { fetchRealWorldData } from '../services/crawler';
-import { generateFallbackPOIs } from '../services/deepseek';
+import { generateFallbackPOIs, refinePOIsWithAI } from '../services/deepseek';
 import { batchFetchPOIImages } from '../services/imageCrawler';
 import { useAmap } from '../hooks/useAmap';
 import { CONSTANTS } from '../config/constants';
@@ -28,16 +28,19 @@ import { PhotoGalleryOverlay } from './explore/PhotoGalleryOverlay';
 import { AiJournalModal } from './explore/AiJournalModal';
 import { useUserTier } from '../hooks/useUserTier';
 import { TagManagerModal, TagGroup } from './TagManagerModal';
+import { monetIcons } from '../config/monetIcons';
+
 
 const DEFAULT_TAG_GROUPS: TagGroup[] = [
-  { label: '住宿', icon: 'bi-house-heart', tags: ['精品酒店', '特色民宿', '青年旅舍'] },
-  { label: '玩乐', icon: 'bi-controller', tags: ['猫咖', '狗咖', '电竞网咖', '剧本杀', 'KTV', '密室逃脱', '台球馆'] },
-  { label: '二次元', icon: 'bi-stars', tags: ['漫展', '手办模型店', '游戏厅', '玩具店', '盲盒'] },
-  { label: '文艺', icon: 'bi-book', tags: ['独立书店', '画廊美术馆', '博物馆', 'LiveHouse', '文艺影院', '文创园区'] },
-  { label: '逛街', icon: 'bi-bag', tags: ['潮牌买手店', '美妆集合店', '复古中古店', '伴手礼'] },
-  { label: '美食', icon: 'bi-egg-fried', tags: ['特色小吃', '甜品烘焙', '精酿啤酒', '咖啡馆', '茶馆', '奶茶'] },
-  { label: '户外', icon: 'bi-tree', tags: ['骑行路线', '攀岩蹦床', '露营地', '赏花打卡'] },
-  { label: '打卡', icon: 'bi-camera', tags: ['网红拍照', '夜景机位', '古镇老街', '酒吧'] },
+  { label: '住宿', icon: 'bi-house-heart', tags: ['精品酒店', '特色民宿', '青年旅舍', '度假村', '五星酒店', '艺术设计酒店', '四合院/老洋房住宿'] },
+  { label: '玩乐', icon: 'bi-controller', tags: ['猫咖', '狗咖', '剧本杀', '密室逃脱', 'KTV', '脱口秀剧场', '实景沉浸式剧场', '洗浴中心', '按摩SPA'] },
+  { label: '文艺', icon: 'bi-book', tags: ['独立书店', '画廊美术馆', '博物馆', 'LiveHouse', '文创园', '艺术展览', '老建筑', '音乐厅', '话剧场'] },
+  { label: '逛街', icon: 'bi-bag', tags: ['买手店', '中古店', '伴手礼', '综合商场', '夜市', '步行街', '潮流集合店', '古玩市场', '老字号特产'] },
+  { label: '小食', icon: 'bi-egg-fried', tags: ['特色小吃', '甜品烘焙', '面馆', '老字号小吃', '苍蝇馆子', '街边摊', '深夜食堂', '烤肉串串'] },
+  { label: '饮品', icon: 'bi-cup-hot', tags: ['精品咖啡', '特调茶饮', '精酿啤酒', '静音酒吧', '清吧', '隐藏式酒吧(Speakeasy)', '老茶馆'] },
+  { label: '大餐', icon: 'bi-gem', tags: ['黑珍珠餐厅', '米其林推荐', '地方特色正餐', '高级日料', '海鲜餐厅', '私房菜', '全景餐厅', '地道火锅'] },
+  { label: '户外', icon: 'bi-tree', tags: ['绿道骑行', '城市徒步', '攀岩', '冲浪', '蹦床', '露营地', '赏花打卡', '市级公园', '郊野公园', '游乐园'] },
+  { label: '打卡', icon: 'bi-camera', tags: ['拍照机位', '夜景', '古镇老街', '小众祈福寺庙', '观景台', '地标广场', '玻璃栈道', '历史文化名街'] },
 ];
 
 interface CityExplorerProps {
@@ -56,8 +59,8 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   city, isPro, onBack, setLoading, setLoadingStep, setErrorMsg, updateCityUnlockedStatus, onSpotsUpdate, onKeywordsUpdate 
 }) => {
   const { tier } = useUserTier();
-  const maxTagsDisplay = tier === 'plus' ? 10 : tier === 'pro' ? 20 : Infinity;
-  const maxSpotsDisplay = tier === 'plus' ? 10 : tier === 'pro' ? 20 : 150;
+  const maxTagsDisplay = tier === 'plus' ? 20 : tier === 'pro' ? 30 : Infinity;
+  const maxSpotsDisplay = tier === 'plus' ? 50 : tier === 'pro' ? 100 : 150;
 
   const [spots, setSpots] = useState<Spot[]>([]);
   const [selectedSpot, setSelectedSpot] = useState<Spot | null>(null);
@@ -79,7 +82,7 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
   const [isEditingTags, setIsEditingTags] = useState(false);
   const [tagGroups, setTagGroups] = useState<TagGroup[]>(() => {
     try {
-      const saved = localStorage.getItem('greenstar_tag_groups');
+      const saved = localStorage.getItem('greenstar_tag_groups_v2');
       return saved ? JSON.parse(saved) : DEFAULT_TAG_GROUPS;
     } catch {
       return DEFAULT_TAG_GROUPS;
@@ -88,13 +91,13 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
   const handleSaveTags = (newGroups: TagGroup[]) => {
     setTagGroups(newGroups);
-    localStorage.setItem('greenstar_tag_groups', JSON.stringify(newGroups));
+    localStorage.setItem('greenstar_tag_groups_v2', JSON.stringify(newGroups));
     setIsEditingTags(false);
   };
   
   const handleResetTags = () => {
     setTagGroups(DEFAULT_TAG_GROUPS);
-    localStorage.removeItem('greenstar_tag_groups');
+    localStorage.removeItem('greenstar_tag_groups_v2');
     setIsEditingTags(false);
   };
 
@@ -112,6 +115,22 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
   // 所有标签平铺列表（用于兼容旧逻辑）
   const PREDEFINED_KEYWORDS = tagGroups.flatMap(g => g.tags);
+
+  // 根据当前全局获取的 spots 动态计算各预设关键词被匹配到的词频
+  const tagCounts = React.useMemo(() => {
+    const counts: Record<string, number> = {};
+    PREDEFINED_KEYWORDS.forEach(kw => { counts[kw] = 0; }); // 初始化
+
+    spots.forEach(spot => {
+      const searchStr = `${spot.name} ${spot.description} ${spot.category} ${(spot.tags||[]).join(' ')}`.toLowerCase();
+      PREDEFINED_KEYWORDS.forEach(kw => {
+        if (searchStr.includes(kw.toLowerCase())) {
+          counts[kw]++;
+        }
+      });
+    });
+    return counts;
+  }, [spots, PREDEFINED_KEYWORDS]);
 
   // 同步 spots 与 keywords 到父组件供 PlanPanel 使用
   useEffect(() => {
@@ -182,17 +201,25 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
       // Dynamic radius based on current region level
       const radius = CONSTANTS.SEARCH_RADIUS[currentRegion.level] || CONSTANTS.SEARCH_RADIUS.city;
 
-      // 第一引擎：高德实体检索（含缓存层、三层过滤）
-      // Primary engine: AMap PlaceSearch (with cache + 3-layer filter)
+      // 第一引擎：高德并发实体拉取（执行了聚合、洗牌与排序）
       let result = await searchPOI(name, searchKw, center, { radius, ...searchOptions });
       
-      // 第二引擎：当高德返回空时，启动 RAG 兜底
-      if (result.length === 0) {
-        setLoadingStep(`高德数据未返回，正在启动网络爬虫检索 ${name} 实况...`);
-        const realWorldText = await fetchRealWorldData(name, searchKw);
-        
-        setLoadingStep(`抓取完成，正在唤醒 DeepSeek 提取真实地理信息...`);
-        result = await generateFallbackPOIs(name, realWorldText, center);
+      // 第二引擎：智能大模型中间件提取与描述增强 (或者 Zero-shot降级)
+      if (!searchKw && !searchOptions.type) {
+        // [探索模式] 
+        if (result.length > 5) {
+          setLoadingStep(`已捕获聚合地理环境，AI超级向导正在为您重审精选与提纯短评...`);
+          result = await refinePOIsWithAI(result, name);
+        } else {
+          setLoadingStep(`海外或无数据区检测命中！启动大模型世界常识池，为您无中生有构造权威名胜...`);
+          result = await generateFallbackPOIs(name, center);
+        }
+      } else {
+        // [用户分类或搜索模式]
+        if (result.length === 0) {
+           // 当特定标签未查询出结果时，可考虑兜底处理
+           result = [];
+        }
       }
       
       // 图片分级策略：Pro 用户升级为 standard 图（600px），普通用户保持 thumb（200px）
@@ -210,8 +237,8 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
       setSpots(result);
 
-      // 后台异步补充真实的高清图片（维基共享资源等），替换地图瓦片兜底图
-      // Async fetch real HD photos to replace AMap tile maps
+      // 实验需求：暂时屏蔽维基等外网爬虫，严格检验高德原图覆盖率
+      /*
       if (result.length > 0) {
         batchFetchPOIImages(result, name)
           .then(images => {
@@ -222,6 +249,7 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
           })
           .catch(err => console.error('[HD Fetch Error]', err));
       }
+      */
 
       // Pro 用户：后台静默预取 HD 原图到 IndexedDB
       // Pro user: silently prefetch HD images to IndexedDB in background
@@ -236,13 +264,15 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         const fallback = await generateFallbackPOIs(name, realWorldText, center);
         if (fallback.length > 0) {
           setSpots(fallback);
-          // 为 RAG 兜底数据异步补充图片
+          // 实验需求：暂时屏蔽爬虫
+          /*
           batchFetchPOIImages(fallback, name).then(images => {
             setSpots(prev => prev.map((s, i) => {
               const newImg = images[i];
               return newImg ? { ...s, imageUrl: newImg, imageUrlHD: newImg, imageUrlThumb: newImg } : s;
             }));
           }).catch(console.error);
+          */
         } else {
           setErrorMsg(`检索失败: ${err.message}`);
         }
@@ -289,24 +319,48 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
 
         // 标签 → 高德分类编码映射，提升搜索精准度
         // Tag → AMap category code mapping for precision
-        const promises = keywords.map(kw => {
+        //
+        // 修改基准: CityExplorer.tsx @ 当前版本 (705行)
+        // 修改内容: 新增第二轮纯关键词搜索(不限 type), 解决高德分类注册错误导致的漏检
+        //   例: 法云寺"梵猫苑猫咖"注册为"餐饮相关场所"而非"咖啡厅(050500)", 第一轮 type+keyword 联合搜索漏掉
+        // Changes: Added 2nd round keyword-only search (no type filter) to catch POIs with wrong category registration
+        //   e.g.: "梵猫苑猫咖" registered as "餐饮相关" instead of "咖啡厅(050500)", missed by type+keyword joint search
+
+        // 第一轮: 精准分类搜索 (type + keyword)
+        const precisePromises = keywords.map(kw => {
           const typeCode = CONSTANTS.POI_TAG_TYPE_MAP[kw] || '';
           return searchPOI(currentRegion.name, kw, currentRegion.center, {
             type: typeCode,
             radius,
           }).catch(() => [] as Spot[]);
         });
-        const results = await Promise.all(promises);
-        // 合并去重（按 id）
+
+        // 第二轮: 纯关键词搜索 (不限 type, 捕获分类注册不准确但名称匹配的 POI)
+        const fallbackPromises = keywords.map(kw =>
+          searchPOI(currentRegion.name, kw, currentRegion.center, {
+            type: '',
+            radius,
+            isUserSearch: true, // 绕过三层过滤, 由后续合并去重时统一处理
+          }).catch(() => [] as Spot[])
+        );
+
+        const [preciseResults, fallbackResults] = await Promise.all([
+          Promise.all(precisePromises),
+          Promise.all(fallbackPromises),
+        ]);
+
+        // 合并去重（按 id, 精准搜索结果优先）
         const merged = new Map<string, Spot>();
-        results.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
+        preciseResults.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
+        fallbackResults.flat().forEach(s => { if (!merged.has(s.id)) merged.set(s.id, s); });
         const finalSpots = Array.from(merged.values());
         
         // 应用版本对应的地点数量限制
         const limitedSpots = finalSpots.slice(0, maxSpotsDisplay);
         setSpots(limitedSpots);
         
-        // 后台异步补充真实图片，覆盖瓦片地图兜底
+        // 实验需求：暂时屏蔽爬虫
+        /*
         if (limitedSpots.length > 0) {
           batchFetchPOIImages(limitedSpots, currentRegion.name)
             .then(images => {
@@ -317,6 +371,7 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
             })
             .catch(console.error);
         }
+        */
       } catch (err) {
         console.error('[TagSearch] failed:', err);
       } finally {
@@ -411,21 +466,21 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
       )}
 
       <div className="px-6 mt-6 relative z-30">
-        <div className={`${glassClass} p-3 pl-6 flex items-center gap-4 group transition-all`}>
+        <div className="glass-panel p-3 pl-6 flex items-center gap-4 group transition-all">
           <button onClick={() => {
             if (explorationStack.length > 0) {
               handleBreadcrumbClick(explorationStack.length - 2);
             } else {
               onBack();
             }
-          }} className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors shrink-0">
-            <i className="bi bi-arrow-left text-gray-600"></i>
+          }} className="w-10 h-10 rounded-2xl bg-white/40 flex items-center justify-center hover:bg-white/80 transition-all shadow-sm shrink-0 active:scale-90 border border-white/40">
+            <i className="bi bi-arrow-left text-slate-600"></i>
           </button>
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest">当前跃迁点</p>
-            <p className="text-lg font-black truncate">
+            <p className="text-[10px] font-black opacity-40 uppercase tracking-[0.2em] text-slate-800">当前跃迁点</p>
+            <p className="text-xl font-black text-slate-700 truncate">
               {currentRegion.name} 
-              {currentRegion.name !== city.name && <span className="text-xs opacity-50 ml-2">({city.name})</span>}
+              {currentRegion.name !== city.name && <span className="text-xs opacity-40 ml-2 font-black italic">({city.name})</span>}
             </p>
           </div>
           <form onSubmit={handleSearch} className="flex gap-2 pr-1 shrink-0">
@@ -434,9 +489,9 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
               value={keyword} 
               onChange={e => setKeyword(e.target.value)} 
               placeholder="搜任意..." 
-              className={`w-32 rounded-2xl px-4 py-2 text-xs border border-white/10 outline-none transition-colors ${isPro ? 'bg-white/10 text-white placeholder:text-white/40 focus:bg-white/20' : 'bg-black/5 text-slate-800 placeholder:text-slate-400 focus:bg-black/10'}`} 
+              className="w-32 rounded-2xl px-4 py-2.5 text-xs bg-white/40 border border-white/60 outline-none transition-all focus:bg-white/60 text-slate-800 placeholder:text-slate-400"
             />
-            <button type="submit" className="w-10 h-10 bg-[var(--color-accent-sage)] text-white shadow-[0_0_15px_var(--color-accent-sage)] rounded-2xl active:scale-95 transition-transform"><i className="bi bi-search"></i></button>
+            <button type="submit" className="w-12 h-10 monet-btn flex items-center justify-center"><i className="bi bi-search"></i></button>
           </form>
         </div>
       </div>
@@ -500,28 +555,40 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
           </form>
         </div>
         {/* 展开的分组标签 */}
-        {visibleTagGroups.filter(g => expandedGroups.includes(g.label)).map(group => (
-          <div key={group.label} className="mt-2 pb-2 border-b border-gray-100 last:border-0">
-            <div className="flex flex-wrap gap-2">
-              {group.tags.map(tag => {
-                const isSelected = selectedKeywords.includes(tag);
-                return (
-                  <button
-                    key={tag}
-                    onClick={() => toggleKeyword(tag)}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200
-                      ${isSelected
-                        ? 'bg-[var(--color-accent-pink)] text-slate-900 shadow-[0_4px_15px_rgba(245,158,11,0.3)] scale-105'
-                        : 'bg-white/60 text-slate-600 hover:bg-amber-50 hover:text-[var(--color-accent-pink)] border border-white'
-                      } active:scale-95`}
-                  >
-                    {tag}
-                  </button>
-                );
-              })}
+        {visibleTagGroups.filter(g => expandedGroups.includes(g.label)).map(group => {
+          // 仅过滤出当前存在实体地点的数据 (或者已经被选中过的强制保留显示以免无法取消)
+          const availableTags = group.tags.filter(tag => tagCounts[tag] > 0 || selectedKeywords.includes(tag));
+          if (availableTags.length === 0) return null;
+
+          return (
+            <div key={group.label} className="mt-2 pb-2 border-b border-gray-100 last:border-0">
+              <div className="flex flex-wrap gap-2">
+                {availableTags.map(tag => {
+                  const isSelected = selectedKeywords.includes(tag);
+                  const count = tagCounts[tag] || 0;
+                  return (
+                    <button
+                      key={tag}
+                      onClick={() => toggleKeyword(tag)}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1.5
+                        ${isSelected
+                          ? 'bg-[var(--color-accent-pink)] text-slate-900 shadow-[0_4px_15px_rgba(245,158,11,0.3)] scale-105'
+                          : 'bg-white/60 text-slate-600 hover:bg-amber-50 hover:text-[var(--color-accent-pink)] border border-white'
+                        } active:scale-95`}
+                    >
+                      {tag} 
+                      {count > 0 && (
+                        <span className={`text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center ${isSelected ? 'bg-black/20 text-[var(--color-accent-pink)]' : 'bg-black/5 text-gray-400'}`}>
+                          {count}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         {/* 自定义标签池 */}
         {customKeywords.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
@@ -579,11 +646,14 @@ export const CityExplorer: React.FC<CityExplorerProps> = ({
         ))}
       </div>
 
-      <div className="px-6 mt-8 flex justify-between items-center z-30">
-        <h2 className="text-[length:var(--text-title)] font-black tracking-tighter"><span className="text-gradient-premium">发现</span> 周边</h2>
-        <div className={`p-1.5 rounded-2xl flex gap-1 shadow-inner shrink-0 ml-4 ${isPro ? 'bg-white/10' : 'bg-black/5'}`}>
-          <button onClick={() => setViewMode('list')} className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${viewMode === 'list' ? (isPro ? 'bg-white text-black' : 'bg-white text-black shadow-md') : 'opacity-50 hover:opacity-100'}`}><i className="bi bi-list-ul mr-1"></i>List</button>
-          <button onClick={() => setViewMode('map')} className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${viewMode === 'map' ? (isPro ? 'bg-white text-black' : 'bg-white text-black shadow-md') : 'opacity-50 hover:opacity-100'}`}><i className="bi bi-map mr-1"></i>Map</button>
+      <div className="px-6 mt-10 flex justify-between items-center z-30">
+        <h2 className="text-3xl font-black tracking-tighter text-slate-800 flex items-center gap-3">
+          <img src={monetIcons.camera} className="w-10 h-10 object-contain" alt="camera" />
+          <span>发现 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent-pink)] to-[var(--color-accent-lilac)]">周边</span></span>
+        </h2>
+        <div className="p-1.5 rounded-2xl flex gap-1 shadow-inner shrink-0 ml-4 bg-white/20 glass-panel-light">
+          <button onClick={() => setViewMode('list')} className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${viewMode === 'list' ? 'bg-white text-slate-800 shadow-lg scale-105' : 'opacity-40 hover:opacity-100 text-slate-600'}`}><i className="bi bi-list-ul mr-1"></i>List</button>
+          <button onClick={() => setViewMode('map')} className={`px-6 py-2.5 rounded-xl text-xs font-black transition-all ${viewMode === 'map' ? 'bg-white text-slate-800 shadow-lg scale-105' : 'opacity-40 hover:opacity-100 text-slate-600'}`}><i className="bi bi-map mr-1"></i>Map</button>
         </div>
       </div>
 
