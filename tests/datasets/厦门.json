@@ -1,0 +1,6042 @@
+{
+  "meta": {
+    "city": "厦门",
+    "coordinates": {
+      "lat": 24.4798,
+      "lng": 118.0894
+    },
+    "adcode": "350200",
+    "build_time": "2026-04-12T16:34:51.016315",
+    "builder": "build_test_dataset.py"
+  },
+  "ground_truth": {
+    "must_visit": [
+      "狐尾山公园-观景台",
+      "狐尾山公园-樱花谷",
+      "厦门海上明珠塔",
+      "狐尾山公园",
+      "厦门白鹭洲公园",
+      "厦门园林植物园",
+      "鼓浪屿风景名胜区",
+      "中山公园",
+      "南普陀寺",
+      "万石山国家重点风景名胜区",
+      "钢琴码头",
+      "厦门世茂双子塔",
+      "厦门市鼓浪屿风景名胜区-皓月园",
+      "白城沙滩",
+      "筼筜湖"
+    ],
+    "dining": [
+      "筼筜印象·里昂家咖啡(白鹭洲店)",
+      "默迹咖啡馆(利华苑店)",
+      "肯德基(滨北店)",
+      "BASAO tea(白鹭洲店)",
+      "厦门天鹅大酒店",
+      "CAI coffee&home",
+      "星巴克臻选(厦门筼筜路店)",
+      "时光花园(白鹭洲店)",
+      "BistroBotoru餐酒小馆",
+      "CBD Cafe"
+    ],
+    "leisure": [
+      "筼筜印象·里昂家咖啡(白鹭洲店)",
+      "默迹咖啡馆(利华苑店)",
+      "迪卡侬(七星店)",
+      "CAI coffee&home",
+      "星巴克臻选(厦门筼筜路店)"
+    ]
+  },
+  "sources": {
+    "amap_pois": [
+      {
+        "name": "厦门凤凰道院",
+        "address": "湖滨北路66号",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 352.0,
+        "coordinates": {
+          "lng": 118.086066,
+          "lat": 24.478882
+        },
+        "source": "amap"
+      },
+      {
+        "name": "珉星园",
+        "address": "狐尾山公园",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5611171",
+        "photos_count": 3,
+        "distance": 369.0,
+        "coordinates": {
+          "lng": 118.087221,
+          "lat": 24.482467
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狐尾山公园-观景台",
+        "address": "狐尾山公园内(南侧)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5611171",
+        "photos_count": 3,
+        "distance": 375.0,
+        "coordinates": {
+          "lng": 118.086136,
+          "lat": 24.481392
+        },
+        "source": "amap"
+      },
+      {
+        "name": "滨北楹衫",
+        "address": "湖滨北路55-3中信惠扬店铺",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": "周一至周五 10:00-22:00；周六至周日 13:30-21:30",
+        "tel": "15359422685",
+        "photos_count": 1,
+        "distance": 390.0,
+        "coordinates": {
+          "lng": 118.085871,
+          "lat": 24.478389
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狐尾山公园-樱花谷",
+        "address": "气象台路85号之5号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:00-17:30",
+        "tel": "0592-5611171",
+        "photos_count": 3,
+        "distance": 402.0,
+        "coordinates": {
+          "lng": 118.086023,
+          "lat": 24.481707
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鱼缸",
+        "address": "狐尾山路与凤凰山庄交叉口西北240米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 402.0,
+        "coordinates": {
+          "lng": 118.086023,
+          "lat": 24.481707
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清风亭",
+        "address": "狐尾山公园(湖滨中路地铁站1号口步行490米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5611171",
+        "photos_count": 2,
+        "distance": 418.0,
+        "coordinates": {
+          "lng": 118.09134,
+          "lat": 24.483123
+        },
+        "source": "amap"
+      },
+      {
+        "name": "官浔篁津宫",
+        "address": "湖滨北路33-26号(凤凰名都小区内)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 468.0,
+        "coordinates": {
+          "lng": 118.084909,
+          "lat": 24.478784
+        },
+        "source": "amap"
+      },
+      {
+        "name": "官任社区文化广场",
+        "address": "官任路建兴小区(建业路地铁站4号口步行450米)",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 475.0,
+        "coordinates": {
+          "lng": 118.086982,
+          "lat": 24.476136
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门山海健康步道(园路H6点)",
+        "address": "狐尾山公园",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5611171",
+        "photos_count": 3,
+        "distance": 485.0,
+        "coordinates": {
+          "lng": 118.087537,
+          "lat": 24.483815
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门海上明珠塔",
+        "address": "气象台路85号(近东渡狐尾山顶)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "1月1日-1月28日08:00-18:00",
+        "tel": "0592-5595353",
+        "photos_count": 3,
+        "distance": 516.0,
+        "coordinates": {
+          "lng": 118.084956,
+          "lat": 24.482075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "慈帆慈善果园-聆香泉",
+        "address": "市政府狐尾山东门小广场边",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5611171",
+        "photos_count": 3,
+        "distance": 518.0,
+        "coordinates": {
+          "lng": 118.089876,
+          "lat": 24.484436
+        },
+        "source": "amap"
+      },
+      {
+        "name": "近邻广场",
+        "address": "石亭路58号(湖滨中路地铁站1号口步行470米)",
+        "type": "风景名胜;公园广场;公园广场",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 529.0,
+        "coordinates": {
+          "lng": 118.093233,
+          "lat": 24.483029
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狐尾山公园(北门)",
+        "address": "石亭路附近",
+        "type": "风景名胜;公园广场;公园广场",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 531.0,
+        "coordinates": {
+          "lng": 118.090888,
+          "lat": 24.484375
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狐尾山公园-东门广场",
+        "address": "狐尾山公园内(东侧)",
+        "type": "风景名胜;公园广场;公园广场",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 537.0,
+        "coordinates": {
+          "lng": 118.090656,
+          "lat": 24.484492
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狐尾山公园",
+        "address": "湖滨中路狐尾山气象主题公园内",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5611171",
+        "photos_count": 3,
+        "distance": 554.0,
+        "coordinates": {
+          "lng": 118.086277,
+          "lat": 24.483896
+        },
+        "source": "amap"
+      },
+      {
+        "name": "观音亭(狐尾山)",
+        "address": "湖滨中路519号-7",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 591.0,
+        "coordinates": {
+          "lng": 118.089358,
+          "lat": 24.485109
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中远林",
+        "address": "狐尾山公园",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 594.0,
+        "coordinates": {
+          "lng": 118.086815,
+          "lat": 24.484596
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天琴岩",
+        "address": "湖滨中路与石亭路交叉口东40米",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 2.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 631.0,
+        "coordinates": {
+          "lng": 118.094926,
+          "lat": 24.482415
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梅花林",
+        "address": "湖滨北路与建业路交叉口北320米",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 660.0,
+        "coordinates": {
+          "lng": 118.082981,
+          "lat": 24.480824
+        },
+        "source": "amap"
+      },
+      {
+        "name": "筼筜湖",
+        "address": "筼筜街道湖滨中路白鹭洲站旁",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 663.0,
+        "coordinates": {
+          "lng": 118.094224,
+          "lat": 24.475764
+        },
+        "source": "amap"
+      },
+      {
+        "name": "世纪海湾保安亭",
+        "address": "湖滨北路与湖滨西路辅路交叉口东北140米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 1.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 683.0,
+        "coordinates": {
+          "lng": 118.082708,
+          "lat": 24.478999
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲摄影广场",
+        "address": "白鹭洲东路59号(近汇英通瓷邑廊陶瓷艺术馆)",
+        "type": "风景名胜;公园广场;城市广场|生活服务;摄影冲印店;摄影冲印",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:30-20:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 703.0,
+        "coordinates": {
+          "lng": 118.095346,
+          "lat": 24.476528
+        },
+        "source": "amap"
+      },
+      {
+        "name": "藏宫",
+        "address": "建业路与筼筜路交叉口西北80米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 721.0,
+        "coordinates": {
+          "lng": 118.083606,
+          "lat": 24.476025
+        },
+        "source": "amap"
+      },
+      {
+        "name": "福建省厦门市白鹭洲公园-母子铜像",
+        "address": "白鹭洲东路天鹅大酒店旁(筼筜内湖附近)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 724.0,
+        "coordinates": {
+          "lng": 118.09355,
+          "lat": 24.474499
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北彩虹桥",
+        "address": "白鹭洲公园西公园",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 748.0,
+        "coordinates": {
+          "lng": 118.087956,
+          "lat": 24.47321
+        },
+        "source": "amap"
+      },
+      {
+        "name": "回归石",
+        "address": "白鹭洲路565号白鹭洲公园内",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 758.0,
+        "coordinates": {
+          "lng": 118.091188,
+          "lat": 24.473184
+        },
+        "source": "amap"
+      },
+      {
+        "name": "湖畔广场",
+        "address": "信和滨北项目地处厦门传统的金融商务区湖滨北路西段",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 759.0,
+        "coordinates": {
+          "lng": 118.082573,
+          "lat": 24.476976
+        },
+        "source": "amap"
+      },
+      {
+        "name": "福建省厦门市白鹭洲公园-鸽子广场",
+        "address": "湖滨中路白鹭洲公园中公园鸽子广场",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 772.0,
+        "coordinates": {
+          "lng": 118.094421,
+          "lat": 24.474581
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门白鹭洲公园西公园",
+        "address": "白鹭洲路565号白鹭洲公园内",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 777.0,
+        "coordinates": {
+          "lng": 118.089333,
+          "lat": 24.472813
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲公园水上广场-筼筜渔火",
+        "address": "白鹭洲公园天天渔港旁",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 779.0,
+        "coordinates": {
+          "lng": 118.09126,
+          "lat": 24.473004
+        },
+        "source": "amap"
+      },
+      {
+        "name": "38度温泉口袋公园",
+        "address": "建业路地铁站4号口步行450米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:00-12:00,15:00-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 791.0,
+        "coordinates": {
+          "lng": 118.084317,
+          "lat": 24.474403
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲公园西公园水上广场",
+        "address": "白鹭洲公园西公园",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 798.0,
+        "coordinates": {
+          "lng": 118.089516,
+          "lat": 24.472627
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门白鹭洲公园",
+        "address": "白鹭洲路",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 813.0,
+        "coordinates": {
+          "lng": 118.093828,
+          "lat": 24.473704
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门白鹭洲公园-中公园",
+        "address": "白鹭洲路厦门白鹭洲公园(西南角)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 813.0,
+        "coordinates": {
+          "lng": 118.093358,
+          "lat": 24.473437
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天鹅广场",
+        "address": "白鹭洲东路3号",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 816.0,
+        "coordinates": {
+          "lng": 118.092951,
+          "lat": 24.473212
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲公园中公园-大牌楼",
+        "address": "白鹭洲东路与湖滨中路交叉口西40米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 825.0,
+        "coordinates": {
+          "lng": 118.096857,
+          "lat": 24.476822
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门白鹭洲下沉式广场",
+        "address": "筼筜路与官任路交叉口东南280米",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 827.0,
+        "coordinates": {
+          "lng": 118.087791,
+          "lat": 24.472511
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲公园东公园筼筜书院",
+        "address": "湖滨中路100-1",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周二至周日 09:00-11:00,15:00-17:00；节假日营业时间以官方通知为准",
+        "tel": "0592-5075995",
+        "photos_count": 3,
+        "distance": 828.0,
+        "coordinates": {
+          "lng": 118.097466,
+          "lat": 24.478599
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲公园东公园",
+        "address": "湖滨中路100号之2号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5075995",
+        "photos_count": 3,
+        "distance": 834.0,
+        "coordinates": {
+          "lng": 118.097515,
+          "lat": 24.478525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲公园东公园-亲水平台",
+        "address": "湖滨中路100号之2号白鹭洲公园东公园内(南侧)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 838.0,
+        "coordinates": {
+          "lng": 118.097449,
+          "lat": 24.47804
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭女神雕像",
+        "address": "白鹭洲路150号白鹭洲公园内",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 20:50-21:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 853.0,
+        "coordinates": {
+          "lng": 118.093592,
+          "lat": 24.473146
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狐尾山公园-降水现象解说区",
+        "address": "狐尾山公园(西南角)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5611171",
+        "photos_count": 3,
+        "distance": 869.0,
+        "coordinates": {
+          "lng": 118.080891,
+          "lat": 24.48082
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白鹭洲公园安全理事会",
+        "address": "环湖步道白鹭洲公园",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 873.0,
+        "coordinates": {
+          "lng": 118.095706,
+          "lat": 24.474444
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蘑菇亭",
+        "address": "白鹭洲路厦门白鹭洲公园(西南角)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 875.0,
+        "coordinates": {
+          "lng": 118.092972,
+          "lat": 24.472636
+        },
+        "source": "amap"
+      },
+      {
+        "name": "筼筜雅游",
+        "address": "白鹭洲公园天天渔港旁",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 10:00-17:30",
+        "tel": "0592-5319393",
+        "photos_count": 3,
+        "distance": 884.0,
+        "coordinates": {
+          "lng": 118.094964,
+          "lat": 24.473681
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门白鹭洲公园东公园-母婴室",
+        "address": "湖滨中路100号之二厦门白鹭洲公园东公园(东南角)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5075995",
+        "photos_count": 2,
+        "distance": 885.0,
+        "coordinates": {
+          "lng": 118.097965,
+          "lat": 24.478219
+        },
+        "source": "amap"
+      },
+      {
+        "name": "讲古仙雕塑",
+        "address": "湖滨中路100号之2号白鹭洲公园东公园内(东侧)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 896.0,
+        "coordinates": {
+          "lng": 118.09812,
+          "lat": 24.478457
+        },
+        "source": "amap"
+      },
+      {
+        "name": "其云正岩",
+        "address": "湖滨中路与白鹭洲东路交叉口南140米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 900.0,
+        "coordinates": {
+          "lng": 118.097107,
+          "lat": 24.475764
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门白鹭洲公园中公园-母婴室",
+        "address": "白鹭洲路厦门白鹭洲公园中公园",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 902.0,
+        "coordinates": {
+          "lng": 118.092283,
+          "lat": 24.472127
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鹭岛鱼人游泳俱乐部(中闽馆)",
+        "address": "湖滨北路72号中闽大厦F2层",
+        "type": "体育休闲服务;运动场馆;游泳馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周五 14:00-20:30；周六至周日 09:00-21:00",
+        "tel": "18850088050",
+        "photos_count": 3,
+        "distance": 326.0,
+        "coordinates": {
+          "lng": 118.087526,
+          "lat": 24.477409
+        },
+        "source": "amap"
+      },
+      {
+        "name": "晴天网球俱乐部(滨北馆)",
+        "address": "湖滨北路57号Bingo城际商务中心F5层",
+        "type": "体育休闲服务;运动场馆;网球场",
+        "rating": 3.9,
+        "cost": "541.00",
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 343.0,
+        "coordinates": {
+          "lng": 118.086304,
+          "lat": 24.478541
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Roll Over Coffee",
+        "address": "建兴路79号101",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "45.00",
+        "open_time": "周一至周三 09:00-19:00；周四至周日 09:00-20:00 2026-02-21至2026-02-28 周一至周日 10:00-19:00",
+        "tel": "18859234749",
+        "photos_count": 3,
+        "distance": 377.0,
+        "coordinates": {
+          "lng": 118.087816,
+          "lat": 24.476734
+        },
+        "source": "amap"
+      },
+      {
+        "name": "超鹿运动(滨北官任大厦店)",
+        "address": "官任大厦二层(派出所对面)",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.5,
+        "cost": "1277.00",
+        "open_time": "周一至周日 06:30-23:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 450.0,
+        "coordinates": {
+          "lng": 118.086832,
+          "lat": 24.476501
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浮图叙",
+        "address": "湖滨北路118号",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.4,
+        "cost": "108.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 500.0,
+        "coordinates": {
+          "lng": 118.094334,
+          "lat": 24.479593
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Lumière Prisma",
+        "address": "官任路30号C107室",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 14:00-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 527.0,
+        "coordinates": {
+          "lng": 118.085387,
+          "lat": 24.476785
+        },
+        "source": "amap"
+      },
+      {
+        "name": "1970CLUB",
+        "address": "官任路2-24号(建业路地铁站4号口步行490米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "36.00",
+        "open_time": "周一至周日 19:00-02:00",
+        "tel": "13950061384",
+        "photos_count": 2,
+        "distance": 542.0,
+        "coordinates": {
+          "lng": 118.086431,
+          "lat": 24.475743
+        },
+        "source": "amap"
+      },
+      {
+        "name": "筼筜街道振兴社区养老服务照料中心",
+        "address": "石亭路137-1号(湖滨中路地铁站1号口步行120米)",
+        "type": "体育休闲服务;度假疗养场所;疗养院",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 546.0,
+        "coordinates": {
+          "lng": 118.094546,
+          "lat": 24.481278
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BLACK LYNX(猞猁酒吧)",
+        "address": "官任路2-26号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "18559820703",
+        "photos_count": 3,
+        "distance": 547.0,
+        "coordinates": {
+          "lng": 118.08639,
+          "lat": 24.47571
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星驰儿童运动馆(滨北店)",
+        "address": "湖滨北路31-101号",
+        "type": "体育休闲服务;运动场馆;综合体育馆",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:30",
+        "tel": "13225922003",
+        "photos_count": 1,
+        "distance": 572.0,
+        "coordinates": {
+          "lng": 118.083779,
+          "lat": 24.479249
+        },
+        "source": "amap"
+      },
+      {
+        "name": "阳易网球俱乐部(滨北校区)",
+        "address": "湖滨中路501号山水芳邻东门",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.0,
+        "cost": "168.00",
+        "open_time": [],
+        "tel": "18876320159",
+        "photos_count": 3,
+        "distance": 576.0,
+        "coordinates": {
+          "lng": 118.092315,
+          "lat": 24.484247
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Lynx Bar(奢利酒吧)",
+        "address": "官任路2-16号(建业路地铁站4号口步行470米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": "74.00",
+        "open_time": "周一至周日 18:00-03:00",
+        "tel": "15306090013",
+        "photos_count": 3,
+        "distance": 591.0,
+        "coordinates": {
+          "lng": 118.085748,
+          "lat": 24.475649
+        },
+        "source": "amap"
+      },
+      {
+        "name": "THE LONDONER传统英式酒吧",
+        "address": "华新苑西2门北60米",
+        "type": "体育休闲服务;娱乐场所;酒吧|餐饮服务;冷饮店;冷饮店",
+        "rating": 4.4,
+        "cost": "59.00",
+        "open_time": "周一至周日 16:00-02:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 597.0,
+        "coordinates": {
+          "lng": 118.085683,
+          "lat": 24.475637
+        },
+        "source": "amap"
+      },
+      {
+        "name": "请勿见外陶室(石亭路店)",
+        "address": "石亭路112号103室",
+        "type": "体育休闲服务;休闲场所;休闲场所",
+        "rating": 4.4,
+        "cost": "114.00",
+        "open_time": "周一至周五 10:30-18:00；周六至周日 10:00-20:00",
+        "tel": "17309175688",
+        "photos_count": 3,
+        "distance": 605.0,
+        "coordinates": {
+          "lng": 118.093938,
+          "lat": 24.48334
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BistroBotoru餐酒小馆",
+        "address": "建业路22号-2商铺(建业路地铁站4号口步行240米)",
+        "type": "体育休闲服务;娱乐场所;酒吧|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": "130.00",
+        "open_time": "周一至周日 11:30-14:00,16:00-24:00 2026-02-14至2026-02-21 周一至周日 全天关闭",
+        "tel": "18030310627",
+        "photos_count": 3,
+        "distance": 606.0,
+        "coordinates": {
+          "lng": 118.084513,
+          "lat": 24.476654
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Pink Pepper x MUSE(官任路店)",
+        "address": "官任路2-12号(建业路地铁站4号口步行470米)",
+        "type": "体育休闲服务;娱乐场所;酒吧|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.5,
+        "cost": "158.00",
+        "open_time": "周一至周日 18:00-02:00",
+        "tel": "18059204482",
+        "photos_count": 3,
+        "distance": 607.0,
+        "coordinates": {
+          "lng": 118.08552,
+          "lat": 24.475645
+        },
+        "source": "amap"
+      },
+      {
+        "name": "伯恩斯",
+        "address": "官任路2-11号(建业路地铁站4号口步行470米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.2,
+        "cost": "76.00",
+        "open_time": "周一至周日 17:00-03:00",
+        "tel": "13606097790",
+        "photos_count": 3,
+        "distance": 607.0,
+        "coordinates": {
+          "lng": 118.085428,
+          "lat": 24.475708
+        },
+        "source": "amap"
+      },
+      {
+        "name": "健之美跆拳道(滨北校区)",
+        "address": "建业路阳明楼5楼(一出电梯就看到)",
+        "type": "体育休闲服务;运动场馆;跆拳道场馆",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "18005021226",
+        "photos_count": 3,
+        "distance": 615.0,
+        "coordinates": {
+          "lng": 118.084344,
+          "lat": 24.476733
+        },
+        "source": "amap"
+      },
+      {
+        "name": "牛油果网球",
+        "address": "湖滨北路与建业路交叉口北120米",
+        "type": "体育休闲服务;运动场馆;网球场",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 616.0,
+        "coordinates": {
+          "lng": 118.083389,
+          "lat": 24.478964
+        },
+        "source": "amap"
+      },
+      {
+        "name": "SAVAGE FOLK美式综合体能训练馆",
+        "address": "湖滨北路97-6-106室",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "2953.00",
+        "open_time": "周一至周日 09:30-20:00",
+        "tel": "19906040276",
+        "photos_count": 2,
+        "distance": 622.0,
+        "coordinates": {
+          "lng": 118.095024,
+          "lat": 24.482044
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东方吧",
+        "address": "滨北官任路2-9号(建业路地铁站4号口步行430米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.2,
+        "cost": "72.00",
+        "open_time": "周一至周日 16:00-02:00",
+        "tel": "13459022918",
+        "photos_count": 3,
+        "distance": 623.0,
+        "coordinates": {
+          "lng": 118.085303,
+          "lat": 24.475618
+        },
+        "source": "amap"
+      },
+      {
+        "name": "酒吧一条街",
+        "address": "建业路1号酒吧一条街(建业路地铁站4号口步行420米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 118.085191,
+          "lat": 24.475677
+        },
+        "source": "amap"
+      },
+      {
+        "name": "丁俊晖台球俱乐部(湖滨北路店)",
+        "address": "湖滨北路97号棕榈泉旁(近厦门茶厂)",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.4,
+        "cost": "60.00",
+        "open_time": "周一至周日 11:00-02:00",
+        "tel": "0592-2133876",
+        "photos_count": 3,
+        "distance": 629.0,
+        "coordinates": {
+          "lng": 118.094953,
+          "lat": 24.482331
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三见普拉提工作室",
+        "address": "筼筜路62-3号",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 636.0,
+        "coordinates": {
+          "lng": 118.088116,
+          "lat": 24.474205
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梅森酒馆Maison M",
+        "address": "官任路2-6号(建业路地铁站4号口步行400米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.2,
+        "cost": "145.00",
+        "open_time": "周一至周日 15:30-01:00",
+        "tel": "13666065047",
+        "photos_count": 2,
+        "distance": 639.0,
+        "coordinates": {
+          "lng": 118.085111,
+          "lat": 24.475584
+        },
+        "source": "amap"
+      },
+      {
+        "name": "无界瑜伽普拉提(滨北馆)",
+        "address": "建业路18号阳明楼F1层",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "341.00",
+        "open_time": "周一至周日 08:00-21:30",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 640.0,
+        "coordinates": {
+          "lng": 118.08422,
+          "lat": 24.476509
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门1027潜水俱乐部",
+        "address": "湖滨北路97号",
+        "type": "体育休闲服务;运动场馆;运动场所",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 657.0,
+        "coordinates": {
+          "lng": 118.095376,
+          "lat": 24.482098
+        },
+        "source": "amap"
+      },
+      {
+        "name": "棕榈泉活水馆",
+        "address": "湖滨北路97号(湖滨中路地铁站1号口步行240米)",
+        "type": "体育休闲服务;运动场馆;游泳馆",
+        "rating": 4.4,
+        "cost": "65.00",
+        "open_time": "周一至周日 06:00-22:00",
+        "tel": "0592-5981111",
+        "photos_count": 3,
+        "distance": 657.0,
+        "coordinates": {
+          "lng": 118.09536,
+          "lat": 24.482137
+        },
+        "source": "amap"
+      },
+      {
+        "name": "熹·元运动生活馆(国源滨北国际店)",
+        "address": "湖滨北路21号集友广场(建业路地铁站1A口步行90米)",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 674.0,
+        "coordinates": {
+          "lng": 118.082854,
+          "lat": 24.478682
+        },
+        "source": "amap"
+      },
+      {
+        "name": "叁立方运动生活馆",
+        "address": "湖滨北路21号滨北国际201室",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 693.0,
+        "coordinates": {
+          "lng": 118.082825,
+          "lat": 24.478075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "RSG健身(滨北店)",
+        "address": "建业路7号御景豪庭2楼",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "2569.00",
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "0592-2923000",
+        "photos_count": 3,
+        "distance": 697.0,
+        "coordinates": {
+          "lng": 118.083488,
+          "lat": 24.476585
+        },
+        "source": "amap"
+      },
+      {
+        "name": "凯撒帝苑",
+        "address": "湖滨北路97--19号附近",
+        "type": "体育休闲服务;娱乐场所;KTV|体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.2,
+        "cost": "127.00",
+        "open_time": "周一至周日 11:00-03:00",
+        "tel": "0592-5164629;0592-5232864;4006605118",
+        "photos_count": 3,
+        "distance": 738.0,
+        "coordinates": {
+          "lng": 118.096052,
+          "lat": 24.482509
+        },
+        "source": "amap"
+      },
+      {
+        "name": "KAYZEN一茄三口雪茄吧",
+        "address": "筼筜街道湖滨北路28-3-101号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.2,
+        "cost": "89.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 742.0,
+        "coordinates": {
+          "lng": 118.082788,
+          "lat": 24.476915
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高和高尔夫生活馆",
+        "address": "建业路9号101单元3楼(建业路地铁站2号口步行270米)",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-6666999;18030286378",
+        "photos_count": 3,
+        "distance": 768.0,
+        "coordinates": {
+          "lng": 118.082612,
+          "lat": 24.476721
+        },
+        "source": "amap"
+      },
+      {
+        "name": "银湖天峰游泳馆",
+        "address": "湖滨北路24号(建业路地铁站2号口步行350米)",
+        "type": "体育休闲服务;运动场馆;羽毛球场",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 783.0,
+        "coordinates": {
+          "lng": 118.082185,
+          "lat": 24.477275
+        },
+        "source": "amap"
+      },
+      {
+        "name": "上品岩",
+        "address": "建业路3号吉祥家园写字楼6楼(出电梯左手边)",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "13806029359",
+        "photos_count": 1,
+        "distance": 788.0,
+        "coordinates": {
+          "lng": 118.083437,
+          "lat": 24.475253
+        },
+        "source": "amap"
+      },
+      {
+        "name": "懒猫健身私教·普拉提(国贸春天店)",
+        "address": "湖滨中路国贸春天565-102健身房",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 3.8,
+        "cost": "231.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "18559800187",
+        "photos_count": 3,
+        "distance": 801.0,
+        "coordinates": {
+          "lng": 118.09321,
+          "lat": 24.486108
+        },
+        "source": "amap"
+      },
+      {
+        "name": "筼筜故事馆",
+        "address": "白鹭洲东路66-8号",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-18:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 886.0,
+        "coordinates": {
+          "lng": 118.097959,
+          "lat": 24.478132
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BASE健身工作室(七星一号店)",
+        "address": "七星西路1号七星一号901",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.1,
+        "cost": "228.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "15960222515;18046272788",
+        "photos_count": 2,
+        "distance": 893.0,
+        "coordinates": {
+          "lng": 118.095386,
+          "lat": 24.485689
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宝龙铂尔曼·游泳健身中心",
+        "address": "湖滨中路133号",
+        "type": "体育休闲服务;运动场馆;运动场所",
+        "rating": 4.2,
+        "cost": "62.00",
+        "open_time": "周一至周日 07:30-22:00",
+        "tel": "0592-5188888",
+        "photos_count": 0,
+        "distance": 902.0,
+        "coordinates": {
+          "lng": 118.097193,
+          "lat": 24.475882
+        },
+        "source": "amap"
+      },
+      {
+        "name": "飞酷网球(思明万象里)",
+        "address": "七星西路3号思明万象里L2层L240",
+        "type": "体育休闲服务;运动场馆;网球场",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 953.0,
+        "coordinates": {
+          "lng": 118.09516,
+          "lat": 24.486573
+        },
+        "source": "amap"
+      },
+      {
+        "name": "247FITNESS健身(七星店)",
+        "address": "七星路欢乐颂商场2楼L223号铺",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "129.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18030027247",
+        "photos_count": 3,
+        "distance": 957.0,
+        "coordinates": {
+          "lng": 118.095933,
+          "lat": 24.486012
+        },
+        "source": "amap"
+      },
+      {
+        "name": "益童智玩游乐场(思明欢乐颂商场店)",
+        "address": "七星西路3号思明万象里L2层L252",
+        "type": "体育休闲服务;休闲场所;游乐场",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "18205922546",
+        "photos_count": 1,
+        "distance": 965.0,
+        "coordinates": {
+          "lng": 118.095525,
+          "lat": 24.486443
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BORN2DANCE(思明万象里)",
+        "address": "七星西路3号思明万象里L2层L216",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周二至周日 10:00-21:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 967.0,
+        "coordinates": {
+          "lng": 118.095814,
+          "lat": 24.486238
+        },
+        "source": "amap"
+      },
+      {
+        "name": "FG健身工作室(西堤别墅店)",
+        "address": "筼筜路1-127号203室",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.0,
+        "cost": "180.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 971.0,
+        "coordinates": {
+          "lng": 118.080678,
+          "lat": 24.476167
+        },
+        "source": "amap"
+      },
+      {
+        "name": "潇湘青春影城(思明万象里)",
+        "address": "七星西路3号思明欢乐颂购物中心L3层F11号",
+        "type": "体育休闲服务;影剧院;电影院",
+        "rating": 4.5,
+        "cost": "32.00",
+        "open_time": "周一至周日 08:30-23:30",
+        "tel": "0592-3713368",
+        "photos_count": 3,
+        "distance": 974.0,
+        "coordinates": {
+          "lng": 118.09586,
+          "lat": 24.48629
+        },
+        "source": "amap"
+      },
+      {
+        "name": "KK桌球(厦门欢乐颂店)",
+        "address": "七星西路3号思明万象里B1层",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5060989;18659819296",
+        "photos_count": 3,
+        "distance": 981.0,
+        "coordinates": {
+          "lng": 118.096093,
+          "lat": 24.486172
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万象影城(思明欢乐颂商场店)",
+        "address": "七星西路3号思明欢乐颂商场",
+        "type": "体育休闲服务;影剧院;电影院",
+        "rating": 2.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 981.0,
+        "coordinates": {
+          "lng": 118.09525,
+          "lat": 24.486829
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Keepon",
+        "address": "七星西路3号思明欢乐颂商场L2层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 983.0,
+        "coordinates": {
+          "lng": 118.095681,
+          "lat": 24.486533
+        },
+        "source": "amap"
+      },
+      {
+        "name": "地球梦艺术主题乐园",
+        "address": "七星西路3号欢乐颂购物中心B1层117号",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 3.5,
+        "cost": "107.00",
+        "open_time": "周一至周五,周日 09:30-19:00 最晚进入18:00；周一至周五,周日 09:30-19:00 最晚进入19:30",
+        "tel": "15880217218",
+        "photos_count": 3,
+        "distance": 986.0,
+        "coordinates": {
+          "lng": 118.095917,
+          "lat": 24.486388
+        },
+        "source": "amap"
+      },
+      {
+        "name": "旧党校",
+        "address": "狐尾山路与凤凰山庄交叉口东160米",
+        "type": "科教文化服务;学校;学校",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 77.0,
+        "coordinates": {
+          "lng": 118.089575,
+          "lat": 24.480475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "晨星教育托管",
+        "address": "石亭路27号103室",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周五 08:00-21:00",
+        "tel": "18965858369",
+        "photos_count": 3,
+        "distance": 255.0,
+        "coordinates": {
+          "lng": 118.091312,
+          "lat": 24.481296
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门蓝燕子托管服务有限公司",
+        "address": "石亭路131-9号(湖滨中路地铁站1号口步行350米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周五 10:00-14:00,16:00-20:00",
+        "tel": "13328794598",
+        "photos_count": 3,
+        "distance": 262.0,
+        "coordinates": {
+          "lng": 118.091809,
+          "lat": 24.480676
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门报业发行有限公司(石亭路)",
+        "address": "石亭路17-112号",
+        "type": "科教文化服务;传媒机构;报社",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5506231",
+        "photos_count": 1,
+        "distance": 263.0,
+        "coordinates": {
+          "lng": 118.091901,
+          "lat": 24.480435
+        },
+        "source": "amap"
+      },
+      {
+        "name": "求索教育(石亭路)",
+        "address": "石亭路17-124号附近",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5061851;15280268070",
+        "photos_count": 1,
+        "distance": 263.0,
+        "coordinates": {
+          "lng": 118.091773,
+          "lat": 24.480769
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门市社会科学院",
+        "address": "思明区湖滨北路80号",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 275.0,
+        "coordinates": {
+          "lng": 118.091917,
+          "lat": 24.478867
+        },
+        "source": "amap"
+      },
+      {
+        "name": "人民会堂",
+        "address": "湖滨北路76号",
+        "type": "科教文化服务;会展中心;会展中心",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5310017",
+        "photos_count": 3,
+        "distance": 278.0,
+        "coordinates": {
+          "lng": 118.089874,
+          "lat": 24.477337
+        },
+        "source": "amap"
+      },
+      {
+        "name": "孔雀林少儿美术(石亭校区)",
+        "address": "石亭路17-125号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "15985883167",
+        "photos_count": 1,
+        "distance": 279.0,
+        "coordinates": {
+          "lng": 118.092143,
+          "lat": 24.480034
+        },
+        "source": "amap"
+      },
+      {
+        "name": "南陈书法工作室",
+        "address": "湖滨北路57号(建业路地铁站1B口步行250米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 317.0,
+        "coordinates": {
+          "lng": 118.08655,
+          "lat": 24.478604
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门市滨北小学(石亭路校区)",
+        "address": "石亭路131号(湖滨中路地铁站1号口步行370米)",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5051619",
+        "photos_count": 2,
+        "distance": 321.0,
+        "coordinates": {
+          "lng": 118.092159,
+          "lat": 24.481221
+        },
+        "source": "amap"
+      },
+      {
+        "name": "韦氏教育(滨北校区)",
+        "address": "湖滨北路72号中闽大厦F2层",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13328406263",
+        "photos_count": 3,
+        "distance": 323.0,
+        "coordinates": {
+          "lng": 118.087536,
+          "lat": 24.477441
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞尔悦读-滨北校区",
+        "address": "湖滨北路振业大厦裙楼106号2楼201室",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 367.0,
+        "coordinates": {
+          "lng": 118.093025,
+          "lat": 24.479725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "乐学素养成长中心",
+        "address": "筼筜街道石亭路81-8号(湖滨中路地铁站1号口步行370米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 09:30-22:00",
+        "tel": "18650028899",
+        "photos_count": 3,
+        "distance": 377.0,
+        "coordinates": {
+          "lng": 118.092623,
+          "lat": 24.481507
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门外国语学校(思明校区初中部)",
+        "address": "湖滨北路88号",
+        "type": "科教文化服务;学校;中学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5110967;0592-8063300",
+        "photos_count": 3,
+        "distance": 391.0,
+        "coordinates": {
+          "lng": 118.092347,
+          "lat": 24.477528
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门市石亭幼儿园",
+        "address": "石亭路154号(湖滨中路地铁站1号口步行420米)",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5117335",
+        "photos_count": 3,
+        "distance": 397.0,
+        "coordinates": {
+          "lng": 118.092169,
+          "lat": 24.482329
+        },
+        "source": "amap"
+      },
+      {
+        "name": "巴拉巴拉双语托管教育中心",
+        "address": "湖滨北路106号振业大厦裙楼216",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "18750213398",
+        "photos_count": 3,
+        "distance": 398.0,
+        "coordinates": {
+          "lng": 118.093332,
+          "lat": 24.479872
+        },
+        "source": "amap"
+      },
+      {
+        "name": "振业文创中心",
+        "address": "湖滨北路106-101号",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 398.0,
+        "coordinates": {
+          "lng": 118.093332,
+          "lat": 24.479872
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门振兴幼儿园",
+        "address": "松柏路与莲岳路交叉口东北20米",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 421.0,
+        "coordinates": {
+          "lng": 118.09342,
+          "lat": 24.478812
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梧桐画室",
+        "address": "石亭路16号103室",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:00",
+        "tel": "13950194919",
+        "photos_count": 3,
+        "distance": 439.0,
+        "coordinates": {
+          "lng": 118.092978,
+          "lat": 24.482029
+        },
+        "source": "amap"
+      },
+      {
+        "name": "乐思托辅中心",
+        "address": "石亭路18号105室",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周五 08:00-22:00",
+        "tel": "13306026598;13400655578",
+        "photos_count": 1,
+        "distance": 444.0,
+        "coordinates": {
+          "lng": 118.092834,
+          "lat": 24.482285
+        },
+        "source": "amap"
+      },
+      {
+        "name": "琅琅教育(滨北校区)",
+        "address": "湖滨北路118号振兴大厦F14层",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5313003",
+        "photos_count": 0,
+        "distance": 502.0,
+        "coordinates": {
+          "lng": 118.094355,
+          "lat": 24.479911
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门海丝气象故事馆",
+        "address": "气象台路85号海上明珠塔18层",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 531.0,
+        "coordinates": {
+          "lng": 118.084806,
+          "lat": 24.482101
+        },
+        "source": "amap"
+      },
+      {
+        "name": "JP salsa tango社交拉丁舞蹈工作室(滨北店)",
+        "address": "中信广场B20D(建业路地铁站1B口步行90米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:30",
+        "tel": "13720880277",
+        "photos_count": 3,
+        "distance": 533.0,
+        "coordinates": {
+          "lng": 118.084198,
+          "lat": 24.479067
+        },
+        "source": "amap"
+      },
+      {
+        "name": "巴西柔术格斗学院",
+        "address": "湖滨北路中信广场B栋5楼",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "13695008852",
+        "photos_count": 3,
+        "distance": 536.0,
+        "coordinates": {
+          "lng": 118.084145,
+          "lat": 24.479181
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门实战围棋教室",
+        "address": "石亭路北40米(湖滨中路地铁站1号口步行320米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 542.0,
+        "coordinates": {
+          "lng": 118.093813,
+          "lat": 24.482559
+        },
+        "source": "amap"
+      },
+      {
+        "name": "滨北颐豪酒店-会议厅",
+        "address": "湖滨北路40号中银大厦F1层(建业路地铁站4号口旁)",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5037333;0592-5303333",
+        "photos_count": 1,
+        "distance": 569.0,
+        "coordinates": {
+          "lng": 118.084339,
+          "lat": 24.477564
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门市筼筜幼儿园",
+        "address": "官任路15号(建业路地铁站4号口步行390米)",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5059936",
+        "photos_count": 3,
+        "distance": 570.0,
+        "coordinates": {
+          "lng": 118.085438,
+          "lat": 24.476156
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门市金桥幼儿园",
+        "address": "湖滨中路503-517号万峰华庭对面",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 577.0,
+        "coordinates": {
+          "lng": 118.091369,
+          "lat": 24.484673
+        },
+        "source": "amap"
+      },
+      {
+        "name": "锦来城文化馆",
+        "address": "湖滨北路27号2层锦来城",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 613.0,
+        "coordinates": {
+          "lng": 118.08342,
+          "lat": 24.478934
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门市掼蛋掼牌研究院",
+        "address": "湖滨北路97-5(湖滨中路地铁站1号口步行290米)",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 620.0,
+        "coordinates": {
+          "lng": 118.095177,
+          "lat": 24.481643
+        },
+        "source": "amap"
+      },
+      {
+        "name": "纪尧救援培训基地",
+        "address": "湖滨北路97号-6-104号",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "13806002671",
+        "photos_count": 2,
+        "distance": 623.0,
+        "coordinates": {
+          "lng": 118.094947,
+          "lat": 24.482217
+        },
+        "source": "amap"
+      },
+      {
+        "name": "仁人成才(滨北店)",
+        "address": "湖滨北路世纪海湾27号(建业路地铁站1A口旁)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-3506503;0592-5143566",
+        "photos_count": 3,
+        "distance": 630.0,
+        "coordinates": {
+          "lng": 118.083395,
+          "lat": 24.478329
+        },
+        "source": "amap"
+      },
+      {
+        "name": "筼筜书院书画院",
+        "address": "白鹭洲东路67号(湖滨中路地铁站2号口步行390米)",
+        "type": "科教文化服务;学校;学校",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "春季；冬季08:00-12:00；14:30-17:30夏季；秋季08:00-12:00；15:00-18:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 649.0,
+        "coordinates": {
+          "lng": 118.095325,
+          "lat": 24.477575
+        },
+        "source": "amap"
+      },
+      {
+        "name": "花涧堂文化艺术培训中心",
+        "address": "湖滨中路501号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周二至周日 09:00-21:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 686.0,
+        "coordinates": {
+          "lng": 118.093646,
+          "lat": 24.484605
+        },
+        "source": "amap"
+      },
+      {
+        "name": "琴巢钢琴教育(滨北店)",
+        "address": "湖滨北路28号之1(原中国移动营业厅)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5362801",
+        "photos_count": 3,
+        "distance": 686.0,
+        "coordinates": {
+          "lng": 118.083382,
+          "lat": 24.476957
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海堤博物馆",
+        "address": "湖滨中路160号中茶海堤滨北店旁",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 737.0,
+        "coordinates": {
+          "lng": 118.095216,
+          "lat": 24.483784
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门凯撒帝苑文化传媒有限公司",
+        "address": "湖滨北路97号之14号",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 741.0,
+        "coordinates": {
+          "lng": 118.096105,
+          "lat": 24.482461
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国工商银行厦门市分行会议中心",
+        "address": "湖滨北路17号(建业路地铁站1A口步行340米)",
+        "type": "科教文化服务;会展中心;会展中心",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 789.0,
+        "coordinates": {
+          "lng": 118.08169,
+          "lat": 24.478756
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门宠物训犬师培训基地",
+        "address": "湖滨北路97-105号252",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 12:00-21:30",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 791.0,
+        "coordinates": {
+          "lng": 118.097001,
+          "lat": 24.481444
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门训犬学校",
+        "address": "湖滨北路97-105号2楼之251号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "17750617721;19105027013",
+        "photos_count": 3,
+        "distance": 792.0,
+        "coordinates": {
+          "lng": 118.096992,
+          "lat": 24.481501
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门宠物美容师培训基地",
+        "address": "湖滨北路97-105号250室",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 12:00-21:00",
+        "tel": "19105027017",
+        "photos_count": 2,
+        "distance": 792.0,
+        "coordinates": {
+          "lng": 118.097007,
+          "lat": 24.481455
+        },
+        "source": "amap"
+      },
+      {
+        "name": "凰美术馆",
+        "address": "白鹭洲公园东公园C栋",
+        "type": "科教文化服务;美术馆;美术馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 799.0,
+        "coordinates": {
+          "lng": 118.097274,
+          "lat": 24.479296
+        },
+        "source": "amap"
+      },
+      {
+        "name": "福建海洋研究所",
+        "address": "海山路22-40号",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5617388",
+        "photos_count": 3,
+        "distance": 816.0,
+        "coordinates": {
+          "lng": 118.081811,
+          "lat": 24.482273
+        },
+        "source": "amap"
+      },
+      {
+        "name": "国贸枫禾(白鹭洲校区)",
+        "address": "白鹭洲东路88号之一",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 818.0,
+        "coordinates": {
+          "lng": 118.096025,
+          "lat": 24.475587
+        },
+        "source": "amap"
+      },
+      {
+        "name": "殿堂艺术文化传播合伙企业",
+        "address": "篔筜书院学术交流中心酒店东北侧70米",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "0592-5561181",
+        "photos_count": 3,
+        "distance": 838.0,
+        "coordinates": {
+          "lng": 118.096519,
+          "lat": 24.475963
+        },
+        "source": "amap"
+      },
+      {
+        "name": "筼筜幼儿园分园",
+        "address": "湖滨北路筼筜路5-6号",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 839.0,
+        "coordinates": {
+          "lng": 118.082212,
+          "lat": 24.476051
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门市食品药品质量检验研究院",
+        "address": "湖里街道海山路33号",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 862.0,
+        "coordinates": {
+          "lng": 118.082197,
+          "lat": 24.483929
+        },
+        "source": "amap"
+      },
+      {
+        "name": "维云生物医药研究院",
+        "address": "白鹭洲东路86-3号",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 865.0,
+        "coordinates": {
+          "lng": 118.096599,
+          "lat": 24.475622
+        },
+        "source": "amap"
+      },
+      {
+        "name": "国际商报社厦门记者站",
+        "address": "湖滨北路15号外贸大厦208",
+        "type": "科教文化服务;传媒机构;报社",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 889.0,
+        "coordinates": {
+          "lng": 118.080763,
+          "lat": 24.478378
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星鑫鸿驾校滨北练车点",
+        "address": "湖滨北路10-2号新港广场",
+        "type": "科教文化服务;驾校;驾校",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "0592-2059885;0592-2069885",
+        "photos_count": 2,
+        "distance": 889.0,
+        "coordinates": {
+          "lng": 118.081025,
+          "lat": 24.477388
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厝边咖啡(石亭路)",
+        "address": "石亭路27号之2(湖滨中路地铁站1号口步行420米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "27.00",
+        "open_time": "周一至周日 06:00-20:00",
+        "tel": "13400715369",
+        "photos_count": 3,
+        "distance": 263.0,
+        "coordinates": {
+          "lng": 118.091431,
+          "lat": 24.48128
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(中信惠扬商务楼店)",
+        "address": "湖滨北路59号惠扬商务楼1层7号沿街底商59-7号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "13.00",
+        "open_time": "周一至周五 07:30-19:00；周六至周日 08:00-19:00",
+        "tel": "18760165606",
+        "photos_count": 3,
+        "distance": 298.0,
+        "coordinates": {
+          "lng": 118.086829,
+          "lat": 24.478492
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(官任国际社区店)",
+        "address": "官任路38号夏商民兴超市底商",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "11.00",
+        "open_time": "周一至周五 07:00-21:00；周六至周日 08:00-20:30",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 405.0,
+        "coordinates": {
+          "lng": 118.086398,
+          "lat": 24.477396
+        },
+        "source": "amap"
+      },
+      {
+        "name": "半自动咖啡(滨北店)",
+        "address": "湖滨北路33号之15店面凤凰名都小区沿街店面",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "24.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5071715;13666073539",
+        "photos_count": 3,
+        "distance": 452.0,
+        "coordinates": {
+          "lng": 118.085196,
+          "lat": 24.478429
+        },
+        "source": "amap"
+      },
+      {
+        "name": "売Mai Coffee",
+        "address": "湖滨北路107号振兴新村2号楼102室",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "28.00",
+        "open_time": "周二至周日 09:00-21:00",
+        "tel": "13850045503",
+        "photos_count": 3,
+        "distance": 453.0,
+        "coordinates": {
+          "lng": 118.093214,
+          "lat": 24.477664
+        },
+        "source": "amap"
+      },
+      {
+        "name": "nowwa挪瓦咖啡(见福福建振兴大厦店)",
+        "address": "湖滨北路118号振兴大厦院内西北侧",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.7,
+        "cost": "13.00",
+        "open_time": [],
+        "tel": "13074838745",
+        "photos_count": 2,
+        "distance": 455.0,
+        "coordinates": {
+          "lng": 118.093805,
+          "lat": 24.480597
+        },
+        "source": "amap"
+      },
+      {
+        "name": "luckin coffee 瑞幸咖啡(石亭小区店)",
+        "address": "湖滨北路109-2-1号(湖滨中路地铁站1号口步行60米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周五 07:00-22:00；周六至周日 08:00-22:00",
+        "tel": "13554847314",
+        "photos_count": 3,
+        "distance": 458.0,
+        "coordinates": {
+          "lng": 118.093873,
+          "lat": 24.480435
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小啡屋咖啡",
+        "address": "官任路与建业路交叉口东140米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "42.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 541.0,
+        "coordinates": {
+          "lng": 118.085236,
+          "lat": 24.476748
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲里咖啡",
+        "address": "湖滨中路与湖滨北路交叉口南100米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "15759271964",
+        "photos_count": 0,
+        "distance": 561.0,
+        "coordinates": {
+          "lng": 118.09494,
+          "lat": 24.479744
+        },
+        "source": "amap"
+      },
+      {
+        "name": "CAI coffee&home",
+        "address": "振兴新村14号102室",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "44.00",
+        "open_time": "周一至周五 09:00-21:00；周六至周日 09:00-22:00",
+        "tel": "18559757103",
+        "photos_count": 3,
+        "distance": 583.0,
+        "coordinates": {
+          "lng": 118.095075,
+          "lat": 24.478925
+        },
+        "source": "amap"
+      },
+      {
+        "name": "菡咖啡·MuscleMug能量站",
+        "address": "湖滨北路97-6-106",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "29.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 620.0,
+        "coordinates": {
+          "lng": 118.095022,
+          "lat": 24.482003
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Delta Coffee",
+        "address": "官任路2-4号(马可波罗酒店后面)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "28.00",
+        "open_time": "周一至周日 08:30-20:00",
+        "tel": "19906045047",
+        "photos_count": 0,
+        "distance": 631.0,
+        "coordinates": {
+          "lng": 118.085181,
+          "lat": 24.475627
+        },
+        "source": "amap"
+      },
+      {
+        "name": "筼筜印象·里昂家咖啡(白鹭洲店)",
+        "address": "白鹭洲东路63号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.7,
+        "cost": "45.00",
+        "open_time": "周一至周日 09:00-23:00 2026-02-16至2026-02-16 09:00-17:00；2026-02-10至2026-02-15 全天关闭",
+        "tel": "13328782879",
+        "photos_count": 3,
+        "distance": 638.0,
+        "coordinates": {
+          "lng": 118.095038,
+          "lat": 24.477241
+        },
+        "source": "amap"
+      },
+      {
+        "name": "CBD Cafe",
+        "address": "筼筜街道湖滨北路28号建业大厦附楼",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "57.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5151128",
+        "photos_count": 3,
+        "distance": 650.0,
+        "coordinates": {
+          "lng": 118.083724,
+          "lat": 24.477074
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西必帝咖啡(厦门建业大厦店)",
+        "address": "湖滨北路28号建业大厦B座F5层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "85.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5151128",
+        "photos_count": 3,
+        "distance": 655.0,
+        "coordinates": {
+          "lng": 118.083665,
+          "lat": 24.477075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "YES OK咖啡厅",
+        "address": "石亭路116-1号C127室",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "29.00",
+        "open_time": "周二至周日 09:00-21:00",
+        "tel": "18559276349",
+        "photos_count": 3,
+        "distance": 656.0,
+        "coordinates": {
+          "lng": 118.093931,
+          "lat": 24.484022
+        },
+        "source": "amap"
+      },
+      {
+        "name": "静香Dining(滨北店)",
+        "address": "建业路14号(建业路地铁站4号口步行220米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "100.00",
+        "open_time": "周一至周日 09:30-23:00",
+        "tel": "15359342990",
+        "photos_count": 3,
+        "distance": 659.0,
+        "coordinates": {
+          "lng": 118.08408,
+          "lat": 24.476381
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克臻选(厦门筼筜路店)",
+        "address": "建业路8号马哥孛罗东方大酒店1层",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.6,
+        "cost": "42.00",
+        "open_time": "周一至周五 07:30-19:20；周六至周日 07:30-19:20",
+        "tel": "0592-5124830",
+        "photos_count": 3,
+        "distance": 707.0,
+        "coordinates": {
+          "lng": 118.085128,
+          "lat": 24.474773
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门马哥孛罗东方大酒店大厅",
+        "address": "建业路8号厦门马哥孛罗东方大酒店1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "155.00",
+        "open_time": "周一至周三 06:30-10:00,11:30-14:00；周四至周日 06:30-10:00,11:30-14:00,18:00-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 734.0,
+        "coordinates": {
+          "lng": 118.084431,
+          "lat": 24.474993
+        },
+        "source": "amap"
+      },
+      {
+        "name": "COSMOJOY咖之桥",
+        "address": "中国石化滨北加油站(湖滨中路地铁站4号口步行180米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.6,
+        "cost": "22.00",
+        "open_time": [],
+        "tel": "15105992951",
+        "photos_count": 3,
+        "distance": 740.0,
+        "coordinates": {
+          "lng": 118.096611,
+          "lat": 24.480864
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Barolo cafe&wine(巴洛洛西堤店)",
+        "address": "建业路11-29号武夷嘉园",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "128.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 830.0,
+        "coordinates": {
+          "lng": 118.082683,
+          "lat": 24.475521
+        },
+        "source": "amap"
+      },
+      {
+        "name": "咖伦比咖啡(建业路店)",
+        "address": "建业路1号-10号吉祥家园10号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "61.00",
+        "open_time": "周一至周日 07:00-23:00",
+        "tel": "0592-5312246",
+        "photos_count": 3,
+        "distance": 842.0,
+        "coordinates": {
+          "lng": 118.08336,
+          "lat": 24.474603
+        },
+        "source": "amap"
+      },
+      {
+        "name": "No.39 cafe",
+        "address": "筼筜路3之19-23利华苑",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "72.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 867.0,
+        "coordinates": {
+          "lng": 118.083053,
+          "lat": 24.474569
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厚海咖啡",
+        "address": "筼筜路3-7号(马可孛罗酒店旁)",
+        "type": "餐饮服务;咖啡厅;咖啡厅|餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "47.00",
+        "open_time": "周一至周日 10:00-00:30",
+        "tel": "0592-5311212",
+        "photos_count": 3,
+        "distance": 881.0,
+        "coordinates": {
+          "lng": 118.082838,
+          "lat": 24.474604
+        },
+        "source": "amap"
+      },
+      {
+        "name": "nowwa挪瓦咖啡(新港广场小区店)",
+        "address": "湖滨北路18-110号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.7,
+        "cost": "17.00",
+        "open_time": [],
+        "tel": "15960261186",
+        "photos_count": 2,
+        "distance": 886.0,
+        "coordinates": {
+          "lng": 118.081283,
+          "lat": 24.476816
+        },
+        "source": "amap"
+      },
+      {
+        "name": "那畔NAPAN(利华苑店)",
+        "address": "筼筜路3-6号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "59.00",
+        "open_time": "周一至周日 08:00-24:00 2026-02-17至2026-02-21 周一至周日 11:00-21:00",
+        "tel": "13606937727",
+        "photos_count": 3,
+        "distance": 896.0,
+        "coordinates": {
+          "lng": 118.082642,
+          "lat": 24.474607
+        },
+        "source": "amap"
+      },
+      {
+        "name": "默迹咖啡馆(利华苑店)",
+        "address": "筼筜路利华苑小区内3-11号别墅",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.7,
+        "cost": "50.00",
+        "open_time": "周一至周日 09:30-23:00",
+        "tel": "0592-5020518",
+        "photos_count": 3,
+        "distance": 929.0,
+        "coordinates": {
+          "lng": 118.082023,
+          "lat": 24.474835
+        },
+        "source": "amap"
+      },
+      {
+        "name": "古柏咖啡(利华苑店)",
+        "address": "员当路西堤别墅利华苑3-2号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "51.00",
+        "open_time": "周一至周日 09:00-01:00 2026-02-10至2026-03-04 周一至周日 09:00-24:00",
+        "tel": "15394429579",
+        "photos_count": 3,
+        "distance": 949.0,
+        "coordinates": {
+          "lng": 118.082026,
+          "lat": 24.474538
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(欢乐颂七星店)",
+        "address": "七星路3号欢乐颂1层L177(2号门入口处)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "12.00",
+        "open_time": "周一至周五 08:30-21:30",
+        "tel": "17720860250",
+        "photos_count": 3,
+        "distance": 956.0,
+        "coordinates": {
+          "lng": 118.095972,
+          "lat": 24.48597
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汐COFFEE",
+        "address": "筼筜路1号-1-128西堤别墅",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 962.0,
+        "coordinates": {
+          "lng": 118.081625,
+          "lat": 24.474824
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(厦门欢乐颂购物中心店)",
+        "address": "欢乐颂购物中心",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "13.00",
+        "open_time": "周一至周日 08:30-22:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 984.0,
+        "coordinates": {
+          "lng": 118.095873,
+          "lat": 24.4864
+        },
+        "source": "amap"
+      },
+      {
+        "name": "静香House(思明欢乐颂商场店)",
+        "address": "七星西路3号欢乐颂购物中心第一层L151",
+        "type": "餐饮服务;外国餐厅;日本料理|餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "116.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5128221;18659229277",
+        "photos_count": 3,
+        "distance": 995.0,
+        "coordinates": {
+          "lng": 118.095521,
+          "lat": 24.486797
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(厦门思明欢乐颂分店)",
+        "address": "七星西路3号思明万象里L1层L101",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.5,
+        "cost": "38.00",
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "0592-5073137",
+        "photos_count": 3,
+        "distance": 1011.0,
+        "coordinates": {
+          "lng": 118.095833,
+          "lat": 24.48675
+        },
+        "source": "amap"
+      },
+      {
+        "name": "时光花园(白鹭洲店)",
+        "address": "湖滨北路新港广场109号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "46.00",
+        "open_time": "周一至周日 09:30-22:30",
+        "tel": "0592-5151308",
+        "photos_count": 3,
+        "distance": 1011.0,
+        "coordinates": {
+          "lng": 118.080121,
+          "lat": 24.476437
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Simon B Cafe Bar 手冲咖啡鸡尾酒",
+        "address": "海山路88-5号",
+        "type": "体育休闲服务;娱乐场所;酒吧|餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "36.00",
+        "open_time": "周二至周日 10:00-23:00",
+        "tel": "18065929992",
+        "photos_count": 3,
+        "distance": 1034.0,
+        "coordinates": {
+          "lng": 118.084306,
+          "lat": 24.487851
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海之栖咖啡酒吧餐厅(光大银行大厦店)",
+        "address": "湖滨南路81号(光大银行大厦一楼)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "42.00",
+        "open_time": "周一至周五 10:00-24:00；周六至周日 13:00-21:00",
+        "tel": "15985818450;18959211479",
+        "photos_count": 3,
+        "distance": 1110.0,
+        "coordinates": {
+          "lng": 118.091753,
+          "lat": 24.470058
+        },
+        "source": "amap"
+      },
+      {
+        "name": "nowwa挪瓦咖啡(都市港湾店)",
+        "address": "金鼎路与东渡路交叉口东80米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "16.00",
+        "open_time": [],
+        "tel": "15980857605",
+        "photos_count": 3,
+        "distance": 1124.0,
+        "coordinates": {
+          "lng": 118.081783,
+          "lat": 24.487142
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ZZ COFFEE(东渡店)",
+        "address": "东渡路102号源昌大厦",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1139.0,
+        "coordinates": {
+          "lng": 118.080914,
+          "lat": 24.486511
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(七星大厦店)",
+        "address": "七星西路178号七星大厦一层大堂",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "11.00",
+        "open_time": "周六至周日 07:30-18:00；周一至周五 07:00-19:30",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 1202.0,
+        "coordinates": {
+          "lng": 118.096575,
+          "lat": 24.488405
+        },
+        "source": "amap"
+      },
+      {
+        "name": "途纪宋韵咖啡",
+        "address": "东港路与东港一路交叉口东北80米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 2.7,
+        "cost": "36.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1236.0,
+        "coordinates": {
+          "lng": 118.077475,
+          "lat": 24.482175
+        },
+        "source": "amap"
+      },
+      {
+        "name": "NOWWA挪瓦咖啡(见福厦门滨南2店)",
+        "address": "湖滨南路辅路与后江埭路交叉口东160米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "18.00",
+        "open_time": [],
+        "tel": "13348375594",
+        "photos_count": 3,
+        "distance": 1267.0,
+        "coordinates": {
+          "lng": 118.09435,
+          "lat": 24.469346
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克",
+        "address": "湖滨南路76号百脑汇科技大厦(白鹭洲路)",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.5,
+        "cost": "33.00",
+        "open_time": "周一至周五 09:00-20:00；周六至周日 10:00-22:00",
+        "tel": "0592-2390925",
+        "photos_count": 3,
+        "distance": 1288.0,
+        "coordinates": {
+          "lng": 118.090477,
+          "lat": 24.468265
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(厦门禹洲广场店)",
+        "address": "湖滨南路55号禹州广场一层大堂",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "17.00",
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 1293.0,
+        "coordinates": {
+          "lng": 118.085694,
+          "lat": 24.46868
+        },
+        "source": "amap"
+      },
+      {
+        "name": "reed",
+        "address": "后江埭路98号102室",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "35.00",
+        "open_time": "周一至周日 10:30-23:00",
+        "tel": "13260252468;17859969628",
+        "photos_count": 3,
+        "distance": 1303.0,
+        "coordinates": {
+          "lng": 118.09397,
+          "lat": 24.468851
+        },
+        "source": "amap"
+      },
+      {
+        "name": "21GRAM COFFEE(厦鼓码头店)",
+        "address": "东港路2-103",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "36.00",
+        "open_time": "周一至周日 08:00-19:00",
+        "tel": "17746040421",
+        "photos_count": 3,
+        "distance": 1340.0,
+        "coordinates": {
+          "lng": 118.076292,
+          "lat": 24.481404
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(港航大厦店)",
+        "address": "东港北路29号港航大厦一层大堂",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "17.00",
+        "open_time": "周一至周五 07:00-20:00；周六至周日 08:00-18:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 1353.0,
+        "coordinates": {
+          "lng": 118.076795,
+          "lat": 24.483833
+        },
+        "source": "amap"
+      },
+      {
+        "name": "伍檐喫茶屋",
+        "address": "禾祥西路后江埭路160-102号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "53.00",
+        "open_time": "周一至周五 15:00-23:00；周六至周日 15:00-23:00",
+        "tel": "13275925887;18359265887",
+        "photos_count": 3,
+        "distance": 1377.0,
+        "coordinates": {
+          "lng": 118.094697,
+          "lat": 24.468408
+        },
+        "source": "amap"
+      },
+      {
+        "name": "源昌凯宾斯基大酒店·大堂吧",
+        "address": "湖滨中路98号凯宾斯基大酒店1楼大堂",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "18050088918",
+        "photos_count": 3,
+        "distance": 1391.0,
+        "coordinates": {
+          "lng": 118.100597,
+          "lat": 24.472568
+        },
+        "source": "amap"
+      },
+      {
+        "name": "NOWWA挪瓦咖啡(见福福建和通里店)",
+        "address": "仙岳路95号福隆花园",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.3,
+        "cost": "18.00",
+        "open_time": "2026-02-15至2026-02-23 全天关闭",
+        "tel": "13365923292",
+        "photos_count": 2,
+        "distance": 1394.0,
+        "coordinates": {
+          "lng": 118.091264,
+          "lat": 24.492211
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BOUGAIN·捕光咖啡(海上世界D座店)",
+        "address": "双狮西路86号海上世界D座F1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "28.00",
+        "open_time": "周一至周日 07:30-19:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1402.0,
+        "coordinates": {
+          "lng": 118.078054,
+          "lat": 24.487013
+        },
+        "source": "amap"
+      },
+      {
+        "name": "喜得猫马来西亚猫山王榴莲批发中心",
+        "address": "狐尾山路c112",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "18959286583",
+        "photos_count": 3,
+        "distance": 196.0,
+        "coordinates": {
+          "lng": 118.087565,
+          "lat": 24.480382
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鼎承名酒鉴赏中心",
+        "address": "凤凰山庄2号楼",
+        "type": "购物服务;专卖店;烟酒专卖店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "15880206516",
+        "photos_count": 3,
+        "distance": 221.0,
+        "coordinates": {
+          "lng": 118.087371,
+          "lat": 24.479059
+        },
+        "source": "amap"
+      },
+      {
+        "name": "六意便利(厦门中闽大厦店)",
+        "address": "湖滨北路72号中闽大厦F1层",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 07:30-20:00",
+        "tel": "13666008952",
+        "photos_count": 3,
+        "distance": 327.0,
+        "coordinates": {
+          "lng": 118.08722,
+          "lat": 24.477622
+        },
+        "source": "amap"
+      },
+      {
+        "name": "华视眼镜(石亭路店)",
+        "address": "石亭路29-31底层之14号",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": "0592-5053932",
+        "photos_count": 3,
+        "distance": 329.0,
+        "coordinates": {
+          "lng": 118.092622,
+          "lat": 24.4802
+        },
+        "source": "amap"
+      },
+      {
+        "name": "随喜集",
+        "address": "建兴路75号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 10:00-23:00",
+        "tel": "15606977702",
+        "photos_count": 3,
+        "distance": 373.0,
+        "coordinates": {
+          "lng": 118.08793,
+          "lat": 24.476722
+        },
+        "source": "amap"
+      },
+      {
+        "name": "芳朵美肤美体SPA(滨北店)",
+        "address": "湖滨北路44号种子大厦F1层",
+        "type": "生活服务;美容美发店;美容美发店|购物服务;个人用品/化妆品店;其它个人用品店",
+        "rating": 4.6,
+        "cost": "672.00",
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": "0592-5566757",
+        "photos_count": 3,
+        "distance": 397.0,
+        "coordinates": {
+          "lng": 118.086035,
+          "lat": 24.477965
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Rosatory柔鲨花房",
+        "address": "福建省厦门市思明区建兴路61号101-102(建兴路公车站旁)",
+        "type": "购物服务;花鸟鱼虫市场;花卉市场",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": "15659295680",
+        "photos_count": 3,
+        "distance": 398.0,
+        "coordinates": {
+          "lng": 118.087974,
+          "lat": 24.476464
+        },
+        "source": "amap"
+      },
+      {
+        "name": "十分便利店(中信惠扬店)",
+        "address": "湖滨北路55-2号(建业路地铁站1B口步行170米)",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18965177044",
+        "photos_count": 3,
+        "distance": 402.0,
+        "coordinates": {
+          "lng": 118.085749,
+          "lat": 24.478381
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夏商民兴超市(官任店)",
+        "address": "官任路38号(建业路地铁站4号口步行270米)",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店|购物服务;超级市场;超市",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": "0592-5101158;4009182001",
+        "photos_count": 3,
+        "distance": 415.0,
+        "coordinates": {
+          "lng": 118.086248,
+          "lat": 24.477412
+        },
+        "source": "amap"
+      },
+      {
+        "name": "八马茶业(市政府店)",
+        "address": "湖滨北路33号之17号和18号八马茶业",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.5,
+        "cost": "71.00",
+        "open_time": "周一至周日 08:30-23:00",
+        "tel": "18064403747",
+        "photos_count": 3,
+        "distance": 440.0,
+        "coordinates": {
+          "lng": 118.085311,
+          "lat": 24.478465
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国移动(思明滨北营业厅)",
+        "address": "湖滨北路33号之19-20号店面",
+        "type": "购物服务;家电电子卖场;手机销售",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-19:00",
+        "tel": "13774657556",
+        "photos_count": 3,
+        "distance": 440.0,
+        "coordinates": {
+          "lng": 118.08532,
+          "lat": 24.478422
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Mizi名姿美发(滨北店)",
+        "address": "湖滨北路凤凰名都33号11-12",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店|生活服务;美容美发店;美容美发店",
+        "rating": 4.3,
+        "cost": "181.00",
+        "open_time": "周一至周日 10:30-21:00",
+        "tel": "18059233269",
+        "photos_count": 3,
+        "distance": 454.0,
+        "coordinates": {
+          "lng": 118.085154,
+          "lat": 24.478477
+        },
+        "source": "amap"
+      },
+      {
+        "name": "见福便利店(厦门滨北2店)",
+        "address": "湖滨北路118号振兴大厦院内西北侧",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5109218;15805021969;18350271076",
+        "photos_count": 3,
+        "distance": 462.0,
+        "coordinates": {
+          "lng": 118.093875,
+          "lat": 24.480625
+        },
+        "source": "amap"
+      },
+      {
+        "name": "KOI Thé(厦门滨北官任店)",
+        "address": "官任路38号之4特贸苑",
+        "type": "餐饮服务;冷饮店;冷饮店|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.5,
+        "cost": "24.00",
+        "open_time": "周一至周日 10:00-22:00 2026-02-16至2026-02-23 周一至周日 全天关闭",
+        "tel": "0592-5316289",
+        "photos_count": 3,
+        "distance": 473.0,
+        "coordinates": {
+          "lng": 118.086143,
+          "lat": 24.476746
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夏商民兴超市(石亭店)",
+        "address": "石亭路62号(湖滨中路地铁站1号口步行370米)",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": "0592-5051614;15059437561",
+        "photos_count": 3,
+        "distance": 482.0,
+        "coordinates": {
+          "lng": 118.093395,
+          "lat": 24.482161
+        },
+        "source": "amap"
+      },
+      {
+        "name": "竞博体育游泳用品专业供应商",
+        "address": "石亭路66之101-102",
+        "type": "购物服务;体育用品店;体育用品店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "0592-5114001;0592-6577668",
+        "photos_count": 3,
+        "distance": 491.0,
+        "coordinates": {
+          "lng": 118.093502,
+          "lat": 24.482163
+        },
+        "source": "amap"
+      },
+      {
+        "name": "好迅速锁具修配店(官任路店)",
+        "address": "湖滨北路官任路28号(建业路地铁站4号口步行280米)",
+        "type": "购物服务;家居建材市场;建材五金市场",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": "0592-5209412",
+        "photos_count": 2,
+        "distance": 514.0,
+        "coordinates": {
+          "lng": 118.085659,
+          "lat": 24.476668
+        },
+        "source": "amap"
+      },
+      {
+        "name": "飞鱼会海钓钓具",
+        "address": "石亭路137号101室",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13959270777",
+        "photos_count": 3,
+        "distance": 531.0,
+        "coordinates": {
+          "lng": 118.094413,
+          "lat": 24.481201
+        },
+        "source": "amap"
+      },
+      {
+        "name": "美美便利店(石亭路店)",
+        "address": "石亭路90号(湖滨中路地铁站1号口步行330米)",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 06:30-02:00",
+        "tel": "0592-3516647;0592-3516648",
+        "photos_count": 2,
+        "distance": 552.0,
+        "coordinates": {
+          "lng": 118.093922,
+          "lat": 24.482581
+        },
+        "source": "amap"
+      },
+      {
+        "name": "阿福来便利店(港龙店)",
+        "address": "筼筜路42号之8号店",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5250582",
+        "photos_count": 3,
+        "distance": 554.0,
+        "coordinates": {
+          "lng": 118.087977,
+          "lat": 24.474992
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国联通宽带受理(石亭路店)",
+        "address": "石亭路16-104号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "4008082673",
+        "photos_count": 1,
+        "distance": 562.0,
+        "coordinates": {
+          "lng": 118.094175,
+          "lat": 24.482375
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲里花店(振兴大厦店)",
+        "address": "振兴大厦(湖滨中路地铁站2号口步行140米)",
+        "type": "购物服务;花鸟鱼虫市场;花卉市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:30",
+        "tel": "13395999143",
+        "photos_count": 3,
+        "distance": 566.0,
+        "coordinates": {
+          "lng": 118.09499,
+          "lat": 24.479748
+        },
+        "source": "amap"
+      },
+      {
+        "name": "COLOUR卡乐",
+        "address": "官任路10号(近马哥孛罗东方大酒店)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 11:00-03:00",
+        "tel": "19859202146",
+        "photos_count": 2,
+        "distance": 578.0,
+        "coordinates": {
+          "lng": 118.08588,
+          "lat": 24.475704
+        },
+        "source": "amap"
+      },
+      {
+        "name": "百果园(建业路店)",
+        "address": "建业路22号(建业路地铁站4号口步行250米)",
+        "type": "购物服务;综合市场;果品市场",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-23:59",
+        "tel": "0592-5559213",
+        "photos_count": 3,
+        "distance": 600.0,
+        "coordinates": {
+          "lng": 118.084566,
+          "lat": 24.476672
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Dai Tai 傣泰",
+        "address": "官任路与建业路交叉口东40米",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.7,
+        "cost": "103.00",
+        "open_time": "周一至周日 11:30-14:00,17:30-22:00 2026-02-15至2026-02-18 周一至周日 全天关闭",
+        "tel": "13313852465",
+        "photos_count": 3,
+        "distance": 617.0,
+        "coordinates": {
+          "lng": 118.084356,
+          "lat": 24.476693
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱阳光眼镜·视光中心(滨北)",
+        "address": "湖滨北路25号201(肯德基和元初中间的楼梯上二楼)",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": "18950043405",
+        "photos_count": 3,
+        "distance": 625.0,
+        "coordinates": {
+          "lng": 118.083439,
+          "lat": 24.478339
+        },
+        "source": "amap"
+      },
+      {
+        "name": "元初食品(湖滨北路店)",
+        "address": "厦门市思明区湖滨北路25号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "18020773561;18059297013",
+        "photos_count": 3,
+        "distance": 653.0,
+        "coordinates": {
+          "lng": 118.083157,
+          "lat": 24.478323
+        },
+        "source": "amap"
+      },
+      {
+        "name": "挺秀茶庄",
+        "address": "白鹭洲东路13-15号天鹅酒店健身房旁",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.2,
+        "cost": "117.00",
+        "open_time": "周一至周日 08:30-22:30",
+        "tel": "0592-2022910",
+        "photos_count": 3,
+        "distance": 681.0,
+        "coordinates": {
+          "lng": 118.092749,
+          "lat": 24.474491
+        },
+        "source": "amap"
+      },
+      {
+        "name": "元初食品(滨北建业路店)",
+        "address": "建业路10-12国盟新天地",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "18059297013",
+        "photos_count": 2,
+        "distance": 681.0,
+        "coordinates": {
+          "lng": 118.084274,
+          "lat": 24.47583
+        },
+        "source": "amap"
+      },
+      {
+        "name": "集友广场",
+        "address": "湖滨北路21号(建业路地铁站1A口步行50米)",
+        "type": "购物服务;商场;商场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5031743",
+        "photos_count": 3,
+        "distance": 684.0,
+        "coordinates": {
+          "lng": 118.082781,
+          "lat": 24.478545
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中茶海堤(厦门茶厂总店)",
+        "address": "湖滨中路160-7-101",
+        "type": "公司企业;公司;商业贸易|购物服务;专卖店;专营店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:30-20:30",
+        "tel": "0592-8068097",
+        "photos_count": 3,
+        "distance": 690.0,
+        "coordinates": {
+          "lng": 118.094711,
+          "lat": 24.483687
+        },
+        "source": "amap"
+      },
+      {
+        "name": "朴朴仓库(湖滨北路店)",
+        "address": "湖滨北路97号(湖滨中路地铁站1号口步行360米)",
+        "type": "购物服务;超级市场;超市",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 700.0,
+        "coordinates": {
+          "lng": 118.095561,
+          "lat": 24.482655
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Kusa Goobi",
+        "address": "湖滨北路28号建业大厦B座F1层",
+        "type": "购物服务;服装鞋帽皮具店;品牌服装店",
+        "rating": 4.4,
+        "cost": "43.00",
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "13101402709;18250853059",
+        "photos_count": 3,
+        "distance": 741.0,
+        "coordinates": {
+          "lng": 118.082775,
+          "lat": 24.476975
+        },
+        "source": "amap"
+      },
+      {
+        "name": "花外花艺&居家绿植",
+        "address": "湖滨北路28号3之104(恒通花园对面花店)",
+        "type": "购物服务;花鸟鱼虫市场;花卉市场",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 09:00-20:30",
+        "tel": "0592-5032926;15396258540",
+        "photos_count": 3,
+        "distance": 759.0,
+        "coordinates": {
+          "lng": 118.082615,
+          "lat": 24.476889
+        },
+        "source": "amap"
+      },
+      {
+        "name": "稻丁宠宠物乐园",
+        "address": "湖滨北路97-105号210室",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": "19105027013",
+        "photos_count": 3,
+        "distance": 785.0,
+        "coordinates": {
+          "lng": 118.096939,
+          "lat": 24.481462
+        },
+        "source": "amap"
+      },
+      {
+        "name": "国瓷馆",
+        "address": "建业路1之15号(建业路地铁站4号口步行400米)",
+        "type": "购物服务;专卖店;珠宝首饰工艺品",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 09:00-23:00",
+        "tel": "13063070798;18459277381",
+        "photos_count": 3,
+        "distance": 797.0,
+        "coordinates": {
+          "lng": 118.08383,
+          "lat": 24.47474
+        },
+        "source": "amap"
+      },
+      {
+        "name": "熹茗茶业(西堤店)",
+        "address": "建业路3号吉祥家园",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:30-22:30 2026-02-16至2026-02-19 全天关闭",
+        "tel": "13959486050;15160066751",
+        "photos_count": 3,
+        "distance": 845.0,
+        "coordinates": {
+          "lng": 118.083282,
+          "lat": 24.474635
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高斌3號工坊(西堤咖啡一条街店)",
+        "address": "筼筜路3号之5号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "0592-5114458;13696926332",
+        "photos_count": 3,
+        "distance": 907.0,
+        "coordinates": {
+          "lng": 118.082512,
+          "lat": 24.474588
+        },
+        "source": "amap"
+      },
+      {
+        "name": "华祥苑茗茶(西堤国缤店)",
+        "address": "筼筜路3-4号一层",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:30",
+        "tel": "17306009812",
+        "photos_count": 1,
+        "distance": 926.0,
+        "coordinates": {
+          "lng": 118.082284,
+          "lat": 24.474576
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宝妈时光(万象里店)",
+        "address": "七星西路3号万象里2楼",
+        "type": "购物服务;专卖店;儿童用品店",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "13365905099;18030107688",
+        "photos_count": 3,
+        "distance": 928.0,
+        "coordinates": {
+          "lng": 118.095573,
+          "lat": 24.485968
+        },
+        "source": "amap"
+      },
+      {
+        "name": "靈泊·omakase(利华苑店)",
+        "address": "筼筜路3-1号101室",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.3,
+        "cost": "653.00",
+        "open_time": "周一至周日 12:00-14:30，18:00-22:30",
+        "tel": "15859532277",
+        "photos_count": 3,
+        "distance": 945.0,
+        "coordinates": {
+          "lng": 118.082103,
+          "lat": 24.474501
+        },
+        "source": "amap"
+      },
+      {
+        "name": "思明欢乐颂商场",
+        "address": "七星西路3号",
+        "type": "购物服务;商场;购物中心",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00 2026-02-16至2026-02-16 周一 10:00-16:00；2026-02-17至2026-02-19 周二至周四 10:00-18:00",
+        "tel": "0592-3013988",
+        "photos_count": 3,
+        "distance": 960.0,
+        "coordinates": {
+          "lng": 118.095641,
+          "lat": 24.486296
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西堤咖啡一条街",
+        "address": "筼筜路107号",
+        "type": "购物服务;特色商业街;特色商业街",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-23:00",
+        "tel": "0592-5050566",
+        "photos_count": 3,
+        "distance": 960.0,
+        "coordinates": {
+          "lng": 118.081919,
+          "lat": 24.474493
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大卫杜夫雪茄·威士忌吧(筼筜店)",
+        "address": "西堤别墅117号",
+        "type": "购物服务;专卖店;烟酒专卖店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 11:00-24:00",
+        "tel": "0592-5777268;18850013768",
+        "photos_count": 3,
+        "distance": 973.0,
+        "coordinates": {
+          "lng": 118.081702,
+          "lat": 24.474572
+        },
+        "source": "amap"
+      },
+      {
+        "name": "酷锐奢品汇(西堤店)",
+        "address": "筼筜路1-127号西提别墅101店面",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "15959237637",
+        "photos_count": 3,
+        "distance": 977.0,
+        "coordinates": {
+          "lng": 118.080654,
+          "lat": 24.476098
+        },
+        "source": "amap"
+      },
+      {
+        "name": "迪卡侬(七星店)",
+        "address": "七星西路3号",
+        "type": "购物服务;体育用品店;体育用品店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5091220",
+        "photos_count": 3,
+        "distance": 981.0,
+        "coordinates": {
+          "lng": 118.095465,
+          "lat": 24.486679
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国电信营业厅",
+        "address": "七星西路3号乐都汇华润超市内",
+        "type": "生活服务;电讯营业厅;中国电信营业厅|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:30-20:00",
+        "tel": "15359886898",
+        "photos_count": 3,
+        "distance": 982.0,
+        "coordinates": {
+          "lng": 118.095712,
+          "lat": 24.486505
+        },
+        "source": "amap"
+      },
+      {
+        "name": "babemax爱婴室(思明欢乐颂商场店)",
+        "address": "七星西路3号乐都汇购物中心2楼海底捞隔壁",
+        "type": "购物服务;专卖店;儿童用品店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5150251",
+        "photos_count": 3,
+        "distance": 985.0,
+        "coordinates": {
+          "lng": 118.095374,
+          "lat": 24.486786
+        },
+        "source": "amap"
+      },
+      {
+        "name": "八马茶业(厦门七星店)",
+        "address": "七星西路118号103(新景七星公馆1号楼1层103)",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 08:30-22:30",
+        "tel": "15859218021",
+        "photos_count": 3,
+        "distance": 992.0,
+        "coordinates": {
+          "lng": 118.096938,
+          "lat": 24.48549
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杨红川菜",
+        "address": "湖滨北路石亭路17-114号",
+        "type": "餐饮服务;中餐厅;四川菜(川菜)",
+        "rating": 4.2,
+        "cost": "92.00",
+        "open_time": "周一至周日 10:30-24:00",
+        "tel": "0592-5048631;0592-8321493",
+        "photos_count": 3,
+        "distance": 262.0,
+        "coordinates": {
+          "lng": 118.091846,
+          "lat": 24.480579
+        },
+        "source": "amap"
+      },
+      {
+        "name": "德鲜云吞面(总店)",
+        "address": "石亭路17号107-108店铺",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.3,
+        "cost": "24.00",
+        "open_time": "周一至周日 10:30-21:00",
+        "tel": "18859201440",
+        "photos_count": 3,
+        "distance": 265.0,
+        "coordinates": {
+          "lng": 118.091967,
+          "lat": 24.480289
+        },
+        "source": "amap"
+      },
+      {
+        "name": "塔斯汀中国汉堡(厦门市湖滨中路店)",
+        "address": "石亭路1-7-1号",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.2,
+        "cost": "29.00",
+        "open_time": "周一至周五 09:00-20:00；周六至周日 10:00-22:00",
+        "tel": "18030020420",
+        "photos_count": 3,
+        "distance": 320.0,
+        "coordinates": {
+          "lng": 118.092539,
+          "lat": 24.480123
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Ang Koo舒心·娘惹厨房(滨北店)",
+        "address": "建兴路89号102室",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": "65.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-21:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 346.0,
+        "coordinates": {
+          "lng": 118.087995,
+          "lat": 24.476963
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Summer Moon夏月甜品(厦门店)",
+        "address": "石亭小区47号102室(警务室隔壁)",
+        "type": "餐饮服务;甜品店;甜品店",
+        "rating": 4.1,
+        "cost": "42.00",
+        "open_time": "周六至周日 14:30-20:00；周一,周三至周五 09:00-11:00,14:30-18:00",
+        "tel": "15260228353",
+        "photos_count": 3,
+        "distance": 359.0,
+        "coordinates": {
+          "lng": 118.092748,
+          "lat": 24.480865
+        },
+        "source": "amap"
+      },
+      {
+        "name": "㠭烎台式红烧牛肉面(滨北建兴路店)",
+        "address": "建兴路91号102室",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.4,
+        "cost": "68.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-20:30",
+        "tel": "13313845116",
+        "photos_count": 3,
+        "distance": 362.0,
+        "coordinates": {
+          "lng": 118.087756,
+          "lat": 24.476905
+        },
+        "source": "amap"
+      },
+      {
+        "name": "尊宝比萨(滨北店)",
+        "address": "湖滨北路振兴新村29号之一",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.3,
+        "cost": "31.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5106685;18065920985",
+        "photos_count": 3,
+        "distance": 363.0,
+        "coordinates": {
+          "lng": 118.092663,
+          "lat": 24.478445
+        },
+        "source": "amap"
+      },
+      {
+        "name": "义兰中糖饼店(湖滨北路店)",
+        "address": "筼筜街道石亭路29-12",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.2,
+        "cost": "33.00",
+        "open_time": [],
+        "tel": "0592-6535153;15080328299;19524208965",
+        "photos_count": 3,
+        "distance": 364.0,
+        "coordinates": {
+          "lng": 118.092949,
+          "lat": 24.480323
+        },
+        "source": "amap"
+      },
+      {
+        "name": "一如咖喱屋",
+        "address": "建兴路75号101",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "76.00",
+        "open_time": "周二至周日 11:00-14:00,17:00-20:30",
+        "tel": "18659290777",
+        "photos_count": 3,
+        "distance": 365.0,
+        "coordinates": {
+          "lng": 118.087959,
+          "lat": 24.476789
+        },
+        "source": "amap"
+      },
+      {
+        "name": "安德鲁森(石亭路店)",
+        "address": "石亭路31号底层之3号",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.3,
+        "cost": "12.00",
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": "0592-5082593;18750227984",
+        "photos_count": 3,
+        "distance": 366.0,
+        "coordinates": {
+          "lng": 118.092975,
+          "lat": 24.480325
+        },
+        "source": "amap"
+      },
+      {
+        "name": "心元气炖品(滨北店)",
+        "address": "湖滨北路与官任路交叉口东北80米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": "43.00",
+        "open_time": "周一至周日 09:40-22:00",
+        "tel": "13609514680",
+        "photos_count": 3,
+        "distance": 373.0,
+        "coordinates": {
+          "lng": 118.086043,
+          "lat": 24.47842
+        },
+        "source": "amap"
+      },
+      {
+        "name": "客家簸箕板(石亭路)",
+        "address": "石亭路131-3号(湖滨中路地铁站1号口步行320米)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.1,
+        "cost": "9.00",
+        "open_time": "周一至周日 05:30-21:30",
+        "tel": "13599542364",
+        "photos_count": 3,
+        "distance": 384.0,
+        "coordinates": {
+          "lng": 118.09257,
+          "lat": 24.481705
+        },
+        "source": "amap"
+      },
+      {
+        "name": "特贸烧烤",
+        "address": "厦门市滨北小学西门东北120米",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.1,
+        "cost": "46.00",
+        "open_time": "周一至周日 19:00-03:00",
+        "tel": "15960210120",
+        "photos_count": 3,
+        "distance": 386.0,
+        "coordinates": {
+          "lng": 118.09264,
+          "lat": 24.481636
+        },
+        "source": "amap"
+      },
+      {
+        "name": "古易轩食堂(特贸苑店)",
+        "address": "官仁路38号二楼之一(建业路地铁站4号口步行310米)",
+        "type": "公司企业;公司;公司|餐饮服务;茶艺馆;茶艺馆|生活服务;生活服务场所;生活服务场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0592-5319596;13859155555;18650815777",
+        "photos_count": 3,
+        "distance": 393.0,
+        "coordinates": {
+          "lng": 118.086535,
+          "lat": 24.477418
+        },
+        "source": "amap"
+      },
+      {
+        "name": "江渝小炒店(石亭路)",
+        "address": "石亭路81-1号(湖滨中路地铁站1号口步行300米)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.3,
+        "cost": "84.00",
+        "open_time": "周一至周日 11:00-13:30,17:00-21:00",
+        "tel": "0592-5079317",
+        "photos_count": 3,
+        "distance": 397.0,
+        "coordinates": {
+          "lng": 118.092721,
+          "lat": 24.481708
+        },
+        "source": "amap"
+      },
+      {
+        "name": "亲爱的麻辣烫",
+        "address": "建兴路63号101室",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.1,
+        "cost": "23.00",
+        "open_time": "周一至周日 11:00-22:00",
+        "tel": "13400681931",
+        "photos_count": 3,
+        "distance": 401.0,
+        "coordinates": {
+          "lng": 118.087909,
+          "lat": 24.476457
+        },
+        "source": "amap"
+      },
+      {
+        "name": "LONE STAR孤星汉堡",
+        "address": "湖滨北路42-4号102室",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.4,
+        "cost": "64.00",
+        "open_time": "周一 11:30-21:00；周三至周日 11:30-21:00",
+        "tel": "18150384231",
+        "photos_count": 3,
+        "distance": 404.0,
+        "coordinates": {
+          "lng": 118.086246,
+          "lat": 24.477575
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蚝想吃(一号店)",
+        "address": "湖滨北路44号种子大厦F1层",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": "78.00",
+        "open_time": "周一至周日 18:00-01:00",
+        "tel": "15705922434",
+        "photos_count": 1,
+        "distance": 409.0,
+        "coordinates": {
+          "lng": 118.085913,
+          "lat": 24.477948
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高丽雅(官任店)",
+        "address": "建兴路67号102室(建业路地铁站4号口步行480米)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.3,
+        "cost": "38.00",
+        "open_time": "周一至周日 08:00-21:30",
+        "tel": "13774662030;18859227073",
+        "photos_count": 3,
+        "distance": 413.0,
+        "coordinates": {
+          "lng": 118.087676,
+          "lat": 24.476431
+        },
+        "source": "amap"
+      },
+      {
+        "name": "特香包(湖滨北路店)",
+        "address": "石亭路57-59号底层之9号",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.3,
+        "cost": "16.00",
+        "open_time": "周一至周日 07:30-22:30",
+        "tel": "0592-5059578",
+        "photos_count": 3,
+        "distance": 416.0,
+        "coordinates": {
+          "lng": 118.09344,
+          "lat": 24.480469
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蜜雪冰城(湖滨中路店)",
+        "address": "湖滨北路57-14号(湖滨中路地铁站1号口步行90米)",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.2,
+        "cost": "9.00",
+        "open_time": "周一至周日 09:00-24:00",
+        "tel": "13313708370;18339499130",
+        "photos_count": 3,
+        "distance": 433.0,
+        "coordinates": {
+          "lng": 118.093604,
+          "lat": 24.480526
+        },
+        "source": "amap"
+      },
+      {
+        "name": "项大叔创新酸菜鱼",
+        "address": "筼筜街道官任社区官任路38-23号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.1,
+        "cost": "40.00",
+        "open_time": "周一至周日 10:00-23:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 448.0,
+        "coordinates": {
+          "lng": 118.085882,
+          "lat": 24.477349
+        },
+        "source": "amap"
+      },
+      {
+        "name": "云间茶语",
+        "address": "气象台路85-13号",
+        "type": "餐饮服务;茶艺馆;茶艺馆",
+        "rating": 4.5,
+        "cost": "18.00",
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "18030079988",
+        "photos_count": 3,
+        "distance": 469.0,
+        "coordinates": {
+          "lng": 118.085275,
+          "lat": 24.481727
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Bagi&Yogi(特贸苑店)",
+        "address": "官任路38号-5(建业路地铁站4号口步行320米)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "74.00",
+        "open_time": "周一,周三至周四 09:00-16:00；周五至周日 09:30-18:30 2026-02-18至2026-02-21 周一至周日 全天关闭",
+        "tel": "15159559350",
+        "photos_count": 3,
+        "distance": 472.0,
+        "coordinates": {
+          "lng": 118.086127,
+          "lat": 24.476782
+        },
+        "source": "amap"
+      },
+      {
+        "name": "古茗(思明湖滨中路店)",
+        "address": "石亭路109-4-1",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.3,
+        "cost": "16.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17757661099",
+        "photos_count": 3,
+        "distance": 474.0,
+        "coordinates": {
+          "lng": 118.093995,
+          "lat": 24.480633
+        },
+        "source": "amap"
+      },
+      {
+        "name": "可斯贝莉现烤面包(石亭店)",
+        "address": "湖滨北路111号(湖滨中路地铁站1号口步行120米)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.2,
+        "cost": "20.00",
+        "open_time": "周一至周日 07:00-23:00",
+        "tel": "18030012698",
+        "photos_count": 3,
+        "distance": 479.0,
+        "coordinates": {
+          "lng": 118.094041,
+          "lat": 24.480648
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PATIO bar&dinner濱北院子(振兴大厦店)",
+        "address": "湖滨北路118-6号振兴大厦一楼",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.4,
+        "cost": "90.00",
+        "open_time": "周一至周日 11:00-22:30",
+        "tel": "18059291646",
+        "photos_count": 3,
+        "distance": 505.0,
+        "coordinates": {
+          "lng": 118.09439,
+          "lat": 24.479828
+        },
+        "source": "amap"
+      },
+      {
+        "name": "颐和面馆",
+        "address": "特贸苑东门西南60米(建业路地铁站4号口步行320米)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": "16.00",
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "15880282226;15960217837",
+        "photos_count": 3,
+        "distance": 505.0,
+        "coordinates": {
+          "lng": 118.085993,
+          "lat": 24.476481
+        },
+        "source": "amap"
+      },
+      {
+        "name": "请裁酒家 CINCAI BEER & DINNER",
+        "address": "官任路29号(建业路地铁站4号口步行280米)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": "92.00",
+        "open_time": "周一 19:00-01:00；周二至周日 18:00-01:00",
+        "tel": "17605091509",
+        "photos_count": 3,
+        "distance": 519.0,
+        "coordinates": {
+          "lng": 118.085557,
+          "lat": 24.476706
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贵美人艺术餐厅(火锅)",
+        "address": "湖滨北路118-7号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "79.00",
+        "open_time": "2026-03-01至2060-12-31 全天关闭",
+        "tel": "15359217830",
+        "photos_count": 3,
+        "distance": 525.0,
+        "coordinates": {
+          "lng": 118.094583,
+          "lat": 24.479758
+        },
+        "source": "amap"
+      },
+      {
+        "name": "遇龙闽粤菜(滨北颐豪店)",
+        "address": "湖滨北路40-1号201室",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.4,
+        "cost": "135.00",
+        "open_time": "周一至周日 11:00-13:30,17:00-21:30",
+        "tel": "13395018685",
+        "photos_count": 3,
+        "distance": 548.0,
+        "coordinates": {
+          "lng": 118.084538,
+          "lat": 24.477626
+        },
+        "source": "amap"
+      },
+      {
+        "name": "燃餐厅RAN THE CHEF'S TABLE",
+        "address": "官任路2-21号",
+        "type": "餐饮服务;外国餐厅;西餐厅(综合风味)",
+        "rating": 4.4,
+        "cost": "943.00",
+        "open_time": "周二至周日 18:00-22:00 2026-01-31至2026-02-15 周一至周日 全天关闭；2026-02-17至2026-02-22 周一至周日 全天关闭；2026-02-24至2026-02-26 周一至周日 全天关闭",
+        "tel": "18046238082",
+        "photos_count": 3,
+        "distance": 555.0,
+        "coordinates": {
+          "lng": 118.086264,
+          "lat": 24.475706
+        },
+        "source": "amap"
+      },
+      {
+        "name": "阿季海鲜酒食(官任路店)",
+        "address": "官任路酒吧一条街2-18",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.4,
+        "cost": "101.00",
+        "open_time": "周一至周日 11:00-02:00",
+        "tel": "17350870709;19906018249",
+        "photos_count": 3,
+        "distance": 563.0,
+        "coordinates": {
+          "lng": 118.086175,
+          "lat": 24.475675
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Coyote墨西哥餐厅",
+        "address": "官任路2-20号(建业路地铁站4号口步行480米)",
+        "type": "餐饮服务;外国餐厅;墨西哥菜",
+        "rating": 4.4,
+        "cost": "135.00",
+        "open_time": "周一至周日 11:00-01:00",
+        "tel": "13666028160;18020725369",
+        "photos_count": 3,
+        "distance": 567.0,
+        "coordinates": {
+          "lng": 118.086083,
+          "lat": 24.475691
+        },
+        "source": "amap"
+      },
+      {
+        "name": "赫食(滨北店)",
+        "address": "官任路2-13号酒吧一条街",
+        "type": "餐饮服务;中餐厅;综合酒楼",
+        "rating": 4.3,
+        "cost": "72.00",
+        "open_time": "周一至周四,周日 11:30-14:00,17:30-21:30；周五至周六 11:30-14:00,17:30-23:00",
+        "tel": "18005927798",
+        "photos_count": 3,
+        "distance": 587.0,
+        "coordinates": {
+          "lng": 118.085681,
+          "lat": 24.475751
+        },
+        "source": "amap"
+      },
+      {
+        "name": "嚐囍私房菜",
+        "address": "湖滨北路118-16号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.4,
+        "cost": "176.00",
+        "open_time": "周一至周日 11:00-13:30,17:00-22:00",
+        "tel": "0592-5078383;0592-5098383;13123363276",
+        "photos_count": 3,
+        "distance": 597.0,
+        "coordinates": {
+          "lng": 118.095296,
+          "lat": 24.479905
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Manuela",
+        "address": "官任路与筼筜路交叉口北120米",
+        "type": "餐饮服务;外国餐厅;外国餐厅",
+        "rating": 4.3,
+        "cost": "158.00",
+        "open_time": "周一至周日 10:00-22:30",
+        "tel": "18359523880",
+        "photos_count": 3,
+        "distance": 606.0,
+        "coordinates": {
+          "lng": 118.085454,
+          "lat": 24.475702
+        },
+        "source": "amap"
+      },
+      {
+        "name": "食宴·印象",
+        "address": "湖滨北路97-5-2",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.9,
+        "cost": "192.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-22:00",
+        "tel": "0592-5051199",
+        "photos_count": 3,
+        "distance": 607.0,
+        "coordinates": {
+          "lng": 118.095074,
+          "lat": 24.481565
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大雁烧烤(世纪海湾店)",
+        "address": "湖滨北路25-27号世纪海湾",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 4.1,
+        "cost": "42.00",
+        "open_time": "周一至周日 17:00-01:00",
+        "tel": "18860247735",
+        "photos_count": 3,
+        "distance": 608.0,
+        "coordinates": {
+          "lng": 118.083483,
+          "lat": 24.478837
+        },
+        "source": "amap"
+      },
+      {
+        "name": "阿咪闽南料理(世纪海湾店)",
+        "address": "湖滨北路27号105室",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.3,
+        "cost": "62.00",
+        "open_time": "周一至周日 11:00-14:00； 周一至周日 17:00-01:00",
+        "tel": "0592-6098399",
+        "photos_count": 3,
+        "distance": 616.0,
+        "coordinates": {
+          "lng": 118.083376,
+          "lat": 24.479017
+        },
+        "source": "amap"
+      },
+      {
+        "name": "肯德基(滨北店)",
+        "address": "湖滨北路海湾新城一期一号楼一层(建业路地铁站1A口旁)",
+        "type": "餐饮服务;快餐厅;肯德基",
+        "rating": 4.7,
+        "cost": "36.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0592-5085661",
+        "photos_count": 3,
+        "distance": 618.0,
+        "coordinates": {
+          "lng": 118.083525,
+          "lat": 24.478275
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BASAO tea(白鹭洲店)",
+        "address": "白鹭洲东路61号",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.7,
+        "cost": "63.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "18006012308",
+        "photos_count": 3,
+        "distance": 624.0,
+        "coordinates": {
+          "lng": 118.094655,
+          "lat": 24.476865
+        },
+        "source": "amap"
+      },
+      {
+        "name": "日春茶业(七星文化店)",
+        "address": "湖滨北路97号(棕榈泉旁)",
+        "type": "购物服务;专卖店;专营店|餐饮服务;茶艺馆;茶艺馆",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-23:00",
+        "tel": "18606039656",
+        "photos_count": 3,
+        "distance": 625.0,
+        "coordinates": {
+          "lng": 118.094804,
+          "lat": 24.482523
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门滨北颐豪酒店",
+        "address": "湖滨北路40号中银大厦1层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5303333;0592-5303704",
+        "photos_count": 3,
+        "distance": 535.0,
+        "coordinates": {
+          "lng": 118.08468,
+          "lat": 24.477632
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门华君酒店",
+        "address": "湖滨北路29一31号A单元二三四层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-7706886",
+        "photos_count": 3,
+        "distance": 531.0,
+        "coordinates": {
+          "lng": 118.084275,
+          "lat": 24.478789
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门白鹭洲公园希尔顿花园酒店",
+        "address": "湖滨中路160号茗芳大厦1层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-3156666",
+        "photos_count": 3,
+        "distance": 648.0,
+        "coordinates": {
+          "lng": 118.094871,
+          "lat": 24.482827
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门天鹅大酒店",
+        "address": "白鹭洲东路3号",
+        "type": "住宿服务;宾馆酒店;四星级宾馆|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5395888",
+        "photos_count": 3,
+        "distance": 691.0,
+        "coordinates": {
+          "lng": 118.092624,
+          "lat": 24.474323
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门马哥孛罗东方大酒店",
+        "address": "建业路8号",
+        "type": "住宿服务;宾馆酒店;五星级宾馆|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5091888",
+        "photos_count": 3,
+        "distance": 705.0,
+        "coordinates": {
+          "lng": 118.084817,
+          "lat": 24.475028
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雨杉公寓(官任路分店)",
+        "address": "官任路官任小区(建业路地铁站4号口步行390米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,31592770",
+        "photos_count": 3,
+        "distance": 506.0,
+        "coordinates": {
+          "lng": 118.08644,
+          "lat": 24.476129
+        },
+        "source": "amap"
+      },
+      {
+        "name": "凤凰山庄别墅隆美楼",
+        "address": "凤凰山庄36号(建业路地铁站1B口步行420米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "18850098568",
+        "photos_count": 1,
+        "distance": 497.0,
+        "coordinates": {
+          "lng": 118.084508,
+          "lat": 24.480134
+        },
+        "source": "amap"
+      },
+      {
+        "name": "人生百国小欣公寓(官任路分店)",
+        "address": "官任路官任小区(建业路地铁站4号口步行390米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,15555775",
+        "photos_count": 3,
+        "distance": 506.0,
+        "coordinates": {
+          "lng": 118.08644,
+          "lat": 24.476129
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门泛太平洋大酒店",
+        "address": "湖滨北路19号",
+        "type": "住宿服务;宾馆酒店;五星级宾馆|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5078888",
+        "photos_count": 3,
+        "distance": 738.0,
+        "coordinates": {
+          "lng": 118.082251,
+          "lat": 24.478501
+        },
+        "source": "amap"
+      },
+      {
+        "name": "淡窝艺术普洱SOE虹吸",
+        "address": "建兴路43号C106",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-18:00",
+        "tel": "13801390250",
+        "photos_count": 3,
+        "distance": 517.0,
+        "coordinates": {
+          "lng": 118.086895,
+          "lat": 24.475744
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门泛太平洋大酒店(凯撒西餐厅)",
+        "address": "湖滨北路19号(建业路地铁站1A口步行150米)",
+        "type": "餐饮服务;外国餐厅;西餐厅(综合风味)|住宿服务;宾馆酒店;五星级宾馆",
+        "rating": 4.2,
+        "cost": "122.00",
+        "open_time": "周一至周日 11:30-14:30,17:30-21:30",
+        "tel": "0592-5078888;0592-5113833",
+        "photos_count": 3,
+        "distance": 736.0,
+        "coordinates": {
+          "lng": 118.082274,
+          "lat": 24.478495
+        },
+        "source": "amap"
+      },
+      {
+        "name": "亚朵酒店(厦门建业路地铁站东渡客运码头店)",
+        "address": "湖滨北路15号外贸大厦B座",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2591888",
+        "photos_count": 3,
+        "distance": 856.0,
+        "coordinates": {
+          "lng": 118.081023,
+          "lat": 24.478753
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门宝龙铂尔曼大酒店",
+        "address": "湖滨中路133号",
+        "type": "住宿服务;宾馆酒店;五星级宾馆|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5188888",
+        "photos_count": 3,
+        "distance": 900.0,
+        "coordinates": {
+          "lng": 118.0972,
+          "lat": 24.475925
+        },
+        "source": "amap"
+      },
+      {
+        "name": "篔筜书院学术交流中心酒店",
+        "address": "白鹭洲东路88号白鹭洲公园内",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5078855",
+        "photos_count": 3,
+        "distance": 822.0,
+        "coordinates": {
+          "lng": 118.095871,
+          "lat": 24.475331
+        },
+        "source": "amap"
+      },
+      {
+        "name": "和家公寓(市政府店)",
+        "address": "金醉月KTV商务会所夜总会",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 5.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 713.0,
+        "coordinates": {
+          "lng": 118.095661,
+          "lat": 24.482737
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马可波罗酒店",
+        "address": "湖滨北建业路八号(建业路地铁站4号口步行370米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 718.0,
+        "coordinates": {
+          "lng": 118.084634,
+          "lat": 24.475016
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门厦鑫酒店式公寓(厦鼓邮轮中心店)",
+        "address": "湖滨北路26号银湖天峰",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "15711550120",
+        "photos_count": 3,
+        "distance": 771.0,
+        "coordinates": {
+          "lng": 118.082292,
+          "lat": 24.477305
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门荣江客栈",
+        "address": "儒华诗寓2栋(湖滨中路地铁站4号口步行460米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 2.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "18850067009",
+        "photos_count": 3,
+        "distance": 802.0,
+        "coordinates": {
+          "lng": 118.096577,
+          "lat": 24.482855
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门智选假日酒店(东渡客运码头店)",
+        "address": "东渡路64号(邮轮中心地铁站3号口步行390米)",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-6066688",
+        "photos_count": 3,
+        "distance": 1035.0,
+        "coordinates": {
+          "lng": 118.079764,
+          "lat": 24.482906
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门信息·未来酒店(市政府白鹭洲公园店)",
+        "address": "湖滨南路95号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5201666",
+        "photos_count": 3,
+        "distance": 1072.0,
+        "coordinates": {
+          "lng": 118.092845,
+          "lat": 24.470695
+        },
+        "source": "amap"
+      },
+      {
+        "name": "篔筜书院学术交流中心酒店大堂",
+        "address": "篔筜书院学术交流中心酒店",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5078855",
+        "photos_count": 0,
+        "distance": 814.0,
+        "coordinates": {
+          "lng": 118.095719,
+          "lat": 24.475283
+        },
+        "source": "amap"
+      },
+      {
+        "name": "边际酒店(东渡客运码头国际邮轮中心店)",
+        "address": "东渡路74号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-6025668;18020767001",
+        "photos_count": 3,
+        "distance": 1059.0,
+        "coordinates": {
+          "lng": 118.080283,
+          "lat": 24.484464
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门畔见设计酒店(白鹭洲邮轮中心店)",
+        "address": "白鹭洲路503号金秋豪园2F",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "13306007060",
+        "photos_count": 3,
+        "distance": 1013.0,
+        "coordinates": {
+          "lng": 118.090836,
+          "lat": 24.470793
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门宝龙铂尔曼大酒店大堂",
+        "address": "湖滨中路与白鹭洲东路交叉口南120米",
+        "type": "住宿服务;宾馆酒店;五星级宾馆",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 907.0,
+        "coordinates": {
+          "lng": 118.097294,
+          "lat": 24.475944
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门航空金雁酒店",
+        "address": "湖滨南路99号",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2218888",
+        "photos_count": 3,
+        "distance": 1170.0,
+        "coordinates": {
+          "lng": 118.094135,
+          "lat": 24.470214
+        },
+        "source": "amap"
+      },
+      {
+        "name": "喜碧小姐度假别墅(筼筜路分店)",
+        "address": "筼筜路西堤别墅(建业路地铁站2号口步行440米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,1804217",
+        "photos_count": 3,
+        "distance": 992.0,
+        "coordinates": {
+          "lng": 118.08085,
+          "lat": 24.475449
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门智选假日酒店东渡邮轮中心码头店大堂",
+        "address": "东渡路64号厦门智选假日酒店(东渡客运码头店)",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 1055.0,
+        "coordinates": {
+          "lng": 118.079541,
+          "lat": 24.482854
+        },
+        "source": "amap"
+      },
+      {
+        "name": "柏纳酒店(东渡码头邮轮中心地铁站店)",
+        "address": "东渡路85号(邮轮中心地铁站3号口步行400米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5693000",
+        "photos_count": 3,
+        "distance": 1172.0,
+        "coordinates": {
+          "lng": 118.079743,
+          "lat": 24.485597
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PK电竞酒店(厦门邮轮中心厦鼓码头店)",
+        "address": "东渡路85号(邮轮中心地铁站3号口步行400米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "18030167203",
+        "photos_count": 3,
+        "distance": 1160.0,
+        "coordinates": {
+          "lng": 118.079806,
+          "lat": 24.485502
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门信息·未来酒店大堂",
+        "address": "湖滨南路95号厦门信息·未来酒店(市政府白鹭洲公园店)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 1081.0,
+        "coordinates": {
+          "lng": 118.093005,
+          "lat": 24.470658
+        },
+        "source": "amap"
+      },
+      {
+        "name": "渼夜酒店(东渡厦鼓邮轮码头店)",
+        "address": "仙岳路8号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5164999",
+        "photos_count": 3,
+        "distance": 1217.0,
+        "coordinates": {
+          "lng": 118.090696,
+          "lat": 24.49067
+        },
+        "source": "amap"
+      },
+      {
+        "name": "至上·美居",
+        "address": "七星路57号301室",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "18805072120",
+        "photos_count": 3,
+        "distance": 1174.0,
+        "coordinates": {
+          "lng": 118.097634,
+          "lat": 24.48723
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门君铭酒店(东渡码头店)",
+        "address": "仙岳路189号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2576888",
+        "photos_count": 3,
+        "distance": 1261.0,
+        "coordinates": {
+          "lng": 118.093778,
+          "lat": 24.490407
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家商旅酒店(厦门市政府店)",
+        "address": "湖滨南路86号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-3502777;0592-3502777,9",
+        "photos_count": 3,
+        "distance": 1283.0,
+        "coordinates": {
+          "lng": 118.091789,
+          "lat": 24.468475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海天宾馆(东渡路)",
+        "address": "东渡路38-40号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 1062.0,
+        "coordinates": {
+          "lng": 118.079144,
+          "lat": 24.48181
+        },
+        "source": "amap"
+      },
+      {
+        "name": "悦庭酒店(七星路店)",
+        "address": "仙岳路228-232号共和大厦B栋",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5321616",
+        "photos_count": 3,
+        "distance": 1251.0,
+        "coordinates": {
+          "lng": 118.09736,
+          "lat": 24.488393
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门福佑大饭店",
+        "address": "同益路48号",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2658888",
+        "photos_count": 3,
+        "distance": 1288.0,
+        "coordinates": {
+          "lng": 118.076726,
+          "lat": 24.478824
+        },
+        "source": "amap"
+      },
+      {
+        "name": "源昌凯宾斯基大酒店",
+        "address": "湖滨中路98号",
+        "type": "住宿服务;宾馆酒店;五星级宾馆|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2588888",
+        "photos_count": 3,
+        "distance": 1394.0,
+        "coordinates": {
+          "lng": 118.100717,
+          "lat": 24.472668
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万澳酒店(厦门火车站文灶地铁站店)",
+        "address": "湖滨南路148-2号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2299997",
+        "photos_count": 3,
+        "distance": 1328.0,
+        "coordinates": {
+          "lng": 118.096586,
+          "lat": 24.469822
+        },
+        "source": "amap"
+      },
+      {
+        "name": "桔子酒店(厦门市政府店)",
+        "address": "湖滨南路51-2号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2111616;19959280056",
+        "photos_count": 3,
+        "distance": 1392.0,
+        "coordinates": {
+          "lng": 118.08564,
+          "lat": 24.467771
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金宝大酒店",
+        "address": "东渡路124-126号",
+        "type": "住宿服务;宾馆酒店;三星级宾馆",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-6013888",
+        "photos_count": 3,
+        "distance": 1311.0,
+        "coordinates": {
+          "lng": 118.083151,
+          "lat": 24.490122
+        },
+        "source": "amap"
+      },
+      {
+        "name": "速8精选酒店(东渡码头人才中心地铁站店)",
+        "address": "仙岳路237号(厦鼓码头人才中心地铁站店)",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-5030799;0592-5030799,0",
+        "photos_count": 3,
+        "distance": 1334.0,
+        "coordinates": {
+          "lng": 118.096979,
+          "lat": 24.489606
+        },
+        "source": "amap"
+      },
+      {
+        "name": "艾思顿酒店(厦门中山路白鹭洲公园店)",
+        "address": "湖滨南路52-5号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2572255",
+        "photos_count": 3,
+        "distance": 1423.0,
+        "coordinates": {
+          "lng": 118.088728,
+          "lat": 24.467032
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Urba柏纳酒店海上世界鼓浪屿码头店大堂",
+        "address": "东渡路85号柏纳酒店(东渡码头邮轮中心地铁站店)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1157.0,
+        "coordinates": {
+          "lng": 118.079832,
+          "lat": 24.48549
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门金星公寓",
+        "address": "七星路208-210号金星大厦9914房间",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "17359878881",
+        "photos_count": 3,
+        "distance": 1301.0,
+        "coordinates": {
+          "lng": 118.098216,
+          "lat": 24.4883
+        },
+        "source": "amap"
+      },
+      {
+        "name": "康晖酒店(厦门中山路白鹭洲公园店)",
+        "address": "美湖路43号第二层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-3677877",
+        "photos_count": 3,
+        "distance": 1388.0,
+        "coordinates": {
+          "lng": 118.08915,
+          "lat": 24.467326
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金桥花园酒店(厦门火车站东渡码头店)",
+        "address": "金桥路101号世纪金桥文化产业园",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2353205;0592-3103999;18359271722",
+        "photos_count": 3,
+        "distance": 1439.0,
+        "coordinates": {
+          "lng": 118.100822,
+          "lat": 24.487489
+        },
+        "source": "amap"
+      },
+      {
+        "name": "厦门宏都酒店",
+        "address": "白鹭洲路201号普利花园大厦1-16层",
+        "type": "住宿服务;宾馆酒店;五星级宾馆",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0592-2228888",
+        "photos_count": 3,
+        "distance": 1391.0,
+        "coordinates": {
+          "lng": 118.091159,
+          "lat": 24.467401
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汉庭酒店(厦门体育中心店)",
+        "address": "仙岳路274中侨大厦F1层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "18030117153",
+        "photos_count": 3,
+        "distance": 1450.0,
+        "coordinates": {
+          "lng": 118.099531,
+          "lat": 24.489002
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PK电竞酒店(厦门中山路禾祥西路店)",
+        "address": "白鹭洲路140号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "13599502590",
+        "photos_count": 3,
+        "distance": 1425.0,
+        "coordinates": {
+          "lng": 118.092189,
+          "lat": 24.467246
+        },
+        "source": "amap"
+      }
+    ],
+    "baike_spots": [
+      {
+        "name": "厦门山海健康步道",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "海湾公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "厦门白鹭洲公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "厦门园林植物园",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;公园广场;植物园"
+      },
+      {
+        "name": "鼓浪屿风景名胜区",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "狐尾山公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "中山公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "南普陀寺",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;寺庙道观"
+      },
+      {
+        "name": "仙岳公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "万石山国家重点风景名胜区",
+        "source": "amap_scenic",
+        "rating": 4.3,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "屿见闽南·时光幻境主题景区",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "南湖公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "钟鼓索道",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "仙岳公园-土地公庙",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;寺庙道观"
+      },
+      {
+        "name": "狐尾山公园-樱花谷",
+        "source": "amap_scenic",
+        "rating": 4.3,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "钢琴码头",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "鸿山公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "厦门世茂双子塔",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "厦门市鼓浪屿风景名胜区-皓月园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "狐尾山公园-观景台",
+        "source": "amap_scenic",
+        "rating": 4.1,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "白城沙滩",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;海滩"
+      },
+      {
+        "name": "沙坡尾",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "日光岩",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "厦门海上明珠塔",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "菽庄花园",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      }
+    ],
+    "wiki": {
+      "wiki_zh": "",
+      "wiki_en": "",
+      "wiki_tourism_zh": ""
+    },
+    "duckduckgo_snippets": [],
+    "ctrip_approx_spots": [
+      {
+        "name": "厦门字号姜母鸭必买伴手礼店",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 2.8,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "朱连必炸",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 3.2,
+        "type": "餐饮服务;快餐厅;快餐厅"
+      },
+      {
+        "name": "亚珠•百家宴(必利达大厦店)",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;综合酒楼"
+      },
+      {
+        "name": "必吃榜(怡景花园店)",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 0.3,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "必鸭客R姜榕咸水鸭",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 3.9,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "必喜牛·韩式料理炭烤肉",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.2,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "开必来共享棋牌室",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 2.1,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "曾厝安必吃店",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 3.8,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "PASO",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.6,
+        "type": "体育休闲服务;娱乐场所;KTV|体育休闲服务;娱乐场所;棋牌室|购物服务;购物相关场所;购物相关场所"
+      },
+      {
+        "name": "必鸭客.姜榕咸水鸭(灌口店)",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 3.8,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "开必来共享棋牌室(祥吴店)",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.0,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "开必来共享棋牌室(春江里店)",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.2,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "鼓浪屿风景名胜区",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "开个小灶(亲友聚会必吃店)",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.5,
+        "type": "餐饮服务;中餐厅;福建菜"
+      },
+      {
+        "name": "非潜不可国际潜水中心",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 3.6,
+        "type": "体育休闲服务;运动场馆;运动场所"
+      },
+      {
+        "name": "厦门宾馆",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.8,
+        "type": "住宿服务;宾馆酒店;四星级宾馆|餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "厦门园林植物园",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.8,
+        "type": "风景名胜;公园广场;植物园"
+      },
+      {
+        "name": "客家小厨",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 2.2,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "厦门艾美酒店",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.6,
+        "type": "住宿服务;宾馆酒店;五星级宾馆|餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "厦门凯歌高尔夫球俱乐部",
+        "source": "ctrip_approx_厦门必去",
+        "rating": 4.4,
+        "type": "体育休闲服务;高尔夫相关;高尔夫球场"
+      },
+      {
+        "name": "临家闽南菜(环岛路店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;福建菜"
+      },
+      {
+        "name": "WANNA·望那儿落日峡谷海景餐吧",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.8,
+        "type": "餐饮服务;外国餐厅;西餐厅(综合风味)"
+      },
+      {
+        "name": "锦上添花好月圆社区牛肉店(恒大帝景店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.8,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "惠源面包店",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;糕饼店;糕饼店"
+      },
+      {
+        "name": "荣誉·海上江南",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;海鲜酒楼"
+      },
+      {
+        "name": "上青本港海鲜",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;海鲜酒楼"
+      },
+      {
+        "name": "有时有泰·泰式料理餐厅(大社店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;外国餐厅;外国餐厅"
+      },
+      {
+        "name": "一家东北烤肉·集美地标店",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "黑明餐厅(白鹭洲店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "Panzi(大洲城市花园店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "鑫阿强姜母鸭阿强煎蟹",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;海鲜酒楼"
+      },
+      {
+        "name": "集膳斑斓·海鲜私厨(集美美食地标店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "王呆呆热炒公社(印华1980)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "琦摩CHIMOTO(万科云城店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;外国餐厅;日本料理|摩托车服务;摩托车销售;摩托车销售"
+      },
+      {
+        "name": "时光花园(白鹭洲店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;咖啡厅;咖啡厅"
+      },
+      {
+        "name": "途纪·海岸线咖啡厅",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;咖啡厅;咖啡厅"
+      },
+      {
+        "name": "宴遇(厦门思明SM新生活广场店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "七星西鹭鸭胫店",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "开元141海鲜大排档",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅"
+      },
+      {
+        "name": "张三疯奶茶铺(鼓浪屿三友店)",
+        "source": "ctrip_approx_厦门网红打卡",
+        "rating": 4.5,
+        "type": "餐饮服务;冷饮店;冷饮店"
+      },
+      {
+        "name": "厦门方特旅游度假区",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.1,
+        "type": "体育休闲服务;休闲场所;游乐场|体育休闲服务;度假疗养场所;度假疗养场所"
+      },
+      {
+        "name": "厦门旅游航线",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 3.5,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "厦门市鼓浪屿风景名胜区-皓月园",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "钢琴码头",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "厦门市鼓浪屿风景名胜区-番婆楼",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "笔山洞",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.2,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "厦门市鼓浪屿风景名胜区-鼓声洞",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.2,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "南普陀寺",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;寺庙道观"
+      },
+      {
+        "name": "厦门园林博览苑",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "海洋岛",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.2,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "黄厝海滩",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;海滩"
+      },
+      {
+        "name": "白城沙滩",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;海滩"
+      },
+      {
+        "name": "万石山国家重点风景名胜区",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.3,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "十里长堤",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "厦门方特梦幻王国",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "中山公园",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "厦门世茂双子塔",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "集美鳌园景区",
+        "source": "ctrip_approx_厦门旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点|风景名胜;风景名胜;红色景区"
+      }
+    ]
+  },
+  "stats": {
+    "total_amap_pois": 342,
+    "total_baike_spots": 25,
+    "total_ctrip_spots": 58,
+    "ground_truth_must_visit": 15,
+    "ground_truth_dining": 10,
+    "ground_truth_leisure": 5
+  }
+}

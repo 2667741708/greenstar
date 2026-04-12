@@ -1,0 +1,6015 @@
+{
+  "meta": {
+    "city": "杭州",
+    "coordinates": {
+      "lat": 30.2741,
+      "lng": 120.1551
+    },
+    "adcode": "330100",
+    "build_time": "2026-04-12T16:35:14.986775",
+    "builder": "build_test_dataset.py"
+  },
+  "ground_truth": {
+    "must_visit": [
+      "清河坊历史文化特色街区",
+      "钱江龙",
+      "吴山景区",
+      "留香荀令·SANFEN三分茶(杭州大厦店)",
+      "运河海底世界",
+      "武林广场-八少女音乐喷泉",
+      "武林广场",
+      "西湖文化广场",
+      "弥陀寺公园",
+      "杭州运河游船"
+    ],
+    "dining": [
+      "杭州星都宾馆",
+      "SECTION COFFEE沙县咖啡(湖墅南路店)",
+      "緩奏咖啡店",
+      "Neighborhood coffee(马塍支路店)",
+      "星巴克臻选(杭州大厦D座店)",
+      "星巴克(文化广场银泰百货店)",
+      "星巴克(浙江广播电视中心店)",
+      "Peet's Coffee皮爷咖啡(杭州大厦店)",
+      "Ct.coffee(杭州大厦店)",
+      "rich coffee發财猫咖啡"
+    ],
+    "leisure": [
+      "温莎KTV(湖墅南路店)",
+      "ONE PARTY KTV",
+      "TR Music Lounge",
+      "A+运动俱乐部(白马店)",
+      "万丽国际娱乐会所"
+    ]
+  },
+  "sources": {
+    "amap_pois": [
+      {
+        "name": "市民公园",
+        "address": "湖墅南路1号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 138.0,
+        "coordinates": {
+          "lng": 120.15642,
+          "lat": 30.273597
+        },
+        "source": "amap"
+      },
+      {
+        "name": "米市文化公园",
+        "address": "天目山路辅路与湖墅南路交叉口西北40米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 193.0,
+        "coordinates": {
+          "lng": 120.156746,
+          "lat": 30.273097
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万向公园",
+        "address": "武林路与体育场路交口万向公园",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 355.0,
+        "coordinates": {
+          "lng": 120.157382,
+          "lat": 30.271586
+        },
+        "source": "amap"
+      },
+      {
+        "name": "馥园",
+        "address": "密渡桥路与密渡桥一弄交叉口",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 402.0,
+        "coordinates": {
+          "lng": 120.159191,
+          "lat": 30.274885
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万向公园-古武林门",
+        "address": "武林路与体育场路交汇处万向公园(东南角)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 455.0,
+        "coordinates": {
+          "lng": 120.157946,
+          "lat": 30.270826
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金祝社区清廉文化广场",
+        "address": "金祝北路7号(武林门地铁站F口步行300米)",
+        "type": "风景名胜;公园广场;公园广场",
+        "rating": 2.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 524.0,
+        "coordinates": {
+          "lng": 120.15189,
+          "lat": 30.270291
+        },
+        "source": "amap"
+      },
+      {
+        "name": "留香荀令·SANFEN三分茶(杭州大厦店)",
+        "address": "天水街道环城北路220号杭州大厦购物商城C座3F商铺留香荀令",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.5,
+        "cost": "92.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "18506828137",
+        "photos_count": 3,
+        "distance": 549.0,
+        "coordinates": {
+          "lng": 120.160811,
+          "lat": 30.274282
+        },
+        "source": "amap"
+      },
+      {
+        "name": "桃花河绿色生态园",
+        "address": "桃花河弄70号(武林门地铁站D口旁)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 583.0,
+        "coordinates": {
+          "lng": 120.156112,
+          "lat": 30.268928
+        },
+        "source": "amap"
+      },
+      {
+        "name": "猪圈坝旧址",
+        "address": "武林门码头(环城北路208号坤和中心裙楼旁)京杭大运河内",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 595.0,
+        "coordinates": {
+          "lng": 120.161204,
+          "lat": 30.275006
+        },
+        "source": "amap"
+      },
+      {
+        "name": "欧三公园",
+        "address": "青园桥附近",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 638.0,
+        "coordinates": {
+          "lng": 120.160669,
+          "lat": 30.277222
+        },
+        "source": "amap"
+      },
+      {
+        "name": "网红沙滩夜市",
+        "address": "武林路与桃花河弄交叉口东北20米",
+        "type": "餐饮服务;中餐厅;中餐厅|风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.3,
+        "cost": "34.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 647.0,
+        "coordinates": {
+          "lng": 120.159279,
+          "lat": 30.26954
+        },
+        "source": "amap"
+      },
+      {
+        "name": "18度雨林",
+        "address": "杭州大厦A座B1层(武林广场地铁站E口步行280米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 682.0,
+        "coordinates": {
+          "lng": 120.161606,
+          "lat": 30.271654
+        },
+        "source": "amap"
+      },
+      {
+        "name": "钱塘江夜游(武林门码头)",
+        "address": "环城北路辅路与展览西路交叉口北100米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 18:45-21:45",
+        "tel": "0571-85190851",
+        "photos_count": 3,
+        "distance": 693.0,
+        "coordinates": {
+          "lng": 120.162312,
+          "lat": 30.274088
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清河闸遗址",
+        "address": "湖墅南路168-1沈塘桥幼儿园门前",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 762.0,
+        "coordinates": {
+          "lng": 120.154178,
+          "lat": 30.280905
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西湖文化广场E区",
+        "address": "西湖文化广场32(西湖文化广场地铁站C口步行460米)",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 777.0,
+        "coordinates": {
+          "lng": 120.162104,
+          "lat": 30.277598
+        },
+        "source": "amap"
+      },
+      {
+        "name": "运河海底世界",
+        "address": "西湖文化广场运河北岸文化街区2号门B1层",
+        "type": "风景名胜;公园广场;水族馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-17:00",
+        "tel": "0571-88013280",
+        "photos_count": 3,
+        "distance": 779.0,
+        "coordinates": {
+          "lng": 120.162956,
+          "lat": 30.275817
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万寿亭",
+        "address": "延安路591号(武林广场地铁站E口步行490米)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 779.0,
+        "coordinates": {
+          "lng": 120.16153,
+          "lat": 30.269837
+        },
+        "source": "amap"
+      },
+      {
+        "name": "越地长歌",
+        "address": "文青弄与中山北路交叉口西320米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 782.0,
+        "coordinates": {
+          "lng": 120.162378,
+          "lat": 30.277255
+        },
+        "source": "amap"
+      },
+      {
+        "name": "馆元状",
+        "address": "武林桥河下与戒坛寺巷交叉口西北80米",
+        "type": "餐饮服务;中餐厅;中餐厅|风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.8,
+        "cost": "44.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 788.0,
+        "coordinates": {
+          "lng": 120.159741,
+          "lat": 30.268264
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江展览馆南广场",
+        "address": "环城北路197(武林广场地铁站D口步行130米)",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 814.0,
+        "coordinates": {
+          "lng": 120.163216,
+          "lat": 30.271995
+        },
+        "source": "amap"
+      },
+      {
+        "name": "约园",
+        "address": "体育场路537号(武林门地铁站F口步行380米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 829.0,
+        "coordinates": {
+          "lng": 120.150061,
+          "lat": 30.268053
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马塍广场",
+        "address": "马塍路与文三路交叉口西南40米",
+        "type": "风景名胜;公园广场;公园广场",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 840.0,
+        "coordinates": {
+          "lng": 120.147293,
+          "lat": 30.277491
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西湖文化广场D区",
+        "address": "西湖文化广场18号",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 840.0,
+        "coordinates": {
+          "lng": 120.162985,
+          "lat": 30.277359
+        },
+        "source": "amap"
+      },
+      {
+        "name": "法雨庵",
+        "address": "弥陀寺公园(武林门地铁站F口步行390米)",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 843.0,
+        "coordinates": {
+          "lng": 120.150447,
+          "lat": 30.267674
+        },
+        "source": "amap"
+      },
+      {
+        "name": "武林广场-八少女音乐喷泉",
+        "address": "武林广场(武林广场地铁站E口步行180米)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周四、周日:喷泉19:30、20:30,周五至周六:喷泉19:30、20:30、21:003D灯光秀20:00开始",
+        "tel": "0571-85828000",
+        "photos_count": 3,
+        "distance": 851.0,
+        "coordinates": {
+          "lng": 120.163252,
+          "lat": 30.271103
+        },
+        "source": "amap"
+      },
+      {
+        "name": "武林广场",
+        "address": "天水街道天水街道体育场路208号",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 862.0,
+        "coordinates": {
+          "lng": 120.163325,
+          "lat": 30.271001
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西湖文化广场",
+        "address": "环城北路47号",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 879.0,
+        "coordinates": {
+          "lng": 120.163755,
+          "lat": 30.276652
+        },
+        "source": "amap"
+      },
+      {
+        "name": "抗战英烈",
+        "address": "武林商圈万寿亭街5号附近",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 885.0,
+        "coordinates": {
+          "lng": 120.16421,
+          "lat": 30.272931
+        },
+        "source": "amap"
+      },
+      {
+        "name": "安吉路35号别墅建筑",
+        "address": "安吉路35(武林门地铁站C口步行360米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 889.0,
+        "coordinates": {
+          "lng": 120.157483,
+          "lat": 30.266383
+        },
+        "source": "amap"
+      },
+      {
+        "name": "次元峡谷(杭州大厦中央商城店)",
+        "address": "武林广场站D口杭州大厦中央商城B2层92号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 895.0,
+        "coordinates": {
+          "lng": 120.163613,
+          "lat": 30.270836
+        },
+        "source": "amap"
+      },
+      {
+        "name": "安吉路37号别墅建筑",
+        "address": "安吉路37(武林门地铁站C口步行430米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 921.0,
+        "coordinates": {
+          "lng": 120.157485,
+          "lat": 30.266086
+        },
+        "source": "amap"
+      },
+      {
+        "name": "弥陀寺公园",
+        "address": "北山街道体育场路533号宝岛眼镜旁",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 06:00-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 926.0,
+        "coordinates": {
+          "lng": 120.150049,
+          "lat": 30.267009
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西湖文化广场A区",
+        "address": "文化广场2号(西湖文化广场地铁站C口步行410米)",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 932.0,
+        "coordinates": {
+          "lng": 120.16452,
+          "lat": 30.276093
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州运河游船",
+        "address": "环城北路226号(武林广场地铁站B口步行480米)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13396513757",
+        "photos_count": 3,
+        "distance": 933.0,
+        "coordinates": {
+          "lng": 120.164806,
+          "lat": 30.274196
+        },
+        "source": "amap"
+      },
+      {
+        "name": "弥陀寺公园-石经阁",
+        "address": "弥陀寺公园",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 942.0,
+        "coordinates": {
+          "lng": 120.150071,
+          "lat": 30.266832
+        },
+        "source": "amap"
+      },
+      {
+        "name": "绿色浙江",
+        "address": "西湖文化广场6号浙江自然博物院内",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 950.0,
+        "coordinates": {
+          "lng": 120.16449,
+          "lat": 30.276778
+        },
+        "source": "amap"
+      },
+      {
+        "name": "钱塘江漫游",
+        "address": "西湖文化广场6号浙江自然博物院内",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 950.0,
+        "coordinates": {
+          "lng": 120.16449,
+          "lat": 30.276778
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天苑",
+        "address": "直戒坛寺巷与戒坛寺巷交叉口西南20米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 950.0,
+        "coordinates": {
+          "lng": 120.161651,
+          "lat": 30.267701
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州旅游观光巴士",
+        "address": "展览东路与体育场路交叉口北140米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 962.0,
+        "coordinates": {
+          "lng": 120.164648,
+          "lat": 30.271505
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西湖文化广场C区",
+        "address": "西湖文化广场9号(西湖文化广场地铁站C口步行220米)",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 969.0,
+        "coordinates": {
+          "lng": 120.164277,
+          "lat": 30.277705
+        },
+        "source": "amap"
+      },
+      {
+        "name": "环北公园",
+        "address": "武林门码头旁(武林广场地铁站A口步行350米)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 972.0,
+        "coordinates": {
+          "lng": 120.165214,
+          "lat": 30.274187
+        },
+        "source": "amap"
+      },
+      {
+        "name": "弥陀寺公园-藏经楼",
+        "address": "弥陀寺公园内(南侧)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 973.0,
+        "coordinates": {
+          "lng": 120.14991,
+          "lat": 30.266587
+        },
+        "source": "amap"
+      },
+      {
+        "name": "古韵金河亭",
+        "address": "武林门码头(环城北路208号坤和中心裙楼旁)京杭大运河内",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 990.0,
+        "coordinates": {
+          "lng": 120.159556,
+          "lat": 30.282124
+        },
+        "source": "amap"
+      },
+      {
+        "name": "上保社区文化小广场",
+        "address": "保俶路154附近",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1035.0,
+        "coordinates": {
+          "lng": 120.147832,
+          "lat": 30.267237
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小公园",
+        "address": "朝晖街道中山北园(沈塘桥地铁站B口步行200米)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1048.0,
+        "coordinates": {
+          "lng": 120.148351,
+          "lat": 30.281499
+        },
+        "source": "amap"
+      },
+      {
+        "name": "桃几公园",
+        "address": "狮虎桥路与狮虎桥河下交叉口东60米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 1058.0,
+        "coordinates": {
+          "lng": 120.161181,
+          "lat": 30.266171
+        },
+        "source": "amap"
+      },
+      {
+        "name": "京杭大运河杭州景区-休息亭",
+        "address": "运道与叶青兜路交叉口西北240米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1122.0,
+        "coordinates": {
+          "lng": 120.158321,
+          "lat": 30.283789
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梅冈园",
+        "address": "保俶路",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0571-87179539",
+        "photos_count": 3,
+        "distance": 1173.0,
+        "coordinates": {
+          "lng": 120.147677,
+          "lat": 30.265727
+        },
+        "source": "amap"
+      },
+      {
+        "name": "运河文化公园",
+        "address": "叶青兜路与古河巷交叉口东北240米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1175.0,
+        "coordinates": {
+          "lng": 120.15735,
+          "lat": 30.284483
+        },
+        "source": "amap"
+      },
+      {
+        "name": "国民革命军陆军第八十八师淞沪抗日阵亡将士纪念坊",
+        "address": "西溪路73-1号",
+        "type": "风景名胜;风景名胜;纪念馆",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1176.0,
+        "coordinates": {
+          "lng": 120.144198,
+          "lat": 30.269293
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PICATHAM Thai Cuisine&Wine",
+        "address": "莫干山路17号(武林门地铁站A1口步行380米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.6,
+        "cost": "158.00",
+        "open_time": "周二至周日 17:00-20:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 109.0,
+        "coordinates": {
+          "lng": 120.154164,
+          "lat": 30.273534
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夜鹭公园Night Heron at park",
+        "address": "湖墅南路7-2号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.6,
+        "cost": "83.00",
+        "open_time": "周一至周日 18:00-02:00",
+        "tel": "15395832609",
+        "photos_count": 3,
+        "distance": 113.0,
+        "coordinates": {
+          "lng": 120.156269,
+          "lat": 30.273991
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大金24h自助台球(蓝天商务中心店)",
+        "address": "莫干山路18号蓝天商务中心4楼407室",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "15557126255",
+        "photos_count": 1,
+        "distance": 129.0,
+        "coordinates": {
+          "lng": 120.154603,
+          "lat": 30.275183
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中田健身工作室(武林门店)",
+        "address": "莫干山路18号蓝天大厦3楼303",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.1,
+        "cost": "2243.00",
+        "open_time": "周一至周日 08:00-21:30",
+        "tel": "0571-86050061",
+        "photos_count": 3,
+        "distance": 142.0,
+        "coordinates": {
+          "lng": 120.154542,
+          "lat": 30.275282
+        },
+        "source": "amap"
+      },
+      {
+        "name": "long break",
+        "address": "湖墅南路7号地上-2",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "39.00",
+        "open_time": "周一至周日 10:00-18:00",
+        "tel": "13666636715",
+        "photos_count": 3,
+        "distance": 161.0,
+        "coordinates": {
+          "lng": 120.156637,
+          "lat": 30.273514
+        },
+        "source": "amap"
+      },
+      {
+        "name": "欢心棋牌",
+        "address": "湖墅南路18号欢心假日酒店2楼(万豪酒店旁边)",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 3.8,
+        "cost": "78.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13805728964",
+        "photos_count": 3,
+        "distance": 177.0,
+        "coordinates": {
+          "lng": 120.156937,
+          "lat": 30.273932
+        },
+        "source": "amap"
+      },
+      {
+        "name": "JW万豪酒店行政酒廊(湖墅南路店)",
+        "address": "湖墅南路28号杭州JW万豪酒店26层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "126.00",
+        "open_time": "周六至周日 06:00-11:00,14:00-17:00,17:30-21:30；周一至周五 06:00-10:30,14:00-17:00,17:30-21:30",
+        "tel": "0571-85788888",
+        "photos_count": 1,
+        "distance": 181.0,
+        "coordinates": {
+          "lng": 120.156893,
+          "lat": 30.274599
+        },
+        "source": "amap"
+      },
+      {
+        "name": "燃乐健身私教馆",
+        "address": "湖墅南路与密渡桥路交叉口东南100米",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 3.3,
+        "cost": "1575.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 200.0,
+        "coordinates": {
+          "lng": 120.157116,
+          "lat": 30.274576
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新世纪(新世纪大厦店)",
+        "address": "密渡桥路15号新世纪大厦F4层",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "19918933770",
+        "photos_count": 3,
+        "distance": 259.0,
+        "coordinates": {
+          "lng": 120.15762,
+          "lat": 30.274942
+        },
+        "source": "amap"
+      },
+      {
+        "name": "练炼瑜伽·普拉提(杭州大厦店)",
+        "address": "密渡桥路15号新世纪大厦15楼CD",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "188.00",
+        "open_time": "周一至周日 07:00-21:30",
+        "tel": "13858076364",
+        "photos_count": 3,
+        "distance": 267.0,
+        "coordinates": {
+          "lng": 120.157777,
+          "lat": 30.274754
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雀小仙自助棋牌(新世纪大厦店)",
+        "address": "密渡桥路与密渡桥一弄交叉口西南100米",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.4,
+        "cost": "34.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13310476740;19211848238",
+        "photos_count": 1,
+        "distance": 269.0,
+        "coordinates": {
+          "lng": 120.157799,
+          "lat": 30.274763
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州弥卜巴西柔术馆(新世纪大厦店)",
+        "address": "密渡桥路15号新世纪大厦F11层",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 14:00-21:30",
+        "tel": "15267110999",
+        "photos_count": 3,
+        "distance": 271.0,
+        "coordinates": {
+          "lng": 120.157812,
+          "lat": 30.274791
+        },
+        "source": "amap"
+      },
+      {
+        "name": "黑店(杭州大厦店)",
+        "address": "新世纪大厦6E",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.5,
+        "cost": "157.00",
+        "open_time": "周一至周日 09:00-05:00",
+        "tel": "15267485724",
+        "photos_count": 3,
+        "distance": 275.0,
+        "coordinates": {
+          "lng": 120.157839,
+          "lat": 30.274815
+        },
+        "source": "amap"
+      },
+      {
+        "name": "MF·福克斯先生",
+        "address": "密渡桥路15号新世纪大厦11层A",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.2,
+        "cost": "173.00",
+        "open_time": "周二至周日 13:00-24:00",
+        "tel": "15968146166",
+        "photos_count": 3,
+        "distance": 286.0,
+        "coordinates": {
+          "lng": 120.157975,
+          "lat": 30.274775
+        },
+        "source": "amap"
+      },
+      {
+        "name": "旺瑞棋牌",
+        "address": "天目山路7号东海宾馆一号楼3楼",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.5,
+        "cost": "85.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18158171235",
+        "photos_count": 3,
+        "distance": 312.0,
+        "coordinates": {
+          "lng": 120.152727,
+          "lat": 30.272188
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Cooyic Pilates普拉提(马塍路店)",
+        "address": "锦绣文苑3幢一层3-2号",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.5,
+        "cost": "139.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "19550261369",
+        "photos_count": 1,
+        "distance": 360.0,
+        "coordinates": {
+          "lng": 120.151353,
+          "lat": 30.273942
+        },
+        "source": "amap"
+      },
+      {
+        "name": "温莎KTV(湖墅南路店)",
+        "address": "湖墅南路90号(苏宁大厦)5-8层",
+        "type": "体育休闲服务;娱乐场所;KTV",
+        "rating": 4.8,
+        "cost": "80.00",
+        "open_time": "周一至周四,周日 10:00-06:00；周五至周六 10:00-09:00",
+        "tel": "0571-86047777",
+        "photos_count": 3,
+        "distance": 368.0,
+        "coordinates": {
+          "lng": 120.155793,
+          "lat": 30.277353
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州拾壹路桌游跑团俱乐部",
+        "address": "天目山路46号宁波大厦708室",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.0,
+        "cost": "59.00",
+        "open_time": "周一至周四 13:00-23:00；周五至周日 12:00-24:00",
+        "tel": "17131438325",
+        "photos_count": 3,
+        "distance": 403.0,
+        "coordinates": {
+          "lng": 120.151195,
+          "lat": 30.272766
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雀小仙自助棋牌(易盛大厦店)",
+        "address": "武林巷1号易盛大厦10楼南面1001室",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.4,
+        "cost": "25.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "19012891235",
+        "photos_count": 2,
+        "distance": 407.0,
+        "coordinates": {
+          "lng": 120.152067,
+          "lat": 30.276657
+        },
+        "source": "amap"
+      },
+      {
+        "name": "SHEHE Pilates",
+        "address": "米市巷街道白马大厦21楼A室",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "402.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "17767270659",
+        "photos_count": 3,
+        "distance": 407.0,
+        "coordinates": {
+          "lng": 120.159014,
+          "lat": 30.275516
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大赢家自助台球·棋牌",
+        "address": "西溪街道武林巷1号易盛大厦10楼南面",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 408.0,
+        "coordinates": {
+          "lng": 120.152058,
+          "lat": 30.276666
+        },
+        "source": "amap"
+      },
+      {
+        "name": "精匠健身(白马店)",
+        "address": "米市巷街道白马大厦29B室29C室",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "1136.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "15824139494",
+        "photos_count": 2,
+        "distance": 412.0,
+        "coordinates": {
+          "lng": 120.159067,
+          "lat": 30.275507
+        },
+        "source": "amap"
+      },
+      {
+        "name": "一水玄瑜伽(武林蓝色工作坊店)",
+        "address": "体育场路415号宏都商务楼C座2层",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.5,
+        "cost": "110.00",
+        "open_time": "周一至周六 09:30-20:30；周日 10:30-18:30",
+        "tel": "0571-88280999",
+        "photos_count": 3,
+        "distance": 428.0,
+        "coordinates": {
+          "lng": 120.156536,
+          "lat": 30.270457
+        },
+        "source": "amap"
+      },
+      {
+        "name": "锦羽麻雀馆",
+        "address": "环城西路92号环岛宾馆六楼(武林门地铁站A1口旁)",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 3.9,
+        "cost": "64.00",
+        "open_time": "00:00-24:00",
+        "tel": "0571-88021333",
+        "photos_count": 1,
+        "distance": 446.0,
+        "coordinates": {
+          "lng": 120.155701,
+          "lat": 30.270119
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ONE PARTY KTV",
+        "address": "环城北路256杭州大厦购物城D座华浙店F9层",
+        "type": "体育休闲服务;娱乐场所;KTV",
+        "rating": 4.8,
+        "cost": "229.00",
+        "open_time": "周一至周日 19:00-03:00",
+        "tel": "0571-86011016;13913026743;4008926374",
+        "photos_count": 3,
+        "distance": 468.0,
+        "coordinates": {
+          "lng": 120.159973,
+          "lat": 30.274274
+        },
+        "source": "amap"
+      },
+      {
+        "name": "TR Music Lounge",
+        "address": "米蓝大厦3层302",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "周一至周日 20:00-06:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 479.0,
+        "coordinates": {
+          "lng": 120.152632,
+          "lat": 30.277847
+        },
+        "source": "amap"
+      },
+      {
+        "name": "二山瑜伽·普拉提",
+        "address": "湖墅南路103号百大花园群楼二楼",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.6,
+        "cost": "276.00",
+        "open_time": "周一至周五 07:00-21:45；周六至周日 08:00-21:30",
+        "tel": "0571-86525875",
+        "photos_count": 3,
+        "distance": 484.0,
+        "coordinates": {
+          "lng": 120.154712,
+          "lat": 30.278435
+        },
+        "source": "amap"
+      },
+      {
+        "name": "A+运动俱乐部(白马店)",
+        "address": "密渡桥路2号",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.7,
+        "cost": "2572.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "18324423099",
+        "photos_count": 3,
+        "distance": 488.0,
+        "coordinates": {
+          "lng": 120.159874,
+          "lat": 30.275595
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星速棋牌(运务大楼店)",
+        "address": "体育场路385号汉庭酒店3层",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0571-87003955;0571-87003997",
+        "photos_count": 2,
+        "distance": 502.0,
+        "coordinates": {
+          "lng": 120.158006,
+          "lat": 30.270349
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鼎丰棋牌(中河片区店)",
+        "address": "体育场路396号民航大厦",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.5,
+        "cost": "48.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0571-85101515",
+        "photos_count": 3,
+        "distance": 537.0,
+        "coordinates": {
+          "lng": 120.159161,
+          "lat": 30.270786
+        },
+        "source": "amap"
+      },
+      {
+        "name": "MONOLOGUE独白(杭州大厦购物城C座店)",
+        "address": "环城北路208号杭州大厦购物城C座F2层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周五至周六 10:00-22:00；周一至周四,周日 10:00-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 546.0,
+        "coordinates": {
+          "lng": 120.160775,
+          "lat": 30.274303
+        },
+        "source": "amap"
+      },
+      {
+        "name": "TF天猫香氛空间",
+        "address": "环城北路208号杭州大厦购物城C座",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 549.0,
+        "coordinates": {
+          "lng": 120.160811,
+          "lat": 30.274282
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万丽国际娱乐会所",
+        "address": "文晖路444号星都宾馆5层",
+        "type": "体育休闲服务;娱乐场所;KTV|体育休闲服务;娱乐场所;棋牌室|商务住宅;商务住宅相关;商务住宅相关",
+        "rating": 4.7,
+        "cost": "52.00",
+        "open_time": "周一至周日 18:00-02:00",
+        "tel": "0571-85220913;0571-86060092;13913026743",
+        "photos_count": 3,
+        "distance": 550.0,
+        "coordinates": {
+          "lng": 120.15436,
+          "lat": 30.279007
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汇友棋牌会所",
+        "address": "米市巷街道湖墅南路118号2层",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.6,
+        "cost": "21.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13336061102",
+        "photos_count": 3,
+        "distance": 569.0,
+        "coordinates": {
+          "lng": 120.154946,
+          "lat": 30.279211
+        },
+        "source": "amap"
+      },
+      {
+        "name": "教父酒吧(杭州大厦购物城店)",
+        "address": "环城北路208号杭州大厦购物城C座F1层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "131.00",
+        "open_time": "周一至周日 18:30-02:00",
+        "tel": "13758154405",
+        "photos_count": 3,
+        "distance": 571.0,
+        "coordinates": {
+          "lng": 120.161017,
+          "lat": 30.274601
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中智桥牌",
+        "address": "锦江大厦3楼",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "15384033715",
+        "photos_count": 1,
+        "distance": 574.0,
+        "coordinates": {
+          "lng": 120.154188,
+          "lat": 30.279197
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狮魂威道场空手道(星都总店)",
+        "address": "文晖路448号星都宾馆3层301",
+        "type": "体育休闲服务;运动场馆;运动场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周二至周日 09:00-21:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 581.0,
+        "coordinates": {
+          "lng": 120.153708,
+          "lat": 30.279181
+        },
+        "source": "amap"
+      },
+      {
+        "name": "君恒健身普拉提",
+        "address": "文晖路448号",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.1,
+        "cost": "1623.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "18368823802",
+        "photos_count": 2,
+        "distance": 603.0,
+        "coordinates": {
+          "lng": 120.153925,
+          "lat": 30.279425
+        },
+        "source": "amap"
+      },
+      {
+        "name": "酉人·廊居(武林店)",
+        "address": "桃花河弄30号(武林门地铁站D口步行350米)",
+        "type": "体育休闲服务;娱乐场所;酒吧|住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 19:00-02:00",
+        "tel": "17682310624",
+        "photos_count": 3,
+        "distance": 611.0,
+        "coordinates": {
+          "lng": 120.158341,
+          "lat": 30.269371
+        },
+        "source": "amap"
+      },
+      {
+        "name": "1219 Cocktail 幺贰幺酒",
+        "address": "桃花河弄38号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "58.00",
+        "open_time": "周一至周日 18:00-02:00",
+        "tel": "17757137389",
+        "photos_count": 3,
+        "distance": 611.0,
+        "coordinates": {
+          "lng": 120.158216,
+          "lat": 30.269307
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梵梦女子普拉提健身馆(杭大店)",
+        "address": "环城北路208号坤和中心F22层",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "283.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "18958149512",
+        "photos_count": 3,
+        "distance": 615.0,
+        "coordinates": {
+          "lng": 120.161499,
+          "lat": 30.273867
+        },
+        "source": "amap"
+      },
+      {
+        "name": "欣欣原创馆(话剧团店)",
+        "address": "湖墅南路136号",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店|体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13606516669",
+        "photos_count": 3,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 120.155069,
+          "lat": 30.279725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙话艺术剧院",
+        "address": "湖墅南路136-138号",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.7,
+        "cost": "158.00",
+        "open_time": "周二至周日 09:30-17:30",
+        "tel": "0571-88056736;0571-88307639",
+        "photos_count": 3,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 120.155069,
+          "lat": 30.279725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "松之果乐园(杭大店)",
+        "address": "环城北路辅路与展览西路交叉口西80米杭州大厦F6层",
+        "type": "体育休闲服务;休闲场所;游乐场",
+        "rating": 4.1,
+        "cost": "197.00",
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "0571-88022060",
+        "photos_count": 3,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 120.161442,
+          "lat": 30.272812
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Made In X bar无限制造",
+        "address": "武林街道桃花河弄21号(武林门地铁站D口步行350米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "92.00",
+        "open_time": "周一至周日 18:30-03:00",
+        "tel": "13296729181",
+        "photos_count": 1,
+        "distance": 634.0,
+        "coordinates": {
+          "lng": 120.158413,
+          "lat": 30.269171
+        },
+        "source": "amap"
+      },
+      {
+        "name": "桃十三精酿啤酒屋(武林店)",
+        "address": "桃花河弄13号(武林门地铁站D口步行380米)",
+        "type": "购物服务;专卖店;烟酒专卖店|体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "89.00",
+        "open_time": "周一至周日 18:30-02:00",
+        "tel": "18969069559",
+        "photos_count": 3,
+        "distance": 636.0,
+        "coordinates": {
+          "lng": 120.158672,
+          "lat": 30.269281
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BAR INFINITE 无境",
+        "address": "桃花河弄15号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "122.00",
+        "open_time": "周一至周日 19:00-02:00",
+        "tel": "13429605527",
+        "photos_count": 3,
+        "distance": 638.0,
+        "coordinates": {
+          "lng": 120.158662,
+          "lat": 30.269259
+        },
+        "source": "amap"
+      },
+      {
+        "name": "NutsBar纳次酒吧",
+        "address": "武林街道武林路桃花河弄19号",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "82.00",
+        "open_time": "周一至周日 19:30-02:30",
+        "tel": "18969065766",
+        "photos_count": 3,
+        "distance": 644.0,
+        "coordinates": {
+          "lng": 120.158625,
+          "lat": 30.269175
+        },
+        "source": "amap"
+      },
+      {
+        "name": "仙雀会棋牌会所(湖墅南路店)",
+        "address": "湖墅南路146-148号化轻商务楼",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.3,
+        "cost": "97.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0571-86759330",
+        "photos_count": 1,
+        "distance": 651.0,
+        "coordinates": {
+          "lng": 120.154565,
+          "lat": 30.279935
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小赢24h自助棋牌室(沈塘桥店)",
+        "address": "莫干山路102号立新大厦1121室",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.3,
+        "cost": "27.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "19025483914",
+        "photos_count": 3,
+        "distance": 678.0,
+        "coordinates": {
+          "lng": 120.151749,
+          "lat": 30.279461
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省工商行政管理干部培训中心(金汇大厦)",
+        "address": "莫干山路73号市政府正对面",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 110.0,
+        "coordinates": {
+          "lng": 120.153968,
+          "lat": 30.273954
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Soul Sister舞蹈工作室(武林店)",
+        "address": "蓝天商务中心301",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 13:00-22:00",
+        "tel": "15384013331;19818504360",
+        "photos_count": 3,
+        "distance": 136.0,
+        "coordinates": {
+          "lng": 120.154518,
+          "lat": 30.275215
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江广播电视集团",
+        "address": "莫干山路111号",
+        "type": "科教文化服务;传媒机构;电视台|科教文化服务;传媒机构;电台|政府机构及社会团体;政府机关;省直辖市级政府及事业单位",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "0571-88077050",
+        "photos_count": 3,
+        "distance": 151.0,
+        "coordinates": {
+          "lng": 120.153757,
+          "lat": 30.27481
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省冶金研究院(天目山路)",
+        "address": "天目山路18号百盛金座1层",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88178122",
+        "photos_count": 3,
+        "distance": 154.0,
+        "coordinates": {
+          "lng": 120.153816,
+          "lat": 30.273268
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江电视台影视娱乐频道(莫干山路)",
+        "address": "莫干山路111号广电大厦F1层",
+        "type": "科教文化服务;传媒机构;电视台",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-56353086",
+        "photos_count": 3,
+        "distance": 158.0,
+        "coordinates": {
+          "lng": 120.153683,
+          "lat": 30.274821
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江卫视频道",
+        "address": "莫干山路111号广电大厦F1层",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 161.0,
+        "coordinates": {
+          "lng": 120.153646,
+          "lat": 30.274829
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江之声",
+        "address": "莫干山路111号浙江广播音乐厅",
+        "type": "科教文化服务;传媒机构;电视台|科教文化服务;传媒机构;电台",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88077050",
+        "photos_count": 0,
+        "distance": 163.0,
+        "coordinates": {
+          "lng": 120.153658,
+          "lat": 30.27488
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江电视台制作中心",
+        "address": "莫干山路111号",
+        "type": "科教文化服务;传媒机构;电视台",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 171.0,
+        "coordinates": {
+          "lng": 120.153725,
+          "lat": 30.275075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江广电集团融媒体新闻中心",
+        "address": "莫干山路111号广电大厦",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周五 09:00-17:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 230.0,
+        "coordinates": {
+          "lng": 120.152803,
+          "lat": 30.274699
+        },
+        "source": "amap"
+      },
+      {
+        "name": "维亚教育咨询有限公司",
+        "address": "密渡桥路15号18E",
+        "type": "科教文化服务;培训机构;培训机构|公司企业;公司;公司",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 277.0,
+        "coordinates": {
+          "lng": 120.157882,
+          "lat": 30.274772
+        },
+        "source": "amap"
+      },
+      {
+        "name": "奥吉塔芭蕾舞艺术中心OdetteBallet(武林壹号校区)",
+        "address": "湖墅南路武林壹号写字楼B座301",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "4001175008",
+        "photos_count": 3,
+        "distance": 315.0,
+        "coordinates": {
+          "lng": 120.156987,
+          "lat": 30.276415
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙版传媒",
+        "address": "浙江出版联合集团天目山路正门旁",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 319.0,
+        "coordinates": {
+          "lng": 120.152089,
+          "lat": 30.27288
+        },
+        "source": "amap"
+      },
+      {
+        "name": "智成出国(武林校区)",
+        "address": "武林壹号写字楼A座7层702",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 08:30-20:30",
+        "tel": "15958192896",
+        "photos_count": 3,
+        "distance": 319.0,
+        "coordinates": {
+          "lng": 120.156575,
+          "lat": 30.276675
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州金矢留学",
+        "address": "湖墅南路66-1滨绿大厦A座1506",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周六至周日 10:00-17:00；周一至周五 09:00-17:30",
+        "tel": "0571-56822338;18846652220",
+        "photos_count": 3,
+        "distance": 343.0,
+        "coordinates": {
+          "lng": 120.156704,
+          "lat": 30.276858
+        },
+        "source": "amap"
+      },
+      {
+        "name": "融才教育国际课程中心(武林校区)",
+        "address": "湖墅南路66-1号滨绿大厦A座1601-1",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "19106846072",
+        "photos_count": 2,
+        "distance": 346.0,
+        "coordinates": {
+          "lng": 120.156553,
+          "lat": 30.276951
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州竹跃未来教育科技有限公司",
+        "address": "米市巷街道滨绿大厦1幢2003室-1",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 357.0,
+        "coordinates": {
+          "lng": 120.156656,
+          "lat": 30.277017
+        },
+        "source": "amap"
+      },
+      {
+        "name": "席朗口才演讲培训(杭州研学中心)",
+        "address": "湖墅南路66号武林壹号写字楼A座1005-1",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00 2026-02-10至2026-02-23 10:00-16:00；2026-02-24至2026-03-04 09:00-22:00",
+        "tel": "15114696970;18045178572",
+        "photos_count": 3,
+        "distance": 359.0,
+        "coordinates": {
+          "lng": 120.156636,
+          "lat": 30.277049
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江电视台",
+        "address": "密渡桥路1号浙商时代大厦22层2303室",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 362.0,
+        "coordinates": {
+          "lng": 120.15887,
+          "lat": 30.274197
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州市文晖幼儿园",
+        "address": "米市巷街道密渡桥一弄5号",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 379.0,
+        "coordinates": {
+          "lng": 120.157851,
+          "lat": 30.276547
+        },
+        "source": "amap"
+      },
+      {
+        "name": "知日美术CHIART杭州校",
+        "address": "密渡桥路1号白马大厦308室",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "18030517435",
+        "photos_count": 3,
+        "distance": 405.0,
+        "coordinates": {
+          "lng": 120.158997,
+          "lat": 30.275493
+        },
+        "source": "amap"
+      },
+      {
+        "name": "光明日报驻浙江记者站",
+        "address": "光明日报支路与体育场路交叉口(桐君堂国医馆4楼)",
+        "type": "科教文化服务;传媒机构;报社",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 09:30-18:30",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 418.0,
+        "coordinates": {
+          "lng": 120.153958,
+          "lat": 30.270471
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江电视台少儿频道",
+        "address": "武林巷1号易盛大厦4层",
+        "type": "科教文化服务;传媒机构;电视台",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:30",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 420.0,
+        "coordinates": {
+          "lng": 120.15204,
+          "lat": 30.276796
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省地质矿产研究所(胜利新村一弄)",
+        "address": "体育场路508号地矿科技大楼F7层",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85116209",
+        "photos_count": 3,
+        "distance": 439.0,
+        "coordinates": {
+          "lng": 120.152761,
+          "lat": 30.270704
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省电子信息产品检验研究院(天目山路)",
+        "address": "天目山路50号",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-81029610",
+        "photos_count": 2,
+        "distance": 464.0,
+        "coordinates": {
+          "lng": 120.150539,
+          "lat": 30.272737
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大唐画室(维元弄南)",
+        "address": "湖墅南路103号百大花园C座604",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "0571-88807367;13958107164",
+        "photos_count": 3,
+        "distance": 467.0,
+        "coordinates": {
+          "lng": 120.154549,
+          "lat": 30.278274
+        },
+        "source": "amap"
+      },
+      {
+        "name": "武林门幼儿园(易盛大厦西南)",
+        "address": "武林巷3号",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88081693",
+        "photos_count": 3,
+        "distance": 481.0,
+        "coordinates": {
+          "lng": 120.150949,
+          "lat": 30.276513
+        },
+        "source": "amap"
+      },
+      {
+        "name": "德为本教育",
+        "address": "金祝北路21号西湖物资大楼F3层",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85223123",
+        "photos_count": 1,
+        "distance": 487.0,
+        "coordinates": {
+          "lng": 120.150659,
+          "lat": 30.271995
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江音像出版社",
+        "address": "武林巷5号(沈塘桥地铁站F1口步行230米)",
+        "type": "科教文化服务;传媒机构;出版社",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 487.0,
+        "coordinates": {
+          "lng": 120.150473,
+          "lat": 30.275896
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省广播电视中心(武林巷)",
+        "address": "文三路20号浙江省建工大厦3、5层",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 492.0,
+        "coordinates": {
+          "lng": 120.150382,
+          "lat": 30.275834
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省ETC运营中心",
+        "address": "体育场路379号运务大楼F1层",
+        "type": "科教文化服务;科研机构;科研机构|生活服务;生活服务场所;生活服务场所",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 08:30-17:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 499.0,
+        "coordinates": {
+          "lng": 120.157989,
+          "lat": 30.270371
+        },
+        "source": "amap"
+      },
+      {
+        "name": "韵知乐文化艺术工作室",
+        "address": "金祝北路2号(武林门地铁站F口步行200米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "13588118075",
+        "photos_count": 2,
+        "distance": 571.0,
+        "coordinates": {
+          "lng": 120.151448,
+          "lat": 30.270054
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省高级人民法院-东楼",
+        "address": "马塍路6号(沈塘桥地铁站F2口步行430米)",
+        "type": "政府机构及社会团体;公检法机构;法院|科教文化服务;学校;学校",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 578.0,
+        "coordinates": {
+          "lng": 120.149277,
+          "lat": 30.275406
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中央广播电视总台浙江总站",
+        "address": "莫干山路86号(沈塘桥地铁站C3口步行190米)",
+        "type": "科教文化服务;传媒机构;电视台",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0571-88077050",
+        "photos_count": 3,
+        "distance": 584.0,
+        "coordinates": {
+          "lng": 120.151533,
+          "lat": 30.278354
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州文化广播电视集团",
+        "address": "莫干山路111号(沈塘桥地铁站C3口步行190米)",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 587.0,
+        "coordinates": {
+          "lng": 120.151485,
+          "lat": 30.27836
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中央广播电视总台央视网浙江",
+        "address": "米市巷街道莫干山路88号",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周五 09:00-18:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 589.0,
+        "coordinates": {
+          "lng": 120.151364,
+          "lat": 30.278298
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州市文晖中学",
+        "address": "沈塘桥弄12号(沈塘桥地铁站D口步行250米)",
+        "type": "科教文化服务;学校;中学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88907907",
+        "photos_count": 3,
+        "distance": 594.0,
+        "coordinates": {
+          "lng": 120.152349,
+          "lat": 30.278882
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国水稻研究所(万寿亭公寓西北)",
+        "address": "体育场路359号(武林门地铁站A1口步行470米)",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 604.0,
+        "coordinates": {
+          "lng": 120.159511,
+          "lat": 30.270236
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙话艺术中心",
+        "address": "湖墅南路138号",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 612.0,
+        "coordinates": {
+          "lng": 120.154785,
+          "lat": 30.279592
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省现代建筑设计研究院有限公司",
+        "address": "环城北路208号坤和中心F23层",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-87043581",
+        "photos_count": 1,
+        "distance": 615.0,
+        "coordinates": {
+          "lng": 120.161494,
+          "lat": 30.273794
+        },
+        "source": "amap"
+      },
+      {
+        "name": "EF成人英语(武林中心)",
+        "address": "环城北路208号坤和中心902-903(地铁1号线武林广场站)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "4008206039",
+        "photos_count": 3,
+        "distance": 615.0,
+        "coordinates": {
+          "lng": 120.161494,
+          "lat": 30.273764
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江话剧团",
+        "address": "湖墅南路136-138号浙江儿童艺术中心办公楼401",
+        "type": "科教文化服务;文艺团体;文艺团体",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88056736;0571-88082098",
+        "photos_count": 3,
+        "distance": 620.0,
+        "coordinates": {
+          "lng": 120.155078,
+          "lat": 30.279671
+        },
+        "source": "amap"
+      },
+      {
+        "name": "武林门幼儿园(武林巷)",
+        "address": "马塍路9号",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-51212045;0571-88081693",
+        "photos_count": 3,
+        "distance": 621.0,
+        "coordinates": {
+          "lng": 120.148943,
+          "lat": 30.275802
+        },
+        "source": "amap"
+      },
+      {
+        "name": "拱墅社区学院",
+        "address": "大塘新村40号",
+        "type": "科教文化服务;学校;成人教育",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 622.0,
+        "coordinates": {
+          "lng": 120.155737,
+          "lat": 30.279661
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江省高级人民法院法官培训中心",
+        "address": "马塍路5号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-87057754",
+        "photos_count": 2,
+        "distance": 625.0,
+        "coordinates": {
+          "lng": 120.148695,
+          "lat": 30.275083
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国中金财富证券杭州环城北路证券营业部",
+        "address": "环城北路208号1106、1107室(产权证环城北路208号1001、1003室)",
+        "type": "科教文化服务;学校;学校",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周五 08:30-17:00",
+        "tel": "0571-83537798",
+        "photos_count": 3,
+        "distance": 628.0,
+        "coordinates": {
+          "lng": 120.161627,
+          "lat": 30.273837
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州首尔教育培训中心(拱墅校区)",
+        "address": "拱墅社区学院40幢3楼",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "18958131376",
+        "photos_count": 3,
+        "distance": 631.0,
+        "coordinates": {
+          "lng": 120.155975,
+          "lat": 30.279725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州片仔癀博物馆(杭州大厦)",
+        "address": "体育场路380号",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 00:09-21:00",
+        "tel": "13336112987;13386509897",
+        "photos_count": 3,
+        "distance": 634.0,
+        "coordinates": {
+          "lng": 120.160404,
+          "lat": 30.270714
+        },
+        "source": "amap"
+      },
+      {
+        "name": "文三路欧语(总部)",
+        "address": "大塘新村40幢501室(武林壹号对面)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "18143488234",
+        "photos_count": 3,
+        "distance": 637.0,
+        "coordinates": {
+          "lng": 120.155975,
+          "lat": 30.279775
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州市保俶塔实验学校",
+        "address": "天目山路81号",
+        "type": "科教文化服务;学校;中学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85213893",
+        "photos_count": 3,
+        "distance": 666.0,
+        "coordinates": {
+          "lng": 120.149558,
+          "lat": 30.270504
+        },
+        "source": "amap"
+      },
+      {
+        "name": "科技文献馆",
+        "address": "环城西路33号浙江科技大楼",
+        "type": "科教文化服务;档案馆;档案馆",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 668.0,
+        "coordinates": {
+          "lng": 120.154892,
+          "lat": 30.268099
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(杭州云尚工园店)",
+        "address": "临平区联翁路6号云尚工园1号楼B幢底商",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周五 07:00-18:00；周六至周日 09:00-20:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 3.0,
+        "coordinates": {
+          "lng": 120.15507,
+          "lat": 30.274084
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(浙江广播电视中心店)",
+        "address": "莫干山路111号音乐厅1楼",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.6,
+        "cost": "39.00",
+        "open_time": "周一至周五 07:00-21:00；周六至周日 08:00-18:00",
+        "tel": "0571-87818236",
+        "photos_count": 3,
+        "distance": 197.0,
+        "coordinates": {
+          "lng": 120.153235,
+          "lat": 30.27485
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ALAMB八角杯咖啡(环城北路店)",
+        "address": "环城北路省农机大楼一楼309号-3号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "23.00",
+        "open_time": "周一至周日 07:00-16:00",
+        "tel": "0571-85197121",
+        "photos_count": 3,
+        "distance": 201.0,
+        "coordinates": {
+          "lng": 120.156191,
+          "lat": 30.272551
+        },
+        "source": "amap"
+      },
+      {
+        "name": "SECTION COFFEE沙县咖啡(湖墅南路店)",
+        "address": "密渡桥路44号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.7,
+        "cost": "28.00",
+        "open_time": "周一至周五 07:30-17:30；周六至周日 08:00-18:00 2026-02-19至2026-02-23 周一至周日 09:00-17:00",
+        "tel": "15657197907",
+        "photos_count": 3,
+        "distance": 270.0,
+        "coordinates": {
+          "lng": 120.157611,
+          "lat": 30.2752
+        },
+        "source": "amap"
+      },
+      {
+        "name": "緩奏咖啡店",
+        "address": "密渡桥路40号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.7,
+        "cost": "43.00",
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "19700752420",
+        "photos_count": 3,
+        "distance": 278.0,
+        "coordinates": {
+          "lng": 120.157709,
+          "lat": 30.275194
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(杭州密渡桥路店)",
+        "address": "密渡桥路32号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "10.00",
+        "open_time": "周一至周日 07:00-21:00",
+        "tel": "18099581970",
+        "photos_count": 3,
+        "distance": 283.0,
+        "coordinates": {
+          "lng": 120.157747,
+          "lat": 30.27522
+        },
+        "source": "amap"
+      },
+      {
+        "name": "YOUSAN COFFEE 杭州一店",
+        "address": "密渡桥路18号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "13.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 312.0,
+        "coordinates": {
+          "lng": 120.158076,
+          "lat": 30.27522
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Neighborhood coffee(马塍支路店)",
+        "address": "锦绣文苑4号楼底商1号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.7,
+        "cost": "39.00",
+        "open_time": "周六至周日 09:00-18:00；周一至周五 08:00-17:00 2026-02-15至2026-02-22 周一至周日 全天关闭",
+        "tel": "15252008422",
+        "photos_count": 3,
+        "distance": 338.0,
+        "coordinates": {
+          "lng": 120.15162,
+          "lat": 30.273647
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(滨绿大厦A座负一楼店)",
+        "address": "滨绿大厦A座B1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "13.00",
+        "open_time": [],
+        "tel": "4000100100",
+        "photos_count": 2,
+        "distance": 350.0,
+        "coordinates": {
+          "lng": 120.156531,
+          "lat": 30.276998
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(体育场路武林门店)",
+        "address": "体育场路426号一层106号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "14.00",
+        "open_time": "周一至周五 07:00-18:00；周六至周日 09:00-20:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 387.0,
+        "coordinates": {
+          "lng": 120.15674,
+          "lat": 30.270916
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ALAMB八角杯咖啡(马塍路店)",
+        "address": "锦绣文苑2幢底商铺7-1",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "23.00",
+        "open_time": "周一至周日 07:00-16:00",
+        "tel": "19870933729",
+        "photos_count": 3,
+        "distance": 412.0,
+        "coordinates": {
+          "lng": 120.150824,
+          "lat": 30.273758
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(武林门兰欧酒店大堂店)",
+        "address": "体育场路427-429号环城西路92号(兰欧国际酒店大堂)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "20.00",
+        "open_time": "周一至周五 07:30-20:00；周六至周日 07:30-20:00",
+        "tel": "19011225170",
+        "photos_count": 3,
+        "distance": 446.0,
+        "coordinates": {
+          "lng": 120.155701,
+          "lat": 30.270119
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克臻选(杭州大厦D座店)",
+        "address": "杭州大厦D座一层2号门旁边",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.7,
+        "cost": "44.00",
+        "open_time": "周一至周五 07:00-21:30；周六至周日 07:30-21:30",
+        "tel": "0571-85270076",
+        "photos_count": 3,
+        "distance": 449.0,
+        "coordinates": {
+          "lng": 120.159741,
+          "lat": 30.274604
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(文晖路百大花园店)",
+        "address": "湖墅南路234-1号底商",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "16.00",
+        "open_time": "周一至周五 07:00-21:00；周六 07:00-20:30；周日 07:30-21:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 482.0,
+        "coordinates": {
+          "lng": 120.154554,
+          "lat": 30.278412
+        },
+        "source": "amap"
+      },
+      {
+        "name": "luckincoffee",
+        "address": "文晖路与湖墅南路交叉口西南20米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.2,
+        "cost": "12.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 489.0,
+        "coordinates": {
+          "lng": 120.154625,
+          "lat": 30.278475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "卡布奇诺(中山店)",
+        "address": "莫干山路219号中山医院住院部一楼",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.7,
+        "cost": "20.00",
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "13375817090",
+        "photos_count": 1,
+        "distance": 525.0,
+        "coordinates": {
+          "lng": 120.151024,
+          "lat": 30.277243
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克杭州信义坊店",
+        "address": "湖墅南路90号",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.5,
+        "cost": "43.00",
+        "open_time": "周一至周日 07:00-21:30",
+        "tel": "0571-85192069",
+        "photos_count": 3,
+        "distance": 525.0,
+        "coordinates": {
+          "lng": 120.157641,
+          "lat": 30.278282
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三立方杭州民航大厦店",
+        "address": "体育场路392-2号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "12.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 563.0,
+        "coordinates": {
+          "lng": 120.159428,
+          "lat": 30.270693
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Pull-Tab拉环咖啡(杭州市拱墅区武林路店)",
+        "address": "武林路435号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "17.00",
+        "open_time": "周一至周日 07:30-19:30",
+        "tel": "13968183634",
+        "photos_count": 3,
+        "distance": 566.0,
+        "coordinates": {
+          "lng": 120.158701,
+          "lat": 30.270072
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Peet's Coffee皮爷咖啡(杭州大厦店)",
+        "address": "环城北路208号C座负一楼CQ099店铺",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "30.00",
+        "open_time": "周一至周五 07:30-21:30；周六至周日 07:30-22:00",
+        "tel": "13588420603",
+        "photos_count": 3,
+        "distance": 569.0,
+        "coordinates": {
+          "lng": 120.161016,
+          "lat": 30.274327
+        },
+        "source": "amap"
+      },
+      {
+        "name": "觅密山谷咖啡吧(市中医院店)",
+        "address": "中医院武林园区9号楼1层大厅",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "32.00",
+        "open_time": "周一至周日 07:00-20:00",
+        "tel": "18106591409",
+        "photos_count": 2,
+        "distance": 581.0,
+        "coordinates": {
+          "lng": 120.153586,
+          "lat": 30.26904
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(坤和中心店)",
+        "address": "环城北路208号坤和中心",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "41.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 596.0,
+        "coordinates": {
+          "lng": 120.161301,
+          "lat": 30.273965
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Manner Coffee(坤和中心店)",
+        "address": "环城北路208号坤和中心",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "20.00",
+        "open_time": "周一至周日 07:00-17:00",
+        "tel": "13041613226",
+        "photos_count": 3,
+        "distance": 597.0,
+        "coordinates": {
+          "lng": 120.161316,
+          "lat": 30.274014
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Ct.coffee(杭州大厦店)",
+        "address": "天水街道体育场路366号浙江文化大厦1层102室",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "40.00",
+        "open_time": "周一至周日 07:00-18:00",
+        "tel": "18067952390;19157654352",
+        "photos_count": 3,
+        "distance": 598.0,
+        "coordinates": {
+          "lng": 120.160482,
+          "lat": 30.271402
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(杭州大厦购物城C座店)",
+        "address": "环城北路230号杭州大厦C座3F",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.5,
+        "cost": "35.00",
+        "open_time": "周五至周六 10:00-22:00；周一至周四,周日 10:00-21:30",
+        "tel": "0571-85113216;0571-87025792",
+        "photos_count": 3,
+        "distance": 598.0,
+        "coordinates": {
+          "lng": 120.161325,
+          "lat": 30.273975
+        },
+        "source": "amap"
+      },
+      {
+        "name": "青松咖·让灵感更清醒(杭州坤和中心店)",
+        "address": "环城北路208号(武林广场地铁站B口步行360米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "25.00",
+        "open_time": "周一至周日 07:30-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 625.0,
+        "coordinates": {
+          "lng": 120.161593,
+          "lat": 30.273813
+        },
+        "source": "amap"
+      },
+      {
+        "name": "rich coffee發财猫咖啡",
+        "address": "武林路411号(武林门地铁站D口步行410米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "29.00",
+        "open_time": "周一至周日 07:30-21:30",
+        "tel": "15658803033",
+        "photos_count": 3,
+        "distance": 637.0,
+        "coordinates": {
+          "lng": 120.158979,
+          "lat": 30.269451
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Grid Coffee(杭州大厦店)",
+        "address": "杭州大厦新B座1楼BF109商铺",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "39.00",
+        "open_time": "周一至周日 07:00-21:30",
+        "tel": "17813655150",
+        "photos_count": 3,
+        "distance": 643.0,
+        "coordinates": {
+          "lng": 120.161505,
+          "lat": 30.272431
+        },
+        "source": "amap"
+      },
+      {
+        "name": "叫醒咖啡(杭州大厦店)",
+        "address": "大塘新村东南1门西80米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "24.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 668.0,
+        "coordinates": {
+          "lng": 120.157811,
+          "lat": 30.279626
+        },
+        "source": "amap"
+      },
+      {
+        "name": "加盐咖啡",
+        "address": "米市巷街道大塘新村51幢13号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "17.00",
+        "open_time": "周六至周日 07:30-18:30；周一至周五 07:00-18:30",
+        "tel": "17857691856",
+        "photos_count": 3,
+        "distance": 697.0,
+        "coordinates": {
+          "lng": 120.154594,
+          "lat": 30.280349
+        },
+        "source": "amap"
+      },
+      {
+        "name": "熊木咖啡(万寿亭公寓店)",
+        "address": "万寿亭街22号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "24.00",
+        "open_time": "周一至周五 07:30-17:30；周六至周日 08:30-17:30",
+        "tel": "19705003220",
+        "photos_count": 3,
+        "distance": 702.0,
+        "coordinates": {
+          "lng": 120.160478,
+          "lat": 30.269826
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ilike coffee&bar",
+        "address": "环城北路168号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "29.00",
+        "open_time": [],
+        "tel": "17889876770",
+        "photos_count": 0,
+        "distance": 702.0,
+        "coordinates": {
+          "lng": 120.162409,
+          "lat": 30.274259
+        },
+        "source": "amap"
+      },
+      {
+        "name": "wake up咖啡(杭州大厦购物城-南区店)",
+        "address": "体育场路370号浙江文化大厦F1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "182.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 710.0,
+        "coordinates": {
+          "lng": 120.161795,
+          "lat": 30.271407
+        },
+        "source": "amap"
+      },
+      {
+        "name": "STOP Cafe&Bar(体育场路店)",
+        "address": "体育场路570号",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店|餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "63.00",
+        "open_time": "周一至周日 11:00-24:00",
+        "tel": "18667044440",
+        "photos_count": 3,
+        "distance": 716.0,
+        "coordinates": {
+          "lng": 120.150889,
+          "lat": 30.268787
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BARCAROUNGE船歌咖啡(杭州西湖文化广场店)",
+        "address": "西湖文化广场商5号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "61.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 721.0,
+        "coordinates": {
+          "lng": 120.161976,
+          "lat": 30.276704
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(广厦锐明大厦店)",
+        "address": "莫干山路231号广厦锐明大厦1层(地铁进口旁边)",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.6,
+        "cost": "32.00",
+        "open_time": "周一至周日 07:00-21:00",
+        "tel": "0571-85389930",
+        "photos_count": 3,
+        "distance": 737.0,
+        "coordinates": {
+          "lng": 120.150224,
+          "lat": 30.279215
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Pull-Tab拉环咖啡(杭州市西湖区马塍路店)",
+        "address": "马塍路10-11外",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "20.00",
+        "open_time": "周一至周日 08:00-18:30",
+        "tel": "19715710157",
+        "photos_count": 3,
+        "distance": 742.0,
+        "coordinates": {
+          "lng": 120.14784,
+          "lat": 30.27638
+        },
+        "source": "amap"
+      },
+      {
+        "name": "青砂咖啡·西点(建工店)",
+        "address": "文三路20号建工大厦一楼(中信银行后面)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "31.00",
+        "open_time": "周一至周日 08:00-18:30",
+        "tel": "15024519518",
+        "photos_count": 3,
+        "distance": 763.0,
+        "coordinates": {
+          "lng": 120.149093,
+          "lat": 30.278586
+        },
+        "source": "amap"
+      },
+      {
+        "name": "凡人&庄阿姨的辣",
+        "address": "万寿亭街1号国大雷迪森广场酒店对面",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "58.00",
+        "open_time": "周一至周日 17:00-02:00 2026-02-15至2026-02-27 周一至周日 全天关闭",
+        "tel": "0571-85062166",
+        "photos_count": 3,
+        "distance": 765.0,
+        "coordinates": {
+          "lng": 120.16149,
+          "lat": 30.269998
+        },
+        "source": "amap"
+      },
+      {
+        "name": "UP.STAND·起立咖啡(武林路店)",
+        "address": "武林路383-1号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "22.00",
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "17621736014",
+        "photos_count": 3,
+        "distance": 775.0,
+        "coordinates": {
+          "lng": 120.159446,
+          "lat": 30.268227
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克咖啡(杭州大厦购物城·中央商城店)",
+        "address": "武林广场11号B118号商铺",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.6,
+        "cost": "34.00",
+        "open_time": "周一至周日 07:30-21:00",
+        "tel": "0571-87672609",
+        "photos_count": 3,
+        "distance": 793.0,
+        "coordinates": {
+          "lng": 120.162725,
+          "lat": 30.271375
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Biscuit Coffee饼干咖啡",
+        "address": "环城西路64号(武林门地铁站C口步行210米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "20.00",
+        "open_time": "周一至周日 09:00-19:00",
+        "tel": "17384211253",
+        "photos_count": 3,
+        "distance": 811.0,
+        "coordinates": {
+          "lng": 120.156452,
+          "lat": 30.266902
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(文化广场银泰百货店)",
+        "address": "西湖文化广场18号1楼1A-09号",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.7,
+        "cost": "32.00",
+        "open_time": "周一至周日 06:00-10:30",
+        "tel": "0571-88987656",
+        "photos_count": 3,
+        "distance": 815.0,
+        "coordinates": {
+          "lng": 120.162667,
+          "lat": 30.277416
+        },
+        "source": "amap"
+      },
+      {
+        "name": "洲至奢选杭州武林国大酒店-源·咖啡",
+        "address": "延安路609号国大城市广场F2层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "364.00",
+        "open_time": [],
+        "tel": "0571-65152613",
+        "photos_count": 3,
+        "distance": 844.0,
+        "coordinates": {
+          "lng": 120.162091,
+          "lat": 30.269502
+        },
+        "source": "amap"
+      },
+      {
+        "name": "吉日鸟咖(武林店)",
+        "address": "天水街道万寿亭街2号拾里园区2幢115室",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "73.00",
+        "open_time": "周一至周日 11:00-22:00",
+        "tel": "15042279991",
+        "photos_count": 3,
+        "distance": 848.0,
+        "coordinates": {
+          "lng": 120.161411,
+          "lat": 30.268772
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(西湖文化广场银泰店)",
+        "address": "西湖文化广场18号环球中心一层大堂",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "13.00",
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 853.0,
+        "coordinates": {
+          "lng": 120.162878,
+          "lat": 30.277794
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蓝鸽coffee",
+        "address": "万寿亭街1栋102苔藓小酒馆旁往里走20米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "51.00",
+        "open_time": "周一至周日 11:00-20:00",
+        "tel": "15623964560",
+        "photos_count": 3,
+        "distance": 857.0,
+        "coordinates": {
+          "lng": 120.161436,
+          "lat": 30.268681
+        },
+        "source": "amap"
+      },
+      {
+        "name": "M Stand(杭州国大城市广场店)",
+        "address": "延安路609号国大城市广场F2层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "37.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "18616940206",
+        "photos_count": 3,
+        "distance": 865.0,
+        "coordinates": {
+          "lng": 120.162425,
+          "lat": 30.269575
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(西湖文化广场银泰店)",
+        "address": "朝晖街道西文化广场18号501室-523",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "12.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "15340373682",
+        "photos_count": 3,
+        "distance": 867.0,
+        "coordinates": {
+          "lng": 120.163007,
+          "lat": 30.277849
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宝藏绿洲(国大城市广场店)",
+        "address": "国大城市广场二楼宝藏绿洲",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "16.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "19032593586",
+        "photos_count": 3,
+        "distance": 868.0,
+        "coordinates": {
+          "lng": 120.162575,
+          "lat": 30.269725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "富安娜(杭州湖墅南路店)",
+        "address": "湖墅南路44-46号",
+        "type": "购物服务;家居建材市场;布艺市场",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "0571-86467536",
+        "photos_count": 3,
+        "distance": 177.0,
+        "coordinates": {
+          "lng": 120.156377,
+          "lat": 30.275251
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PICABOCATA",
+        "address": "天目山路16号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周二至周五 10:30-17:00；周六至周日 10:00-17:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 181.0,
+        "coordinates": {
+          "lng": 120.153862,
+          "lat": 30.272872
+        },
+        "source": "amap"
+      },
+      {
+        "name": "百果园(密渡桥路店)",
+        "address": "密渡桥路100号",
+        "type": "购物服务;综合市场;果品市场",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 07:00-24:00",
+        "tel": "0571-87632011",
+        "photos_count": 3,
+        "distance": 218.0,
+        "coordinates": {
+          "lng": 120.156991,
+          "lat": 30.275195
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宏开礼品回收",
+        "address": "湖墅南路33号烟酒虫草洋酒黄金奢侈品回收",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店|生活服务;生活服务场所;生活服务场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "18858285485",
+        "photos_count": 3,
+        "distance": 223.0,
+        "coordinates": {
+          "lng": 120.155717,
+          "lat": 30.276036
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙江海之梦海鲜礼品杭州销售总部",
+        "address": "米市巷莫干山路42号(海之梦海鲜礼品店内)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "18657158688",
+        "photos_count": 3,
+        "distance": 257.0,
+        "coordinates": {
+          "lng": 120.153675,
+          "lat": 30.276061
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大洋世家·精致日料(武林店)",
+        "address": "环城北路308号杭州纳德世家东侧",
+        "type": "购物服务;综合市场;水产海鲜市场",
+        "rating": 4.5,
+        "cost": "250.00",
+        "open_time": "周一至周日 09:30-13:30,16:30-21:30",
+        "tel": "0571-85166585",
+        "photos_count": 3,
+        "distance": 281.0,
+        "coordinates": {
+          "lng": 120.157892,
+          "lat": 30.273341
+        },
+        "source": "amap"
+      },
+      {
+        "name": "缤纷链blingblingbloom(豆腐里店)",
+        "address": "天水街道环城北路297-1号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "18858682222",
+        "photos_count": 3,
+        "distance": 302.0,
+        "coordinates": {
+          "lng": 120.157765,
+          "lat": 30.272655
+        },
+        "source": "amap"
+      },
+      {
+        "name": "2元起超市",
+        "address": "武林路510号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-23:00",
+        "tel": "13970605188",
+        "photos_count": 3,
+        "distance": 317.0,
+        "coordinates": {
+          "lng": 120.157663,
+          "lat": 30.272305
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Manner Coffee(密渡桥路2号店)",
+        "address": "密渡桥路14号",
+        "type": "购物服务;服装鞋帽皮具店;品牌服装店",
+        "rating": 4.5,
+        "cost": "15.00",
+        "open_time": "周六至周日 08:30-17:00；周一至周五 08:00-17:00",
+        "tel": "13162663448",
+        "photos_count": 3,
+        "distance": 321.0,
+        "coordinates": {
+          "lng": 120.158186,
+          "lat": 30.275204
+        },
+        "source": "amap"
+      },
+      {
+        "name": "毛源昌眼镜(武林店)",
+        "address": "体育场路448号(近环城西路)",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:30-21:00",
+        "tel": "13185036465",
+        "photos_count": 3,
+        "distance": 339.0,
+        "coordinates": {
+          "lng": 120.155244,
+          "lat": 30.271049
+        },
+        "source": "amap"
+      },
+      {
+        "name": "全家便利店(体育场路二店)",
+        "address": "武林街道体育场路436-2号环城西路96号院",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0571-56337619;17342057346;4009552183",
+        "photos_count": 3,
+        "distance": 346.0,
+        "coordinates": {
+          "lng": 120.155616,
+          "lat": 30.271023
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大光明眼镜(武林店)",
+        "address": "体育场路440号(武林门地铁站A1口步行130米)",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "0571-85069999",
+        "photos_count": 3,
+        "distance": 349.0,
+        "coordinates": {
+          "lng": 120.155727,
+          "lat": 30.271006
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ETHAN壹定制(滨绿大厦A座店)",
+        "address": "滨绿大厦A座1806室",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": "15398627769;15601712230",
+        "photos_count": 3,
+        "distance": 360.0,
+        "coordinates": {
+          "lng": 120.156679,
+          "lat": 30.27704
+        },
+        "source": "amap"
+      },
+      {
+        "name": "喜士多便利店(武林公寓店)",
+        "address": "密渡桥路7号(建设银行旁)",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0571-85150379",
+        "photos_count": 3,
+        "distance": 363.0,
+        "coordinates": {
+          "lng": 120.15874,
+          "lat": 30.274992
+        },
+        "source": "amap"
+      },
+      {
+        "name": "炳炳典当",
+        "address": "体育场路458号一楼101室",
+        "type": "购物服务;特殊买卖场所;典当行",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周五 08:30-17:00；周六至周日 09:00-17:00",
+        "tel": "0571-56080157;0571-56080159",
+        "photos_count": 3,
+        "distance": 394.0,
+        "coordinates": {
+          "lng": 120.154332,
+          "lat": 30.270621
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Suning Pro苏宁易购(杭州苏宁易购广场店)",
+        "address": "湖墅南路90号",
+        "type": "购物服务;家电电子卖场;苏宁",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-20:00 2026-02-14至2026-02-23 10:00-18:00",
+        "tel": "0571-22931533",
+        "photos_count": 3,
+        "distance": 399.0,
+        "coordinates": {
+          "lng": 120.155709,
+          "lat": 30.277649
+        },
+        "source": "amap"
+      },
+      {
+        "name": "苏宁生活广场",
+        "address": "湖墅南路90号",
+        "type": "购物服务;商场;购物中心",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:00",
+        "tel": "18158110777",
+        "photos_count": 3,
+        "distance": 402.0,
+        "coordinates": {
+          "lng": 120.155761,
+          "lat": 30.277673
+        },
+        "source": "amap"
+      },
+      {
+        "name": "全家便利店(湖墅南路店)",
+        "address": "湖墅南路97号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:00-24:00",
+        "tel": "4001685911",
+        "photos_count": 3,
+        "distance": 439.0,
+        "coordinates": {
+          "lng": 120.154946,
+          "lat": 30.278048
+        },
+        "source": "amap"
+      },
+      {
+        "name": "九月生活(马塍店)",
+        "address": "马塍路3-6号",
+        "type": "餐饮服务;糕饼店;糕饼店|购物服务;服装鞋帽皮具店;服装鞋帽皮具店",
+        "rating": 4.6,
+        "cost": "16.00",
+        "open_time": "周一至周日 07:30-21:30",
+        "tel": "0571-88212260",
+        "photos_count": 3,
+        "distance": 442.0,
+        "coordinates": {
+          "lng": 120.1505,
+          "lat": 30.273909
+        },
+        "source": "amap"
+      },
+      {
+        "name": "DJI大疆丨哈苏(杭州大厦概念店)",
+        "address": "环城北路286号杭州大厦D座一楼122店铺",
+        "type": "购物服务;家电电子卖场;数码电子",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周五 10:00-21:30；周六至周日 10:00-22:00",
+        "tel": "0571-85857815",
+        "photos_count": 3,
+        "distance": 443.0,
+        "coordinates": {
+          "lng": 120.159706,
+          "lat": 30.27425
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州收藏品市场",
+        "address": "湖墅南路103号(百大花园内)",
+        "type": "购物服务;专卖店;古玩字画店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周五 09:00-17:00；周六至周日 07:00-17:00",
+        "tel": "0571-88380017;0571-88380088",
+        "photos_count": 3,
+        "distance": 448.0,
+        "coordinates": {
+          "lng": 120.154073,
+          "lat": 30.278026
+        },
+        "source": "amap"
+      },
+      {
+        "name": "VENCHI闻绮(杭州大厦店)",
+        "address": "武林广场21号杭州大厦购物城F2",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.2,
+        "cost": "67.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "15205817909",
+        "photos_count": 3,
+        "distance": 455.0,
+        "coordinates": {
+          "lng": 120.159795,
+          "lat": 30.273546
+        },
+        "source": "amap"
+      },
+      {
+        "name": "周少青设计师女装(华浙大厦店)",
+        "address": "密渡桥路华浙广场1号601室",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "17805816990",
+        "photos_count": 3,
+        "distance": 461.0,
+        "coordinates": {
+          "lng": 120.159842,
+          "lat": 30.274745
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ROLEX劳力士(‭杭州大厦)",
+        "address": "环城北路258号杭州大厦购物城D座首层",
+        "type": "购物服务;专卖店;钟表店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周四,周日 10:00-21:30；周五至周六 10:00-22:00",
+        "tel": "0571-85158989",
+        "photos_count": 3,
+        "distance": 463.0,
+        "coordinates": {
+          "lng": 120.159913,
+          "lat": 30.274313
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浙地珠宝(体育场路)",
+        "address": "体育场路498号浙江地勘大楼1层",
+        "type": "购物服务;专卖店;珠宝首饰工艺品",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 09:30-20:00",
+        "tel": "0571-56363288",
+        "photos_count": 3,
+        "distance": 463.0,
+        "coordinates": {
+          "lng": 120.153673,
+          "lat": 30.27012
+        },
+        "source": "amap"
+      },
+      {
+        "name": "世纪联华超市(马塍店)",
+        "address": "马塍路3-7号",
+        "type": "购物服务;超级市场;超市",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 08:30-21:00",
+        "tel": "0571-88212301",
+        "photos_count": 3,
+        "distance": 465.0,
+        "coordinates": {
+          "lng": 120.150266,
+          "lat": 30.274268
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州收藏品市场北楼交易区",
+        "address": "湖墅南路103号(百大花园内)",
+        "type": "购物服务;专卖店;古玩字画店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "13003661015",
+        "photos_count": 3,
+        "distance": 465.0,
+        "coordinates": {
+          "lng": 120.154477,
+          "lat": 30.278249
+        },
+        "source": "amap"
+      },
+      {
+        "name": "戴森dyson(杭州大厦购物城D座店)",
+        "address": "环城北路256杭州大厦购物城D座华浙店F4层",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "13870329425",
+        "photos_count": 3,
+        "distance": 466.0,
+        "coordinates": {
+          "lng": 120.159947,
+          "lat": 30.274267
+        },
+        "source": "amap"
+      },
+      {
+        "name": "MEISSEN麦森瓷器",
+        "address": "环城北路256杭州大厦购物城D座华浙店F3层",
+        "type": "购物服务;家居建材市场;建材五金市场",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "0571-87706299",
+        "photos_count": 2,
+        "distance": 466.0,
+        "coordinates": {
+          "lng": 120.159947,
+          "lat": 30.274272
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BANG&OLUFSEN(杭州大厦购物城D座店)",
+        "address": "环城北路258号杭州大厦D座1楼131铺",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周四 10:00-21:30； 周日 10:00-21:30； 周五至周六 10:00-22:00",
+        "tel": "0571-85108112",
+        "photos_count": 3,
+        "distance": 466.0,
+        "coordinates": {
+          "lng": 120.159945,
+          "lat": 30.274327
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州大厦购物城D座(华浙店)",
+        "address": "环城北路256-258号",
+        "type": "购物服务;商场;购物中心",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0571-85153911;0571-85362110;13064791280",
+        "photos_count": 3,
+        "distance": 466.0,
+        "coordinates": {
+          "lng": 120.159949,
+          "lat": 30.274269
+        },
+        "source": "amap"
+      },
+      {
+        "name": "周大福(杭州大厦购物城D座店)",
+        "address": "环城北路256杭州大厦购物城D座华浙店F2层",
+        "type": "购物服务;专卖店;珠宝首饰工艺品",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周五 10:00-21:30；周六至周日 10:00-22:00",
+        "tel": "0571-85156483",
+        "photos_count": 3,
+        "distance": 466.0,
+        "coordinates": {
+          "lng": 120.159952,
+          "lat": 30.274239
+        },
+        "source": "amap"
+      },
+      {
+        "name": "浪琴表LONGINES(杭州大厦购物城D座店)",
+        "address": "环城北路256杭州大厦购物城D座华浙店F1层",
+        "type": "购物服务;专卖店;钟表店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "0571-87025893",
+        "photos_count": 1,
+        "distance": 467.0,
+        "coordinates": {
+          "lng": 120.159957,
+          "lat": 30.274017
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Blancpain宝珀(杭州大厦购物城D座店)",
+        "address": "拱墅区环城北路258号杭州大厦购物城D座F1层",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 467.0,
+        "coordinates": {
+          "lng": 120.159957,
+          "lat": 30.27393
+        },
+        "source": "amap"
+      },
+      {
+        "name": "积家Jaeger-LeCoultre(杭州大厦购物城D座店)",
+        "address": "拱墅区杭州市拱墅区杭州大厦D座一楼",
+        "type": "购物服务;专卖店;钟表店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 468.0,
+        "coordinates": {
+          "lng": 120.159946,
+          "lat": 30.273625
+        },
+        "source": "amap"
+      },
+      {
+        "name": "HARMAN哈曼(杭州大厦购物城D座店)",
+        "address": "环城北路258号杭州大厦D座4F",
+        "type": "购物服务;家电电子卖场;家电电子卖场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周四,周日 10:00-21:30；周五至周六 10:00-22:00",
+        "tel": "0571-87017991",
+        "photos_count": 3,
+        "distance": 470.0,
+        "coordinates": {
+          "lng": 120.159975,
+          "lat": 30.274425
+        },
+        "source": "amap"
+      },
+      {
+        "name": "博士Bose(杭州大厦购物城D座店)",
+        "address": "环城北路258号杭州大厦D座4楼",
+        "type": "购物服务;专卖店;音像店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周四,周日 10:00-21:30；周五至周六 10:00-22:00",
+        "tel": "0571-85279911",
+        "photos_count": 3,
+        "distance": 472.0,
+        "coordinates": {
+          "lng": 120.160012,
+          "lat": 30.27412
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西湖龙井(狮牌旗舰店)",
+        "address": "武林454号(武林门地铁站A1口步行100米)",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 08:30-22:30",
+        "tel": "13588110806",
+        "photos_count": 3,
+        "distance": 473.0,
+        "coordinates": {
+          "lng": 120.158478,
+          "lat": 30.270999
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Fissler菲仕乐(杭州大厦购物城D座店)",
+        "address": "环城北路256杭州大厦购物城D座华浙店F4层",
+        "type": "购物服务;家居建材市场;厨卫市场",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周四，周日 10:00-21:30；周五至周六 10:00-22:00",
+        "tel": "0571-85060685",
+        "photos_count": 3,
+        "distance": 474.0,
+        "coordinates": {
+          "lng": 120.160024,
+          "lat": 30.2744
+        },
+        "source": "amap"
+      },
+      {
+        "name": "SONY索尼(杭州大厦购物城D座店)",
+        "address": "环城北路256杭州大厦购物城D座华浙店F4层",
+        "type": "购物服务;家电电子卖场;数码电子",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周四，周日 10:00-21:30；周五至周六 10:00-22:00",
+        "tel": "0571-85278436;0571-85362110",
+        "photos_count": 3,
+        "distance": 475.0,
+        "coordinates": {
+          "lng": 120.160012,
+          "lat": 30.274619
+        },
+        "source": "amap"
+      },
+      {
+        "name": "华为鸿蒙智家授权专区(杭州大厦)",
+        "address": "米市巷街道环城北路258号",
+        "type": "购物服务;家电电子卖场;手机销售",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "4006680820",
+        "photos_count": 3,
+        "distance": 477.0,
+        "coordinates": {
+          "lng": 120.160055,
+          "lat": 30.274355
+        },
+        "source": "amap"
+      },
+      {
+        "name": "RADO(杭州大厦购物城D座店)",
+        "address": "环城北路256杭州大厦购物城D座华浙店F1层",
+        "type": "购物服务;专卖店;钟表店",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": "周一至周四，周日 10:00-21:30；周五至周六 10:00-22:00",
+        "tel": "13240459457",
+        "photos_count": 3,
+        "distance": 478.0,
+        "coordinates": {
+          "lng": 120.160075,
+          "lat": 30.274275
+        },
+        "source": "amap"
+      },
+      {
+        "name": "IWC万国表(杭州大厦购物城D座店)",
+        "address": "环城北路256杭州大厦购物城D座华浙店F1层",
+        "type": "购物服务;专卖店;钟表店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周四，周日 10:00-21:30；周五至周六 10:00-22:00",
+        "tel": "0571-85063043",
+        "photos_count": 3,
+        "distance": 479.0,
+        "coordinates": {
+          "lng": 120.160075,
+          "lat": 30.273825
+        },
+        "source": "amap"
+      },
+      {
+        "name": "LAZBOY(杭州大厦店)",
+        "address": "杭州大厦D座3楼",
+        "type": "购物服务;服装鞋帽皮具店;品牌服装店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "13706715714",
+        "photos_count": 1,
+        "distance": 479.0,
+        "coordinates": {
+          "lng": 120.160067,
+          "lat": 30.274503
+        },
+        "source": "amap"
+      },
+      {
+        "name": "欣灿便利店",
+        "address": "杭州收藏品市场东北门旁",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 480.0,
+        "coordinates": {
+          "lng": 120.154813,
+          "lat": 30.278409
+        },
+        "source": "amap"
+      },
+      {
+        "name": "徕卡相机专卖店(杭州大厦购物城D座店)",
+        "address": "环城北路258号杭州大厦D座一层",
+        "type": "购物服务;家电电子卖场;数码电子|购物服务;专卖店;摄影器材店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0571-85862110;15825531221",
+        "photos_count": 3,
+        "distance": 480.0,
+        "coordinates": {
+          "lng": 120.160075,
+          "lat": 30.274525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "双立人(杭州大厦购物城D座店)",
+        "address": "环城北路258号杭州大厦购物城-D座4楼",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周五 10:00-21:30； 周六至周日 10:00-22:00",
+        "tel": "0571-87760928",
+        "photos_count": 3,
+        "distance": 482.0,
+        "coordinates": {
+          "lng": 120.16011,
+          "lat": 30.274423
+        },
+        "source": "amap"
+      },
+      {
+        "name": "江诗丹顿(杭州大厦店)",
+        "address": "拱墅区华浙广场2号3号杭州大厦购物城D座1楼",
+        "type": "购物服务;专卖店;钟表店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "0571-88291286",
+        "photos_count": 3,
+        "distance": 484.0,
+        "coordinates": {
+          "lng": 120.160124,
+          "lat": 30.273783
+        },
+        "source": "amap"
+      },
+      {
+        "name": "舒婷果业(武林路店)",
+        "address": "武林路450号",
+        "type": "购物服务;综合市场;果品市场",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00 2026-02-10至2026-03-04 09:00-21:00",
+        "tel": "13655673803",
+        "photos_count": 3,
+        "distance": 484.0,
+        "coordinates": {
+          "lng": 120.158531,
+          "lat": 30.27091
+        },
+        "source": "amap"
+      },
+      {
+        "name": "京东家电(杭州市S级体验店)",
+        "address": "1实际经营与高德米市巷街道文晖路419号(杭州市S级体验店)2营业执照浙江省湖墅南路103号百大花园裙房一层13室",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "0571-88779169;15869181665;18657126987",
+        "photos_count": 3,
+        "distance": 488.0,
+        "coordinates": {
+          "lng": 120.153844,
+          "lat": 30.278354
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新疆兄弟烧烤店(莫干山路店)",
+        "address": "莫干山路17号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.4,
+        "cost": "61.00",
+        "open_time": "周一至周日 16:00-04:00",
+        "tel": "18099431893",
+        "photos_count": 3,
+        "distance": 113.0,
+        "coordinates": {
+          "lng": 120.154119,
+          "lat": 30.273536
+        },
+        "source": "amap"
+      },
+      {
+        "name": "PICATAPA",
+        "address": "莫干山路11号(武林门地铁站A1口步行370米)",
+        "type": "餐饮服务;外国餐厅;地中海风格菜品",
+        "rating": 4.6,
+        "cost": "203.00",
+        "open_time": "周二至周日 11:30-13:30,17:00-21:00 2026-02-15至2026-02-15 周一至周日 全天关闭；2026-02-17至2026-02-22 周一至周日 全天关闭；2026-02-24至2026-02-24 周一至周日 全天关闭",
+        "tel": "18157167808",
+        "photos_count": 3,
+        "distance": 117.0,
+        "coordinates": {
+          "lng": 120.154189,
+          "lat": 30.273391
+        },
+        "source": "amap"
+      },
+      {
+        "name": "久旦·鲜串烧鸟(湖墅南路店)",
+        "address": "湖墅南路4号联谊楼",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "90.00",
+        "open_time": "周一至周日 17:30-03:30 2026-02-10至2026-02-23 全天关闭；2026-02-24至2026-03-04 17:30-03:30",
+        "tel": "18868806190",
+        "photos_count": 3,
+        "distance": 187.0,
+        "coordinates": {
+          "lng": 120.156999,
+          "lat": 30.273727
+        },
+        "source": "amap"
+      },
+      {
+        "name": "吁咗Yuzuo",
+        "address": "省农机大楼环城北路307-309、303-6",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "56.00",
+        "open_time": "周一至周日 10:00-02:00",
+        "tel": "19857102773",
+        "photos_count": 3,
+        "distance": 190.0,
+        "coordinates": {
+          "lng": 120.156006,
+          "lat": 30.272575
+        },
+        "source": "amap"
+      },
+      {
+        "name": "ONOFF Noir(密渡桥路店)",
+        "address": "密渡桥路33-1号",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": "18658867150",
+        "photos_count": 3,
+        "distance": 192.0,
+        "coordinates": {
+          "lng": 120.156879,
+          "lat": 30.27489
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莫居茶舍(JW万豪店)",
+        "address": "湖墅南路28号杭州JW万豪酒店三楼",
+        "type": "餐饮服务;茶艺馆;茶艺馆",
+        "rating": 4.6,
+        "cost": "158.00",
+        "open_time": "周一至周日 09:30-23:00",
+        "tel": "18979337528",
+        "photos_count": 3,
+        "distance": 192.0,
+        "coordinates": {
+          "lng": 120.156937,
+          "lat": 30.274786
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Cru扒房(杭州JW万豪店)",
+        "address": "湖墅南路28号杭州万豪酒店2层",
+        "type": "餐饮服务;外国餐厅;牛扒店(扒房)",
+        "rating": 3.8,
+        "cost": "576.00",
+        "open_time": "周二至周日 18:00-22:00",
+        "tel": "0571-89817337;0571-89817339",
+        "photos_count": 3,
+        "distance": 192.0,
+        "coordinates": {
+          "lng": 120.156922,
+          "lat": 30.274818
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州JW万豪酒店亚洲风尚餐厅",
+        "address": "湖墅南路28号杭州JW万豪酒店1楼",
+        "type": "餐饮服务;外国餐厅;其它亚洲菜",
+        "rating": 4.2,
+        "cost": "267.00",
+        "open_time": "周三至周日 17:30-21:30",
+        "tel": "0571-89817357",
+        "photos_count": 3,
+        "distance": 193.0,
+        "coordinates": {
+          "lng": 120.156955,
+          "lat": 30.274769
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州JW万豪酒店万豪中餐厅",
+        "address": "湖墅南路28号杭州JW万豪酒店2楼",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "167.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-21:30",
+        "tel": "0571-89817305",
+        "photos_count": 3,
+        "distance": 195.0,
+        "coordinates": {
+          "lng": 120.156967,
+          "lat": 30.274804
+        },
+        "source": "amap"
+      },
+      {
+        "name": "初屋食居(湖墅南路店)",
+        "address": "湖墅南路37号",
+        "type": "餐饮服务;外国餐厅;日本料理",
+        "rating": 4.5,
+        "cost": "101.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-22:00",
+        "tel": "19972709582",
+        "photos_count": 3,
+        "distance": 229.0,
+        "coordinates": {
+          "lng": 120.155663,
+          "lat": 30.276102
+        },
+        "source": "amap"
+      },
+      {
+        "name": "纳德自助餐厅",
+        "address": "湖墅南路2号杭州纳德世家3层",
+        "type": "餐饮服务;外国餐厅;西餐厅(综合风味)",
+        "rating": 4.5,
+        "cost": "301.00",
+        "open_time": "周一至周五 17:30-20:30；周六至周日 11:30-14:00,17:30-20:30",
+        "tel": "0571-85279616;0571-85279637;0571-85880888",
+        "photos_count": 3,
+        "distance": 239.0,
+        "coordinates": {
+          "lng": 120.157444,
+          "lat": 30.273365
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州纳德世家",
+        "address": "拱墅南路2号",
+        "type": "住宿服务;宾馆酒店;四星级宾馆|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85880888",
+        "photos_count": 3,
+        "distance": 240.0,
+        "coordinates": {
+          "lng": 120.157467,
+          "lat": 30.27341
+        },
+        "source": "amap"
+      },
+      {
+        "name": "知味观",
+        "address": "莫干山路与武林巷交叉口东南100米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "53.00",
+        "open_time": "周一至周日 07:00-20:00",
+        "tel": "0571-87017778",
+        "photos_count": 3,
+        "distance": 284.0,
+        "coordinates": {
+          "lng": 120.153515,
+          "lat": 30.276261
+        },
+        "source": "amap"
+      },
+      {
+        "name": "岩霸茶空间(浙江运营中心店)",
+        "address": "天目山路7号(武林门地铁站F口步行380米)",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.5,
+        "cost": "92.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "0571-88395828;19157800013",
+        "photos_count": 3,
+        "distance": 286.0,
+        "coordinates": {
+          "lng": 120.153078,
+          "lat": 30.272212
+        },
+        "source": "amap"
+      },
+      {
+        "name": "湘之荷·品质湘菜",
+        "address": "莫干山路54号(银星停车场内海鲜礼盒入口)",
+        "type": "餐饮服务;中餐厅;湖南菜(湘菜)",
+        "rating": 4.6,
+        "cost": "118.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-21:00",
+        "tel": "18989881503",
+        "photos_count": 3,
+        "distance": 288.0,
+        "coordinates": {
+          "lng": 120.153525,
+          "lat": 30.276311
+        },
+        "source": "amap"
+      },
+      {
+        "name": "和味小厨(湖墅南路店)",
+        "address": "环城北路280号一楼(杭州纳德世家后面)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.3,
+        "cost": "88.00",
+        "open_time": "周一至周日 10:30-21:00",
+        "tel": "13958190794",
+        "photos_count": 3,
+        "distance": 289.0,
+        "coordinates": {
+          "lng": 120.158095,
+          "lat": 30.273839
+        },
+        "source": "amap"
+      },
+      {
+        "name": "粥皇港式茶餐厅(武林门店)",
+        "address": "天目山路9号(武林门地铁站E口步行400米)",
+        "type": "餐饮服务;快餐厅;茶餐厅",
+        "rating": 4.2,
+        "cost": "35.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "19706852295",
+        "photos_count": 3,
+        "distance": 289.0,
+        "coordinates": {
+          "lng": 120.152999,
+          "lat": 30.272232
+        },
+        "source": "amap"
+      },
+      {
+        "name": "碗里南风",
+        "address": "北山街道天目山路7号一号楼10商铺",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": "37.00",
+        "open_time": "周一至周四 11:00-14:30,16:30-04:00；周五至周日 11:00-04:00 2026-02-11至2026-02-20 周一至周日 全天关闭",
+        "tel": "18157120589",
+        "photos_count": 3,
+        "distance": 302.0,
+        "coordinates": {
+          "lng": 120.152827,
+          "lat": 30.272217
+        },
+        "source": "amap"
+      },
+      {
+        "name": "回味椒麻鸡(环北新村社区豆腐里店)",
+        "address": "武林路512号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.3,
+        "cost": "44.00",
+        "open_time": "周一至周日 10:30-23:00",
+        "tel": "19157630615",
+        "photos_count": 3,
+        "distance": 308.0,
+        "coordinates": {
+          "lng": 120.15763,
+          "lat": 30.272395
+        },
+        "source": "amap"
+      },
+      {
+        "name": "粤潮醉虾打边炉",
+        "address": "天目山路7号东海宾馆1号楼21号铺",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.6,
+        "cost": "155.00",
+        "open_time": "周一至周日 10:00-14:30,16:30-00:30",
+        "tel": "0571-82430774",
+        "photos_count": 3,
+        "distance": 314.0,
+        "coordinates": {
+          "lng": 120.152652,
+          "lat": 30.272227
+        },
+        "source": "amap"
+      },
+      {
+        "name": "千里香馄饨王(环城西路店)",
+        "address": "环城西路55号(武林门地铁站E口步行130米)",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周日 06:30-21:00",
+        "tel": "13018961769;18760508591",
+        "photos_count": 3,
+        "distance": 324.0,
+        "coordinates": {
+          "lng": 120.154722,
+          "lat": 30.271199
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宋太阳吐司(密渡桥店)",
+        "address": "密渡桥路12-2号",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 3.7,
+        "cost": "30.00",
+        "open_time": "周一至周日 08:30-21:30",
+        "tel": "13738181458",
+        "photos_count": 3,
+        "distance": 326.0,
+        "coordinates": {
+          "lng": 120.158247,
+          "lat": 30.275209
+        },
+        "source": "amap"
+      },
+      {
+        "name": "醉三衢(武林店).衢州菜",
+        "address": "武林街道体育场路436号2幢西侧一层",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "65.00",
+        "open_time": "周一至周日 09:30-14:00,16:00-21:30",
+        "tel": "15058149684",
+        "photos_count": 3,
+        "distance": 334.0,
+        "coordinates": {
+          "lng": 120.156152,
+          "lat": 30.271239
+        },
+        "source": "amap"
+      },
+      {
+        "name": "饼小仙杂粮煎饼(武林路店)",
+        "address": "武林路496号(武林门地铁站A1口步行490米)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周日 06:00-22:00",
+        "tel": "19357551737",
+        "photos_count": 3,
+        "distance": 337.0,
+        "coordinates": {
+          "lng": 120.157756,
+          "lat": 30.272118
+        },
+        "source": "amap"
+      },
+      {
+        "name": "重庆鸡公煲巫山烤全鱼",
+        "address": "体育场路436-2号(武林门地铁站A1口步行200米)",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 4.1,
+        "cost": "48.00",
+        "open_time": "周一至周日 09:30-03:55",
+        "tel": "18106510388",
+        "photos_count": 3,
+        "distance": 366.0,
+        "coordinates": {
+          "lng": 120.156399,
+          "lat": 30.271003
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陈文鼎(拱墅武林店)",
+        "address": "天水街道武林路486号",
+        "type": "餐饮服务;休闲餐饮场所;休闲餐饮场所",
+        "rating": 4.4,
+        "cost": "11.00",
+        "open_time": "周一至周日 09:00-22:30",
+        "tel": "17300950211",
+        "photos_count": 3,
+        "distance": 375.0,
+        "coordinates": {
+          "lng": 120.157961,
+          "lat": 30.2718
+        },
+        "source": "amap"
+      },
+      {
+        "name": "嵊州私房菜(武林店)",
+        "address": "武林路484号(武林门地铁站A1口步行450米)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.3,
+        "cost": "42.00",
+        "open_time": "周一至周日 10:00-01:09",
+        "tel": "15158826729;18258155412",
+        "photos_count": 2,
+        "distance": 379.0,
+        "coordinates": {
+          "lng": 120.157969,
+          "lat": 30.271755
+        },
+        "source": "amap"
+      },
+      {
+        "name": "肯德基(杭州万象店)",
+        "address": "体育场路430号(武林门地铁站A1口步行210米)",
+        "type": "餐饮服务;快餐厅;肯德基",
+        "rating": 4.6,
+        "cost": "36.00",
+        "open_time": "周一至周日 06:00-23:00",
+        "tel": "0571-85164577",
+        "photos_count": 3,
+        "distance": 380.0,
+        "coordinates": {
+          "lng": 120.156544,
+          "lat": 30.270922
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陈生记原汤米线(杭州武林忆泊酒店店)",
+        "address": "体育场路辅路与混堂桥路交叉口东60米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.4,
+        "cost": "30.00",
+        "open_time": "周一至周日 10:00-21:00 2026-02-15至2026-02-22 周一至周日 全天关闭",
+        "tel": "0571-85063180;17316935223;18837585886",
+        "photos_count": 3,
+        "distance": 382.0,
+        "coordinates": {
+          "lng": 120.156642,
+          "lat": 30.270931
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真(HA LAL)•伊京轩兰州牛肉面(武林广场店)",
+        "address": "体育场路426号-3伊京轩兰州牛肉面",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "31.00",
+        "open_time": "周一至周日 08:00-23:45",
+        "tel": "18267173442",
+        "photos_count": 3,
+        "distance": 398.0,
+        "coordinates": {
+          "lng": 120.156928,
+          "lat": 30.27089
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(浙江移动大厦店)",
+        "address": "环城北路288号1幢一层102室",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "22.00",
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 411.0,
+        "coordinates": {
+          "lng": 120.159364,
+          "lat": 30.273731
+        },
+        "source": "amap"
+      },
+      {
+        "name": "军儿面馆(武林店)",
+        "address": "武林路468号(武林门地铁站A1口步行390米)",
+        "type": "餐饮服务;中餐厅;浙江菜",
+        "rating": 4.5,
+        "cost": "22.00",
+        "open_time": "周一至周日 07:30-21:00",
+        "tel": "18329191955",
+        "photos_count": 3,
+        "distance": 424.0,
+        "coordinates": {
+          "lng": 120.15823,
+          "lat": 30.271409
+        },
+        "source": "amap"
+      },
+      {
+        "name": "千岛湖鱼味馆(西湖店)",
+        "address": "环城西路92号环岛宾馆4层(武林门地铁站A1口旁)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.6,
+        "cost": "82.00",
+        "open_time": "周一至周日 10:00-13:30,16:30-21:30",
+        "tel": "0571-85060088",
+        "photos_count": 3,
+        "distance": 446.0,
+        "coordinates": {
+          "lng": 120.155667,
+          "lat": 30.270123
+        },
+        "source": "amap"
+      },
+      {
+        "name": "NOLITA·诺餐厅(杭州大厦购物城D座店)",
+        "address": "杭州大厦D座一楼123商铺密度桥路星巴克旁边光大银行正对面",
+        "type": "餐饮服务;外国餐厅;外国餐厅",
+        "rating": 4.5,
+        "cost": "204.00",
+        "open_time": "周一至周日 11:00-22:00",
+        "tel": "0571-81905656;19032218979",
+        "photos_count": 3,
+        "distance": 447.0,
+        "coordinates": {
+          "lng": 120.159732,
+          "lat": 30.274484
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新疆好朋友烧烤店(武林路店)",
+        "address": "武林路454-1号(武林门地铁站A1口步行370米)",
+        "type": "餐饮服务;中餐厅;综合酒楼",
+        "rating": 4.5,
+        "cost": "66.00",
+        "open_time": "周一至周日 14:00-02:00",
+        "tel": "13809981880;18058773801",
+        "photos_count": 3,
+        "distance": 465.0,
+        "coordinates": {
+          "lng": 120.158372,
+          "lat": 30.271021
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金牌外婆家(杭州大厦D座店)",
+        "address": "环城北路256-258号杭州大厦d座5楼",
+        "type": "餐饮服务;中餐厅;浙江菜",
+        "rating": 4.5,
+        "cost": "142.00",
+        "open_time": "周一至周日 10:30-21:00",
+        "tel": "0571-85278237",
+        "photos_count": 3,
+        "distance": 467.0,
+        "coordinates": {
+          "lng": 120.159959,
+          "lat": 30.274127
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东富酒家(杭州大厦购物城D座店)",
+        "address": "杭州大厦D座5楼(武林广场地铁站B口步行400米)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "460.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-21:00",
+        "tel": "13335819588",
+        "photos_count": 3,
+        "distance": 468.0,
+        "coordinates": {
+          "lng": 120.15997,
+          "lat": 30.27419
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老娘舅(杭州文晖路店)",
+        "address": "文晖路419号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "25.00",
+        "open_time": "周一至周日 09:30-20:30",
+        "tel": "0571-85225509",
+        "photos_count": 3,
+        "distance": 475.0,
+        "coordinates": {
+          "lng": 120.153962,
+          "lat": 30.278256
+        },
+        "source": "amap"
+      },
+      {
+        "name": "喜园妈妈菜.新派衢州菜(文晖路店)",
+        "address": "莫干山路80号米蓝大厦",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "80.00",
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "17767127609",
+        "photos_count": 3,
+        "distance": 475.0,
+        "coordinates": {
+          "lng": 120.15295,
+          "lat": 30.277948
+        },
+        "source": "amap"
+      },
+      {
+        "name": "樨香(杭州大厦购物城D座店)",
+        "address": "杭州大厦购物城D座5层",
+        "type": "餐饮服务;中餐厅;浙江菜",
+        "rating": 4.6,
+        "cost": "248.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-21:00",
+        "tel": "0571-86835939",
+        "photos_count": 3,
+        "distance": 480.0,
+        "coordinates": {
+          "lng": 120.160062,
+          "lat": 30.274613
+        },
+        "source": "amap"
+      },
+      {
+        "name": "遇九西贵州黄牛肉火锅",
+        "address": "文晖路423号(沈塘桥地铁站C3口步行330米)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.6,
+        "cost": "95.00",
+        "open_time": "周一至周日 10:30-02:00",
+        "tel": "18167119803",
+        "photos_count": 3,
+        "distance": 481.0,
+        "coordinates": {
+          "lng": 120.153022,
+          "lat": 30.278033
+        },
+        "source": "amap"
+      },
+      {
+        "name": "泸溪河",
+        "address": "湖墅南路与文晖路交叉口距离地铁2号线沈塘桥C2口560m",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.5,
+        "cost": "27.00",
+        "open_time": "周一至周日 08:00-22:00 2026-02-10至2026-03-04 周一至周日 08:30-17:00",
+        "tel": "18118806434",
+        "photos_count": 3,
+        "distance": 486.0,
+        "coordinates": {
+          "lng": 120.154815,
+          "lat": 30.27846
+        },
+        "source": "amap"
+      },
+      {
+        "name": "和颐至格酒店(杭州西湖武林广场店)",
+        "address": "莫干山路5号(武林门地铁站E口步行440米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "18158408661",
+        "photos_count": 3,
+        "distance": 132.0,
+        "coordinates": {
+          "lng": 120.154161,
+          "lat": 30.273229
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州JW万豪酒店",
+        "address": "湖墅南路28号",
+        "type": "住宿服务;宾馆酒店;五星级宾馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85788888",
+        "photos_count": 3,
+        "distance": 195.0,
+        "coordinates": {
+          "lng": 120.156971,
+          "lat": 30.274795
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州武林万怡酒店",
+        "address": "湖墅南路28号",
+        "type": "住宿服务;宾馆酒店;五星级宾馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-89817777",
+        "photos_count": 3,
+        "distance": 201.0,
+        "coordinates": {
+          "lng": 120.157177,
+          "lat": 30.27433
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州西湖JOandJOE(武林门店)",
+        "address": "莫干山路9号(武林门地铁站E口步行350米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "18158408661",
+        "photos_count": 3,
+        "distance": 140.0,
+        "coordinates": {
+          "lng": 120.154175,
+          "lat": 30.273125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "布丁酒店(杭州武林广场地铁站店)",
+        "address": "湖墅南路4号联谊楼6-7层",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-87807002;0571-87807012",
+        "photos_count": 3,
+        "distance": 200.0,
+        "coordinates": {
+          "lng": 120.15712,
+          "lat": 30.273642
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州欢心假日酒店(武林广场地铁站店)",
+        "address": "湖墅南路18号1层万豪大酒店和杭州纳德世家中间",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-81670660",
+        "photos_count": 3,
+        "distance": 183.0,
+        "coordinates": {
+          "lng": 120.156993,
+          "lat": 30.273919
+        },
+        "source": "amap"
+      },
+      {
+        "name": "全季酒店(杭州大厦店)",
+        "address": "环城北路280号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-87567088",
+        "photos_count": 3,
+        "distance": 276.0,
+        "coordinates": {
+          "lng": 120.157946,
+          "lat": 30.273773
+        },
+        "source": "amap"
+      },
+      {
+        "name": "CityNote希诺酒店(杭州西湖武林门地铁站店)",
+        "address": "天目山路38号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-86696699;17799869958",
+        "photos_count": 3,
+        "distance": 300.0,
+        "coordinates": {
+          "lng": 120.152318,
+          "lat": 30.272864
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州运来旅馆",
+        "address": "混堂桥26号2层(武林门地铁站A1口步行340米)",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85054124",
+        "photos_count": 3,
+        "distance": 202.0,
+        "coordinates": {
+          "lng": 120.155977,
+          "lat": 30.272445
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雷迪森世嘉酒店(杭州武林广场沈塘桥地铁站店)",
+        "address": "莫干山路54号(沈塘桥地铁站F1口步行410米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88268066;0571-88268067",
+        "photos_count": 3,
+        "distance": 300.0,
+        "coordinates": {
+          "lng": 120.153386,
+          "lat": 30.276353
+        },
+        "source": "amap"
+      },
+      {
+        "name": "城际杭州西湖武林广场酒店",
+        "address": "天目山路40号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-58977888;17608160616",
+        "photos_count": 3,
+        "distance": 337.0,
+        "coordinates": {
+          "lng": 120.151911,
+          "lat": 30.27284
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州西湖武林广场环城北路轻居酒店",
+        "address": "环城北路292号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85028555",
+        "photos_count": 3,
+        "distance": 339.0,
+        "coordinates": {
+          "lng": 120.158599,
+          "lat": 30.273688
+        },
+        "source": "amap"
+      },
+      {
+        "name": "纳德大酒店大堂",
+        "address": "拱墅南路2号杭州纳德世家",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 251.0,
+        "coordinates": {
+          "lng": 120.157578,
+          "lat": 30.273389
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汉庭酒店(杭州西湖武林广场店)",
+        "address": "体育场路436号(武林门地铁站A1口步行190米)",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店|公司企业;公司;公司",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85171616;0571-85176161",
+        "photos_count": 3,
+        "distance": 363.0,
+        "coordinates": {
+          "lng": 120.156333,
+          "lat": 30.271011
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东海宾馆(杭州西湖武林广场店)",
+        "address": "天目山路7号(武林门地铁站F口步行280米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85213179",
+        "photos_count": 3,
+        "distance": 344.0,
+        "coordinates": {
+          "lng": 120.152729,
+          "lat": 30.271776
+        },
+        "source": "amap"
+      },
+      {
+        "name": "倾宿社区民宿(杭州西湖武林门地铁站店)",
+        "address": "天目山路7号(武林门地铁站F口步行350米)",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "13175102796",
+        "photos_count": 3,
+        "distance": 297.0,
+        "coordinates": {
+          "lng": 120.15287,
+          "lat": 30.272245
+        },
+        "source": "amap"
+      },
+      {
+        "name": "SFEEL设计师酒店(杭州西湖武林广场店)",
+        "address": "天目山路7号胜利新村一弄东海创意中心",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88071888",
+        "photos_count": 3,
+        "distance": 384.0,
+        "coordinates": {
+          "lng": 120.152418,
+          "lat": 30.271535
+        },
+        "source": "amap"
+      },
+      {
+        "name": "忆泊酒店(杭州武林店)",
+        "address": "体育场426号(武林门地铁站A2口步行270米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-28256777",
+        "photos_count": 3,
+        "distance": 385.0,
+        "coordinates": {
+          "lng": 120.156816,
+          "lat": 30.270966
+        },
+        "source": "amap"
+      },
+      {
+        "name": "里白酒店(杭州西湖武林广场店)",
+        "address": "新祥利大楼东门东南60米",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88827066;15395717066",
+        "photos_count": 3,
+        "distance": 330.0,
+        "coordinates": {
+          "lng": 120.15188,
+          "lat": 30.273062
+        },
+        "source": "amap"
+      },
+      {
+        "name": "全季酒店(杭州武林门地铁站店)",
+        "address": "武林路480号(武林门地铁站A1口步行430米)",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-86758099;0571-86758099,0",
+        "photos_count": 3,
+        "distance": 392.0,
+        "coordinates": {
+          "lng": 120.158097,
+          "lat": 30.271704
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州天平酒店",
+        "address": "武林街道体育场路438号混堂桥4号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85060585",
+        "photos_count": 3,
+        "distance": 295.0,
+        "coordinates": {
+          "lng": 120.156053,
+          "lat": 30.271576
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家酒店(武林广场武林门地铁站店)",
+        "address": "体育场路508号(武林门地铁站F口步行150米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-81387373",
+        "photos_count": 3,
+        "distance": 401.0,
+        "coordinates": {
+          "lng": 120.152693,
+          "lat": 30.271155
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雷迪森世嘉酒店(西湖武林广场店)-大堂",
+        "address": "莫干山路与武林巷交叉口东80米",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 302.0,
+        "coordinates": {
+          "lng": 120.153398,
+          "lat": 30.276383
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州环岛国际酒店",
+        "address": "环城西路92号(武林门地铁站A1口步行80米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85068666;15869368049;19012879211",
+        "photos_count": 3,
+        "distance": 439.0,
+        "coordinates": {
+          "lng": 120.15578,
+          "lat": 30.270195
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州武林国际城市营地(西湖武林门地铁站店)",
+        "address": "体育场路409号万华商务楼B座9楼",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "18606520881",
+        "photos_count": 3,
+        "distance": 437.0,
+        "coordinates": {
+          "lng": 120.156658,
+          "lat": 30.270409
+        },
+        "source": "amap"
+      },
+      {
+        "name": "背包十年青年旅舍(杭州武林广场沈塘桥地铁站店)",
+        "address": "文晖路419号(湖墅南路103百大花园裙房)",
+        "type": "住宿服务;旅馆招待所;青年旅舍",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88189008;19957898080",
+        "photos_count": 3,
+        "distance": 480.0,
+        "coordinates": {
+          "lng": 120.154227,
+          "lat": 30.278351
+        },
+        "source": "amap"
+      },
+      {
+        "name": "布丁精选酒店(杭州武林广场西湖文化广场地铁站店)",
+        "address": "湖墅南路96号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85801173",
+        "photos_count": 3,
+        "distance": 467.0,
+        "coordinates": {
+          "lng": 120.156187,
+          "lat": 30.278191
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家素柏·云酒店(杭州武林广场店)",
+        "address": "马塍路4号A座",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88070899;19157620021;0571-88070899,9",
+        "photos_count": 3,
+        "distance": 483.0,
+        "coordinates": {
+          "lng": 120.150098,
+          "lat": 30.274541
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州铂瑞酒店",
+        "address": "体育场路415号1幢(武林门地铁站A1口步行120米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-56831603",
+        "photos_count": 3,
+        "distance": 458.0,
+        "coordinates": {
+          "lng": 120.15639,
+          "lat": 30.270139
+        },
+        "source": "amap"
+      },
+      {
+        "name": "忆泊酒店(杭州武林店)-大堂",
+        "address": "体育场路辅路与混堂桥路交叉口东80米",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 384.0,
+        "coordinates": {
+          "lng": 120.156775,
+          "lat": 30.270962
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汉庭酒店(杭州武林门地铁站店)",
+        "address": "武林街道体育场路385号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-87003999;0571-87003999,0",
+        "photos_count": 3,
+        "distance": 495.0,
+        "coordinates": {
+          "lng": 120.157935,
+          "lat": 30.270379
+        },
+        "source": "amap"
+      },
+      {
+        "name": "桔子酒店(杭州西湖武林门地铁站店)",
+        "address": "体育场路395号,在运务大楼附近",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-56660558;0571-88105580;4008121121",
+        "photos_count": 3,
+        "distance": 521.0,
+        "coordinates": {
+          "lng": 120.157383,
+          "lat": 30.269851
+        },
+        "source": "amap"
+      },
+      {
+        "name": "石瓜酒店(杭州西湖沈塘桥地铁站店)",
+        "address": "文晖路419号(沈塘桥地铁站C3口步行430米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "19157917316",
+        "photos_count": 3,
+        "distance": 484.0,
+        "coordinates": {
+          "lng": 120.154138,
+          "lat": 30.278368
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州星都宾馆",
+        "address": "文晖路448号",
+        "type": "住宿服务;宾馆酒店;四星级宾馆|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88383333;0571-88386888",
+        "photos_count": 3,
+        "distance": 575.0,
+        "coordinates": {
+          "lng": 120.153711,
+          "lat": 30.279129
+        },
+        "source": "amap"
+      },
+      {
+        "name": "全季杭州武林广场文晖大厦酒店",
+        "address": "湖墅南路118号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "13282183966",
+        "photos_count": 3,
+        "distance": 565.0,
+        "coordinates": {
+          "lng": 120.155173,
+          "lat": 30.279183
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西楼花园酒店(杭州西湖武林门地铁站店)",
+        "address": "金祝北路与天目山路口交叉口",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-56509555;0571-56583111",
+        "photos_count": 3,
+        "distance": 476.0,
+        "coordinates": {
+          "lng": 120.150862,
+          "lat": 30.271876
+        },
+        "source": "amap"
+      },
+      {
+        "name": "漫住酒店(武林广场沈塘桥地铁站店)",
+        "address": "莫干山路191号易盛大厦1层",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-28809901",
+        "photos_count": 3,
+        "distance": 409.0,
+        "coordinates": {
+          "lng": 120.152183,
+          "lat": 30.276777
+        },
+        "source": "amap"
+      },
+      {
+        "name": "网鱼电竞(武林门地铁站店)",
+        "address": "武林路437号201室网鱼电竞",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17758028521",
+        "photos_count": 3,
+        "distance": 548.0,
+        "coordinates": {
+          "lng": 120.158583,
+          "lat": 30.270201
+        },
+        "source": "amap"
+      },
+      {
+        "name": "优享星空间(杭州大厦店)",
+        "address": "华浙广场1号12E室-11",
+        "type": "住宿服务;宾馆酒店;宾馆酒店|生活服务;生活服务场所;生活服务场所",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18989891550",
+        "photos_count": 3,
+        "distance": 467.0,
+        "coordinates": {
+          "lng": 120.159887,
+          "lat": 30.274818
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州大厦",
+        "address": "武林广场21号杭州大厦A座7层",
+        "type": "住宿服务;宾馆酒店;四星级宾馆|商务住宅;楼宇;商务写字楼|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85153911",
+        "photos_count": 3,
+        "distance": 642.0,
+        "coordinates": {
+          "lng": 120.16124,
+          "lat": 30.271826
+        },
+        "source": "amap"
+      },
+      {
+        "name": "向日葵民宿(武林广场店)",
+        "address": "体育场路407号宏都商务楼A座F4层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "18758282549;+861056320612,28329739",
+        "photos_count": 3,
+        "distance": 480.0,
+        "coordinates": {
+          "lng": 120.157179,
+          "lat": 30.270171
+        },
+        "source": "amap"
+      },
+      {
+        "name": "初夏晓荷民宿(杭州西湖武林门地铁站店)",
+        "address": "金祝北路21号西湖物资大楼F10层",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "13033602968",
+        "photos_count": 3,
+        "distance": 515.0,
+        "coordinates": {
+          "lng": 120.150444,
+          "lat": 30.271805
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州卧龙青旅(环北店)",
+        "address": "环北新村1幢1单元202室",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "15856782419",
+        "photos_count": 3,
+        "distance": 502.0,
+        "coordinates": {
+          "lng": 120.159912,
+          "lat": 30.272337
+        },
+        "source": "amap"
+      },
+      {
+        "name": "CityNote希诺酒店(杭州西湖武林广场店)",
+        "address": "武林路407号(武林门地铁站D口步行410米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-88136896",
+        "photos_count": 3,
+        "distance": 612.0,
+        "coordinates": {
+          "lng": 120.158854,
+          "lat": 30.26966
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州凌云航空大酒店(西湖武林广场地铁站店)",
+        "address": "体育场路396号民航大厦",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-28916888;0571-85333335",
+        "photos_count": 3,
+        "distance": 547.0,
+        "coordinates": {
+          "lng": 120.159545,
+          "lat": 30.271025
+        },
+        "source": "amap"
+      },
+      {
+        "name": "青季酒店MINI(杭州西湖武林门地铁站店)",
+        "address": "金祝新村22幢(武林门地铁站F口步行440米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-85213788",
+        "photos_count": 3,
+        "distance": 540.0,
+        "coordinates": {
+          "lng": 120.150378,
+          "lat": 30.271466
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州宝宝青年旅舍(西湖武林门地铁站店)",
+        "address": "天目山路51号富欣大厦F11层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "17746843151",
+        "photos_count": 3,
+        "distance": 567.0,
+        "coordinates": {
+          "lng": 120.149765,
+          "lat": 30.271926
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杭州齐家臻品酒店(杭州武林广场机场大巴店)",
+        "address": "天水街道体育场路396号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0571-28069929;0571-89717606;15868158086",
+        "photos_count": 3,
+        "distance": 539.0,
+        "coordinates": {
+          "lng": 120.159143,
+          "lat": 30.270743
+        },
+        "source": "amap"
+      },
+      {
+        "name": "点点生活家(西湖武林广场店)",
+        "address": "金祝北路21号西湖物资大楼F9层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "18958148728",
+        "photos_count": 3,
+        "distance": 506.0,
+        "coordinates": {
+          "lng": 120.150475,
+          "lat": 30.271925
+        },
+        "source": "amap"
+      }
+    ],
+    "baike_spots": [
+      {
+        "name": "城市阳台",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "钱江新城灯光秀",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "CBD公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "杭州Do都城",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "体育休闲服务;娱乐场所;娱乐场所|风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "城市阳台江堤步道",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "杭州基督教会崇一堂",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;教堂"
+      },
+      {
+        "name": "蜻蜓公园",
+        "source": "amap_scenic",
+        "rating": 4.5,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "钱江世纪公园",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "世纪花园",
+        "source": "amap_scenic",
+        "rating": 4.2,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "CBD公园",
+        "source": "amap_scenic",
+        "rating": 4.3,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "市民广场",
+        "source": "amap_scenic",
+        "rating": 4.2,
+        "type": "风景名胜;公园广场;城市广场"
+      },
+      {
+        "name": "新城音乐喷泉",
+        "source": "amap_scenic",
+        "rating": 4.2,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "杭州奥体中心码头",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "五柳巷历史街区",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "清河坊历史文化特色街区",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "胡雪岩旧居",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;纪念馆"
+      },
+      {
+        "name": "鼓楼",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "望江公园",
+        "source": "amap_scenic",
+        "rating": 4.5,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "江和美海洋公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;公园广场"
+      },
+      {
+        "name": "观音塘公园",
+        "source": "amap_scenic",
+        "rating": 3.8,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "河坊街景区",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜|购物服务;特色商业街;特色商业街"
+      },
+      {
+        "name": "十五奎巷历史文化街区",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "购物服务;特色商业街;特色商业街|风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "采荷公园",
+        "source": "amap_scenic",
+        "rating": 4.0,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "钱江龙",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "吴山景区",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      }
+    ],
+    "wiki": {
+      "wiki_zh": "",
+      "wiki_en": "",
+      "wiki_tourism_zh": ""
+    },
+    "duckduckgo_snippets": [],
+    "ctrip_approx_spots": [
+      {
+        "name": "九道面馆(杭州回音必大厦店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.2,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "嘎啦噶·杭州必吃江西小炒",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 3.8,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "必冒大牌冒菜(东洲岛店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.0,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "重庆必吃榜老火锅",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 3.0,
+        "type": "餐饮服务;中餐厅;火锅店"
+      },
+      {
+        "name": "顺必客盖码饭",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 2.2,
+        "type": "餐饮服务;中餐厅;中餐厅|餐饮服务;快餐厅;快餐厅"
+      },
+      {
+        "name": "必珍客饭堂(东冠大厦店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.2,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "必滕·猪排專门店(滨江宝龙城店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.0,
+        "type": "餐饮服务;快餐厅;快餐厅"
+      },
+      {
+        "name": "必滕猪排专门店(星光国际广场店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.5,
+        "type": "餐饮服务;快餐厅;快餐厅"
+      },
+      {
+        "name": "必胡棋牌空间(拱墅宝龙广场店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.3,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "菲滋意式餐厅(回音必大厦店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.0,
+        "type": "餐饮服务;外国餐厅;意式菜品餐厅"
+      },
+      {
+        "name": "必赢棋牌",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.4,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "杭州西湖风景名胜区",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.9,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "此生必尝的海鲜蟹黄捞面(顺雅巷西店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 3.5,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "牛肉馆(回音必大厦店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 3.9,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "BiHuClub必胡24小时棋牌空间(余杭杭师大店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.5,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "麦当劳(华冲银座回音必大厦店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.6,
+        "type": "餐饮服务;快餐厅;快餐厅"
+      },
+      {
+        "name": "BiHu Club 必胡24h棋牌空间(科技城宝龙广场店)",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.5,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "胖椒爷必吃盖码饭川湘炒菜",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 1.3,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "BiHu必胡24h棋牌空间",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 4.5,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "砂必饱砂锅",
+        "source": "ctrip_approx_杭州必去",
+        "rating": 3.1,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "西溪国家湿地公园",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "千岛湖风景区",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "千岛湖风景区中心湖区",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "清河坊历史文化特色街区",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "良渚古城遗址公园",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "杭州动物园",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;动物园"
+      },
+      {
+        "name": "垂云通天河",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "OMG心跳乐园",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.8,
+        "type": "体育休闲服务;休闲场所;游乐场"
+      },
+      {
+        "name": "杭州西湖风景名胜区-杭州白塔公园",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "滨江最美樱花跑道",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "良渚文化村",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "八卦田遗址公园",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;省级景点"
+      },
+      {
+        "name": "中国院子·梦溪苑·隐居酒店",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.5,
+        "type": "风景名胜;风景名胜;风景名胜|住宿服务;住宿服务相关;住宿服务相关"
+      },
+      {
+        "name": "杭州西湖风景名胜区-郭庄",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "钱江龙",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "宝寿山景区",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "乔村二十八道(钱江世纪城店)",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.8,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "庆春朴门(灵隐店)",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.9,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "千岛湖灯塔",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "群乐饭店(信诚路店)",
+        "source": "ctrip_approx_杭州网红打卡",
+        "rating": 4.8,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "杭州西湖风景名胜区-断桥残雪",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.9,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "雷峰塔景区",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "吴山景区",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "灵隐景区",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "杭州西湖风景名胜区-柳浪闻莺",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "杭州西湖风景名胜区-茅家埠",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "西湖天地",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "杭州西湖风景名胜区-乌龟潭",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "杭州西湖风景名胜区-白堤",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "千岛湖云上石林景区",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.5,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "杭州西湖风景名胜区-西湖龙井茶文化景区",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.2,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "杭州西湖风景名胜区-杨公堤",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "灵隐寺",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.9,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "雷峰塔景区-雷峰夕照",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.2,
+        "type": "地名地址信息;自然地名;山|风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "湘湖国家旅游度假区",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "湘湖国家旅游度假区-眉山岛",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.1,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "湘湖国家旅游度假区-下孙文化村",
+        "source": "ctrip_approx_杭州旅游",
+        "rating": 4.5,
+        "type": "风景名胜;风景名胜;风景名胜"
+      }
+    ]
+  },
+  "stats": {
+    "total_amap_pois": 341,
+    "total_baike_spots": 25,
+    "total_ctrip_spots": 57,
+    "ground_truth_must_visit": 10,
+    "ground_truth_dining": 10,
+    "ground_truth_leisure": 5
+  }
+}

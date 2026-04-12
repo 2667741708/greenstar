@@ -1,0 +1,6061 @@
+{
+  "meta": {
+    "city": "西安",
+    "coordinates": {
+      "lat": 34.2658,
+      "lng": 108.9427
+    },
+    "adcode": "610100",
+    "build_time": "2026-04-12T16:35:03.117899",
+    "builder": "build_test_dataset.py"
+  },
+  "ground_truth": {
+    "must_visit": [
+      "西安城墙·碑林历史文化景区",
+      "西安鼓楼",
+      "大明宫国家遗址公园",
+      "西安城墙",
+      "西安钟楼",
+      "兴庆宫公园",
+      "汉长安城未央宫国家考古遗址公园",
+      "大雁塔",
+      "北院门",
+      "梵高星空艺术馆(回民街旗舰店)",
+      "高家大院",
+      "莲湖公园",
+      "西安化觉巷清真大寺",
+      "钟鼓楼广场"
+    ],
+    "dining": [
+      "马洪小炒泡馍馆",
+      "马乐烤肉(回民街店)",
+      "花奶奶酸梅汤大皮院店)",
+      "马天小炒泡馍(钟楼回民街总店)",
+      "陕拾叁(北院门创始店)",
+      "星巴克(宏府大厦店)",
+      "星巴克臻选(西安钟楼店)",
+      "春庄咖啡SpringHues(钟楼小区店)",
+      "西羊市",
+      "蜜果太子糖水铺(清真)"
+    ],
+    "leisure": [
+      "聊炸裂喜剧·钟楼微醺剧场",
+      "人民剧院",
+      "拾叁潮·梦回大唐(钟楼店)",
+      "西演SPACE·易俗大剧院",
+      "西演SPACE·福星现场"
+    ]
+  },
+  "sources": {
+    "amap_pois": [
+      {
+        "name": "西安小皮院清真北大寺",
+        "address": "小皮院28号",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 92.0,
+        "coordinates": {
+          "lng": 108.941798,
+          "lat": 34.265426
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北院门",
+        "address": "北院门与西华门大街交汇处",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.6,
+        "cost": "20.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87403259",
+        "photos_count": 3,
+        "distance": 205.0,
+        "coordinates": {
+          "lng": 108.943744,
+          "lat": 34.264169
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大皮院清真寺",
+        "address": "大皮院108号",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 268.0,
+        "coordinates": {
+          "lng": 108.94019,
+          "lat": 34.264562
+        },
+        "source": "amap"
+      },
+      {
+        "name": "唐·承天门",
+        "address": "莲湖路58号莲湖公园",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87256341",
+        "photos_count": 3,
+        "distance": 287.0,
+        "coordinates": {
+          "lng": 108.94108,
+          "lat": 34.268005
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕西皮影",
+        "address": "西羊市东5号",
+        "type": "购物服务;购物相关场所;购物相关场所|风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "1月至5月,11月至12月 周一至周日 09:00-24:00；6月至10月 周一至周日 08:00-24:00",
+        "tel": "17629271806;17691144965",
+        "photos_count": 3,
+        "distance": 302.0,
+        "coordinates": {
+          "lng": 108.94324,
+          "lat": 34.263115
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真新寺",
+        "address": "北院门街道红埠街104号",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 312.0,
+        "coordinates": {
+          "lng": 108.939376,
+          "lat": 34.26637
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梵高星空艺术馆(回民街旗舰店)",
+        "address": "回民街北院门回坊里步行街张二哈文创市集2层(西羊市牌坊正对面)",
+        "type": "体育休闲服务;休闲场所;休闲场所|科教文化服务;展览馆;展览馆|风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00 最晚进入21:30",
+        "tel": "13201745759",
+        "photos_count": 3,
+        "distance": 318.0,
+        "coordinates": {
+          "lng": 108.944164,
+          "lat": 34.263209
+        },
+        "source": "amap"
+      },
+      {
+        "name": "长安阁",
+        "address": "北院门208号西羊市",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 325.0,
+        "coordinates": {
+          "lng": 108.94144,
+          "lat": 34.263063
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高家大院-榜眼府",
+        "address": "北院门144号(钟楼地铁站出入口步行350米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 326.0,
+        "coordinates": {
+          "lng": 108.943494,
+          "lat": 34.262937
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高家大院",
+        "address": "北院门144号(鼓楼向北200米、回民街内)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:30 最晚进入22:00；法定节假日及重点时段延长，具体开放时间以景区官方为准",
+        "tel": "029-87401029",
+        "photos_count": 3,
+        "distance": 334.0,
+        "coordinates": {
+          "lng": 108.943273,
+          "lat": 34.26283
+        },
+        "source": "amap"
+      },
+      {
+        "name": "奇园茶社遗址",
+        "address": "大莲花池街与莲湖路辅路交叉口南100米",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 346.0,
+        "coordinates": {
+          "lng": 108.94276,
+          "lat": 34.268908
+        },
+        "source": "amap"
+      },
+      {
+        "name": "南湖",
+        "address": "莲湖路58号莲湖公园",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 375.0,
+        "coordinates": {
+          "lng": 108.94056,
+          "lat": 34.268668
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲湖公园游船码头",
+        "address": "莲湖公园南湖边管理间",
+        "type": "风景名胜;风景名胜;风景名胜|生活服务;生活服务场所;生活服务场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13359225573",
+        "photos_count": 3,
+        "distance": 387.0,
+        "coordinates": {
+          "lng": 108.940552,
+          "lat": 34.268799
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小萝卜头宋振中烈士雕像",
+        "address": "莲湖路58号(近莲花池街)莲湖公园内(东侧)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 392.0,
+        "coordinates": {
+          "lng": 108.941926,
+          "lat": 34.269265
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中共西安情报处交通联络站奇园茶社旧址纪念碑",
+        "address": "莲湖路58号(近莲花池街)莲湖公园内(东侧)",
+        "type": "风景名胜;风景名胜;纪念馆",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 392.0,
+        "coordinates": {
+          "lng": 108.941679,
+          "lat": 34.269225
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲湖公园",
+        "address": "莲湖路58号(近莲花池街)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87256341;13698851283",
+        "photos_count": 3,
+        "distance": 397.0,
+        "coordinates": {
+          "lng": 108.940372,
+          "lat": 34.268806
+        },
+        "source": "amap"
+      },
+      {
+        "name": "日本飞机轰炸西安遗址",
+        "address": "光明巷43号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 406.0,
+        "coordinates": {
+          "lng": 108.93836,
+          "lat": 34.26511
+        },
+        "source": "amap"
+      },
+      {
+        "name": "摇摇车",
+        "address": "北大街88号新世界百货M(钟楼地铁站出入口旁)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 416.0,
+        "coordinates": {
+          "lng": 108.946388,
+          "lat": 34.263632
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安莲湖廉洁文化主题公园",
+        "address": "莲湖公园(东北角)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 421.0,
+        "coordinates": {
+          "lng": 108.940769,
+          "lat": 34.269234
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安化觉巷清真大寺",
+        "address": "北院门化觉巷30号",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-17:30",
+        "tel": "029-87272541",
+        "photos_count": 3,
+        "distance": 465.0,
+        "coordinates": {
+          "lng": 108.941211,
+          "lat": 34.261806
+        },
+        "source": "amap"
+      },
+      {
+        "name": "传统石碾",
+        "address": "庙后街与北广济街交叉口西南20米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 470.0,
+        "coordinates": {
+          "lng": 108.938784,
+          "lat": 34.263078
+        },
+        "source": "amap"
+      },
+      {
+        "name": "粢倚池莲花帧",
+        "address": "莲湖路62号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 474.0,
+        "coordinates": {
+          "lng": 108.939222,
+          "lat": 34.268942
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲花池",
+        "address": "莲湖路58号莲湖公园(西侧)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87256341",
+        "photos_count": 3,
+        "distance": 474.0,
+        "coordinates": {
+          "lng": 108.939222,
+          "lat": 34.268942
+        },
+        "source": "amap"
+      },
+      {
+        "name": "财神文创殿",
+        "address": "北院门100号(钟楼地铁站1号口步行340米)",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 540.0,
+        "coordinates": {
+          "lng": 108.943461,
+          "lat": 34.260983
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市西仓清真寺(不对外开放)",
+        "address": "北院门21号",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87320298",
+        "photos_count": 3,
+        "distance": 557.0,
+        "coordinates": {
+          "lng": 108.936648,
+          "lat": 34.266074
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安城墙·碑林历史文化景区",
+        "address": "顺城巷27号(钟楼地铁站D口步行270米)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "029-87272792",
+        "photos_count": 3,
+        "distance": 561.0,
+        "coordinates": {
+          "lng": 108.948296,
+          "lat": 34.263783
+        },
+        "source": "amap"
+      },
+      {
+        "name": "化觉寺",
+        "address": "化觉巷1号(广济街地铁站D1口步行380米)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 585.0,
+        "coordinates": {
+          "lng": 108.943289,
+          "lat": 34.260559
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大唐秘境",
+        "address": "北院门街道北院门街道北院门39号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 601.0,
+        "coordinates": {
+          "lng": 108.944023,
+          "lat": 34.260504
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真寺",
+        "address": "北广济街与化觉巷交叉口南100米",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 615.0,
+        "coordinates": {
+          "lng": 108.939086,
+          "lat": 34.261142
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安鼓楼",
+        "address": "北院门74号(广济街地铁站D1口步行370米)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "4月1日至7月18日:08:30-21:30；7月19日至8月31日:08:30-22:30；9月1日至12月31日:08:30-21:30；1月29日至2月17日:08:30-21:30",
+        "tel": "029-87278797",
+        "photos_count": 3,
+        "distance": 627.0,
+        "coordinates": {
+          "lng": 108.943512,
+          "lat": 34.260206
+        },
+        "source": "amap"
+      },
+      {
+        "name": "闻天鼓",
+        "address": "北院门74号西安鼓楼(广济街地铁站D1口步行320米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 643.0,
+        "coordinates": {
+          "lng": 108.943779,
+          "lat": 34.260093
+        },
+        "source": "amap"
+      },
+      {
+        "name": "十三宫",
+        "address": "钟鼓楼广场北宜必思酒店进门左边第一家十三宫摄影旅拍",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 10:00-24:00",
+        "tel": "19537386487",
+        "photos_count": 2,
+        "distance": 645.0,
+        "coordinates": {
+          "lng": 108.944736,
+          "lat": 34.26025
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东芳赋(鼓楼店)",
+        "address": "西大街鼓楼西广场非遗文化长廊",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.6,
+        "cost": "14.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "18717349046",
+        "photos_count": 3,
+        "distance": 646.0,
+        "coordinates": {
+          "lng": 108.942297,
+          "lat": 34.260006
+        },
+        "source": "amap"
+      },
+      {
+        "name": "钟楼西安文创馆(北广济街店)",
+        "address": "北广济街71号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-23:30",
+        "tel": "15672855588;17391169502",
+        "photos_count": 3,
+        "distance": 649.0,
+        "coordinates": {
+          "lng": 108.939076,
+          "lat": 34.260792
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鼓楼非遗文化长廊",
+        "address": "西大街55号(鼓楼西广场)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 651.0,
+        "coordinates": {
+          "lng": 108.942065,
+          "lat": 34.259971
+        },
+        "source": "amap"
+      },
+      {
+        "name": "别有洞天",
+        "address": "北广济街时代盛典",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 651.0,
+        "coordinates": {
+          "lng": 108.93899,
+          "lat": 34.260813
+        },
+        "source": "amap"
+      },
+      {
+        "name": "城隍殿",
+        "address": "北院门街道北院门街道西大街129号都城隍庙内(北侧)",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278333",
+        "photos_count": 3,
+        "distance": 656.0,
+        "coordinates": {
+          "lng": 108.937337,
+          "lat": 34.261907
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杨虎城将军纪念馆",
+        "address": "青年路街道青年路117号西安事变纪念馆",
+        "type": "风景名胜;风景名胜;纪念馆",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87330513",
+        "photos_count": 3,
+        "distance": 662.0,
+        "coordinates": {
+          "lng": 108.939882,
+          "lat": 34.271279
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杨虎城别墅",
+        "address": "青年路街道青年路117号西安事变纪念馆",
+        "type": "风景名胜;风景名胜;红色景区|风景名胜;风景名胜;风景名胜",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周二至周日 09:00-17:00",
+        "tel": "029-87330513",
+        "photos_count": 3,
+        "distance": 664.0,
+        "coordinates": {
+          "lng": 108.939762,
+          "lat": 34.271258
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安都城隍庙-布施捐款处",
+        "address": "西大街129号都城隍庙内(北侧)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278333",
+        "photos_count": 3,
+        "distance": 671.0,
+        "coordinates": {
+          "lng": 108.937202,
+          "lat": 34.261837
+        },
+        "source": "amap"
+      },
+      {
+        "name": "年羹尧故居",
+        "address": "大学习巷与庙后街交叉口南60米",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 673.0,
+        "coordinates": {
+          "lng": 108.936401,
+          "lat": 34.262718
+        },
+        "source": "amap"
+      },
+      {
+        "name": "有感有应牌坊",
+        "address": "西大街129号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278333",
+        "photos_count": 3,
+        "distance": 673.0,
+        "coordinates": {
+          "lng": 108.937317,
+          "lat": 34.261699
+        },
+        "source": "amap"
+      },
+      {
+        "name": "都城隍庙-圣母殿(西大街)",
+        "address": "西大街129号",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278333",
+        "photos_count": 3,
+        "distance": 673.0,
+        "coordinates": {
+          "lng": 108.937533,
+          "lat": 34.261512
+        },
+        "source": "amap"
+      },
+      {
+        "name": "钟鼓楼广场",
+        "address": "北院门与西大街交叉口西北100米",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "10-11至01-28 周一至周日 08:30-18:00；02-18至03-31 周一至周日 08:30-18:00；04-01至10-10 周一至周日 08:30-21:30；01-29至02-17 周一至周日 08:30-21:30",
+        "tel": "029-87276420",
+        "photos_count": 3,
+        "distance": 679.0,
+        "coordinates": {
+          "lng": 108.944165,
+          "lat": 34.25982
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安事变纪念馆(青年路)",
+        "address": "青年路街道青年路117号",
+        "type": "风景名胜;风景名胜;红色景区|风景名胜;风景名胜;纪念馆",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周二至周日 09:00-17:00",
+        "tel": "029-87330513;029-87333971",
+        "photos_count": 3,
+        "distance": 691.0,
+        "coordinates": {
+          "lng": 108.939817,
+          "lat": 34.271536
+        },
+        "source": "amap"
+      },
+      {
+        "name": "忠孝祠",
+        "address": "大学习巷都城隍庙(东北角)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278333",
+        "photos_count": 3,
+        "distance": 697.0,
+        "coordinates": {
+          "lng": 108.937483,
+          "lat": 34.261254
+        },
+        "source": "amap"
+      },
+      {
+        "name": "火神殿",
+        "address": "西大街129号都城隍庙(西北角)",
+        "type": "风景名胜;风景名胜;寺庙道观",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278333",
+        "photos_count": 3,
+        "distance": 699.0,
+        "coordinates": {
+          "lng": 108.937139,
+          "lat": 34.261519
+        },
+        "source": "amap"
+      },
+      {
+        "name": "隋唐尚书省遗址",
+        "address": "西大街辅路与正学街交叉口西北60米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 703.0,
+        "coordinates": {
+          "lng": 108.941612,
+          "lat": 34.259548
+        },
+        "source": "amap"
+      },
+      {
+        "name": "钟鼓楼东广场",
+        "address": "钟鼓楼广场(钟楼地铁站C口步行230米)",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 703.0,
+        "coordinates": {
+          "lng": 108.94525,
+          "lat": 34.259845
+        },
+        "source": "amap"
+      },
+      {
+        "name": "王诤校长像",
+        "address": "太白南路2号(北大街地铁站D东北口步行90米)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 704.0,
+        "coordinates": {
+          "lng": 108.947434,
+          "lat": 34.270772
+        },
+        "source": "amap"
+      },
+      {
+        "name": "云来·叁叁玖棋牌生活馆",
+        "address": "大莲花池街25号",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.1,
+        "cost": "25.00",
+        "open_time": "周一至周日 09:30-23:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 231.0,
+        "coordinates": {
+          "lng": 108.94322,
+          "lat": 34.267838
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东影社皮影戏(西羊市店)",
+        "address": "西羊市1号",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 3.9,
+        "cost": "13.00",
+        "open_time": "周一至周日 11:00-21:00",
+        "tel": "15591822396",
+        "photos_count": 3,
+        "distance": 304.0,
+        "coordinates": {
+          "lng": 108.94333,
+          "lat": 34.263115
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲湖公园-羽毛球场",
+        "address": "莲湖路58号莲湖公园内(东侧)",
+        "type": "体育休闲服务;运动场馆;羽毛球场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 365.0,
+        "coordinates": {
+          "lng": 108.941982,
+          "lat": 34.269026
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Full满棠",
+        "address": "北大街234号宏府大厦A座F1层",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": "70.00",
+        "open_time": "周一至周日 18:00-03:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 399.0,
+        "coordinates": {
+          "lng": 108.94677,
+          "lat": 34.267061
+        },
+        "source": "amap"
+      },
+      {
+        "name": "纵享一刻24h无人自助台球(北大街店)",
+        "address": "北大街宏府大厦A座726室(星巴克左侧台阶入)",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 406.0,
+        "coordinates": {
+          "lng": 108.946657,
+          "lat": 34.267422
+        },
+        "source": "amap"
+      },
+      {
+        "name": "发条宇宙脱口秀酒吧",
+        "address": "北大街118号宏府大厦2-13",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 3.7,
+        "cost": "68.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87310519;029-87313000",
+        "photos_count": 1,
+        "distance": 412.0,
+        "coordinates": {
+          "lng": 108.946766,
+          "lat": 34.267353
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雀鸡棋牌",
+        "address": "北大街辅路与二府街交叉口西北40米",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.1,
+        "cost": "38.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 412.0,
+        "coordinates": {
+          "lng": 108.946851,
+          "lat": 34.267208
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高格国际桌球俱乐部(宏府店)",
+        "address": "118号宏府大厦一层",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 10:00-06:00",
+        "tel": "029-87365636;18165309550",
+        "photos_count": 3,
+        "distance": 417.0,
+        "coordinates": {
+          "lng": 108.946855,
+          "lat": 34.267315
+        },
+        "source": "amap"
+      },
+      {
+        "name": "聊炸裂喜剧·钟楼微醺剧场",
+        "address": "北大街宏府大厦2-13号",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.7,
+        "cost": "61.00",
+        "open_time": "周一至周日 12:00-24:00 最晚进入22:00",
+        "tel": "13201878117",
+        "photos_count": 3,
+        "distance": 424.0,
+        "coordinates": {
+          "lng": 108.946858,
+          "lat": 34.267447
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安福星老年公寓",
+        "address": "光明巷58号",
+        "type": "体育休闲服务;度假疗养场所;疗养院",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 427.0,
+        "coordinates": {
+          "lng": 108.938053,
+          "lat": 34.265747
+        },
+        "source": "amap"
+      },
+      {
+        "name": "棋语茶香",
+        "address": "金海大厦北门旁(北大街地铁站B1西南口步行290米)",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.4,
+        "cost": "45.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87356999;17792556178",
+        "photos_count": 3,
+        "distance": 437.0,
+        "coordinates": {
+          "lng": 108.94365,
+          "lat": 34.26965
+        },
+        "source": "amap"
+      },
+      {
+        "name": "32桌球俱乐部(北大街店)",
+        "address": "北大街国美电器负一通济南坊路口进",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.5,
+        "cost": "25.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17792033809",
+        "photos_count": 3,
+        "distance": 462.0,
+        "coordinates": {
+          "lng": 108.947703,
+          "lat": 34.266161
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东影社华县皮影戏(回民街店)",
+        "address": "北院门106号二楼(广济街地铁站D1口步行480米)",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.2,
+        "cost": "34.00",
+        "open_time": "周一至周日 11:00-23:00",
+        "tel": "15591822396",
+        "photos_count": 3,
+        "distance": 485.0,
+        "coordinates": {
+          "lng": 108.943488,
+          "lat": 34.261488
+        },
+        "source": "amap"
+      },
+      {
+        "name": "狗头侦探·剧本推理·跑团·桌游(北大街店)",
+        "address": "莲湖路4号途悦酒店停车场(北大街地铁站B口西20米)",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.4,
+        "cost": "131.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18142367833",
+        "photos_count": 3,
+        "distance": 496.0,
+        "coordinates": {
+          "lng": 108.946038,
+          "lat": 34.2693
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市轮滑运动训练基地",
+        "address": "莲湖路63号院南门西南140米",
+        "type": "体育休闲服务;运动场馆;运动场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 547.0,
+        "coordinates": {
+          "lng": 108.93868,
+          "lat": 34.269425
+        },
+        "source": "amap"
+      },
+      {
+        "name": "健乐轮滑馆",
+        "address": "莲湖路莲湖公园内(洒金桥地铁站D东北口步行420米)",
+        "type": "体育休闲服务;运动场馆;运动场所",
+        "rating": 4.4,
+        "cost": "27.00",
+        "open_time": "周一至周日 12:30-23:00",
+        "tel": "029-87333306",
+        "photos_count": 3,
+        "distance": 548.0,
+        "coordinates": {
+          "lng": 108.938547,
+          "lat": 34.26934
+        },
+        "source": "amap"
+      },
+      {
+        "name": "长安皮影戏",
+        "address": "陕西省捶糖帮二楼(广济街地铁站D1口步行400米)",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.1,
+        "cost": "73.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "18166666232",
+        "photos_count": 3,
+        "distance": 556.0,
+        "coordinates": {
+          "lng": 108.943506,
+          "lat": 34.260847
+        },
+        "source": "amap"
+      },
+      {
+        "name": "人民剧院",
+        "address": "北大街35号(钟楼地铁站D东北口步行130米)",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.7,
+        "cost": "294.00",
+        "open_time": "周一至周五 09:00-17:30",
+        "tel": "029-87271515;029-87252812;029-87217413",
+        "photos_count": 3,
+        "distance": 575.0,
+        "coordinates": {
+          "lng": 108.947914,
+          "lat": 34.262939
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安H桌球(钟楼店)",
+        "address": "北大街35号名流天地大厦F8层",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "19991461094",
+        "photos_count": 3,
+        "distance": 578.0,
+        "coordinates": {
+          "lng": 108.947671,
+          "lat": 34.262624
+        },
+        "source": "amap"
+      },
+      {
+        "name": "久雀自助棋牌茶室(钟楼店)",
+        "address": "北大街28号(钟楼地铁站B口北侧)",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.6,
+        "cost": "21.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17391767973",
+        "photos_count": 3,
+        "distance": 586.0,
+        "coordinates": {
+          "lng": 108.946572,
+          "lat": 34.261618
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蓝胖电竞(西安钟楼店)",
+        "address": "北大街28号1幢2层C2商铺(钟楼地铁站B口旁)",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 4.5,
+        "cost": "21.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 593.0,
+        "coordinates": {
+          "lng": 108.946614,
+          "lat": 34.261561
+        },
+        "source": "amap"
+      },
+      {
+        "name": "纵享一刻24h自助台球(钟楼旗舰店)",
+        "address": "钟楼B口北大街西安好吃街(万信国际酒店进入)直梯上2楼",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17302926847",
+        "photos_count": 3,
+        "distance": 595.0,
+        "coordinates": {
+          "lng": 108.946439,
+          "lat": 34.261435
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Xi'anMuslimQuarter",
+        "address": "北院门与西大街辅路交叉口北120米",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 611.0,
+        "coordinates": {
+          "lng": 108.943864,
+          "lat": 34.260388
+        },
+        "source": "amap"
+      },
+      {
+        "name": "168电竞台球综合体",
+        "address": "北院们街道西安市北大街海林大厦负一层",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13399831404",
+        "photos_count": 3,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 108.94635,
+          "lat": 34.261051
+        },
+        "source": "amap"
+      },
+      {
+        "name": "咔嗞呀电竞茶咖(北大街店)",
+        "address": "新民街88号云锦大厦二层",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17691216839",
+        "photos_count": 3,
+        "distance": 658.0,
+        "coordinates": {
+          "lng": 108.949561,
+          "lat": 34.267487
+        },
+        "source": "amap"
+      },
+      {
+        "name": "穿越大唐",
+        "address": "西大街48号中环广场4楼(长安霓裳里进入)",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.6,
+        "cost": "41.00",
+        "open_time": "周一至周日 09:00-22:00 最晚进入21:30",
+        "tel": "15719272212",
+        "photos_count": 3,
+        "distance": 752.0,
+        "coordinates": {
+          "lng": 108.942645,
+          "lat": 34.259036
+        },
+        "source": "amap"
+      },
+      {
+        "name": "魅支星桌球俱乐部(钟楼旗舰店)",
+        "address": "西大街48号中环广场B1层",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87229988",
+        "photos_count": 3,
+        "distance": 754.0,
+        "coordinates": {
+          "lng": 108.94269,
+          "lat": 34.259021
+        },
+        "source": "amap"
+      },
+      {
+        "name": "拾叁潮·梦回大唐(钟楼店)",
+        "address": "西大街48号商业广场北门1层002号",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店|体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.7,
+        "cost": "69.00",
+        "open_time": "周一至周日 11:00-22:00",
+        "tel": "029-87219060",
+        "photos_count": 3,
+        "distance": 759.0,
+        "coordinates": {
+          "lng": 108.943185,
+          "lat": 34.258989
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梦回十三戏剧汉服妆造店",
+        "address": "竹笆市与西大街辅路交叉口东南40米",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "15667064127",
+        "photos_count": 1,
+        "distance": 765.0,
+        "coordinates": {
+          "lng": 108.943725,
+          "lat": 34.258975
+        },
+        "source": "amap"
+      },
+      {
+        "name": "原气喜剧脱口秀剧场(钟楼中环广场店)",
+        "address": "西大街48号中环广场长安霓裳里F3",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 783.0,
+        "coordinates": {
+          "lng": 108.942747,
+          "lat": 34.258766
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Fitmula斐嘉健身五环铁馆",
+        "address": "西大街18号负一层(地铁2号线钟楼站C口)",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.4,
+        "cost": "4360.00",
+        "open_time": "周一至周五07:00-22:00；周六至周日09:00-21:30,2026年2月16日至2月19日关闭",
+        "tel": "029-83326688",
+        "photos_count": 3,
+        "distance": 783.0,
+        "coordinates": {
+          "lng": 108.945141,
+          "lat": 34.259053
+        },
+        "source": "amap"
+      },
+      {
+        "name": "诗画中国(西安店)",
+        "address": "西大街48号中环广场F4层",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.2,
+        "cost": "25.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "15719272212",
+        "photos_count": 3,
+        "distance": 787.0,
+        "coordinates": {
+          "lng": 108.942775,
+          "lat": 34.258725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦风源非遗剧场",
+        "address": "西一路282号(钟楼地铁站D口步行140米)",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.6,
+        "cost": "51.00",
+        "open_time": "周一至周日 11:00-20:30",
+        "tel": "13891921988",
+        "photos_count": 3,
+        "distance": 791.0,
+        "coordinates": {
+          "lng": 108.949055,
+          "lat": 34.261008
+        },
+        "source": "amap"
+      },
+      {
+        "name": "四个朋友棋牌·茶室(钟楼易俗社店)",
+        "address": "易俗社街区戏台西南角3C楼5楼整层(3D造像馆左手上电梯)",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.5,
+        "cost": "25.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17300857078",
+        "photos_count": 3,
+        "distance": 795.0,
+        "coordinates": {
+          "lng": 108.948462,
+          "lat": 34.260474
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西演SPACE·易俗大剧院",
+        "address": "案板街26号(近西一路)(钟楼地铁站H口步行140米)",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.7,
+        "cost": "136.00",
+        "open_time": "周一至周日 10:30-23:00；开放时间以演出为准",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 796.0,
+        "coordinates": {
+          "lng": 108.94955,
+          "lat": 34.261424
+        },
+        "source": "amap"
+      },
+      {
+        "name": "喵境奇遇·沉浸式治愈博物馆",
+        "address": "西一路282号易俗社文化街区1号楼1层02室",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-20:00 最晚进入19:30",
+        "tel": "17391974131",
+        "photos_count": 3,
+        "distance": 810.0,
+        "coordinates": {
+          "lng": 108.94914,
+          "lat": 34.260828
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西演SPACE·福星现场",
+        "address": "案板街16号易俗社街区1号楼3层",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.7,
+        "cost": "92.00",
+        "open_time": "周一至周日 12:00-24:00",
+        "tel": "18991138991",
+        "photos_count": 3,
+        "distance": 811.0,
+        "coordinates": {
+          "lng": 108.949155,
+          "lat": 34.260834
+        },
+        "source": "amap"
+      },
+      {
+        "name": "换象剧本推理·黑金旗舰店",
+        "address": "西一路282号易俗文化街区1号楼3层",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.4,
+        "cost": "141.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18066809238",
+        "photos_count": 3,
+        "distance": 812.0,
+        "coordinates": {
+          "lng": 108.949159,
+          "lat": 34.260823
+        },
+        "source": "amap"
+      },
+      {
+        "name": "易俗大剧院票务中心",
+        "address": "西演SPACE·易俗大剧院东门北50米",
+        "type": "体育休闲服务;影剧院;影剧院相关",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 812.0,
+        "coordinates": {
+          "lng": 108.9499,
+          "lat": 34.26157
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海马歌舞厅",
+        "address": "案板街与吉庆巷交叉口西南120米",
+        "type": "体育休闲服务;娱乐场所;迪厅",
+        "rating": 4.2,
+        "cost": "52.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 818.0,
+        "coordinates": {
+          "lng": 108.949002,
+          "lat": 34.260616
+        },
+        "source": "amap"
+      },
+      {
+        "name": "W15CLUB俱乐部",
+        "address": "西大街116号(广济街地铁站A1口步行140米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 20:00-06:00 2026-02-15至2026-02-24 周一至周日 全天关闭",
+        "tel": "18314399465",
+        "photos_count": 3,
+        "distance": 820.0,
+        "coordinates": {
+          "lng": 108.93858,
+          "lat": 34.259262
+        },
+        "source": "amap"
+      },
+      {
+        "name": "青曲社(易俗街区店)",
+        "address": "西一路282号易俗社文化街区1号楼B区2层",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.5,
+        "cost": "91.00",
+        "open_time": "周一至周日 19:30-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 823.0,
+        "coordinates": {
+          "lng": 108.949315,
+          "lat": 34.260812
+        },
+        "source": "amap"
+      },
+      {
+        "name": "国景西京游泳馆",
+        "address": "西大街135号西京国际饭店一楼后楼",
+        "type": "体育休闲服务;运动场馆;游泳馆",
+        "rating": 4.2,
+        "cost": "52.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "029-87219659;18092267928",
+        "photos_count": 3,
+        "distance": 825.0,
+        "coordinates": {
+          "lng": 108.936886,
+          "lat": 34.260151
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安非遗大剧院(钟楼店)",
+        "address": "竹芭市55号阿房宫大戏院三楼",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.6,
+        "cost": "92.00",
+        "open_time": "全年 周二-周五 10:30-18:00开放；全年 周六-周日 10:00-19:00开放；全年 周一 全天不开放； 说明:【演出时间】 周二至周五:11:00、13:00、15:00、17:00； 周末节假日:10:30、12:30、14:30、16:30、18:00。",
+        "tel": "19916354080",
+        "photos_count": 3,
+        "distance": 853.0,
+        "coordinates": {
+          "lng": 108.943707,
+          "lat": 34.258181
+        },
+        "source": "amap"
+      },
+      {
+        "name": "青曲社鼓楼剧场",
+        "address": "竹笆市55号阿房宫大戏院3层",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.6,
+        "cost": "138.00",
+        "open_time": "周一至周日 12:30-22:00",
+        "tel": "029-87212908",
+        "photos_count": 3,
+        "distance": 853.0,
+        "coordinates": {
+          "lng": 108.943582,
+          "lat": 34.258164
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安青曲社阿房宫大戏院",
+        "address": "竹笆市街55号(广济街地铁站C口步行400米)",
+        "type": "体育休闲服务;影剧院;剧场",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 858.0,
+        "coordinates": {
+          "lng": 108.943693,
+          "lat": 34.258136
+        },
+        "source": "amap"
+      },
+      {
+        "name": "波青和万密斋温养馆",
+        "address": "糖坊街114号",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 861.0,
+        "coordinates": {
+          "lng": 108.943768,
+          "lat": 34.273484
+        },
+        "source": "amap"
+      },
+      {
+        "name": "久雀棋牌茶室(东大街方汇店)",
+        "address": "东大街383号方汇商厦负一层",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.4,
+        "cost": "15.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "15332413921",
+        "photos_count": 3,
+        "distance": 862.0,
+        "coordinates": {
+          "lng": 108.948845,
+          "lat": 34.259945
+        },
+        "source": "amap"
+      },
+      {
+        "name": "桂留晚(鼓楼店)",
+        "address": "竹笆市55号8楼(广济街地铁站C口步行400米)",
+        "type": "体育休闲服务;娱乐场所;酒吧",
+        "rating": 4.6,
+        "cost": "61.00",
+        "open_time": "周一至周日 11:00-20:00",
+        "tel": "15102901783",
+        "photos_count": 3,
+        "distance": 866.0,
+        "coordinates": {
+          "lng": 108.943716,
+          "lat": 34.258061
+        },
+        "source": "amap"
+      },
+      {
+        "name": "团结小学",
+        "address": "大皮院东口23号(钟楼地铁站出入口步行480米)",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 93.0,
+        "coordinates": {
+          "lng": 108.942306,
+          "lat": 34.26503
+        },
+        "source": "amap"
+      },
+      {
+        "name": "孙庆海历史博物馆",
+        "address": "大皮院与西华门大街交叉口西40米",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 151.0,
+        "coordinates": {
+          "lng": 108.94249,
+          "lat": 34.264452
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市莲湖区二府街小学",
+        "address": "二府街20号",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87270767",
+        "photos_count": 3,
+        "distance": 256.0,
+        "coordinates": {
+          "lng": 108.945393,
+          "lat": 34.266392
+        },
+        "source": "amap"
+      },
+      {
+        "name": "禅韵琴社古琴茶道香道插花培训(西华门店)",
+        "address": "北大街西华门消防队西边宏城国际公寓c座1008",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": "13991316928",
+        "photos_count": 3,
+        "distance": 257.0,
+        "coordinates": {
+          "lng": 108.945479,
+          "lat": 34.265492
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市莲湖区图书馆",
+        "address": "西华门大街17号(钟楼地铁站A口步行440米)",
+        "type": "科教文化服务;图书馆;图书馆",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周二至周五 08:00-18:00；周六至周日 09:00-17:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 268.0,
+        "coordinates": {
+          "lng": 108.945442,
+          "lat": 34.264983
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安回坊博物馆",
+        "address": "大莲花池街派出所东北门旁",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 276.0,
+        "coordinates": {
+          "lng": 108.943154,
+          "lat": 34.268254
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市民族文化馆",
+        "address": "莲湖巷2号",
+        "type": "科教文化服务;文化宫;文化宫",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87216790",
+        "photos_count": 1,
+        "distance": 284.0,
+        "coordinates": {
+          "lng": 108.942244,
+          "lat": 34.268324
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕西利人胃肠病研究所",
+        "address": "红埠街63B",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87317507",
+        "photos_count": 3,
+        "distance": 293.0,
+        "coordinates": {
+          "lng": 108.939861,
+          "lat": 34.26701
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕西省中西医结合研究所",
+        "address": "西华门大街辅路与八家巷交叉口西南60米",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 306.0,
+        "coordinates": {
+          "lng": 108.945364,
+          "lat": 34.26415
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安麦道品牌传播有限公司",
+        "address": "西华门1凯爱大厦B座B8-8室",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "09:00-18:30",
+        "tel": "029-87201299",
+        "photos_count": 3,
+        "distance": 324.0,
+        "coordinates": {
+          "lng": 108.946154,
+          "lat": 34.265192
+        },
+        "source": "amap"
+      },
+      {
+        "name": "拾光记漫画工作室",
+        "address": "西羊市137号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 09:00-23:45",
+        "tel": "18089291741",
+        "photos_count": 1,
+        "distance": 350.0,
+        "coordinates": {
+          "lng": 108.940516,
+          "lat": 34.263221
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市回民中学",
+        "address": "北院门107号(钟楼地铁站B西口步行350米)",
+        "type": "科教文化服务;学校;中学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87275617",
+        "photos_count": 3,
+        "distance": 374.0,
+        "coordinates": {
+          "lng": 108.944593,
+          "lat": 34.262825
+        },
+        "source": "amap"
+      },
+      {
+        "name": "明月斋科技设计品牌实验室",
+        "address": "西羊市街169号",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "13363967893",
+        "photos_count": 3,
+        "distance": 377.0,
+        "coordinates": {
+          "lng": 108.939984,
+          "lat": 34.263263
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦丝韵葫芦丝教育",
+        "address": "北大街宏府大厦倍格圭巷二层",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 377.0,
+        "coordinates": {
+          "lng": 108.946341,
+          "lat": 34.267362
+        },
+        "source": "amap"
+      },
+      {
+        "name": "骚秦的美术馆",
+        "address": "化觉巷141号",
+        "type": "科教文化服务;美术馆;美术馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "15029987786",
+        "photos_count": 3,
+        "distance": 422.0,
+        "coordinates": {
+          "lng": 108.941904,
+          "lat": 34.262063
+        },
+        "source": "amap"
+      },
+      {
+        "name": "孙氏皮影戏",
+        "address": "北院门79号",
+        "type": "科教文化服务;文艺团体;文艺团体",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": "周一至周日 11:00-23:00",
+        "tel": "18209264931",
+        "photos_count": 1,
+        "distance": 448.0,
+        "coordinates": {
+          "lng": 108.943706,
+          "lat": 34.261861
+        },
+        "source": "amap"
+      },
+      {
+        "name": "牙小俑奇幻之旅口腔科普教育基地",
+        "address": "北大街85号4楼(钟楼地铁站A口步行400米)",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周二至周日 09:00-17:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 461.0,
+        "coordinates": {
+          "lng": 108.947711,
+          "lat": 34.265849
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安交通大学口腔医院口腔数字化研究与开发中心",
+        "address": "北大街85号中图国际8层(钟楼地铁站A口步行410米)",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 461.0,
+        "coordinates": {
+          "lng": 108.947719,
+          "lat": 34.265885
+        },
+        "source": "amap"
+      },
+      {
+        "name": "樱花国际日语(西安中心)",
+        "address": "钟楼北大街1号宏府嘉汇广场B座4层425室(新世界商场星巴克隔壁)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "18610201956",
+        "photos_count": 3,
+        "distance": 477.0,
+        "coordinates": {
+          "lng": 108.946327,
+          "lat": 34.26273
+        },
+        "source": "amap"
+      },
+      {
+        "name": "弈德围棋学校",
+        "address": "莲湖路与立新街交叉口西160米",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 501.0,
+        "coordinates": {
+          "lng": 108.941067,
+          "lat": 34.270094
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市新城区通济坊小学",
+        "address": "北大街光辉巷52号",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87271543",
+        "photos_count": 0,
+        "distance": 505.0,
+        "coordinates": {
+          "lng": 108.947735,
+          "lat": 34.26761
+        },
+        "source": "amap"
+      },
+      {
+        "name": "学而思素养(北大街服务中心)",
+        "address": "莲湖路23号米旗蛋糕旁院子里进电梯上三楼",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:30",
+        "tel": "029-68285599",
+        "photos_count": 3,
+        "distance": 525.0,
+        "coordinates": {
+          "lng": 108.944839,
+          "lat": 34.270179
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市莲湖区脑潜力开发训练中心",
+        "address": "莲湖路57号莲湖区残疾人联合会9楼",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87316164",
+        "photos_count": 3,
+        "distance": 539.0,
+        "coordinates": {
+          "lng": 108.940775,
+          "lat": 34.270375
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安银文化馆",
+        "address": "北院门125号1-51回民街",
+        "type": "科教文化服务;展览馆;展览馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 544.0,
+        "coordinates": {
+          "lng": 108.943523,
+          "lat": 34.260953
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市莲湖区庙后街小学",
+        "address": "庙后街65号",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278634",
+        "photos_count": 2,
+        "distance": 548.0,
+        "coordinates": {
+          "lng": 108.937195,
+          "lat": 34.263919
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三十书里(市三十中图书借阅室)",
+        "address": "西新街57号(西安市第三十中学南门右侧)",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周五 07:30-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 562.0,
+        "coordinates": {
+          "lng": 108.9487,
+          "lat": 34.264816
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市第三十中学",
+        "address": "西新街51-10号(钟楼地铁站A口步行400米)",
+        "type": "科教文化服务;学校;中学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87261265",
+        "photos_count": 3,
+        "distance": 563.0,
+        "coordinates": {
+          "lng": 108.948782,
+          "lat": 34.265172
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宋庆龄育儿中心",
+        "address": "通济南坊3号建委家属院西南门旁",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87282267;029-87283011",
+        "photos_count": 3,
+        "distance": 565.0,
+        "coordinates": {
+          "lng": 108.948839,
+          "lat": 34.266006
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安记忆历史文化展览馆",
+        "address": "北院门街道南口鼓楼北20米西安记忆",
+        "type": "科教文化服务;展览馆;展览馆",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 09:30-22:30",
+        "tel": "15302081701",
+        "photos_count": 3,
+        "distance": 570.0,
+        "coordinates": {
+          "lng": 108.943435,
+          "lat": 34.260714
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安北广济街清真寺文化中心",
+        "address": "北广济街83号",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 589.0,
+        "coordinates": {
+          "lng": 108.939596,
+          "lat": 34.261167
+        },
+        "source": "amap"
+      },
+      {
+        "name": "润德教育(西安分校)",
+        "address": "名流天地大厦701室(钟楼地铁站D口步行130米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周五 09:00-18:00",
+        "tel": "17392206423",
+        "photos_count": 3,
+        "distance": 597.0,
+        "coordinates": {
+          "lng": 108.947822,
+          "lat": 34.262505
+        },
+        "source": "amap"
+      },
+      {
+        "name": "仁和会计培训(西安钟楼校区)",
+        "address": "北大街35号名流天地大厦7楼(人民剧院旁)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "4009911733",
+        "photos_count": 3,
+        "distance": 597.0,
+        "coordinates": {
+          "lng": 108.947837,
+          "lat": 34.262515
+        },
+        "source": "amap"
+      },
+      {
+        "name": "柚橙托管(莲湖总校)",
+        "address": "青年路95号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 602.0,
+        "coordinates": {
+          "lng": 108.941975,
+          "lat": 34.271175
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安开放大学(莲湖分校)",
+        "address": "青年路67号莲湖进校内(莲湖分校校本部)",
+        "type": "科教文化服务;学校;成人教育",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 604.0,
+        "coordinates": {
+          "lng": 108.944113,
+          "lat": 34.271104
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市第七十中学分校",
+        "address": "庙后街99号",
+        "type": "科教文化服务;学校;中学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 607.0,
+        "coordinates": {
+          "lng": 108.936455,
+          "lat": 34.264031
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕西省广播电影电视局培训中心",
+        "address": "北大街129号(北大街地铁站C东南口步行320米)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87991577",
+        "photos_count": 3,
+        "distance": 609.0,
+        "coordinates": {
+          "lng": 108.948375,
+          "lat": 34.268625
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲湖进校电大",
+        "address": "青年路67号(北大街地铁站A1西北口步行390米)",
+        "type": "科教文化服务;学校;成人教育",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 613.0,
+        "coordinates": {
+          "lng": 108.944088,
+          "lat": 34.271195
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕西省莲湖教师进修学校",
+        "address": "青年路67号(北大街地铁站A1西北口步行360米)",
+        "type": "科教文化服务;学校;成人教育",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87276313",
+        "photos_count": 3,
+        "distance": 619.0,
+        "coordinates": {
+          "lng": 108.943895,
+          "lat": 34.271273
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安龙泽教育培训中心",
+        "address": "立新街18号立新大厦4层",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-20:30",
+        "tel": "029-87319880;18991215291;18991215292",
+        "photos_count": 3,
+        "distance": 623.0,
+        "coordinates": {
+          "lng": 108.942531,
+          "lat": 34.271399
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安力行艺术培训中心",
+        "address": "西华门新民街38号(西华数码大厦4楼)",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周二至周六 09:00-17:30",
+        "tel": "029-89621800",
+        "photos_count": 3,
+        "distance": 624.0,
+        "coordinates": {
+          "lng": 108.949492,
+          "lat": 34.265745
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宏卓教育·虾语文北大街校区",
+        "address": "立新街18号立新大厦3楼",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周二至周五 14:00-20:30；周六至周日 09:00-17:00",
+        "tel": "029-87340865",
+        "photos_count": 2,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 108.942585,
+          "lat": 34.271425
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市钟鼓楼博物馆",
+        "address": "西大街北院门南口(钟楼地铁站C口步行390米)",
+        "type": "科教文化服务;博物馆;博物馆",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 08:30-21:30",
+        "tel": "029-87276420;029-87278797",
+        "photos_count": 3,
+        "distance": 632.0,
+        "coordinates": {
+          "lng": 108.943799,
+          "lat": 34.260192
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安交通大学第二附属医院教学区",
+        "address": "皇城西路30号西安交通大学第二附属医院家属区",
+        "type": "科教文化服务;学校;高等院校",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 638.0,
+        "coordinates": {
+          "lng": 108.948569,
+          "lat": 34.268862
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安文创馆",
+        "address": "西大街辅路与北院门交叉口东北140米",
+        "type": "科教文化服务;展览馆;展览馆",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 641.0,
+        "coordinates": {
+          "lng": 108.944745,
+          "lat": 34.260291
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕西省西安小学",
+        "address": "莲湖路91号(洒金桥地铁站D东北口步行380米)",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87319921",
+        "photos_count": 3,
+        "distance": 642.0,
+        "coordinates": {
+          "lng": 108.938407,
+          "lat": 34.270354
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安交通大学口腔医学院科教楼",
+        "address": "皇城西路30号(北大街地铁站C2东南口步行160米)",
+        "type": "科教文化服务;学校;学校",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 643.0,
+        "coordinates": {
+          "lng": 108.948577,
+          "lat": 34.268927
+        },
+        "source": "amap"
+      },
+      {
+        "name": "莲湖区青年路第一社区家长学校",
+        "address": "青年路立新街18号立新大厦4层",
+        "type": "科教文化服务;学校;成人教育",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87319880",
+        "photos_count": 3,
+        "distance": 643.0,
+        "coordinates": {
+          "lng": 108.942621,
+          "lat": 34.271584
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西一路小学",
+        "address": "西一路215号(钟楼地铁站D东北口步行130米)",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87278741",
+        "photos_count": 3,
+        "distance": 649.0,
+        "coordinates": {
+          "lng": 108.948247,
+          "lat": 34.262187
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安市莲湖区青年路小学",
+        "address": "青年路75号(北大街地铁站A1西北口步行430米)",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87213785",
+        "photos_count": 2,
+        "distance": 665.0,
+        "coordinates": {
+          "lng": 108.943544,
+          "lat": 34.271734
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(回民街北院门店)",
+        "address": "北院门街道248号大皮院4号楼1层底商(旅游服务中心南侧)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "12.00",
+        "open_time": "周一至周五 08:30-21:00",
+        "tel": "18191850636",
+        "photos_count": 3,
+        "distance": 121.0,
+        "coordinates": {
+          "lng": 108.942925,
+          "lat": 34.264725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "COFFEEMIX(大皮院店)",
+        "address": "北院门大皮院东口4号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "32.00",
+        "open_time": "周一至周日 08:00-21:00 2026-02-20至2026-02-23 周一至周日 全天关闭",
+        "tel": "15389238108",
+        "photos_count": 3,
+        "distance": 163.0,
+        "coordinates": {
+          "lng": 108.943375,
+          "lat": 34.264438
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸运咖(北院门店)",
+        "address": "北院门266号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "10.00",
+        "open_time": "周一至周日 08:00-23:00",
+        "tel": "15529000623",
+        "photos_count": 3,
+        "distance": 185.0,
+        "coordinates": {
+          "lng": 108.943524,
+          "lat": 34.264277
+        },
+        "source": "amap"
+      },
+      {
+        "name": "云帆Coffee",
+        "address": "大莲花池街25号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "37.00",
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": "19721956106",
+        "photos_count": 3,
+        "distance": 230.0,
+        "coordinates": {
+          "lng": 108.943208,
+          "lat": 34.267828
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(回民街北院门店)",
+        "address": "北院门133号回访文化风情街一层3号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "18.00",
+        "open_time": "周一至周五 07:00-21:30；周日 08:00-22:00；周六 07:30-21:30",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 267.0,
+        "coordinates": {
+          "lng": 108.943741,
+          "lat": 34.263554
+        },
+        "source": "amap"
+      },
+      {
+        "name": "臻咖啡(北大街店)",
+        "address": "二府街北大街88号(北大街地铁站B西南口步行340米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "17.00",
+        "open_time": "周一至周日 08:30-22:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 365.0,
+        "coordinates": {
+          "lng": 108.946492,
+          "lat": 34.266771
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(莲湖桔子酒店钟楼店)",
+        "address": "北大街与通济中坊交叉口西南120米桔子酒店大堂",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "13.00",
+        "open_time": "周一至周日 07:30-21:00",
+        "tel": "18191418860",
+        "photos_count": 3,
+        "distance": 372.0,
+        "coordinates": {
+          "lng": 108.946744,
+          "lat": 34.26596
+        },
+        "source": "amap"
+      },
+      {
+        "name": "拾月里",
+        "address": "化觉巷149号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "19.00",
+        "open_time": "周一至周日 11:00-19:00",
+        "tel": "17316633016",
+        "photos_count": 3,
+        "distance": 411.0,
+        "coordinates": {
+          "lng": 108.942357,
+          "lat": 34.262115
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(宏府大厦店)",
+        "address": "北大街118号宏府大厦A座2层",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.6,
+        "cost": "32.00",
+        "open_time": "周一至周日 07:00-20:00",
+        "tel": "029-87365830",
+        "photos_count": 3,
+        "distance": 421.0,
+        "coordinates": {
+          "lng": 108.946856,
+          "lat": 34.267401
+        },
+        "source": "amap"
+      },
+      {
+        "name": "不舍长安里CLUB",
+        "address": "光明巷40号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "26.00",
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": "17392824285;18991383397",
+        "photos_count": 3,
+        "distance": 429.0,
+        "coordinates": {
+          "lng": 108.938191,
+          "lat": 34.264793
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(回民街西羊市店)",
+        "address": "西羊市与广济街十字路口东南角1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "13.00",
+        "open_time": [],
+        "tel": "17792522950",
+        "photos_count": 3,
+        "distance": 440.0,
+        "coordinates": {
+          "lng": 108.939204,
+          "lat": 34.263097
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(宏府嘉会广场C座店)",
+        "address": "北大街88号宏府嘉会广场C座F1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17788057538",
+        "photos_count": 3,
+        "distance": 445.0,
+        "coordinates": {
+          "lng": 108.946604,
+          "lat": 34.263432
+        },
+        "source": "amap"
+      },
+      {
+        "name": "略知一二咖啡馆",
+        "address": "宏府嘉会广场B座14025室",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "66.00",
+        "open_time": "周四至周日 14:00-20:00",
+        "tel": "13188769330",
+        "photos_count": 3,
+        "distance": 464.0,
+        "coordinates": {
+          "lng": 108.945985,
+          "lat": 34.262628
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贝瑞咖啡(北大街店)",
+        "address": "北大街246号北大街十字往南50米马路西边德克士旁1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "19.00",
+        "open_time": "周一至周日 07:30-21:30",
+        "tel": "029-87235366",
+        "photos_count": 3,
+        "distance": 465.0,
+        "coordinates": {
+          "lng": 108.946945,
+          "lat": 34.268075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "NOWWA挪瓦咖啡",
+        "address": "莲湖路与北大街交叉口西160米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "10.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 498.0,
+        "coordinates": {
+          "lng": 108.945425,
+          "lat": 34.269675
+        },
+        "source": "amap"
+      },
+      {
+        "name": "仓尾coffee&tea",
+        "address": "许士庙街51号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "35.00",
+        "open_time": "周一至周日 09:00-22:30",
+        "tel": "13088981614;15172581222",
+        "photos_count": 3,
+        "distance": 501.0,
+        "coordinates": {
+          "lng": 108.937808,
+          "lat": 34.267797
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(北大街临街店)",
+        "address": [],
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "14.00",
+        "open_time": "周六至周日 07:00-22:00；周一至周五 07:00-22:30",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 524.0,
+        "coordinates": {
+          "lng": 108.947441,
+          "lat": 34.268419
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(北广济街店)",
+        "address": "北广济街143号(广济街地铁站A1口步行370米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "14.00",
+        "open_time": "周一至周五 07:00-21:30；周六 07:00-22:00；周日 07:00-21:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 535.0,
+        "coordinates": {
+          "lng": 108.939083,
+          "lat": 34.262035
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(西安北大街地铁B口店)",
+        "address": "莲湖路2号北大街地铁站B口优生活美食广场负1层中间商铺",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "13.00",
+        "open_time": "周一至周五 07:30-19:30",
+        "tel": "17791963994",
+        "photos_count": 3,
+        "distance": 540.0,
+        "coordinates": {
+          "lng": 108.946771,
+          "lat": 34.269304
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸运咖(回民街店)",
+        "address": "北广济街91号楼",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "11.00",
+        "open_time": "周一至周日 08:00-23:30",
+        "tel": "15319419985",
+        "photos_count": 3,
+        "distance": 561.0,
+        "coordinates": {
+          "lng": 108.939141,
+          "lat": 34.261706
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三北咖啡",
+        "address": "青年路60号院",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "15.00",
+        "open_time": "3月至10月 周一至周五,周日 12:00-19:00",
+        "tel": "13991853035",
+        "photos_count": 3,
+        "distance": 587.0,
+        "coordinates": {
+          "lng": 108.941317,
+          "lat": 34.270954
+        },
+        "source": "amap"
+      },
+      {
+        "name": "归安里咖啡馆",
+        "address": "庙后街建华东巷109号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "28.00",
+        "open_time": "周一至周日 11:00-19:00",
+        "tel": "18192748515",
+        "photos_count": 3,
+        "distance": 595.0,
+        "coordinates": {
+          "lng": 108.93735,
+          "lat": 34.262795
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(钟楼海林大厦新街里·钟楼店)",
+        "address": "北大街28号西安市北大街海林大厦F1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.5,
+        "cost": "16.00",
+        "open_time": "周一至周五 07:00-21:00；周六至周日 07:30-21:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 626.0,
+        "coordinates": {
+          "lng": 108.946449,
+          "lat": 34.261102
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(西安北大街C口店)",
+        "address": "北大街地铁站c口负二楼10101",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "12.00",
+        "open_time": "周一至周日 07:00-19:00",
+        "tel": "19909254248",
+        "photos_count": 3,
+        "distance": 629.0,
+        "coordinates": {
+          "lng": 108.947833,
+          "lat": 34.269537
+        },
+        "source": "amap"
+      },
+      {
+        "name": "luckin coffee 瑞幸咖啡(西安城墙·碑林历史文化景区店)",
+        "address": "新民街与西新街辅路交叉口西北20米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "16.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 640.0,
+        "coordinates": {
+          "lng": 108.949553,
+          "lat": 34.264773
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(西安东亚饭店店)",
+        "address": "西大街3号东亚饭店2层商铺",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "13.00",
+        "open_time": "周一至周五 07:00-21:00；周六至周日 07:00-22:00",
+        "tel": "13679171502",
+        "photos_count": 3,
+        "distance": 676.0,
+        "coordinates": {
+          "lng": 108.945708,
+          "lat": 34.260258
+        },
+        "source": "amap"
+      },
+      {
+        "name": "coffee(西一路店)",
+        "address": "西一路与尚朴路交叉口西100米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.5,
+        "cost": "38.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 687.0,
+        "coordinates": {
+          "lng": 108.948496,
+          "lat": 34.2619
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱无碍·喜地花生咖啡店",
+        "address": "西一路小学东侧215-1(钟楼地铁站D口步行120米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.7,
+        "cost": "38.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 689.0,
+        "coordinates": {
+          "lng": 108.948492,
+          "lat": 34.261874
+        },
+        "source": "amap"
+      },
+      {
+        "name": "The coffee club(北大街店)",
+        "address": "北大街22号中国电信UP未来城",
+        "type": "餐饮服务;外国餐厅;西餐厅(综合风味)|餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "35.00",
+        "open_time": "周三至周四 10:30-18:30；周五至周日 10:00-20:30",
+        "tel": "15591857617;18161832293",
+        "photos_count": 3,
+        "distance": 692.0,
+        "coordinates": {
+          "lng": 108.946542,
+          "lat": 34.26045
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克臻选(西安钟楼店)",
+        "address": "西大街1号钟鼓楼世纪金花下沉广场",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.6,
+        "cost": "47.00",
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": "029-87265863",
+        "photos_count": 3,
+        "distance": 702.0,
+        "coordinates": {
+          "lng": 108.946314,
+          "lat": 34.260237
+        },
+        "source": "amap"
+      },
+      {
+        "name": "退休鸟咖(洒金桥店)",
+        "address": "劳武巷4号吉时行乐长安庭院内中一户",
+        "type": "体育休闲服务;休闲场所;休闲场所|餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "59.00",
+        "open_time": "周一至周日 12:00-20:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 708.0,
+        "coordinates": {
+          "lng": 108.93527,
+          "lat": 34.267477
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(陕西人民出版社店)",
+        "address": "北大街147号陕西人民出版社大厦1层底商(出版社西门侧)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周日 07:00-21:00",
+        "tel": "18182629570",
+        "photos_count": 3,
+        "distance": 712.0,
+        "coordinates": {
+          "lng": 108.947497,
+          "lat": 34.27082
+        },
+        "source": "amap"
+      },
+      {
+        "name": "樸咖·咖啡",
+        "address": "尚朴路23号尚朴里巷23号院",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "22.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13572515850",
+        "photos_count": 3,
+        "distance": 722.0,
+        "coordinates": {
+          "lng": 108.949706,
+          "lat": 34.262867
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天算咖啡(都城隍庙店)",
+        "address": "西大街129西安都城隍庙内",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.7,
+        "cost": "21.00",
+        "open_time": "周二至周日 10:30-18:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 724.0,
+        "coordinates": {
+          "lng": 108.937331,
+          "lat": 34.261041
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(旭弘大厦店)",
+        "address": "西大街126号旭弘大厦XHDS-001号商铺",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "40.00",
+        "open_time": "周六至周日 07:00-22:00；周一至周五 06:45-22:00",
+        "tel": "029-87385794",
+        "photos_count": 3,
+        "distance": 730.0,
+        "coordinates": {
+          "lng": 108.940089,
+          "lat": 34.2596
+        },
+        "source": "amap"
+      },
+      {
+        "name": "NOWWA挪瓦咖啡(每一天西安易俗文化街店)",
+        "address": "案板街26号西一路易俗大剧院",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "13.00",
+        "open_time": [],
+        "tel": "13193308881",
+        "photos_count": 3,
+        "distance": 745.0,
+        "coordinates": {
+          "lng": 108.949275,
+          "lat": 34.261881
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(中环广场店)",
+        "address": "西大街正学街中环广场2幢一层10101号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "21.00",
+        "open_time": "周一至周五 07:00-18:00；周六至周日 09:00-20:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 762.0,
+        "coordinates": {
+          "lng": 108.94249,
+          "lat": 34.258952
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱福寺COFFEE&VINYL",
+        "address": "西仓南巷198号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 14:00-21:00",
+        "tel": "17392707129",
+        "photos_count": 3,
+        "distance": 763.0,
+        "coordinates": {
+          "lng": 108.934475,
+          "lat": 34.26491
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(钟楼西大街亚朵酒店店)",
+        "address": "西大街20号(广济街地铁站C口步行420米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "15029972751",
+        "photos_count": 3,
+        "distance": 781.0,
+        "coordinates": {
+          "lng": 108.944967,
+          "lat": 34.259033
+        },
+        "source": "amap"
+      },
+      {
+        "name": "luckincoffee",
+        "address": "南广济街风雷巷1号金泰丰大厦1幢",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "17.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 786.0,
+        "coordinates": {
+          "lng": 108.939611,
+          "lat": 34.259216
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(西安银泰百货鼓楼店)",
+        "address": "竹笆市街67号(银泰百货东门对面)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "13.00",
+        "open_time": "周一至周五 09:00-20:30",
+        "tel": "17749137005",
+        "photos_count": 3,
+        "distance": 795.0,
+        "coordinates": {
+          "lng": 108.943121,
+          "lat": 34.258662
+        },
+        "source": "amap"
+      },
+      {
+        "name": "渭水咖啡",
+        "address": "皇城西路21号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "28.00",
+        "open_time": "周一至周日 09:00-20:00 2026-04-05至2026-04-05 全天关闭",
+        "tel": "17792546021",
+        "photos_count": 3,
+        "distance": 797.0,
+        "coordinates": {
+          "lng": 108.951153,
+          "lat": 34.267407
+        },
+        "source": "amap"
+      },
+      {
+        "name": "FUN COFFEE·自烘焙咖啡",
+        "address": "大学习巷58号(广济街地铁站A1口步行340米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "26.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "17782966030",
+        "photos_count": 3,
+        "distance": 798.0,
+        "coordinates": {
+          "lng": 108.93621,
+          "lat": 34.261039
+        },
+        "source": "amap"
+      },
+      {
+        "name": "OopsCoffee(西仓店)",
+        "address": "西仓南巷146号西仓文创集市西北角",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "39.00",
+        "open_time": "周一至周日 11:00-18:00",
+        "tel": "13201687976;17782864092",
+        "photos_count": 3,
+        "distance": 802.0,
+        "coordinates": {
+          "lng": 108.933983,
+          "lat": 34.266075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "口力口非咖啡馆(省农行家属院店)",
+        "address": "南院门街道钟楼小区北门一号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "16.00",
+        "open_time": "周一至周日 11:30-19:00",
+        "tel": "18705771226",
+        "photos_count": 3,
+        "distance": 818.0,
+        "coordinates": {
+          "lng": 108.944764,
+          "lat": 34.258652
+        },
+        "source": "amap"
+      },
+      {
+        "name": "吉咖Jika COFFEE",
+        "address": "案板街易俗后街E11吉咖JIKA COFFEE",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "19.00",
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 841.0,
+        "coordinates": {
+          "lng": 108.949746,
+          "lat": 34.26098
+        },
+        "source": "amap"
+      },
+      {
+        "name": "肯悦咖啡",
+        "address": "东大街与钟楼盘道交叉口东100米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "11.00",
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 866.0,
+        "coordinates": {
+          "lng": 108.948595,
+          "lat": 34.259727
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(回民街大学习巷店)",
+        "address": "西大街135号1F-03(西京国际饭店主楼西侧底商)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "10.00",
+        "open_time": "周一至周五 10:00-22:00",
+        "tel": "17782620312",
+        "photos_count": 3,
+        "distance": 868.0,
+        "coordinates": {
+          "lng": 108.936425,
+          "lat": 34.259975
+        },
+        "source": "amap"
+      },
+      {
+        "name": "春庄咖啡SpringHues(钟楼小区店)",
+        "address": "钟楼小区9号楼1层商铺(钟楼地铁站3号口步行400米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.6,
+        "cost": "48.00",
+        "open_time": "周一至周二 11:00-19:00；周三至周日 10:00-20:00",
+        "tel": "13679202310",
+        "photos_count": 3,
+        "distance": 871.0,
+        "coordinates": {
+          "lng": 108.944756,
+          "lat": 34.258157
+        },
+        "source": "amap"
+      },
+      {
+        "name": "Richer Rich",
+        "address": "南长巷10号(钟楼地铁站D口步行430米)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "37.00",
+        "open_time": "周一 11:30-18:00；周二 11:30-18:00；周四至周日 11:30-18:00",
+        "tel": "19591550168",
+        "photos_count": 3,
+        "distance": 875.0,
+        "coordinates": {
+          "lng": 108.95124,
+          "lat": 34.262334
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安初见·如故民宿",
+        "address": "小皮院3号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87372407;+861056320612,5966423",
+        "photos_count": 3,
+        "distance": 15.0,
+        "coordinates": {
+          "lng": 108.942838,
+          "lat": 34.265724
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贾五油糊馅",
+        "address": "麦苋街中段76号",
+        "type": "购物服务;综合市场;农副产品市场|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.5,
+        "cost": "14.00",
+        "open_time": "周一至周四 07:00-16:00；周六 07:00-16:00；周日 07:00-16:00",
+        "tel": "029-87257329",
+        "photos_count": 3,
+        "distance": 76.0,
+        "coordinates": {
+          "lng": 108.942969,
+          "lat": 34.266454
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马志爱稀糊烂腊牛肉店",
+        "address": "麦苋街4号(大皮院东口)",
+        "type": "购物服务;综合市场;农副产品市场|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.3,
+        "cost": "67.00",
+        "open_time": "周一至周日 07:00-21:00",
+        "tel": "13709144144",
+        "photos_count": 3,
+        "distance": 137.0,
+        "coordinates": {
+          "lng": 108.942959,
+          "lat": 34.264586
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦汉唐宫廷汉服馆",
+        "address": "鼓楼广场西北侧综合商货楼一层",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-24:00",
+        "tel": "13572538185;15829610979;18192032736",
+        "photos_count": 3,
+        "distance": 153.0,
+        "coordinates": {
+          "lng": 108.943325,
+          "lat": 34.267075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小家园民族特产(回民街店)",
+        "address": "北院门街道大皮院14号",
+        "type": "购物服务;专卖店;土特产专卖店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13630251662",
+        "photos_count": 3,
+        "distance": 156.0,
+        "coordinates": {
+          "lng": 108.942909,
+          "lat": 34.264406
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国移动通信(二府街营业厅)",
+        "address": "二府街85号",
+        "type": "购物服务;家电电子卖场;手机销售|生活服务;电讯营业厅;中国移动营业厅",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:15",
+        "tel": "18229039332",
+        "photos_count": 2,
+        "distance": 158.0,
+        "coordinates": {
+          "lng": 108.943475,
+          "lat": 34.267075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老凤祥黄金回收加工",
+        "address": "北院门街道二府街89号",
+        "type": "购物服务;购物相关场所;购物相关场所|生活服务;生活服务场所;生活服务场所",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13299018190",
+        "photos_count": 3,
+        "distance": 163.0,
+        "coordinates": {
+          "lng": 108.943462,
+          "lat": 34.267129
+        },
+        "source": "amap"
+      },
+      {
+        "name": "希木尔鲜制酸奶(大皮院店)",
+        "address": "大皮院69号",
+        "type": "购物服务;综合市场;农副产品市场|餐饮服务;冷饮店;冷饮店",
+        "rating": 4.1,
+        "cost": "15.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13571490209;18515854866",
+        "photos_count": 3,
+        "distance": 189.0,
+        "coordinates": {
+          "lng": 108.941277,
+          "lat": 34.264567
+        },
+        "source": "amap"
+      },
+      {
+        "name": "唐久便利(西华门店)",
+        "address": "西华门18号(钟楼地铁站A口步行440米)",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87388318",
+        "photos_count": 3,
+        "distance": 215.0,
+        "coordinates": {
+          "lng": 108.944055,
+          "lat": 34.264221
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贾仲仁腊牛羊肉",
+        "address": "小皮院71号西口",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 05:30-19:00",
+        "tel": "029-87341541",
+        "photos_count": 2,
+        "distance": 254.0,
+        "coordinates": {
+          "lng": 108.939944,
+          "lat": 34.265589
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北院门回坊文化风情街",
+        "address": "北院门与杜会路交叉口东北40米",
+        "type": "购物服务;特色商业街;特色商业街",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周五 07:00-21:30；周日 08:00-22:00；周六 07:30-21:30",
+        "tel": "19991432722",
+        "photos_count": 3,
+        "distance": 260.0,
+        "coordinates": {
+          "lng": 108.943865,
+          "lat": 34.263666
+        },
+        "source": "amap"
+      },
+      {
+        "name": "沃力蜜汁杏肉(回民街店)",
+        "address": "北院门国名商城西门10米(钟楼地铁站A口步行490米)",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.4,
+        "cost": "15.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13619229794",
+        "photos_count": 3,
+        "distance": 291.0,
+        "coordinates": {
+          "lng": 108.94338,
+          "lat": 34.263241
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国移动光网宽带授权办理点",
+        "address": "大莲花池街派出所东北门旁",
+        "type": "购物服务;家电电子卖场;手机销售|生活服务;电讯营业厅;中国移动营业厅",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 09:30-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 293.0,
+        "coordinates": {
+          "lng": 108.943115,
+          "lat": 34.268417
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老陈家牛羊肉店",
+        "address": "大皮院110号附近",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 06:00-15:30",
+        "tel": "13379289916",
+        "photos_count": 3,
+        "distance": 298.0,
+        "coordinates": {
+          "lng": 108.939819,
+          "lat": 34.26456
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大皮院少数民族用品服务中心",
+        "address": "大皮院清真寺北门旁",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店|购物服务;专卖店;专营店",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": "周一至周日 07:30-24:00",
+        "tel": "13309229891",
+        "photos_count": 3,
+        "distance": 306.0,
+        "coordinates": {
+          "lng": 108.939838,
+          "lat": 34.264386
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西羊市",
+        "address": "北院门208号(钟楼地铁站A口步行480米)",
+        "type": "购物服务;特色商业街;特色商业街|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "029-87214123",
+        "photos_count": 3,
+        "distance": 309.0,
+        "coordinates": {
+          "lng": 108.94357,
+          "lat": 34.263114
+        },
+        "source": "amap"
+      },
+      {
+        "name": "张二哈文创市集",
+        "address": "北院门125号(钟楼地铁站A口步行440米)",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-24:00",
+        "tel": "17823212141",
+        "photos_count": 3,
+        "distance": 312.0,
+        "coordinates": {
+          "lng": 108.943865,
+          "lat": 34.263162
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西华门消防救援站",
+        "address": "西华门11号(钟楼地铁站A口步行380米)",
+        "type": "政府机构及社会团体;公检法机构;消防机关|购物服务;购物相关场所;购物相关场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 316.0,
+        "coordinates": {
+          "lng": 108.945875,
+          "lat": 34.264709
+        },
+        "source": "amap"
+      },
+      {
+        "name": "伊古斋黄桂柿子饼(回民街店)",
+        "address": "回民街北院门119号(钟楼地铁站A口步行490米)",
+        "type": "购物服务;综合市场;果品市场|购物服务;专卖店;专营店|餐饮服务;糕饼店;糕饼店",
+        "rating": 4.4,
+        "cost": "9.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13572442011;18909272679",
+        "photos_count": 3,
+        "distance": 328.0,
+        "coordinates": {
+          "lng": 108.94378,
+          "lat": 34.262986
+        },
+        "source": "amap"
+      },
+      {
+        "name": "伊真云娥商店(北广济街)",
+        "address": "北广济街231号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 09:00-23:00",
+        "tel": "029-87333105;13309216249",
+        "photos_count": 3,
+        "distance": 373.0,
+        "coordinates": {
+          "lng": 108.93906,
+          "lat": 34.264314
+        },
+        "source": "amap"
+      },
+      {
+        "name": "回民街",
+        "address": "北院门125号1-51(钟楼地铁站出入口步行430米)",
+        "type": "购物服务;特色商业街;步行街",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 402.0,
+        "coordinates": {
+          "lng": 108.943607,
+          "lat": 34.26226
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安古院独立书店",
+        "address": "光明巷31号",
+        "type": "购物服务;专卖店;书店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周二至周日 12:00-22:00",
+        "tel": "15587139743",
+        "photos_count": 3,
+        "distance": 402.0,
+        "coordinates": {
+          "lng": 108.938388,
+          "lat": 34.265163
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兴艾上辣子坊",
+        "address": "光明巷51号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 10:30-19:30",
+        "tel": "15129617906;18681811218",
+        "photos_count": 3,
+        "distance": 403.0,
+        "coordinates": {
+          "lng": 108.938314,
+          "lat": 34.265754
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兰信议腊牛肉",
+        "address": "光明巷61号",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 06:00-15:00",
+        "tel": "13259888444",
+        "photos_count": 3,
+        "distance": 406.0,
+        "coordinates": {
+          "lng": 108.938326,
+          "lat": 34.26633
+        },
+        "source": "amap"
+      },
+      {
+        "name": "倍格硅巷(西安宏府大厦)",
+        "address": "北大街238号(北大街地铁站B西南口步行360米)",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13468918095",
+        "photos_count": 3,
+        "distance": 426.0,
+        "coordinates": {
+          "lng": 108.94686,
+          "lat": 34.267498
+        },
+        "source": "amap"
+      },
+      {
+        "name": "7-ELEVEn(宏府大厦店)",
+        "address": "北大街118号宏府大厦A座御品轩旁",
+        "type": "购物服务;便民商店/便利店;7-ELEVEn便利店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "029-87397963;17316603715",
+        "photos_count": 3,
+        "distance": 427.0,
+        "coordinates": {
+          "lng": 108.946919,
+          "lat": 34.267418
+        },
+        "source": "amap"
+      },
+      {
+        "name": "家辉生鲜(金海大厦店)",
+        "address": "金海大厦北门旁(北大街地铁站B1西南口步行300米)",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 432.0,
+        "coordinates": {
+          "lng": 108.943715,
+          "lat": 34.269595
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天音(宏府大厦A座店)",
+        "address": "北大街118号宏府大厦A座二层商业街2-18",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 09:00-19:00",
+        "tel": "029-87254502",
+        "photos_count": 3,
+        "distance": 435.0,
+        "coordinates": {
+          "lng": 108.946915,
+          "lat": 34.267577
+        },
+        "source": "amap"
+      },
+      {
+        "name": "贾家秘制五香花生米(光明巷店)",
+        "address": "光明巷32号",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 07:00-21:00",
+        "tel": "15191889511",
+        "photos_count": 3,
+        "distance": 435.0,
+        "coordinates": {
+          "lng": 108.938185,
+          "lat": 34.264627
+        },
+        "source": "amap"
+      },
+      {
+        "name": "名创优品(钟楼西安中心戴斯酒店店)",
+        "address": "北大街国美电器一楼(北大街地铁站B西南口步行330米)",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "17691179524",
+        "photos_count": 3,
+        "distance": 451.0,
+        "coordinates": {
+          "lng": 108.947491,
+          "lat": 34.266688
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海澜之家(通济中坊店)",
+        "address": "北大街通济坊14号",
+        "type": "购物服务;服装鞋帽皮具店;品牌服装店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "029-87215063;029-87267799;18509136427",
+        "photos_count": 3,
+        "distance": 452.0,
+        "coordinates": {
+          "lng": 108.94743,
+          "lat": 34.26691
+        },
+        "source": "amap"
+      },
+      {
+        "name": "紫罗兰鲜花店(莲湖路店)",
+        "address": "莲湖路24号(北大街地铁站出入口步行180米)",
+        "type": "购物服务;花鸟鱼虫市场;花卉市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "15202400361",
+        "photos_count": 3,
+        "distance": 470.0,
+        "coordinates": {
+          "lng": 108.944786,
+          "lat": 34.269659
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兵猫俑官方文创店",
+        "address": "北广济街171号(广济街地铁站A1口步行450米)",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-23:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 473.0,
+        "coordinates": {
+          "lng": 108.93904,
+          "lat": 34.262808
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安新世界时尚广场",
+        "address": "北大街88号(钟楼地铁站A西北口旁)",
+        "type": "购物服务;商场;普通商场",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 475.0,
+        "coordinates": {
+          "lng": 108.946363,
+          "lat": 34.262791
+        },
+        "source": "amap"
+      },
+      {
+        "name": "子佩集(回民街店)",
+        "address": "北院门125号1-51回民街",
+        "type": "购物服务;专卖店;礼品饰品店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-23:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 477.0,
+        "coordinates": {
+          "lng": 108.943674,
+          "lat": 34.261588
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安金丰泰收藏",
+        "address": "北大街通济南坊口通济广场西安邮币卡市场一层",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-18:00",
+        "tel": "15591888886;19991888886",
+        "photos_count": 3,
+        "distance": 482.0,
+        "coordinates": {
+          "lng": 108.947931,
+          "lat": 34.266133
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安邮币卡收藏品市场",
+        "address": "北大街99号通济南坊北一楼",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "19991888886",
+        "photos_count": 3,
+        "distance": 482.0,
+        "coordinates": {
+          "lng": 108.94793,
+          "lat": 34.266169
+        },
+        "source": "amap"
+      },
+      {
+        "name": "沐云车行.电动车租赁(北大街)",
+        "address": "莲湖路6号院北门旁",
+        "type": "购物服务;专卖店;自行车专卖店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17386928063",
+        "photos_count": 3,
+        "distance": 487.0,
+        "coordinates": {
+          "lng": 108.945301,
+          "lat": 34.269615
+        },
+        "source": "amap"
+      },
+      {
+        "name": "每一天便利店(北大街店)",
+        "address": "莲湖路2号1栋001室",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "4006208768",
+        "photos_count": 3,
+        "distance": 497.0,
+        "coordinates": {
+          "lng": 108.945438,
+          "lat": 34.26965
+        },
+        "source": "amap"
+      },
+      {
+        "name": "长安市集(回民街店)",
+        "address": "北院门98号(广济街地铁站D1口步行460米)",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:30-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 508.0,
+        "coordinates": {
+          "lng": 108.943558,
+          "lat": 34.261291
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安钟楼北大街地铁站亚朵酒店",
+        "address": "莲湖路23号,近地铁1、2号线交汇点北大街站A2出口向西50米",
+        "type": "住宿服务;宾馆酒店;宾馆酒店|购物服务;购物相关场所;购物相关场所",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-86717777;4000606606",
+        "photos_count": 3,
+        "distance": 509.0,
+        "coordinates": {
+          "lng": 108.9445,
+          "lat": 34.270124
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北大街尚品生鲜(莲湖路店)",
+        "address": "莲湖路8号(北大街地铁站出入口步行150米)",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 07:30-21:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 510.0,
+        "coordinates": {
+          "lng": 108.945686,
+          "lat": 34.269667
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真·李老三腊牛羊肉(回民街店)",
+        "address": "北广济街153号(广济街地铁站A1口步行390米)",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 06:00-19:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 516.0,
+        "coordinates": {
+          "lng": 108.939131,
+          "lat": 34.262215
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱依服(莲湖一社区店)",
+        "address": "北大街276号(北大街地铁站B西南口步行70米)",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 519.0,
+        "coordinates": {
+          "lng": 108.946944,
+          "lat": 34.268873
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国移动(立新街家属楼店)",
+        "address": "立新街1号(北大街地铁站A2西北口步行420米)",
+        "type": "购物服务;家电电子卖场;手机销售|生活服务;电讯营业厅;中国移动营业厅",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:30-22:15",
+        "tel": "18229039332",
+        "photos_count": 3,
+        "distance": 527.0,
+        "coordinates": {
+          "lng": 108.942942,
+          "lat": 34.270535
+        },
+        "source": "amap"
+      },
+      {
+        "name": "苏宁易购(Suning Plus西安莲湖路店)",
+        "address": "莲湖路23号",
+        "type": "购物服务;家电电子卖场;苏宁",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 10:00-20:00 2026-02-14至2026-02-23 10:00-18:00",
+        "tel": "029-65621738",
+        "photos_count": 3,
+        "distance": 536.0,
+        "coordinates": {
+          "lng": 108.944684,
+          "lat": 34.270331
+        },
+        "source": "amap"
+      },
+      {
+        "name": "胜胜肉店",
+        "address": "庙后街32号",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一 17:00-21:00；周三至周日 17:00-21:00",
+        "tel": "15319923379;18220564426",
+        "photos_count": 3,
+        "distance": 538.0,
+        "coordinates": {
+          "lng": 108.937705,
+          "lat": 34.263272
+        },
+        "source": "amap"
+      },
+      {
+        "name": "赵一鸣省钱超市(陕西西安北大街店)",
+        "address": "25号1",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 08:00-23:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 540.0,
+        "coordinates": {
+          "lng": 108.945545,
+          "lat": 34.270046
+        },
+        "source": "amap"
+      },
+      {
+        "name": "花木兰饮品店(总店)",
+        "address": "北大街通济中坊9号(北大街中心戴斯酒店旁)",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店|餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.1,
+        "cost": "12.00",
+        "open_time": "周一至周日 09:30-20:30",
+        "tel": "029-87216813;029-87218818;17792289039",
+        "photos_count": 3,
+        "distance": 542.0,
+        "coordinates": {
+          "lng": 108.948483,
+          "lat": 34.266767
+        },
+        "source": "amap"
+      },
+      {
+        "name": "果朴仓储式会员店(北大街)",
+        "address": "立新街8号(北大街地铁A2口向西300米)",
+        "type": "购物服务;超级市场;超市|购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:30",
+        "tel": "13152000079",
+        "photos_count": 3,
+        "distance": 544.0,
+        "coordinates": {
+          "lng": 108.942679,
+          "lat": 34.270693
+        },
+        "source": "amap"
+      },
+      {
+        "name": "佳宝甜食(小皮院店)",
+        "address": "北院门街道小皮院1号",
+        "type": "餐饮服务;甜品店;甜品店",
+        "rating": 4.4,
+        "cost": "12.00",
+        "open_time": "周一至周日 11:00-20:00",
+        "tel": "13299079900",
+        "photos_count": 3,
+        "distance": 18.0,
+        "coordinates": {
+          "lng": 108.942876,
+          "lat": 34.265718
+        },
+        "source": "amap"
+      },
+      {
+        "name": "知感酸汤水饺(回民街店)",
+        "address": "回民街小皮院东口17号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.1,
+        "cost": "24.00",
+        "open_time": "周一至周日 10:00-20:00",
+        "tel": "13991946054",
+        "photos_count": 3,
+        "distance": 27.0,
+        "coordinates": {
+          "lng": 108.942419,
+          "lat": 34.265713
+        },
+        "source": "amap"
+      },
+      {
+        "name": "希木尔·鲜制酸奶(麦苋街店)",
+        "address": "麦苋街40号",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.1,
+        "cost": "14.00",
+        "open_time": "周一至周日 08:00-23:00",
+        "tel": "15229071677",
+        "photos_count": 3,
+        "distance": 41.0,
+        "coordinates": {
+          "lng": 108.942962,
+          "lat": 34.265501
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真·阿丹冒菜",
+        "address": "麦苋街34号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.2,
+        "cost": "21.00",
+        "open_time": "周一至周日 09:00-24:00",
+        "tel": "13324518300;15991777211",
+        "photos_count": 3,
+        "distance": 55.0,
+        "coordinates": {
+          "lng": 108.942937,
+          "lat": 34.265337
+        },
+        "source": "amap"
+      },
+      {
+        "name": "迈德堡(麦苋街店)",
+        "address": "麦苋街9号",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.3,
+        "cost": "20.00",
+        "open_time": "周一至周日 09:00-23:00",
+        "tel": "029-87386816;18629551813",
+        "photos_count": 3,
+        "distance": 65.0,
+        "coordinates": {
+          "lng": 108.943144,
+          "lat": 34.26626
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真·马文砂锅大全",
+        "address": "麦苋街28号(大皮院路口)",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.4,
+        "cost": "20.00",
+        "open_time": "周一至周日 11:00-14:00,16:30-22:00",
+        "tel": "13474003003",
+        "photos_count": 3,
+        "distance": 73.0,
+        "coordinates": {
+          "lng": 108.942964,
+          "lat": 34.265177
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马乐烤肉(回民街店)",
+        "address": "回坊麦苋街30号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.7,
+        "cost": "48.00",
+        "open_time": "周一至周日 16:30-22:30",
+        "tel": "17792727323",
+        "photos_count": 3,
+        "distance": 74.0,
+        "coordinates": {
+          "lng": 108.942964,
+          "lat": 34.265171
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蜜果太子糖水铺(清真)",
+        "address": "麦笕街74号",
+        "type": "餐饮服务;甜品店;甜品店",
+        "rating": 4.6,
+        "cost": "17.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "19929956628",
+        "photos_count": 3,
+        "distance": 74.0,
+        "coordinates": {
+          "lng": 108.942983,
+          "lat": 34.266429
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夜长安回坊烟火·烤肉",
+        "address": "小坤园28号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.2,
+        "cost": "57.00",
+        "open_time": "周一至周日 16:00-22:30",
+        "tel": "13659187713",
+        "photos_count": 3,
+        "distance": 94.0,
+        "coordinates": {
+          "lng": 108.941682,
+          "lat": 34.265708
+        },
+        "source": "amap"
+      },
+      {
+        "name": "迪尼庭院烧烤",
+        "address": "麦苋街37号(院内)",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.3,
+        "cost": "53.00",
+        "open_time": "周一至周日 17:00-23:00",
+        "tel": "15384646533",
+        "photos_count": 3,
+        "distance": 98.0,
+        "coordinates": {
+          "lng": 108.943124,
+          "lat": 34.266616
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老何家牛羊肉饼专卖(回民街店)",
+        "address": "麦苋街8号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.1,
+        "cost": "7.00",
+        "open_time": "周一至周日 06:00-02:00",
+        "tel": "13991110074;18166668352",
+        "photos_count": 3,
+        "distance": 102.0,
+        "coordinates": {
+          "lng": 108.942961,
+          "lat": 34.264901
+        },
+        "source": "amap"
+      },
+      {
+        "name": "盛鑫诚牛羊肉店",
+        "address": "麦苋街14号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 07:00-19:00",
+        "tel": "13991258211;18629259818",
+        "photos_count": 3,
+        "distance": 108.0,
+        "coordinates": {
+          "lng": 108.942961,
+          "lat": 34.264847
+        },
+        "source": "amap"
+      },
+      {
+        "name": "乌家西木小炒泡馍",
+        "address": "红埠街8号",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 3.9,
+        "cost": "26.00",
+        "open_time": "周一至周日 10:00-22:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 118.0,
+        "coordinates": {
+          "lng": 108.942624,
+          "lat": 34.266862
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陈学正酸梅汤(麦苋街店)",
+        "address": "麦苋街53号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.2,
+        "cost": "11.00",
+        "open_time": "周一至周日 08:00-24:00",
+        "tel": "13299107767;14701239594",
+        "photos_count": 3,
+        "distance": 121.0,
+        "coordinates": {
+          "lng": 108.943232,
+          "lat": 34.266795
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兰家尔奈斯大盘鸡",
+        "address": "麦苋街96号与红埠街十字交口西南角",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.5,
+        "cost": "44.00",
+        "open_time": "周一至周日 10:30-21:00",
+        "tel": "13609110071;15529080087",
+        "photos_count": 3,
+        "distance": 124.0,
+        "coordinates": {
+          "lng": 108.942975,
+          "lat": 34.266891
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真老乌家油茶麻花",
+        "address": "红福小区南门旁",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.6,
+        "cost": "11.00",
+        "open_time": "周一至周日 06:00-12:30",
+        "tel": "13379021281",
+        "photos_count": 3,
+        "distance": 127.0,
+        "coordinates": {
+          "lng": 108.942837,
+          "lat": 34.266939
+        },
+        "source": "amap"
+      },
+      {
+        "name": "王家餐馆",
+        "address": "大皮院13号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.2,
+        "cost": "13.00",
+        "open_time": "周一至周日 07:00-21:30",
+        "tel": "029-85949076;18066516817",
+        "photos_count": 3,
+        "distance": 135.0,
+        "coordinates": {
+          "lng": 108.942533,
+          "lat": 34.264591
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高家烤肉(回民街店)",
+        "address": "大皮院5号(近回民街)",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 4.6,
+        "cost": "53.00",
+        "open_time": "周一至周日 16:00-23:00",
+        "tel": "029-87214262;15349238828",
+        "photos_count": 3,
+        "distance": 137.0,
+        "coordinates": {
+          "lng": 108.94277,
+          "lat": 34.264569
+        },
+        "source": "amap"
+      },
+      {
+        "name": "茶话弄(大皮院店)",
+        "address": "大皮院1号",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.6,
+        "cost": "19.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "17791624585",
+        "photos_count": 3,
+        "distance": 139.0,
+        "coordinates": {
+          "lng": 108.942816,
+          "lat": 34.264555
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蜜果子",
+        "address": "北院门街道红埠街36号",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.1,
+        "cost": "29.00",
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "13590976699;18991161923",
+        "photos_count": 3,
+        "distance": 139.0,
+        "coordinates": {
+          "lng": 108.942069,
+          "lat": 34.26694
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马鹏小炒泡馍(红福小区店)",
+        "address": "红埠街3号红福小区",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.3,
+        "cost": "20.00",
+        "open_time": "周一至周日 09:00-17:00",
+        "tel": "13389252448",
+        "photos_count": 3,
+        "distance": 143.0,
+        "coordinates": {
+          "lng": 108.942515,
+          "lat": 34.267082
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真·壹佳烤肉(红福小区店)",
+        "address": "红埠街1号10101(老乌家油茶麻花对面)",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 4.6,
+        "cost": "49.00",
+        "open_time": "周一至周日 16:00-24:00",
+        "tel": "18109185531",
+        "photos_count": 3,
+        "distance": 144.0,
+        "coordinates": {
+          "lng": 108.942849,
+          "lat": 34.267089
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老铁家腊牛羊肉(大皮院店)",
+        "address": "大皮院23号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.2,
+        "cost": "61.00",
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "15877652455",
+        "photos_count": 3,
+        "distance": 147.0,
+        "coordinates": {
+          "lng": 108.942111,
+          "lat": 34.264568
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老伍烤肉店(红福小区店)",
+        "address": "红埠街3号红福小区",
+        "type": "餐饮服务;外国餐厅;外国餐厅",
+        "rating": 4.1,
+        "cost": "42.00",
+        "open_time": "周一至周日 12:00-21:00",
+        "tel": "15991647916",
+        "photos_count": 3,
+        "distance": 147.0,
+        "coordinates": {
+          "lng": 108.942257,
+          "lat": 34.267075
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕拾叁(大皮院店)",
+        "address": "大皮院22号",
+        "type": "餐饮服务;甜品店;甜品店",
+        "rating": 4.4,
+        "cost": "26.00",
+        "open_time": "周一至周日 09:00-21:30",
+        "tel": "18009208709",
+        "photos_count": 3,
+        "distance": 149.0,
+        "coordinates": {
+          "lng": 108.942811,
+          "lat": 34.26446
+        },
+        "source": "amap"
+      },
+      {
+        "name": "蜜雪冰城(大皮院店)",
+        "address": "北院门街道大皮院31号",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.3,
+        "cost": "7.00",
+        "open_time": "周一至周日 09:30-23:00",
+        "tel": "15588353389",
+        "photos_count": 3,
+        "distance": 149.0,
+        "coordinates": {
+          "lng": 108.94202,
+          "lat": 34.264577
+        },
+        "source": "amap"
+      },
+      {
+        "name": "乌家茂盛斋酱香烧鸡",
+        "address": "二府街99号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.1,
+        "cost": "36.00",
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "13992837616;17791973489",
+        "photos_count": 3,
+        "distance": 150.0,
+        "coordinates": {
+          "lng": 108.943139,
+          "lat": 34.267099
+        },
+        "source": "amap"
+      },
+      {
+        "name": "刚刚特色肉丸糊辣汤(红福小区店)",
+        "address": "红埠街(东口)1号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.1,
+        "cost": "13.00",
+        "open_time": "周一至周日 06:00-13:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 150.0,
+        "coordinates": {
+          "lng": 108.943014,
+          "lat": 34.267127
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大皮院老贾家油糊璇",
+        "address": "大皮院27号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.1,
+        "cost": "11.00",
+        "open_time": "周一至周日 06:00-19:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 151.0,
+        "coordinates": {
+          "lng": 108.941986,
+          "lat": 34.264576
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马超馄饨馆(红福小区店)",
+        "address": "红埠街3号红福小区",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.1,
+        "cost": "14.00",
+        "open_time": "周一至周日 07:00-20:00",
+        "tel": "15691811117",
+        "photos_count": 3,
+        "distance": 151.0,
+        "coordinates": {
+          "lng": 108.94293,
+          "lat": 34.267146
+        },
+        "source": "amap"
+      },
+      {
+        "name": "孙庆海腊牛羊肉(回民街店)",
+        "address": "大皮院15号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 07:00-19:00",
+        "tel": "029-87241214",
+        "photos_count": 3,
+        "distance": 151.0,
+        "coordinates": {
+          "lng": 108.942476,
+          "lat": 34.264452
+        },
+        "source": "amap"
+      },
+      {
+        "name": "花奶奶酸梅汤大皮院店)",
+        "address": "大皮院中段老同盛生对面",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.7,
+        "cost": "8.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13991918409;18710975485",
+        "photos_count": 3,
+        "distance": 151.0,
+        "coordinates": {
+          "lng": 108.943017,
+          "lat": 34.264464
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马三汤包(回民街店)",
+        "address": "大皮院东口10号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.5,
+        "cost": "33.00",
+        "open_time": "周一至周日 09:00-23:00",
+        "tel": "029-87233407",
+        "photos_count": 3,
+        "distance": 152.0,
+        "coordinates": {
+          "lng": 108.943076,
+          "lat": 34.264463
+        },
+        "source": "amap"
+      },
+      {
+        "name": "签古一串(红福小区店)",
+        "address": "大莲花池街13号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.5,
+        "cost": "35.00",
+        "open_time": "周一至周日 17:00-24:00",
+        "tel": "13991166044",
+        "photos_count": 3,
+        "distance": 153.0,
+        "coordinates": {
+          "lng": 108.942958,
+          "lat": 34.26716
+        },
+        "source": "amap"
+      },
+      {
+        "name": "一真楼羊肉泡馍",
+        "address": "大皮院18号(近北院门)",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.6,
+        "cost": "39.00",
+        "open_time": "周一至周日 06:00-21:00",
+        "tel": "029-87286131",
+        "photos_count": 3,
+        "distance": 155.0,
+        "coordinates": {
+          "lng": 108.942873,
+          "lat": 34.264412
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马洪小炒泡馍馆",
+        "address": "红埠街46号(近莲湖区区委)",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.8,
+        "cost": "31.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13359185583;15353593679",
+        "photos_count": 3,
+        "distance": 156.0,
+        "coordinates": {
+          "lng": 108.941569,
+          "lat": 34.266849
+        },
+        "source": "amap"
+      },
+      {
+        "name": "饺子王(回民街店)",
+        "address": "北院门125号1-51回民街",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.4,
+        "cost": "23.00",
+        "open_time": "周一至周日 10:30-22:00",
+        "tel": "15023094715",
+        "photos_count": 3,
+        "distance": 157.0,
+        "coordinates": {
+          "lng": 108.942685,
+          "lat": 34.264385
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老乌家特色小炒泡馍(大皮院店)",
+        "address": "回民街大皮院91号(回民小吃街内)",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.5,
+        "cost": "29.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "029-85038154;18066899009",
+        "photos_count": 3,
+        "distance": 157.0,
+        "coordinates": {
+          "lng": 108.941829,
+          "lat": 34.264581
+        },
+        "source": "amap"
+      },
+      {
+        "name": "李志贤灌汤包子",
+        "address": "大莲花池街9号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.5,
+        "cost": "20.00",
+        "open_time": "周一至周日 11:00-20:30 2026-02-16至2026-02-18 周一至周日 全天关闭",
+        "tel": "18092712919;18991149641",
+        "photos_count": 3,
+        "distance": 162.0,
+        "coordinates": {
+          "lng": 108.943144,
+          "lat": 34.267209
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马天小炒泡馍(钟楼回民街总店)",
+        "address": "二府街46号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.7,
+        "cost": "32.00",
+        "open_time": "周一至周日 09:30-23:00 2026-02-15至2026-02-24 09:30-23:00",
+        "tel": "13087538544",
+        "photos_count": 3,
+        "distance": 163.0,
+        "coordinates": {
+          "lng": 108.943825,
+          "lat": 34.266933
+        },
+        "source": "amap"
+      },
+      {
+        "name": "德福牛肉面(红埠街店)",
+        "address": "红埠街48号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": "16.00",
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "15399186180",
+        "photos_count": 3,
+        "distance": 166.0,
+        "coordinates": {
+          "lng": 108.941483,
+          "lat": 34.266906
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老铁家水盆清汤羊排",
+        "address": "大莲花池街15号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.0,
+        "cost": "24.00",
+        "open_time": "周一至周日 06:00-16:00",
+        "tel": "029-87213306;029-87280182;15389298002",
+        "photos_count": 3,
+        "distance": 170.0,
+        "coordinates": {
+          "lng": 108.943147,
+          "lat": 34.267288
+        },
+        "source": "amap"
+      },
+      {
+        "name": "肆零岁月老味烧烤",
+        "address": "红埠街48号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.1,
+        "cost": "43.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13087566000;18049203485",
+        "photos_count": 3,
+        "distance": 171.0,
+        "coordinates": {
+          "lng": 108.941422,
+          "lat": 34.266921
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白翔甜食店",
+        "address": "大皮院89号(近乌家小炒)",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.5,
+        "cost": "14.00",
+        "open_time": "周一至周日 10:00-21:30 2026-02-16至2026-02-16 周一 全天关闭",
+        "tel": "15091333600",
+        "photos_count": 3,
+        "distance": 175.0,
+        "coordinates": {
+          "lng": 108.941513,
+          "lat": 34.264566
+        },
+        "source": "amap"
+      },
+      {
+        "name": "陕拾叁(北院门创始店)",
+        "address": "北院门270号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.7,
+        "cost": "60.00",
+        "open_time": "周一至周日 09:00-23:00 2026-02-16至2026-02-16 周一 09:00-18:00",
+        "tel": "18049017282",
+        "photos_count": 3,
+        "distance": 176.0,
+        "coordinates": {
+          "lng": 108.94351,
+          "lat": 34.264361
+        },
+        "source": "amap"
+      },
+      {
+        "name": "回坊甜姐妹刘明柿子糊塔",
+        "address": "大皮院79号对面尔卜餐厅对面",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.4,
+        "cost": "3.00",
+        "open_time": "周一至周六 09:00-21:00；周日 09:00-19:30",
+        "tel": "18182660378",
+        "photos_count": 3,
+        "distance": 177.0,
+        "coordinates": {
+          "lng": 108.941793,
+          "lat": 34.26439
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马健酱汁烤肉店·清真",
+        "address": "红埠街50号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.6,
+        "cost": "50.00",
+        "open_time": "周一至周日 16:00-23:00",
+        "tel": "18991994219",
+        "photos_count": 3,
+        "distance": 178.0,
+        "coordinates": {
+          "lng": 108.941296,
+          "lat": 34.266902
+        },
+        "source": "amap"
+      },
+      {
+        "name": "此间隐舍·Zenyard庭院美宿(西安回民街钟楼地铁站店)",
+        "address": "麦苋街11号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "17795665935",
+        "photos_count": 3,
+        "distance": 68.0,
+        "coordinates": {
+          "lng": 108.943181,
+          "lat": 34.266265
+        },
+        "source": "amap"
+      },
+      {
+        "name": "花筑·76号设计师民宿(西安钟楼地铁站回民街店)",
+        "address": "麦苋街76号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "15339267304;15389011041",
+        "photos_count": 3,
+        "distance": 69.0,
+        "coordinates": {
+          "lng": 108.942987,
+          "lat": 34.266379
+        },
+        "source": "amap"
+      },
+      {
+        "name": "舒尔布客栈(西安钟鼓楼回民街店)",
+        "address": "麦苋街40号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "17868723310",
+        "photos_count": 3,
+        "distance": 44.0,
+        "coordinates": {
+          "lng": 108.942962,
+          "lat": 34.265462
+        },
+        "source": "amap"
+      },
+      {
+        "name": "晚庭民宿(西安钟鼓楼回民街店)",
+        "address": "麦苋街26号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "18220195351;+861056320612,28544551",
+        "photos_count": 3,
+        "distance": 83.0,
+        "coordinates": {
+          "lng": 108.942919,
+          "lat": 34.265072
+        },
+        "source": "amap"
+      },
+      {
+        "name": "凡间客栈(西安钟鼓楼回民街店)",
+        "address": "麦苋街80号(近北大街地铁站B出口)",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87385562;17391607878;+862126137886,78793#",
+        "photos_count": 3,
+        "distance": 89.0,
+        "coordinates": {
+          "lng": 108.943,
+          "lat": 34.266566
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安西遇小姐姐特色民宿",
+        "address": "麦苋街13号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "18629309179;+861056320612,1721120",
+        "photos_count": 3,
+        "distance": 81.0,
+        "coordinates": {
+          "lng": 108.943252,
+          "lat": 34.266375
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西宿客栈(麦苋街分店)",
+        "address": "麦苋街31号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,37310803",
+        "photos_count": 3,
+        "distance": 98.0,
+        "coordinates": {
+          "lng": 108.943394,
+          "lat": 34.266479
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夕阳漫居客栈(西安钟鼓楼回民街店)",
+        "address": "麦苋街31号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "15291969856;+861056320612,52654768",
+        "photos_count": 3,
+        "distance": 83.0,
+        "coordinates": {
+          "lng": 108.943165,
+          "lat": 34.266446
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小饭饭民宿(小皮院1号分店)",
+        "address": "小皮院24号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 56.0,
+        "coordinates": {
+          "lng": 108.942147,
+          "lat": 34.26558
+        },
+        "source": "amap"
+      },
+      {
+        "name": "虹美民宿(西安钟楼回民街店)",
+        "address": "麦苋街小坤园42号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "18392350307;18392521209",
+        "photos_count": 3,
+        "distance": 53.0,
+        "coordinates": {
+          "lng": 108.942733,
+          "lat": 34.266276
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家华驿精选酒店(西安钟鼓楼回民街店)",
+        "address": "麦苋街36号5幢",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-89628593",
+        "photos_count": 3,
+        "distance": 63.0,
+        "coordinates": {
+          "lng": 108.942928,
+          "lat": 34.265265
+        },
+        "source": "amap"
+      },
+      {
+        "name": "时光小筑民宿(西安钟楼店)",
+        "address": "麦苋街11号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "18049461016;18049463036",
+        "photos_count": 3,
+        "distance": 77.0,
+        "coordinates": {
+          "lng": 108.943172,
+          "lat": 34.266372
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安上谷宿(钟鼓楼回民街店)",
+        "address": "麦苋街7号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "17791900958",
+        "photos_count": 3,
+        "distance": 65.0,
+        "coordinates": {
+          "lng": 108.943106,
+          "lat": 34.266279
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海蒂的家公寓(麦苋街分店)",
+        "address": "麦苋街小坤园",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,15378610",
+        "photos_count": 3,
+        "distance": 68.0,
+        "coordinates": {
+          "lng": 108.942462,
+          "lat": 34.266386
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汐悦美宿客栈(西安钟鼓楼回民街店)",
+        "address": "麦苋街31号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "15031973454",
+        "photos_count": 3,
+        "distance": 82.0,
+        "coordinates": {
+          "lng": 108.943169,
+          "lat": 34.266433
+        },
+        "source": "amap"
+      },
+      {
+        "name": "云渡民宿(钟鼓楼店)",
+        "address": "麦苋街小坤园8号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "18792624682",
+        "photos_count": 1,
+        "distance": 82.0,
+        "coordinates": {
+          "lng": 108.942152,
+          "lat": 34.26639
+        },
+        "source": "amap"
+      },
+      {
+        "name": "布丁严选酒店(西安钟鼓楼地铁站回民街店)",
+        "address": "麦苋街43号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87384227;17791567739",
+        "photos_count": 3,
+        "distance": 105.0,
+        "coordinates": {
+          "lng": 108.943165,
+          "lat": 34.266671
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸会青年旅舍(钟楼店)",
+        "address": "大皮院53号三楼301室",
+        "type": "住宿服务;旅馆招待所;青年旅舍",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "18009260268;19567621398",
+        "photos_count": 3,
+        "distance": 119.0,
+        "coordinates": {
+          "lng": 108.941875,
+          "lat": 34.264975
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦逸轩酒店",
+        "address": "红埠街25号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87368305;029-87368366;029-87368382",
+        "photos_count": 3,
+        "distance": 160.0,
+        "coordinates": {
+          "lng": 108.941926,
+          "lat": 34.267092
+        },
+        "source": "amap"
+      },
+      {
+        "name": "长安·忆设计师民宿(西安钟鼓楼回民街店)",
+        "address": "小皮院45号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87382630;+861056320612,15655696",
+        "photos_count": 3,
+        "distance": 136.0,
+        "coordinates": {
+          "lng": 108.941218,
+          "lat": 34.265706
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安星星青旅(回民街店)",
+        "address": "大皮院53号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "19567621397",
+        "photos_count": 3,
+        "distance": 153.0,
+        "coordinates": {
+          "lng": 108.941998,
+          "lat": 34.264553
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宿栖酒店(钟楼回民街地铁站店)",
+        "address": "麦苋街10号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87384582",
+        "photos_count": 3,
+        "distance": 113.0,
+        "coordinates": {
+          "lng": 108.94296,
+          "lat": 34.264801
+        },
+        "source": "amap"
+      },
+      {
+        "name": "都市118酒店(西安钟鼓楼回民街店)",
+        "address": "回民街大皮院15号(钟楼地铁站出入口步行450米)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87351818;19591560188",
+        "photos_count": 3,
+        "distance": 138.0,
+        "coordinates": {
+          "lng": 108.942444,
+          "lat": 34.264572
+        },
+        "source": "amap"
+      },
+      {
+        "name": "遇见民宿(钟鼓楼回民街店)",
+        "address": "二府街83号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "19929913562",
+        "photos_count": 3,
+        "distance": 163.0,
+        "coordinates": {
+          "lng": 108.943563,
+          "lat": 34.267079
+        },
+        "source": "amap"
+      },
+      {
+        "name": "8号客栈(钟楼地铁站回民街店)",
+        "address": "麦苋街8号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "17792592410",
+        "photos_count": 3,
+        "distance": 122.0,
+        "coordinates": {
+          "lng": 108.94296,
+          "lat": 34.264718
+        },
+        "source": "amap"
+      },
+      {
+        "name": "念·长安民宿(钟鼓楼地铁站红埠街店)",
+        "address": "北院门街道红埠街34号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "18092816368",
+        "photos_count": 3,
+        "distance": 125.0,
+        "coordinates": {
+          "lng": 108.942249,
+          "lat": 34.266866
+        },
+        "source": "amap"
+      },
+      {
+        "name": "回宿(西安钟楼北大街地铁站店)",
+        "address": "大莲花池街17号院一栋1层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87228008;18192978648;+861056320612,44487838",
+        "photos_count": 3,
+        "distance": 188.0,
+        "coordinates": {
+          "lng": 108.943152,
+          "lat": 34.267456
+        },
+        "source": "amap"
+      },
+      {
+        "name": "煜宿客栈(鼓楼店)",
+        "address": "小坤园 21 号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 148.0,
+        "coordinates": {
+          "lng": 108.94116,
+          "lat": 34.266185
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鸿运客栈(麦苋街店)",
+        "address": "8号客栈(西安回民街店)麦苋街8号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "17792592410",
+        "photos_count": 3,
+        "distance": 112.0,
+        "coordinates": {
+          "lng": 108.942939,
+          "lat": 34.264805
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鱼子酱精品民宿(二府街1号分店)",
+        "address": "二府街中级法院家属院",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,16116907;010-56320606,16116907",
+        "photos_count": 3,
+        "distance": 156.0,
+        "coordinates": {
+          "lng": 108.943598,
+          "lat": 34.266992
+        },
+        "source": "amap"
+      },
+      {
+        "name": "P75民宿(西安钟楼回民街店)",
+        "address": "大皮院75号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "17349022149",
+        "photos_count": 3,
+        "distance": 147.0,
+        "coordinates": {
+          "lng": 108.941898,
+          "lat": 34.264654
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安柒上民宿(钟鼓楼店)",
+        "address": "大皮院39号",
+        "type": "住宿服务;旅馆招待所;青年旅舍",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87211180",
+        "photos_count": 3,
+        "distance": 158.0,
+        "coordinates": {
+          "lng": 108.941816,
+          "lat": 34.264581
+        },
+        "source": "amap"
+      },
+      {
+        "name": "二府青年电竞酒店(西安钟鼓楼回民街店)",
+        "address": "二府街48号一层门面房",
+        "type": "住宿服务;旅馆招待所;青年旅舍",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "17709280650",
+        "photos_count": 3,
+        "distance": 163.0,
+        "coordinates": {
+          "lng": 108.943797,
+          "lat": 34.266952
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兰泊酒店(钟鼓楼回民街店)",
+        "address": "北院门街道二府街50号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87213691",
+        "photos_count": 3,
+        "distance": 150.0,
+        "coordinates": {
+          "lng": 108.943615,
+          "lat": 34.266919
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安启阳商务宾馆(钟楼回民街店)",
+        "address": "回民街大皮院26号,近西华门十字,北院门",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87264801;17782747673;+861056320612,3479960",
+        "photos_count": 3,
+        "distance": 153.0,
+        "coordinates": {
+          "lng": 108.942719,
+          "lat": 34.264423
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安剪剪风民宿(钟鼓楼回民街店)",
+        "address": "大皮院44号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "15334419930",
+        "photos_count": 3,
+        "distance": 216.0,
+        "coordinates": {
+          "lng": 108.941468,
+          "lat": 34.264138
+        },
+        "source": "amap"
+      },
+      {
+        "name": "家园宾馆(西安大皮院店)",
+        "address": "丈八六路袁旗寨3排7号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87372339;029-87387125",
+        "photos_count": 3,
+        "distance": 152.0,
+        "coordinates": {
+          "lng": 108.942583,
+          "lat": 34.264437
+        },
+        "source": "amap"
+      },
+      {
+        "name": "煜宿品慢生活客栈(西安回民街店)",
+        "address": "小皮院38号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "18066889359",
+        "photos_count": 3,
+        "distance": 208.0,
+        "coordinates": {
+          "lng": 108.940446,
+          "lat": 34.265613
+        },
+        "source": "amap"
+      },
+      {
+        "name": "远志商务宾馆(西安钟楼回民街店)",
+        "address": "西华门大街大皮院10号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 2.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87219300;17392948909",
+        "photos_count": 3,
+        "distance": 159.0,
+        "coordinates": {
+          "lng": 108.943157,
+          "lat": 34.264422
+        },
+        "source": "amap"
+      },
+      {
+        "name": "恒升精选酒店",
+        "address": "大莲花池街11号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87215592",
+        "photos_count": 3,
+        "distance": 174.0,
+        "coordinates": {
+          "lng": 108.943224,
+          "lat": 34.267311
+        },
+        "source": "amap"
+      },
+      {
+        "name": "桂花载久露台花园青年旅舍(钟鼓楼回民街店)",
+        "address": "大皮院84号巷内",
+        "type": "住宿服务;旅馆招待所;青年旅舍",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "17389183375",
+        "photos_count": 3,
+        "distance": 275.0,
+        "coordinates": {
+          "lng": 108.940254,
+          "lat": 34.264369
+        },
+        "source": "amap"
+      },
+      {
+        "name": "文艺理工男的民宿(西安北大街回民街店)",
+        "address": "北院门街道小皮院32号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "15339029365;+861056320612,109789",
+        "photos_count": 3,
+        "distance": 172.0,
+        "coordinates": {
+          "lng": 108.940841,
+          "lat": 34.265567
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安佳晨酒店(钟鼓楼回民街店)",
+        "address": "青年路街道大莲花池街16号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "18192360257",
+        "photos_count": 3,
+        "distance": 213.0,
+        "coordinates": {
+          "lng": 108.942919,
+          "lat": 34.267709
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小里巷民宿(花野)",
+        "address": "北院门街道小皮院36号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "18710321042",
+        "photos_count": 3,
+        "distance": 213.0,
+        "coordinates": {
+          "lng": 108.940398,
+          "lat": 34.265555
+        },
+        "source": "amap"
+      },
+      {
+        "name": "柏雅酒店(西安钟鼓楼广场回民街店)",
+        "address": "二府街45号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87312163",
+        "photos_count": 3,
+        "distance": 173.0,
+        "coordinates": {
+          "lng": 108.943754,
+          "lat": 34.267093
+        },
+        "source": "amap"
+      },
+      {
+        "name": "兰欧尚品酒店(回民街钟楼地铁站店)",
+        "address": "北院门街道二府街27号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87370797;17792528989",
+        "photos_count": 3,
+        "distance": 309.0,
+        "coordinates": {
+          "lng": 108.94565,
+          "lat": 34.267138
+        },
+        "source": "amap"
+      },
+      {
+        "name": "西安禾艾溪舍酒店(钟鼓楼回民街店)",
+        "address": "小皮院65号小皮院里烤肉院内22米",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "13022889678",
+        "photos_count": 3,
+        "distance": 223.0,
+        "coordinates": {
+          "lng": 108.940275,
+          "lat": 34.265888
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汉庭酒店(西安钟楼回民街店)",
+        "address": "二府街27号院北栋一层",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-81503333",
+        "photos_count": 3,
+        "distance": 321.0,
+        "coordinates": {
+          "lng": 108.945316,
+          "lat": 34.267719
+        },
+        "source": "amap"
+      },
+      {
+        "name": "云亦酒店(西安回民街店)",
+        "address": "大莲花池街18号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "029-87333358",
+        "photos_count": 3,
+        "distance": 249.0,
+        "coordinates": {
+          "lng": 108.942891,
+          "lat": 34.268033
+        },
+        "source": "amap"
+      }
+    ],
+    "baike_spots": [
+      {
+        "name": "西安城市运动公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "大明宫国家遗址公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;世界遗产"
+      },
+      {
+        "name": "汉城湖旅游风景区",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "西安城墙",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "宣平里景区",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;风景名胜|摩托车服务;摩托车销售;摩托车销售"
+      },
+      {
+        "name": "开元公园",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "西安钟楼",
+        "source": "amap_scenic",
+        "rating": 4.9,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "文景公园",
+        "source": "amap_scenic",
+        "rating": 4.5,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "广仁寺",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;寺庙道观"
+      },
+      {
+        "name": "文景山公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "河堤路梅园",
+        "source": "amap_scenic",
+        "rating": 4.5,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "西安后海",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "汉城湖景区封禅天下广场",
+        "source": "amap_scenic",
+        "rating": 4.1,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "华夏文旅西安度假区",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "大汉仙境",
+        "source": "amap_scenic",
+        "rating": 4.5,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "兴庆宫公园",
+        "source": "amap_scenic",
+        "rating": 4.8,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "红旗铁路公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "汉长安城未央宫国家考古遗址公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "西安湖",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "康乐园",
+        "source": "amap_scenic",
+        "rating": 3.8,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "华夏文旅海洋公园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;水族馆"
+      },
+      {
+        "name": "西安城墙·碑林历史文化景区",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "汉城湖旅游风景区-汉武大帝雕像",
+        "source": "amap_scenic",
+        "rating": 4.3,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "大慈恩寺",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;寺庙道观"
+      },
+      {
+        "name": "大雁塔",
+        "source": "amap_scenic",
+        "rating": 4.9,
+        "type": "风景名胜;风景名胜;风景名胜"
+      }
+    ],
+    "wiki": {
+      "wiki_zh": "",
+      "wiki_en": "",
+      "wiki_tourism_zh": ""
+    },
+    "duckduckgo_snippets": [],
+    "ctrip_approx_spots": [
+      {
+        "name": "杨必赞.重庆石锅鱼(西安总店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.3,
+        "type": "餐饮服务;中餐厅;四川菜(川菜)"
+      },
+      {
+        "name": "召必回酒馆",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.0,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "必食汇土豆片夹馍(劳动小区南区店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 3.7,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "必赢棋牌(土门店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.4,
+        "type": "体育休闲服务;娱乐场所;棋牌室"
+      },
+      {
+        "name": "必吃嘉年华",
+        "source": "ctrip_approx_西安必去",
+        "rating": 2.3,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "西安钟楼",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.9,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "西演SPACE·塞斯拾陆",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.7,
+        "type": "体育休闲服务;娱乐场所;娱乐场所"
+      },
+      {
+        "name": "西安秦岭野生动物园",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;动物园"
+      },
+      {
+        "name": "西安赛瑞喜来登大酒店(城北)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.7,
+        "type": "住宿服务;宾馆酒店;五星级宾馆|餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "乐米自然界运动拓展",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.5,
+        "type": "体育休闲服务;休闲场所;游乐场"
+      },
+      {
+        "name": "奔跑吧陕菜·雁塔长安(大雁塔店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "汉邦欢乐世界",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.7,
+        "type": "体育休闲服务;休闲场所;游乐场"
+      },
+      {
+        "name": "兴庆宫公园",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.8,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "西安鼓楼",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "響LIveHouse(西安店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.8,
+        "type": "体育休闲服务;娱乐场所;酒吧"
+      },
+      {
+        "name": "西安博物院",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.8,
+        "type": "科教文化服务;博物馆;博物馆|风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "奔跑吧陕菜·常来长安(钟楼南大街店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "陕拾叁(北院门创始店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "PARTY DAY(西安东大街店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.8,
+        "type": "体育休闲服务;娱乐场所;娱乐场所"
+      },
+      {
+        "name": "陕拾叁(西安荟聚店)",
+        "source": "ctrip_approx_西安必去",
+        "rating": 4.6,
+        "type": "餐饮服务;糕饼店;糕饼店|餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "虎子水盆羊肉(翠华路总店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "费萨尔烤肉",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;清真菜馆"
+      },
+      {
+        "name": "清真刚刚烤肉(小寨店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;外国餐厅;外国餐厅"
+      },
+      {
+        "name": "幸福老火锅(总店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.8,
+        "type": "餐饮服务;中餐厅;火锅店"
+      },
+      {
+        "name": "三根电杆陕菜馆",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;西北菜"
+      },
+      {
+        "name": "蓝田印象",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.8,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "海底捞火锅(龙首印象城店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;火锅店"
+      },
+      {
+        "name": "福苗小骆驼烧烤(大唐不夜城店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅"
+      },
+      {
+        "name": "二火锅(西安店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;火锅店"
+      },
+      {
+        "name": "乐班Le’ban·农场餐厅(米禾农场店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;外国餐厅;西餐厅(综合风味)"
+      },
+      {
+        "name": "海底捞火锅(经开店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;火锅店"
+      },
+      {
+        "name": "俄士厨房(吉祥路店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;外国餐厅;俄国菜"
+      },
+      {
+        "name": "肥肥虾庄(高新店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;海鲜酒楼"
+      },
+      {
+        "name": "大厨小馆(小寨博物馆店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "古今唐猫酒肆·千年陕菜(钟楼南大街店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.6,
+        "type": "体育休闲服务;娱乐场所;酒吧|餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "南湖1号 曲江池东路分店",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;中餐厅|体育休闲服务;娱乐场所;娱乐场所"
+      },
+      {
+        "name": "海底捞火锅(红星美凯龙店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;火锅店"
+      },
+      {
+        "name": "长安大牌档(凤舞朝阳店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "尚寨嫽扎咧(凤城六路店)",
+        "source": "ctrip_approx_西安网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "大雁塔",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.9,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "西安城墙",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "华清宫",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;世界遗产"
+      },
+      {
+        "name": "华清宫-杨妃池",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.2,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "华清宫-九龙湖",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 3.9,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "大明宫国家遗址公园",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;世界遗产"
+      },
+      {
+        "name": "大雁塔文化休闲景区",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "大雁塔文化休闲景区-音乐喷泉",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "西安浐灞国家湿地公园",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "西安城墙·碑林历史文化景区",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "翠华山景区",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "翠华山景区-天洞",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 3.9,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "汉长安城未央宫国家考古遗址公园",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "终南山南五台景区",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;省级景点"
+      },
+      {
+        "name": "送灯台",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.1,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "南五台景区-火龙洞",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 3.8,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "白鹿原影视城",
+        "source": "ctrip_approx_西安旅游",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      }
+    ]
+  },
+  "stats": {
+    "total_amap_pois": 344,
+    "total_baike_spots": 25,
+    "total_ctrip_spots": 56,
+    "ground_truth_must_visit": 14,
+    "ground_truth_dining": 10,
+    "ground_truth_leisure": 5
+  }
+}

@@ -1,0 +1,6105 @@
+{
+  "meta": {
+    "city": "秦皇岛",
+    "coordinates": {
+      "lat": 39.9354,
+      "lng": 119.599
+    },
+    "adcode": "130300",
+    "build_time": "2026-04-12T16:34:27.490060",
+    "builder": "build_test_dataset.py"
+  },
+  "ground_truth": {
+    "must_visit": [
+      "人民公园",
+      "秦皇岛市人民广场",
+      "秦皇岛港口工业旅游区",
+      "海滨国家森林公园",
+      "秦皇岛野生动物园",
+      "秦皇岛新澳海底世界",
+      "鸽子窝公园",
+      "秦皇求仙入海处",
+      "南戴河旅游度假区",
+      "仙螺岛景区"
+    ],
+    "dining": [
+      "渤海味道手工饺子馆",
+      "韩福道一店",
+      "缤塔咖啡",
+      "谷雨精品咖啡(胜利村小区店)",
+      "逐梦咖啡DreamCafe(海阳路店)",
+      "友谊咖啡",
+      "丁战自助快餐",
+      "瑞幸咖啡(秦皇岛文化路店)",
+      "星巴克(秦皇岛乐都汇店)",
+      "瑞幸咖啡(秦皇岛太阳城店)"
+    ],
+    "leisure": [
+      "温莎娱乐",
+      "圣迪KTV",
+      "酒月桌游剧本店",
+      "戎马健身",
+      "爱尚台球"
+    ]
+  },
+  "sources": {
+    "amap_pois": [
+      {
+        "name": "人民公园",
+        "address": "海阳路202号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0335-3053123",
+        "photos_count": 3,
+        "distance": 388.0,
+        "coordinates": {
+          "lng": 119.595021,
+          "lat": 39.93709
+        },
+        "source": "amap"
+      },
+      {
+        "name": "酷乐一号动漫城",
+        "address": "新华街与正阳路交叉口西60米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 517.0,
+        "coordinates": {
+          "lng": 119.60427,
+          "lat": 39.9331
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鑫园",
+        "address": "海阳路8号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 529.0,
+        "coordinates": {
+          "lng": 119.600821,
+          "lat": 39.93085
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鑫园广场",
+        "address": "海阳路",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 536.0,
+        "coordinates": {
+          "lng": 119.600826,
+          "lat": 39.930793
+        },
+        "source": "amap"
+      },
+      {
+        "name": "竹影砂坊",
+        "address": "商城东路与河堤南路交叉口东南120米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 542.0,
+        "coordinates": {
+          "lng": 119.605166,
+          "lat": 39.936588
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鸾凤迎客",
+        "address": "文化路138号华联商厦F3",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.7,
+        "cost": [],
+        "open_time": "周一至周日 09:00-20:00",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 599.0,
+        "coordinates": {
+          "lng": 119.602872,
+          "lat": 39.930905
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛市人民广场",
+        "address": "康乐街21号",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0335-3053123",
+        "photos_count": 3,
+        "distance": 666.0,
+        "coordinates": {
+          "lng": 119.595111,
+          "lat": 39.940589
+        },
+        "source": "amap"
+      },
+      {
+        "name": "渤海物流文化园",
+        "address": "民族路与河北大街中段交叉口西北100米",
+        "type": "风景名胜;公园广场;公园广场",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 699.0,
+        "coordinates": {
+          "lng": 119.607187,
+          "lat": 39.935689
+        },
+        "source": "amap"
+      },
+      {
+        "name": "冀秦五指山",
+        "address": "建设大街190号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 722.0,
+        "coordinates": {
+          "lng": 119.599868,
+          "lat": 39.941854
+        },
+        "source": "amap"
+      },
+      {
+        "name": "梨花田",
+        "address": "建设大街186号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "15243463505;18833801612",
+        "photos_count": 3,
+        "distance": 732.0,
+        "coordinates": {
+          "lng": 119.598299,
+          "lat": 39.941956
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金原广场",
+        "address": "河北大街中段146号金原国际商务大厦",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": "周一至周日 08:30-20:30",
+        "tel": "0335-3280517",
+        "photos_count": 1,
+        "distance": 756.0,
+        "coordinates": {
+          "lng": 119.607858,
+          "lat": 39.935242
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真寺",
+        "address": "民族南路56号",
+        "type": "风景名胜;风景名胜;回教寺",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "18031664245",
+        "photos_count": 2,
+        "distance": 860.0,
+        "coordinates": {
+          "lng": 119.608757,
+          "lat": 39.933464
+        },
+        "source": "amap"
+      },
+      {
+        "name": "基督教会",
+        "address": "光华路54号",
+        "type": "政府机构及社会团体;社会团体;教会|风景名胜;风景名胜;教堂",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 06:00-21:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 899.0,
+        "coordinates": {
+          "lng": 119.608636,
+          "lat": 39.938667
+        },
+        "source": "amap"
+      },
+      {
+        "name": "沉香馆",
+        "address": "新海浪花朝阳街33号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "17666255111",
+        "photos_count": 1,
+        "distance": 903.0,
+        "coordinates": {
+          "lng": 119.60596,
+          "lat": 39.929284
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱雨林",
+        "address": "马坊街28号金街时代广场",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1018.0,
+        "coordinates": {
+          "lng": 119.599141,
+          "lat": 39.944552
+        },
+        "source": "amap"
+      },
+      {
+        "name": "正山堂名山",
+        "address": "海阳路新洋洋花卉(海阳路店)",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1159.0,
+        "coordinates": {
+          "lng": 119.586416,
+          "lat": 39.939334
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天龙水族",
+        "address": "海阳路与红果街交叉口东180米",
+        "type": "风景名胜;公园广场;水族馆|购物服务;花鸟鱼虫市场;花鸟鱼虫市场",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1172.0,
+        "coordinates": {
+          "lng": 119.586472,
+          "lat": 39.939726
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三角花园",
+        "address": "文化路与开滦路交叉口东南约80米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 1184.0,
+        "coordinates": {
+          "lng": 119.605286,
+          "lat": 39.925917
+        },
+        "source": "amap"
+      },
+      {
+        "name": "开滦路风情街",
+        "address": "开滦路与文化路交叉口东180米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1228.0,
+        "coordinates": {
+          "lng": 119.606621,
+          "lat": 39.926034
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛拓展长城人",
+        "address": "港瑞大厦609号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1248.0,
+        "coordinates": {
+          "lng": 119.601094,
+          "lat": 39.946498
+        },
+        "source": "amap"
+      },
+      {
+        "name": "光阳园",
+        "address": "河北大街中段与红旗路交叉口西220米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 1264.0,
+        "coordinates": {
+          "lng": 119.585925,
+          "lat": 39.93006
+        },
+        "source": "amap"
+      },
+      {
+        "name": "都市庄园",
+        "address": "建国路与新征街交叉口西北约20米",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3377188;0335-3377988",
+        "photos_count": 0,
+        "distance": 1512.0,
+        "coordinates": {
+          "lng": 119.615861,
+          "lat": 39.93958
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天主教唐山教区秦皇岛天主堂",
+        "address": "海滨城南门对面",
+        "type": "风景名胜;风景名胜;教堂",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1569.0,
+        "coordinates": {
+          "lng": 119.600944,
+          "lat": 39.921377
+        },
+        "source": "amap"
+      },
+      {
+        "name": "建国园",
+        "address": "建设大街与建国路交口附近",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1668.0,
+        "coordinates": {
+          "lng": 119.615828,
+          "lat": 39.943028
+        },
+        "source": "amap"
+      },
+      {
+        "name": "荷塘公园",
+        "address": "建国路151号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1685.0,
+        "coordinates": {
+          "lng": 119.61412,
+          "lat": 39.945133
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新世纪公园",
+        "address": "港城大街106号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0335-7836769",
+        "photos_count": 3,
+        "distance": 1714.0,
+        "coordinates": {
+          "lng": 119.587324,
+          "lat": 39.94793
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大石休闲广场",
+        "address": "建国路",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1716.0,
+        "coordinates": {
+          "lng": 119.614793,
+          "lat": 39.944944
+        },
+        "source": "amap"
+      },
+      {
+        "name": "虚舟",
+        "address": "秦皇东大街与新世纪环岛交叉口西约60米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 2.8,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": [],
+        "photos_count": 0,
+        "distance": 1846.0,
+        "coordinates": {
+          "lng": 119.584295,
+          "lat": 39.947566
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东方熏道",
+        "address": "建国路177-4号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 4.2,
+        "cost": "67.00",
+        "open_time": "周一至周日 10:00-18:00",
+        "tel": "18712733053",
+        "photos_count": 2,
+        "distance": 1966.0,
+        "coordinates": {
+          "lng": 119.614824,
+          "lat": 39.948239
+        },
+        "source": "amap"
+      },
+      {
+        "name": "益寿园",
+        "address": "迎宾路与燕山大街西段交叉口东100米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2008.0,
+        "coordinates": {
+          "lng": 119.594731,
+          "lat": 39.95314
+        },
+        "source": "amap"
+      },
+      {
+        "name": "康寿公园",
+        "address": "燕山大街西段与迎宾东路交叉口西南80米",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2032.0,
+        "coordinates": {
+          "lng": 119.595311,
+          "lat": 39.953441
+        },
+        "source": "amap"
+      },
+      {
+        "name": "螓卫灭四害",
+        "address": "和安里38栋楼下门市房3号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "周一至周五 08:00-18:00",
+        "tel": "13333348524;18033560044;19903352557",
+        "photos_count": 1,
+        "distance": 2036.0,
+        "coordinates": {
+          "lng": 119.575323,
+          "lat": 39.937622
+        },
+        "source": "amap"
+      },
+      {
+        "name": "得趣园",
+        "address": "民族路255号",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2050.0,
+        "coordinates": {
+          "lng": 119.605698,
+          "lat": 39.953092
+        },
+        "source": "amap"
+      },
+      {
+        "name": "沉浸式艺术体验长廊",
+        "address": "秦皇东大街138号世纪港湾",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 2064.0,
+        "coordinates": {
+          "lng": 119.580487,
+          "lat": 39.947336
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛观沧海休闲渔业景区",
+        "address": "海滨路街道海滨路街道东港路120号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 2324.0,
+        "coordinates": {
+          "lng": 119.621822,
+          "lat": 39.924003
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汤河公园荷花池",
+        "address": "西港路西200米汤河公园(东南角)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 2432.0,
+        "coordinates": {
+          "lng": 119.57426,
+          "lat": 39.924552
+        },
+        "source": "amap"
+      },
+      {
+        "name": "和风园",
+        "address": "迎晨街与迎宾路辅路交叉口东20米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2454.0,
+        "coordinates": {
+          "lng": 119.593344,
+          "lat": 39.957017
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汤河公园牡丹园",
+        "address": "西港路西200米汤河公园(东南角)",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 2485.0,
+        "coordinates": {
+          "lng": 119.573814,
+          "lat": 39.92419
+        },
+        "source": "amap"
+      },
+      {
+        "name": "燕山园公园",
+        "address": "建国路燕河里(秦皇岛市第三医院西北)",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 2508.0,
+        "coordinates": {
+          "lng": 119.614302,
+          "lat": 39.954642
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汤河公园",
+        "address": "西港路西200米",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周六 07:00-23:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2534.0,
+        "coordinates": {
+          "lng": 119.571908,
+          "lat": 39.92609
+        },
+        "source": "amap"
+      },
+      {
+        "name": "消夏广场",
+        "address": "河北大街东段与新开路交叉口西100米",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 2.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 2563.0,
+        "coordinates": {
+          "lng": 119.628173,
+          "lat": 39.929918
+        },
+        "source": "amap"
+      },
+      {
+        "name": "律动公园(万达店)",
+        "address": "北环路街道玉峰里社区燕山大街22号秦皇岛万达广场",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 2.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 2590.0,
+        "coordinates": {
+          "lng": 119.577131,
+          "lat": 39.95154
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛市文化广场",
+        "address": "秦皇东大街80号",
+        "type": "风景名胜;公园广场;城市广场",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0335-8995888",
+        "photos_count": 3,
+        "distance": 2608.0,
+        "coordinates": {
+          "lng": 119.572534,
+          "lat": 39.947111
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛港口工业旅游区",
+        "address": "太平湾停车场",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "0335-3696699",
+        "photos_count": 3,
+        "distance": 2608.0,
+        "coordinates": {
+          "lng": 119.612287,
+          "lat": 39.914297
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汤河公园-春园",
+        "address": "滨河路71号",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2630.0,
+        "coordinates": {
+          "lng": 119.569907,
+          "lat": 39.927622
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新园",
+        "address": "广电局附近",
+        "type": "风景名胜;公园广场;公园",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2656.0,
+        "coordinates": {
+          "lng": 119.588692,
+          "lat": 39.957919
+        },
+        "source": "amap"
+      },
+      {
+        "name": "樱漫谷二次元动漫周边",
+        "address": "燕山大街22号万达商场3楼3009",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 09:30-21:30",
+        "tel": "19565190669",
+        "photos_count": 3,
+        "distance": 2696.0,
+        "coordinates": {
+          "lng": 119.576751,
+          "lat": 39.952602
+        },
+        "source": "amap"
+      },
+      {
+        "name": "福音堂",
+        "address": "建设大街东段2号",
+        "type": "风景名胜;风景名胜;教堂",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2831.0,
+        "coordinates": {
+          "lng": 119.631135,
+          "lat": 39.941708
+        },
+        "source": "amap"
+      },
+      {
+        "name": "茶瀑布",
+        "address": "港峰街3号",
+        "type": "风景名胜;风景名胜;风景名胜",
+        "rating": 3.9,
+        "cost": "14.00",
+        "open_time": "周一至周日 09:30-22:00",
+        "tel": "13333289707",
+        "photos_count": 1,
+        "distance": 2842.0,
+        "coordinates": {
+          "lng": 119.565778,
+          "lat": 39.937098
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛港南栈房",
+        "address": "南山街2号院内",
+        "type": "风景名胜;风景名胜相关;旅游景点",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2884.0,
+        "coordinates": {
+          "lng": 119.617164,
+          "lat": 39.913546
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱尚台球",
+        "address": "兴源街九号天贺公寓对面",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 11:00-02:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 211.0,
+        "coordinates": {
+          "lng": 119.597152,
+          "lat": 39.934128
+        },
+        "source": "amap"
+      },
+      {
+        "name": "花郎武道",
+        "address": "海阳路环宇公寓11号门市花郎武道",
+        "type": "体育休闲服务;运动场馆;跆拳道场馆",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-20:30",
+        "tel": "15603388985",
+        "photos_count": 3,
+        "distance": 238.0,
+        "coordinates": {
+          "lng": 119.596512,
+          "lat": 39.934416
+        },
+        "source": "amap"
+      },
+      {
+        "name": "双保龄",
+        "address": "海阳路与兴源街交叉口东40米",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 2.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 257.0,
+        "coordinates": {
+          "lng": 119.597172,
+          "lat": 39.933557
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛市老干部活动中心",
+        "address": "人民路老年大学北楼2层",
+        "type": "体育休闲服务;休闲场所;休闲场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3505515",
+        "photos_count": 2,
+        "distance": 262.0,
+        "coordinates": {
+          "lng": 119.597825,
+          "lat": 39.937575
+        },
+        "source": "amap"
+      },
+      {
+        "name": "永利国王",
+        "address": "海阳路与河北大街中段交叉口西80米",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 317.0,
+        "coordinates": {
+          "lng": 119.598367,
+          "lat": 39.93259
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夏沫livehouse",
+        "address": "文化路63号",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 3.9,
+        "cost": "54.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 318.0,
+        "coordinates": {
+          "lng": 119.602716,
+          "lat": 39.935098
+        },
+        "source": "amap"
+      },
+      {
+        "name": "温莎娱乐",
+        "address": "文化路与河北大街中段交叉口北140米",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.5,
+        "cost": "86.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 328.0,
+        "coordinates": {
+          "lng": 119.602821,
+          "lat": 39.93507
+        },
+        "source": "amap"
+      },
+      {
+        "name": "永利棋牌",
+        "address": "海阳路与河北大街中段交叉口西80米",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 336.0,
+        "coordinates": {
+          "lng": 119.598338,
+          "lat": 39.932422
+        },
+        "source": "amap"
+      },
+      {
+        "name": "初茉瑜伽普拉提",
+        "address": "海阳路与河北大街中段交叉口西80米",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-20:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 348.0,
+        "coordinates": {
+          "lng": 119.598346,
+          "lat": 39.93231
+        },
+        "source": "amap"
+      },
+      {
+        "name": "圣迪KTV",
+        "address": "文化北路169号丽岛酒店侧面",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.5,
+        "cost": "52.00",
+        "open_time": [],
+        "tel": "0335-5687142;0335-5821450;4008598073",
+        "photos_count": 3,
+        "distance": 371.0,
+        "coordinates": {
+          "lng": 119.603345,
+          "lat": 39.935184
+        },
+        "source": "amap"
+      },
+      {
+        "name": "惠士台球俱乐部(文化路店)",
+        "address": "文化路189号爱家宾馆二楼",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0335-8888147",
+        "photos_count": 3,
+        "distance": 374.0,
+        "coordinates": {
+          "lng": 119.603091,
+          "lat": 39.936605
+        },
+        "source": "amap"
+      },
+      {
+        "name": "人民公园彩虹亲子乐园",
+        "address": "海阳路202号人民公园",
+        "type": "体育休闲服务;休闲场所;游乐场",
+        "rating": 4.2,
+        "cost": "32.00",
+        "open_time": "周一至周日 09:00-17:30",
+        "tel": "15033557366",
+        "photos_count": 3,
+        "distance": 388.0,
+        "coordinates": {
+          "lng": 119.595056,
+          "lat": 39.937138
+        },
+        "source": "amap"
+      },
+      {
+        "name": "极速巅峰科技",
+        "address": "英力电子城",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 09:15-21:30",
+        "tel": "15703355787",
+        "photos_count": 0,
+        "distance": 389.0,
+        "coordinates": {
+          "lng": 119.601049,
+          "lat": 39.932273
+        },
+        "source": "amap"
+      },
+      {
+        "name": "酒月桌游剧本店",
+        "address": "河北大街中段与海阳路交叉口西南20米",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.5,
+        "cost": "73.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18503341025",
+        "photos_count": 0,
+        "distance": 398.0,
+        "coordinates": {
+          "lng": 119.599548,
+          "lat": 39.931842
+        },
+        "source": "amap"
+      },
+      {
+        "name": "杠上花棋牌馆",
+        "address": "文化路街道海阳路142号",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18703351012",
+        "photos_count": 1,
+        "distance": 405.0,
+        "coordinates": {
+          "lng": 119.594259,
+          "lat": 39.935174
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鑫龍乔氏台球俱乐部",
+        "address": "河北大街165号",
+        "type": "体育休闲服务;运动场馆;台球厅",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "00:00-24:00,2026年春节期间00:00-24:00",
+        "tel": "16603328147",
+        "photos_count": 3,
+        "distance": 416.0,
+        "coordinates": {
+          "lng": 119.599851,
+          "lat": 39.931716
+        },
+        "source": "amap"
+      },
+      {
+        "name": "潮界电玩",
+        "address": "祥云胡同与金丰街交叉口北20米",
+        "type": "体育休闲服务;娱乐场所;游戏厅",
+        "rating": 4.3,
+        "cost": "46.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 419.0,
+        "coordinates": {
+          "lng": 119.601425,
+          "lat": 39.932125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "国王网咖(旗舰店)",
+        "address": "海阳路152号(近人民公园)",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13011477777",
+        "photos_count": 3,
+        "distance": 447.0,
+        "coordinates": {
+          "lng": 119.593764,
+          "lat": 39.935477
+        },
+        "source": "amap"
+      },
+      {
+        "name": "网神网咖(康乐路)",
+        "address": "康乐街45号",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 4.3,
+        "cost": "21.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18630332588",
+        "photos_count": 3,
+        "distance": 487.0,
+        "coordinates": {
+          "lng": 119.597182,
+          "lat": 39.939548
+        },
+        "source": "amap"
+      },
+      {
+        "name": "多乐世界(乐都汇店)",
+        "address": "乐都汇四楼多乐世界",
+        "type": "体育休闲服务;休闲场所;游乐场",
+        "rating": 3.9,
+        "cost": "37.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "0335-3356596;13102515889",
+        "photos_count": 3,
+        "distance": 507.0,
+        "coordinates": {
+          "lng": 119.604565,
+          "lat": 39.933791
+        },
+        "source": "amap"
+      },
+      {
+        "name": "午逅手作(文化里店)",
+        "address": "文化里东门南140米",
+        "type": "体育休闲服务;休闲场所;休闲场所",
+        "rating": 3.8,
+        "cost": "20.00",
+        "open_time": "周一至周五 13:30-19:00；周六至周日 09:00-19:00",
+        "tel": [],
+        "photos_count": 2,
+        "distance": 521.0,
+        "coordinates": {
+          "lng": 119.605103,
+          "lat": 39.935542
+        },
+        "source": "amap"
+      },
+      {
+        "name": "玩刻GAME SPACE(乐都汇店)",
+        "address": "河北大街中段115号",
+        "type": "体育休闲服务;娱乐场所;游戏厅",
+        "rating": 3.5,
+        "cost": "40.00",
+        "open_time": "周一至周四10:00-21:00  周五至周日10:00-21:30",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 535.0,
+        "coordinates": {
+          "lng": 119.604878,
+          "lat": 39.933731
+        },
+        "source": "amap"
+      },
+      {
+        "name": "池梦水晶手作DIY",
+        "address": "文化路88号国潮520地下街3街25号",
+        "type": "体育休闲服务;休闲场所;休闲场所",
+        "rating": 3.7,
+        "cost": "73.00",
+        "open_time": "周一至周日 10:30-18:00",
+        "tel": "18332516855",
+        "photos_count": 3,
+        "distance": 540.0,
+        "coordinates": {
+          "lng": 119.604293,
+          "lat": 39.932732
+        },
+        "source": "amap"
+      },
+      {
+        "name": "云逸宝游戏厅(岛金逸影城店)",
+        "address": "新华街与正阳路交叉口西北20米",
+        "type": "体育休闲服务;娱乐场所;游戏厅",
+        "rating": 1.6,
+        "cost": "24.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 545.0,
+        "coordinates": {
+          "lng": 119.604657,
+          "lat": 39.933127
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中影星美银之谷店",
+        "address": "康乐街25号人民广场",
+        "type": "体育休闲服务;影剧院;电影院",
+        "rating": 3.8,
+        "cost": "28.00",
+        "open_time": "周一至周日 08:30-23:00",
+        "tel": "0335-3252002",
+        "photos_count": 3,
+        "distance": 546.0,
+        "coordinates": {
+          "lng": 119.595546,
+          "lat": 39.93953
+        },
+        "source": "amap"
+      },
+      {
+        "name": "俊昕棋牌",
+        "address": "兴龙国际城底商5-7",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 546.0,
+        "coordinates": {
+          "lng": 119.60531,
+          "lat": 39.936234
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金逸影城(秦皇岛乐都汇店)",
+        "address": "河北大街中段115号乐都汇4层",
+        "type": "体育休闲服务;影剧院;电影院",
+        "rating": 4.4,
+        "cost": "32.00",
+        "open_time": "周一至周日 09:00-04:00",
+        "tel": "0335-5312866;0335-5312874",
+        "photos_count": 3,
+        "distance": 546.0,
+        "coordinates": {
+          "lng": 119.604746,
+          "lat": 39.933226
+        },
+        "source": "amap"
+      },
+      {
+        "name": "六饼棋牌室",
+        "address": "广场西路96号2楼",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.4,
+        "cost": "13.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18617467051",
+        "photos_count": 3,
+        "distance": 552.0,
+        "coordinates": {
+          "lng": 119.592734,
+          "lat": 39.93663
+        },
+        "source": "amap"
+      },
+      {
+        "name": "达不溜网吧(茂业百货商城店)",
+        "address": "商城东路与商城北街交叉口北60米",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 553.0,
+        "coordinates": {
+          "lng": 119.60545,
+          "lat": 39.935941
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海港区颐和养老院",
+        "address": "西沙滩路70号海港医院西行200米",
+        "type": "体育休闲服务;度假疗养场所;疗养院",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "15903356997",
+        "photos_count": 3,
+        "distance": 554.0,
+        "coordinates": {
+          "lng": 119.599816,
+          "lat": 39.930455
+        },
+        "source": "amap"
+      },
+      {
+        "name": "悦鲤棋牌",
+        "address": "兴龙国际城底商5-6",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17732678866",
+        "photos_count": 1,
+        "distance": 561.0,
+        "coordinates": {
+          "lng": 119.605487,
+          "lat": 39.93621
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛乒羽俱乐部(西沙滩西区店)",
+        "address": "西沙滩西区西门旁",
+        "type": "体育休闲服务;运动场馆;运动场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-19:30",
+        "tel": "13803350088",
+        "photos_count": 2,
+        "distance": 561.0,
+        "coordinates": {
+          "lng": 119.599014,
+          "lat": 39.93036
+        },
+        "source": "amap"
+      },
+      {
+        "name": "圣火体育(秦皇岛店)",
+        "address": "文化路街道西沙滩路13号",
+        "type": "购物服务;体育用品店;体育用品店|体育休闲服务;运动场馆;运动场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 08:00-17:30",
+        "tel": "13933795867",
+        "photos_count": 3,
+        "distance": 565.0,
+        "coordinates": {
+          "lng": 119.59942,
+          "lat": 39.930327
+        },
+        "source": "amap"
+      },
+      {
+        "name": "和鸣茶馆 棋牌",
+        "address": "文化里兴龙国际城底商5-5",
+        "type": "体育休闲服务;娱乐场所;棋牌室",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 08:00-23:30",
+        "tel": "19932700995",
+        "photos_count": 1,
+        "distance": 571.0,
+        "coordinates": {
+          "lng": 119.605608,
+          "lat": 39.936235
+        },
+        "source": "amap"
+      },
+      {
+        "name": "玲通网络",
+        "address": "海阳路166号角楼公寓306室",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-17:30",
+        "tel": "15521552000",
+        "photos_count": 1,
+        "distance": 577.0,
+        "coordinates": {
+          "lng": 119.592377,
+          "lat": 39.936463
+        },
+        "source": "amap"
+      },
+      {
+        "name": "玩聚潮玩城",
+        "address": "新华街与道德街交叉口西北20米",
+        "type": "体育休闲服务;娱乐场所;游戏厅",
+        "rating": 3.4,
+        "cost": "16.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 580.0,
+        "coordinates": {
+          "lng": 119.604675,
+          "lat": 39.932525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "一口奶油DIY烘焙·DIY手工(金都大厦店)",
+        "address": "道德街34号金都大厦8楼820室(入口茶百道旁)",
+        "type": "体育休闲服务;休闲场所;休闲场所|餐饮服务;糕饼店;糕饼店",
+        "rating": 4.2,
+        "cost": "53.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "15603368547;18733517862",
+        "photos_count": 2,
+        "distance": 584.0,
+        "coordinates": {
+          "lng": 119.604293,
+          "lat": 39.932068
+        },
+        "source": "amap"
+      },
+      {
+        "name": "奇雾全机械剧情密室逃脱",
+        "address": "新华街太阳城国辰商务中心4楼",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 3.7,
+        "cost": "48.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "17603374888",
+        "photos_count": 3,
+        "distance": 589.0,
+        "coordinates": {
+          "lng": 119.60511,
+          "lat": 39.932939
+        },
+        "source": "amap"
+      },
+      {
+        "name": "迷城超级密室·全机械剧情密室(国臣商务中心店)",
+        "address": "正阳路与新华街交叉口东南20米",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 3.2,
+        "cost": "45.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 589.0,
+        "coordinates": {
+          "lng": 119.605103,
+          "lat": 39.932918
+        },
+        "source": "amap"
+      },
+      {
+        "name": "甜趣DIY(金都大厦店)",
+        "address": "太阳城道德街金都大厦722室甜趣DIY",
+        "type": "体育休闲服务;休闲场所;休闲场所",
+        "rating": 4.1,
+        "cost": "24.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "15003356193",
+        "photos_count": 3,
+        "distance": 589.0,
+        "coordinates": {
+          "lng": 119.604384,
+          "lat": 39.932079
+        },
+        "source": "amap"
+      },
+      {
+        "name": "游梦之城剧本杀(国臣商务中心店)",
+        "address": "新华街太阳城国辰商务中心4楼平台",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.1,
+        "cost": "77.00",
+        "open_time": "周一至周日 09:00-24:00",
+        "tel": "13091388889;18833559116",
+        "photos_count": 3,
+        "distance": 592.0,
+        "coordinates": {
+          "lng": 119.605128,
+          "lat": 39.9329
+        },
+        "source": "amap"
+      },
+      {
+        "name": "逃离电玩体验馆",
+        "address": "文化路139号茂业百货(金都店)",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 3.7,
+        "cost": "47.00",
+        "open_time": "周一至周日 10:00-08:00",
+        "tel": "19832361532",
+        "photos_count": 0,
+        "distance": 594.0,
+        "coordinates": {
+          "lng": 119.604403,
+          "lat": 39.932035
+        },
+        "source": "amap"
+      },
+      {
+        "name": "戎马健身",
+        "address": "正阳街37号(长丰大厦三楼)",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18633583337",
+        "photos_count": 3,
+        "distance": 594.0,
+        "coordinates": {
+          "lng": 119.605368,
+          "lat": 39.933236
+        },
+        "source": "amap"
+      },
+      {
+        "name": "惠士台球用品总汇",
+        "address": "西沙滩西区北门旁",
+        "type": "体育休闲服务;运动场馆;运动场所",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 594.0,
+        "coordinates": {
+          "lng": 119.600078,
+          "lat": 39.930121
+        },
+        "source": "amap"
+      },
+      {
+        "name": "惊声尖叫鬼屋密室剧场(东北大学店)",
+        "address": "正阳路与新华街交叉口东南20米",
+        "type": "体育休闲服务;娱乐场所;游戏厅",
+        "rating": 3.2,
+        "cost": "100.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 594.0,
+        "coordinates": {
+          "lng": 119.605155,
+          "lat": 39.932892
+        },
+        "source": "amap"
+      },
+      {
+        "name": "游梦王国密室剧本杀综合娱乐城(国臣商务中心)",
+        "address": "太阳城国辰商务中心4楼",
+        "type": "体育休闲服务;娱乐场所;娱乐场所",
+        "rating": 4.2,
+        "cost": "59.00",
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "17603374888",
+        "photos_count": 3,
+        "distance": 596.0,
+        "coordinates": {
+          "lng": 119.605204,
+          "lat": 39.932933
+        },
+        "source": "amap"
+      },
+      {
+        "name": "八九六24小时月付制健身",
+        "address": "正阳路与新华街交叉口东40米",
+        "type": "体育休闲服务;运动场馆;健身中心",
+        "rating": 4.2,
+        "cost": "70.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 597.0,
+        "coordinates": {
+          "lng": 119.605318,
+          "lat": 39.933084
+        },
+        "source": "amap"
+      },
+      {
+        "name": "会天地有缘人",
+        "address": "团结里小区南区北2门旁",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 2.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 606.0,
+        "coordinates": {
+          "lng": 119.594071,
+          "lat": 39.931482
+        },
+        "source": "amap"
+      },
+      {
+        "name": "欧e网咖(一店)",
+        "address": "海阳路附7-1号",
+        "type": "体育休闲服务;娱乐场所;网吧",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0335-5320000;15033513352",
+        "photos_count": 3,
+        "distance": 608.0,
+        "coordinates": {
+          "lng": 119.60225,
+          "lat": 39.930532
+        },
+        "source": "amap"
+      },
+      {
+        "name": "MiYu私影助教恋爱体验馆",
+        "address": "正阳路与江东路步行街交叉口西40米",
+        "type": "体育休闲服务;体育休闲服务场所;体育休闲服务场所",
+        "rating": 3.6,
+        "cost": "89.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 609.0,
+        "coordinates": {
+          "lng": 119.605525,
+          "lat": 39.933175
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛市第七中学河北大街校区",
+        "address": "河北大街中段186号",
+        "type": "科教文化服务;学校;中学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 224.0,
+        "coordinates": {
+          "lng": 119.599814,
+          "lat": 39.933482
+        },
+        "source": "amap"
+      },
+      {
+        "name": "易缘国学",
+        "address": "海阳路与兴源街交叉口西北60米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 2.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 250.0,
+        "coordinates": {
+          "lng": 119.596575,
+          "lat": 39.934125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛市老年大学",
+        "address": "文化路街道人民路119号",
+        "type": "科教文化服务;学校;成人教育",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "13785991008",
+        "photos_count": 3,
+        "distance": 305.0,
+        "coordinates": {
+          "lng": 119.597212,
+          "lat": 39.937779
+        },
+        "source": "amap"
+      },
+      {
+        "name": "能力风暴教育机器人编程学校",
+        "address": "新一路8号友邦连锁酒店二楼",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "13780330774",
+        "photos_count": 1,
+        "distance": 315.0,
+        "coordinates": {
+          "lng": 119.601909,
+          "lat": 39.933653
+        },
+        "source": "amap"
+      },
+      {
+        "name": "中国邮政河北大街邮政支局",
+        "address": "文化路166号",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 08:30-17:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 355.0,
+        "coordinates": {
+          "lng": 119.602913,
+          "lat": 39.934314
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛津硕文化传播有限公司",
+        "address": "新一路8号小院",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-17:30",
+        "tel": "13930358062",
+        "photos_count": 3,
+        "distance": 376.0,
+        "coordinates": {
+          "lng": 119.597968,
+          "lat": 39.932108
+        },
+        "source": "amap"
+      },
+      {
+        "name": "一本读写",
+        "address": "商城北街与文化路交叉口东60米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "13293153198",
+        "photos_count": 0,
+        "distance": 390.0,
+        "coordinates": {
+          "lng": 119.603575,
+          "lat": 39.935475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "能力风暴机器人编程学校",
+        "address": "新一路8号二层",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周二至周五 09:30-17:00； 周六至周日 08:00-18:00",
+        "tel": "13780330774",
+        "photos_count": 3,
+        "distance": 394.0,
+        "coordinates": {
+          "lng": 119.597914,
+          "lat": 39.931956
+        },
+        "source": "amap"
+      },
+      {
+        "name": "成公教育",
+        "address": "海港区半岛四季酒店公寓921室",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "15930599922;19503362077",
+        "photos_count": 3,
+        "distance": 404.0,
+        "coordinates": {
+          "lng": 119.603625,
+          "lat": 39.936175
+        },
+        "source": "amap"
+      },
+      {
+        "name": "半岛四季公寓酒店-会议厅",
+        "address": "文化路181号半岛四季酒店",
+        "type": "科教文化服务;会展中心;会展中心",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 405.0,
+        "coordinates": {
+          "lng": 119.603585,
+          "lat": 39.936364
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雅集艺术空间",
+        "address": "海新街与海阳路交叉口西南100米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 411.0,
+        "coordinates": {
+          "lng": 119.594773,
+          "lat": 39.93362
+        },
+        "source": "amap"
+      },
+      {
+        "name": "街舞艺术交流中心",
+        "address": "海阳路与通汇路交叉口东40米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 421.0,
+        "coordinates": {
+          "lng": 119.600625,
+          "lat": 39.931825
+        },
+        "source": "amap"
+      },
+      {
+        "name": "博安托管",
+        "address": "海阳路与和平大街交叉口东南140米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 427.0,
+        "coordinates": {
+          "lng": 119.59406,
+          "lat": 39.934751
+        },
+        "source": "amap"
+      },
+      {
+        "name": "达炟美术培训学校美育研发中心",
+        "address": "河北大街中段158号2楼",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 429.0,
+        "coordinates": {
+          "lng": 119.603849,
+          "lat": 39.93436
+        },
+        "source": "amap"
+      },
+      {
+        "name": "达恒美术",
+        "address": "文化路与河北大街中段交叉口西40米",
+        "type": "科教文化服务;培训机构;培训机构|生活服务;生活服务场所;生活服务场所",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 430.0,
+        "coordinates": {
+          "lng": 119.603841,
+          "lat": 39.934325
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海阳路小学",
+        "address": "海阳路附73号",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3047423",
+        "photos_count": 3,
+        "distance": 433.0,
+        "coordinates": {
+          "lng": 119.594157,
+          "lat": 39.934219
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛视听机械研究所",
+        "address": "河北大街中段165号",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3255353",
+        "photos_count": 1,
+        "distance": 434.0,
+        "coordinates": {
+          "lng": 119.599835,
+          "lat": 39.93155
+        },
+        "source": "amap"
+      },
+      {
+        "name": "TTstudio",
+        "address": "商城西路与商城北街交叉口西南40米",
+        "type": "生活服务;美容美发店;美容美发店|科教文化服务;培训机构;培训机构",
+        "rating": 2.9,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 435.0,
+        "coordinates": {
+          "lng": 119.604075,
+          "lat": 39.935025
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛新北辰公考·公职考前培训",
+        "address": "河北大街中段167号青豆荚5层",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:30-20:00",
+        "tel": "18833980987",
+        "photos_count": 3,
+        "distance": 435.0,
+        "coordinates": {
+          "lng": 119.59891,
+          "lat": 39.931491
+        },
+        "source": "amap"
+      },
+      {
+        "name": "里野传媒",
+        "address": "河北大街中段与海阳路交叉口西南80米",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 437.0,
+        "coordinates": {
+          "lng": 119.599225,
+          "lat": 39.931475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "高远教育",
+        "address": "青豆荚孵化器305",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18333509637",
+        "photos_count": 1,
+        "distance": 441.0,
+        "coordinates": {
+          "lng": 119.598853,
+          "lat": 39.931432
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱信诚教育",
+        "address": "河北大街167号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "15603366361",
+        "photos_count": 3,
+        "distance": 446.0,
+        "coordinates": {
+          "lng": 119.598847,
+          "lat": 39.931393
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新一路小学",
+        "address": "新一路与通汇路交汇处西北100米",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3034226",
+        "photos_count": 2,
+        "distance": 450.0,
+        "coordinates": {
+          "lng": 119.596031,
+          "lat": 39.932054
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛市群众艺术馆",
+        "address": "文化路与河堤路交叉口北60米",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 456.0,
+        "coordinates": {
+          "lng": 119.602875,
+          "lat": 39.938225
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛海之蓝非物质文化遗产传习馆",
+        "address": "文化路与河堤路交叉口北60米",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 459.0,
+        "coordinates": {
+          "lng": 119.602871,
+          "lat": 39.938267
+        },
+        "source": "amap"
+      },
+      {
+        "name": "学而思专卖",
+        "address": "海阳路与广场西路交叉口东40米",
+        "type": "科教文化服务;培训机构;培训机构|购物服务;购物相关场所;购物相关场所",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 465.0,
+        "coordinates": {
+          "lng": 119.593556,
+          "lat": 39.935685
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛市歌舞团",
+        "address": "河堤路8号",
+        "type": "科教文化服务;文艺团体;文艺团体",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3291265;13333349649",
+        "photos_count": 3,
+        "distance": 467.0,
+        "coordinates": {
+          "lng": 119.603123,
+          "lat": 39.938164
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新一路小学幼儿园",
+        "address": "文化路街道新一街30号",
+        "type": "科教文化服务;学校;幼儿园",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3020963",
+        "photos_count": 2,
+        "distance": 474.0,
+        "coordinates": {
+          "lng": 119.595333,
+          "lat": 39.932202
+        },
+        "source": "amap"
+      },
+      {
+        "name": "吉肤堂皮肤病研究所",
+        "address": "团结里小区南区12号楼东1门旁",
+        "type": "科教文化服务;科研机构;科研机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 475.0,
+        "coordinates": {
+          "lng": 119.596806,
+          "lat": 39.931477
+        },
+        "source": "amap"
+      },
+      {
+        "name": "倍爱尔安亲托教",
+        "address": "新一路团结里小区8栋附1单元",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 07:00-18:00",
+        "tel": "13513354488",
+        "photos_count": 1,
+        "distance": 489.0,
+        "coordinates": {
+          "lng": 119.594716,
+          "lat": 39.93248
+        },
+        "source": "amap"
+      },
+      {
+        "name": "文化里小学",
+        "address": "文化北路46号",
+        "type": "科教文化服务;学校;小学",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3295009",
+        "photos_count": 3,
+        "distance": 489.0,
+        "coordinates": {
+          "lng": 119.604358,
+          "lat": 39.936966
+        },
+        "source": "amap"
+      },
+      {
+        "name": "衡秦集团(海阳路校区)",
+        "address": "海阳路与和平大街交叉口东南80米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 495.0,
+        "coordinates": {
+          "lng": 119.593225,
+          "lat": 39.934975
+        },
+        "source": "amap"
+      },
+      {
+        "name": "科沃斯机器人(秦皇岛京东城市旗舰店)",
+        "address": "正阳街40号金辉国贸大厦",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "15045210616",
+        "photos_count": 3,
+        "distance": 500.0,
+        "coordinates": {
+          "lng": 119.603794,
+          "lat": 39.932811
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天天向上",
+        "address": "河北大街中段152号秦皇岛商城",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 2.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 509.0,
+        "coordinates": {
+          "lng": 119.604964,
+          "lat": 39.935324
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛寇拉传媒",
+        "address": "建设大街太阳城金辉国贸大厦A座16楼",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 526.0,
+        "coordinates": {
+          "lng": 119.604173,
+          "lat": 39.932825
+        },
+        "source": "amap"
+      },
+      {
+        "name": "倾叶传媒",
+        "address": "新华街与正阳路交叉口西60米",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 530.0,
+        "coordinates": {
+          "lng": 119.604225,
+          "lat": 39.932825
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛海燕文化传播有限公司",
+        "address": "广场西路与海阳路交叉口西北40米",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 537.0,
+        "coordinates": {
+          "lng": 119.592775,
+          "lat": 39.936125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鼓·艺打击乐学校",
+        "address": "文化里小学东门旁",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 2.8,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "13633356305",
+        "photos_count": 2,
+        "distance": 540.0,
+        "coordinates": {
+          "lng": 119.604903,
+          "lat": 39.937146
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦思托管中心",
+        "address": "商城东路与商城北街交叉口北120米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 544.0,
+        "coordinates": {
+          "lng": 119.605221,
+          "lat": 39.936464
+        },
+        "source": "amap"
+      },
+      {
+        "name": "心童花木课后托管中心",
+        "address": "团结里小区8栋对面",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": "周一至周五 07:00-19:00",
+        "tel": "13730358325",
+        "photos_count": 3,
+        "distance": 544.0,
+        "coordinates": {
+          "lng": 119.595093,
+          "lat": 39.931538
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星蕾萌七艺术学校",
+        "address": "碧海云天广场西路98号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "18533541141",
+        "photos_count": 3,
+        "distance": 546.0,
+        "coordinates": {
+          "lng": 119.59275,
+          "lat": 39.936454
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万泓城托教",
+        "address": "团结里小区北区东南1门东80米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 549.0,
+        "coordinates": {
+          "lng": 119.594729,
+          "lat": 39.931712
+        },
+        "source": "amap"
+      },
+      {
+        "name": "双碳传媒",
+        "address": "河北大街中段152号秦皇岛商城F7层",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-6936655",
+        "photos_count": 2,
+        "distance": 550.0,
+        "coordinates": {
+          "lng": 119.605396,
+          "lat": 39.934795
+        },
+        "source": "amap"
+      },
+      {
+        "name": "万泓成·祝博士教育培训学校",
+        "address": "新一路40号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 07:30-20:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 553.0,
+        "coordinates": {
+          "lng": 119.594677,
+          "lat": 39.931692
+        },
+        "source": "amap"
+      },
+      {
+        "name": "传承书画院",
+        "address": "新一路36附近",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "13315680688;18833886863",
+        "photos_count": 2,
+        "distance": 554.0,
+        "coordinates": {
+          "lng": 119.595131,
+          "lat": 39.931402
+        },
+        "source": "amap"
+      },
+      {
+        "name": "刘古月小提琴工作室",
+        "address": "广场西路与海阳路交叉口西北80米",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 555.0,
+        "coordinates": {
+          "lng": 119.592678,
+          "lat": 39.936599
+        },
+        "source": "amap"
+      },
+      {
+        "name": "益智晓屋魔方",
+        "address": "12栋7单元9号",
+        "type": "科教文化服务;培训机构;培训机构",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 08:00-18:00",
+        "tel": "13011469145",
+        "photos_count": 3,
+        "distance": 589.0,
+        "coordinates": {
+          "lng": 119.594124,
+          "lat": 39.931655
+        },
+        "source": "amap"
+      },
+      {
+        "name": "河北辉哥文化传播有限公司",
+        "address": "道德街与长安路交叉口西南60米",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 591.0,
+        "coordinates": {
+          "lng": 119.604382,
+          "lat": 39.932053
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星字文化传媒(秦皇岛)有限公司",
+        "address": "金都大厦25层",
+        "type": "科教文化服务;传媒机构;传媒机构",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": "00:00-24:00",
+        "tel": "13333334254",
+        "photos_count": 3,
+        "distance": 593.0,
+        "coordinates": {
+          "lng": 119.604417,
+          "lat": 39.932059
+        },
+        "source": "amap"
+      },
+      {
+        "name": "博之文·博文商务",
+        "address": "文化路239号",
+        "type": "科教文化服务;科教文化场所;科教文化场所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 602.0,
+        "coordinates": {
+          "lng": 119.602666,
+          "lat": 39.940024
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小咖咖啡(秦皇岛第一人民医院店)",
+        "address": "第一医院行政楼二楼职工餐厅",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.4,
+        "cost": "10.00",
+        "open_time": "周一至周日 06:30-18:30",
+        "tel": "15369738086",
+        "photos_count": 0,
+        "distance": 394.0,
+        "coordinates": {
+          "lng": 119.599925,
+          "lat": 39.938875
+        },
+        "source": "amap"
+      },
+      {
+        "name": "肯悦咖啡海阳店",
+        "address": "肯德基视听研究所一层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "17.00",
+        "open_time": "周一至周日 06:00-22:00",
+        "tel": "0335-3035109",
+        "photos_count": 1,
+        "distance": 413.0,
+        "coordinates": {
+          "lng": 119.599679,
+          "lat": 39.931721
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(秦皇岛文化路店)",
+        "address": "文化路辅路与河堤路交叉口西北80米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "13.00",
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 437.0,
+        "coordinates": {
+          "lng": 119.602261,
+          "lat": 39.938437
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(秦皇岛乐都汇店)",
+        "address": "河北大街中段115号乐都汇购物中心零售商区1层",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.3,
+        "cost": "37.00",
+        "open_time": "周一至周五 08:30-21:30；周六至周日 08:30-21:30",
+        "tel": "0335-8090895",
+        "photos_count": 3,
+        "distance": 463.0,
+        "coordinates": {
+          "lng": 119.603833,
+          "lat": 39.933501
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(秦皇岛乐都汇店)",
+        "address": "河北大街中段115号秦皇岛乐都汇购物中心L210号商铺",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "13.00",
+        "open_time": "周一至周日 08:00-21:30",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 552.0,
+        "coordinates": {
+          "lng": 119.605075,
+          "lat": 39.933675
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(秦皇岛太阳城店)",
+        "address": "太阳城长安路1号乐购后门正对面",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "13.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 565.0,
+        "coordinates": {
+          "lng": 119.605224,
+          "lat": 39.933657
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(太阳城道德街店)",
+        "address": "道德街国辰商务中心北门南70米处",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "14.00",
+        "open_time": "周一至周五 09:00-20:00",
+        "tel": "18503357663",
+        "photos_count": 3,
+        "distance": 619.0,
+        "coordinates": {
+          "lng": 119.605168,
+          "lat": 39.932475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "漫咖啡MAAN COFFEE(丽都国际酒店店)",
+        "address": "广场西路与海阳路交叉口西北140米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "16.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 625.0,
+        "coordinates": {
+          "lng": 119.591826,
+          "lat": 39.93653
+        },
+        "source": "amap"
+      },
+      {
+        "name": "咖啡生活(秦皇岛新天地购物广场店)",
+        "address": "河北大街中段97号新天地购物广场北门",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "37.00",
+        "open_time": "周一至周日 10:00-19:00",
+        "tel": "15933350171",
+        "photos_count": 3,
+        "distance": 632.0,
+        "coordinates": {
+          "lng": 119.60627,
+          "lat": 39.93431
+        },
+        "source": "amap"
+      },
+      {
+        "name": "旧识咖啡(康乐里店)",
+        "address": "康乐里20栋9号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "37.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "13785913821;18103358983",
+        "photos_count": 3,
+        "distance": 660.0,
+        "coordinates": {
+          "lng": 119.59922,
+          "lat": 39.941329
+        },
+        "source": "amap"
+      },
+      {
+        "name": "9·9 daily coffee每日咖啡(太阳城店)",
+        "address": "太阳城步行街10号楼福源大厦东楼道口1号门市",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.7,
+        "cost": "11.00",
+        "open_time": "周一至周日 08:00-22:00",
+        "tel": "13833523100;17733415335",
+        "photos_count": 3,
+        "distance": 669.0,
+        "coordinates": {
+          "lng": 119.605594,
+          "lat": 39.932148
+        },
+        "source": "amap"
+      },
+      {
+        "name": "77Lucky中古玩具咖啡屋",
+        "address": "康乐里18-3",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一 11:00-18:30；周三至周日 11:00-18:30",
+        "tel": "17302232487",
+        "photos_count": 3,
+        "distance": 682.0,
+        "coordinates": {
+          "lng": 119.59908,
+          "lat": 39.941529
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(太阳城五兴图书广场店)",
+        "address": "新华街太阳城3号楼底商(五兴图书广场入口侧)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "26.00",
+        "open_time": "周一至周五 09:00-20:00",
+        "tel": "18830491114",
+        "photos_count": 3,
+        "distance": 683.0,
+        "coordinates": {
+          "lng": 119.606625,
+          "lat": 39.933525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "17楼咖啡",
+        "address": "金源国际商务大厦17楼",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "10.00",
+        "open_time": "周一至周日 08:00-17:00",
+        "tel": "13180591626;16603337883",
+        "photos_count": 3,
+        "distance": 698.0,
+        "coordinates": {
+          "lng": 119.607183,
+          "lat": 39.935424
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸运咖(人民广场店)",
+        "address": "建设大街168号(北侧第三间门市)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "10.00",
+        "open_time": [],
+        "tel": "15933505273",
+        "photos_count": 2,
+        "distance": 729.0,
+        "coordinates": {
+          "lng": 119.598213,
+          "lat": 39.941921
+        },
+        "source": "amap"
+      },
+      {
+        "name": "缤塔咖啡",
+        "address": "民族路与河堤南路交叉口护城河桥头停车场",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "84.00",
+        "open_time": "周一至周日 10:00-14:00,16:30-21:30",
+        "tel": "0335-3322333;0335-8887886",
+        "photos_count": 3,
+        "distance": 791.0,
+        "coordinates": {
+          "lng": 119.607552,
+          "lat": 39.938147
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(秦皇岛金贸中心店)",
+        "address": "港城大街街道建设大街187号金贸中心A座1层大堂",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": "10.00",
+        "open_time": "周一至周五 08:00-19:00",
+        "tel": "13102536787",
+        "photos_count": 3,
+        "distance": 896.0,
+        "coordinates": {
+          "lng": 119.601411,
+          "lat": 39.943239
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(秦皇岛金贸中心A座店)",
+        "address": "建设大街187号金贸中心A座F1层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "18.00",
+        "open_time": "周一至周五 08:00-19:00；周六至周日 08:30-19:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 898.0,
+        "coordinates": {
+          "lng": 119.601172,
+          "lat": 39.943302
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秋毛咖啡",
+        "address": "红旗路48号一层002",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "25.00",
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "18633500670",
+        "photos_count": 3,
+        "distance": 931.0,
+        "coordinates": {
+          "lng": 119.588471,
+          "lat": 39.933209
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸运咖(人民广场建设大街店)",
+        "address": "建设大街81-东07号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "10.00",
+        "open_time": [],
+        "tel": "15030686867",
+        "photos_count": 3,
+        "distance": 979.0,
+        "coordinates": {
+          "lng": 119.591787,
+          "lat": 39.942239
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸语咖啡店",
+        "address": "港城大街街道文化路306号3层",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.5,
+        "cost": "22.00",
+        "open_time": "周二至周日 09:00-16:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 980.0,
+        "coordinates": {
+          "lng": 119.601207,
+          "lat": 39.944048
+        },
+        "source": "amap"
+      },
+      {
+        "name": "溪岸定制夏至咖啡馆",
+        "address": "海港区河北大街中段332号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "31.00",
+        "open_time": "周一至周日 08:30-18:00",
+        "tel": "17603356256",
+        "photos_count": 3,
+        "distance": 982.0,
+        "coordinates": {
+          "lng": 119.589429,
+          "lat": 39.930495
+        },
+        "source": "amap"
+      },
+      {
+        "name": "mrH&missZ咖啡遇见小酒馆",
+        "address": "秦新路20号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.7,
+        "cost": "26.00",
+        "open_time": "周一至周日 10:00-01:00",
+        "tel": "13091366595",
+        "photos_count": 3,
+        "distance": 991.0,
+        "coordinates": {
+          "lng": 119.609631,
+          "lat": 39.931809
+        },
+        "source": "amap"
+      },
+      {
+        "name": "谷雨精品咖啡(胜利村小区店)",
+        "address": "马坊街1号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "42.00",
+        "open_time": "周一至周日 09:00-19:30",
+        "tel": "15902425678",
+        "photos_count": 3,
+        "distance": 1077.0,
+        "coordinates": {
+          "lng": 119.600861,
+          "lat": 39.944972
+        },
+        "source": "amap"
+      },
+      {
+        "name": "逐梦咖啡DreamCafe(海阳路店)",
+        "address": "海阳路258号1-A6",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "25.00",
+        "open_time": "周一至周日 10:00-19:00",
+        "tel": "13703357715",
+        "photos_count": 3,
+        "distance": 1194.0,
+        "coordinates": {
+          "lng": 119.586156,
+          "lat": 39.939667
+        },
+        "source": "amap"
+      },
+      {
+        "name": "朝十晚六COFFEE(秦皇小区店)",
+        "address": "秦皇小区长城大街21号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "39.00",
+        "open_time": "周二至周日 10:00-18:00",
+        "tel": "15033597733",
+        "photos_count": 2,
+        "distance": 1305.0,
+        "coordinates": {
+          "lng": 119.611893,
+          "lat": 39.929091
+        },
+        "source": "amap"
+      },
+      {
+        "name": "岛屿",
+        "address": "港城大街街道秦皇东大街328-6",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 1653.0,
+        "coordinates": {
+          "lng": 119.608821,
+          "lat": 39.948203
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(海港光明路市场店)",
+        "address": "海滨路街道光明路市场14-2",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周日 08:00-19:00",
+        "tel": "15603363029",
+        "photos_count": 3,
+        "distance": 1679.0,
+        "coordinates": {
+          "lng": 119.604444,
+          "lat": 39.920901
+        },
+        "source": "amap"
+      },
+      {
+        "name": "不止咖啡(渤海路店)",
+        "address": "渤海路19号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "24.00",
+        "open_time": "周一至周五 07:00-19:00；周六至周日 09:00-19:00",
+        "tel": "13393352733",
+        "photos_count": 3,
+        "distance": 1761.0,
+        "coordinates": {
+          "lng": 119.608659,
+          "lat": 39.921416
+        },
+        "source": "amap"
+      },
+      {
+        "name": "友谊咖啡",
+        "address": "友谊路71号秦皇岛口岸实业公司(院内鸣笛抬杆)黑色平房",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.4,
+        "cost": "26.00",
+        "open_time": "周一至周五 09:00-17:30；周六至周日 10:00-18:00",
+        "tel": "17732882995",
+        "photos_count": 3,
+        "distance": 1811.0,
+        "coordinates": {
+          "lng": 119.58442,
+          "lat": 39.923581
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(玉龙湾住宅小区店)",
+        "address": "河北大街中段468号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "11.00",
+        "open_time": "周一至周日 07:30-19:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 1827.0,
+        "coordinates": {
+          "lng": 119.580084,
+          "lat": 39.92772
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(秦皇岛建国路店)",
+        "address": "建国路162号一楼",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "12.00",
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 1929.0,
+        "coordinates": {
+          "lng": 119.615475,
+          "lat": 39.947275
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小山咖啡THE HILL COFFEE(河北大街店)",
+        "address": "渤海家园西北1门旁",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "35.00",
+        "open_time": "周一至周日 07:30-19:00",
+        "tel": "18830350094",
+        "photos_count": 3,
+        "distance": 1943.0,
+        "coordinates": {
+          "lng": 119.579495,
+          "lat": 39.926399
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(世纪港湾店)",
+        "address": "秦皇东大街138号世纪港湾购物广场B1层外摆",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "14.00",
+        "open_time": "周一至周五 08:30-22:00",
+        "tel": "13315665755",
+        "photos_count": 3,
+        "distance": 1944.0,
+        "coordinates": {
+          "lng": 119.582632,
+          "lat": 39.947549
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸运咖(建国路店)",
+        "address": "建国路164号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "10.00",
+        "open_time": "周一至周日 08:30-22:00",
+        "tel": "15232323765",
+        "photos_count": 3,
+        "distance": 1960.0,
+        "coordinates": {
+          "lng": 119.615475,
+          "lat": 39.947669
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星巴克(世纪港湾店)",
+        "address": "秦皇东大街138号世纪港湾购物广场A栋1层1206单元",
+        "type": "餐饮服务;咖啡厅;星巴克咖啡",
+        "rating": 4.3,
+        "cost": "36.00",
+        "open_time": "周一至周四 09:00-19:20；周五至周日 09:00-20:00",
+        "tel": "0335-3637583",
+        "photos_count": 3,
+        "distance": 1999.0,
+        "coordinates": {
+          "lng": 119.581759,
+          "lat": 39.947563
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(秦皇岛世纪港湾店)",
+        "address": "秦皇东大街138号世纪港湾B座一层B-122号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "15.00",
+        "open_time": "周一至周日 08:30-21:30",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 1999.0,
+        "coordinates": {
+          "lng": 119.58104,
+          "lat": 39.946939
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛悠乐咖啡",
+        "address": "迎宾路99号君御大酒店1楼T101",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.0,
+        "cost": "18.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 2074.0,
+        "coordinates": {
+          "lng": 119.592208,
+          "lat": 39.953295
+        },
+        "source": "amap"
+      },
+      {
+        "name": "幸运咖(世纪港湾店)",
+        "address": "秦皇东大街138号世纪港湾",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "11.00",
+        "open_time": [],
+        "tel": "18712764277",
+        "photos_count": 3,
+        "distance": 2095.0,
+        "coordinates": {
+          "lng": 119.580225,
+          "lat": 39.947525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "肯悦咖啡燕山店",
+        "address": "燕山大街与迎宾路交口0335-",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.9,
+        "cost": "9.00",
+        "open_time": "周一至周日 06:00-23:00",
+        "tel": "0335-3607700",
+        "photos_count": 1,
+        "distance": 2206.0,
+        "coordinates": {
+          "lng": 119.592725,
+          "lat": 39.954625
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(海港迎宾路店)",
+        "address": "迎宾路139号秦皇岛日报社附属楼东门(麦格口腔南侧)",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "13.00",
+        "open_time": "周一至周五 07:30-19:30；周六至周日 07:30-19:30",
+        "tel": "17772549099",
+        "photos_count": 3,
+        "distance": 2304.0,
+        "coordinates": {
+          "lng": 119.592675,
+          "lat": 39.955525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(秦皇岛文博大厦店)",
+        "address": "西港路345号文博大厦1层大堂入口处",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "13.00",
+        "open_time": "周一至周五 08:00-18:30",
+        "tel": "13084532680",
+        "photos_count": 3,
+        "distance": 2376.0,
+        "coordinates": {
+          "lng": 119.576,
+          "lat": 39.947426
+        },
+        "source": "amap"
+      },
+      {
+        "name": "TT.coffee咖啡",
+        "address": "秦新巴塞罗那219号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2377.0,
+        "coordinates": {
+          "lng": 119.613837,
+          "lat": 39.953479
+        },
+        "source": "amap"
+      },
+      {
+        "name": "库迪咖啡(巴塞罗那店)",
+        "address": "建国路217-4号中国电信二楼",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "16.00",
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "13903334719",
+        "photos_count": 3,
+        "distance": 2420.0,
+        "coordinates": {
+          "lng": 119.614347,
+          "lat": 39.953681
+        },
+        "source": "amap"
+      },
+      {
+        "name": "冈仁波齐雪茄咖啡馆",
+        "address": "景元街99号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.3,
+        "cost": "33.00",
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "15031469858",
+        "photos_count": 3,
+        "distance": 2423.0,
+        "coordinates": {
+          "lng": 119.571731,
+          "lat": 39.941478
+        },
+        "source": "amap"
+      },
+      {
+        "name": "喜见舒芙蕾A drop coffee",
+        "address": "北环路街道1915铁路街区文化广场旅游列车2号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.2,
+        "cost": "33.00",
+        "open_time": "周一至周日 09:00-21:00 2026-02-16至2026-02-18 周一至周日 全天关闭",
+        "tel": "18133517772",
+        "photos_count": 3,
+        "distance": 2539.0,
+        "coordinates": {
+          "lng": 119.572799,
+          "lat": 39.946204
+        },
+        "source": "amap"
+      },
+      {
+        "name": "栖谷咖啡手工休闲馆",
+        "address": "海港区万达广场商业街287号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "23.00",
+        "open_time": "周二至周日 12:00-20:00",
+        "tel": "17733417272",
+        "photos_count": 1,
+        "distance": 2543.0,
+        "coordinates": {
+          "lng": 119.577521,
+          "lat": 39.951238
+        },
+        "source": "amap"
+      },
+      {
+        "name": "BEAM光咖啡店",
+        "address": "海港区万达商业街263号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.1,
+        "cost": "19.00",
+        "open_time": "周一至周日 09:00-18:00",
+        "tel": "18617810170",
+        "photos_count": 3,
+        "distance": 2589.0,
+        "coordinates": {
+          "lng": 119.578085,
+          "lat": 39.952246
+        },
+        "source": "amap"
+      },
+      {
+        "name": "looooop咖啡(秦皇岛万达广场店)",
+        "address": "万达广场商67号",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 4.0,
+        "cost": "28.00",
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "13102541026",
+        "photos_count": 3,
+        "distance": 2609.0,
+        "coordinates": {
+          "lng": 119.576642,
+          "lat": 39.951391
+        },
+        "source": "amap"
+      },
+      {
+        "name": "1915咖啡",
+        "address": "秦皇东大街与建盛路交叉口南120米",
+        "type": "餐饮服务;咖啡厅;咖啡厅",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 2663.0,
+        "coordinates": {
+          "lng": 119.571606,
+          "lat": 39.946853
+        },
+        "source": "amap"
+      },
+      {
+        "name": "佳姐宠物",
+        "address": "人民里小区北院东北门旁",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "18033576060",
+        "photos_count": 3,
+        "distance": 43.0,
+        "coordinates": {
+          "lng": 119.599403,
+          "lat": 39.935643
+        },
+        "source": "amap"
+      },
+      {
+        "name": "阿猫阿狗(秦皇岛海港区)",
+        "address": "人民里小区北院东北门旁",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 08:00-19:00",
+        "tel": "18632936070",
+        "photos_count": 3,
+        "distance": 53.0,
+        "coordinates": {
+          "lng": 119.59933,
+          "lat": 39.935809
+        },
+        "source": "amap"
+      },
+      {
+        "name": "芭比堂宠物生活馆(兴源街店)",
+        "address": "海阳路未名路1号",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": "周一至周日 09:00-19:00",
+        "tel": "13784331111;18603368288",
+        "photos_count": 3,
+        "distance": 66.0,
+        "coordinates": {
+          "lng": 119.599476,
+          "lat": 39.934928
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱尚宠物(人民里小区南院店)",
+        "address": "未名路13号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "13722553363",
+        "photos_count": 3,
+        "distance": 69.0,
+        "coordinates": {
+          "lng": 119.598753,
+          "lat": 39.934802
+        },
+        "source": "amap"
+      },
+      {
+        "name": "康爱佳宠物医疗美容",
+        "address": "人民里小区南院北门东80米",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 08:30-19:00",
+        "tel": "13833557883",
+        "photos_count": 1,
+        "distance": 79.0,
+        "coordinates": {
+          "lng": 119.599658,
+          "lat": 39.934896
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金帆电脑(人民里小区店)",
+        "address": "人民里小区北院东南门旁",
+        "type": "购物服务;家电电子卖场;数码电子",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 08:30-19:00",
+        "tel": "13933637274",
+        "photos_count": 3,
+        "distance": 93.0,
+        "coordinates": {
+          "lng": 119.598413,
+          "lat": 39.93469
+        },
+        "source": "amap"
+      },
+      {
+        "name": "二中香瓜子",
+        "address": "港城大街街道河北大街中段人民里小区2栋",
+        "type": "购物服务;综合市场;果品市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "0335-3047150;13703359107",
+        "photos_count": 3,
+        "distance": 95.0,
+        "coordinates": {
+          "lng": 119.599735,
+          "lat": 39.934758
+        },
+        "source": "amap"
+      },
+      {
+        "name": "道格宠物(人民路店)",
+        "address": "人民路33号",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 09:00-19:00",
+        "tel": "13785997247;13933915985",
+        "photos_count": 3,
+        "distance": 118.0,
+        "coordinates": {
+          "lng": 119.599849,
+          "lat": 39.934557
+        },
+        "source": "amap"
+      },
+      {
+        "name": "萌宠宠物(人民路店)",
+        "address": "人民里33号市机关幼儿园对面",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 09:00-19:00",
+        "tel": "15033553322",
+        "photos_count": 3,
+        "distance": 122.0,
+        "coordinates": {
+          "lng": 119.599867,
+          "lat": 39.934527
+        },
+        "source": "amap"
+      },
+      {
+        "name": "宅猫猫宠物生活馆(人民里小区南院店)",
+        "address": "人民里小区南院西北门旁",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 07:00-19:00",
+        "tel": "13933554008",
+        "photos_count": 3,
+        "distance": 138.0,
+        "coordinates": {
+          "lng": 119.598016,
+          "lat": 39.934406
+        },
+        "source": "amap"
+      },
+      {
+        "name": "建然生鲜超市",
+        "address": "人民路31号",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 07:00-21:00",
+        "tel": "15383888497",
+        "photos_count": 3,
+        "distance": 146.0,
+        "coordinates": {
+          "lng": 119.600036,
+          "lat": 39.934353
+        },
+        "source": "amap"
+      },
+      {
+        "name": "洋洋花卉",
+        "address": "人民路中段",
+        "type": "购物服务;花鸟鱼虫市场;花卉市场",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 08:00-17:30",
+        "tel": "13731792228",
+        "photos_count": 3,
+        "distance": 147.0,
+        "coordinates": {
+          "lng": 119.598224,
+          "lat": 39.936582
+        },
+        "source": "amap"
+      },
+      {
+        "name": "为鑫水族(洋洋花卉店)",
+        "address": "老洋洋花卉购物中心鱼区一楼",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 09:00-17:30",
+        "tel": "17733511011",
+        "photos_count": 3,
+        "distance": 169.0,
+        "coordinates": {
+          "lng": 119.598175,
+          "lat": 39.936781
+        },
+        "source": "amap"
+      },
+      {
+        "name": "朋博书店(天贺公寓店)",
+        "address": "建设大街街道兴源街22号",
+        "type": "购物服务;专卖店;书店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 08:30-20:00",
+        "tel": "0335-3057678;13930351031",
+        "photos_count": 3,
+        "distance": 194.0,
+        "coordinates": {
+          "lng": 119.597439,
+          "lat": 39.934125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "栋宇超市(人民里店)",
+        "address": "海阳路兴源街16号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": "周一至周日 10:00-01:00",
+        "tel": "13933551687",
+        "photos_count": 3,
+        "distance": 208.0,
+        "coordinates": {
+          "lng": 119.597415,
+          "lat": 39.933976
+        },
+        "source": "amap"
+      },
+      {
+        "name": "李海超市(康乐里店)",
+        "address": "康乐里1-1-1号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 07:15-23:00",
+        "tel": "13483370515",
+        "photos_count": 2,
+        "distance": 229.0,
+        "coordinates": {
+          "lng": 119.598439,
+          "lat": 39.93742
+        },
+        "source": "amap"
+      },
+      {
+        "name": "港角服装工厂店",
+        "address": "兴源街与海阳路交口北东北方向36米",
+        "type": "购物服务;服装鞋帽皮具店;服装鞋帽皮具店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 08:30-21:00",
+        "tel": "13840908827",
+        "photos_count": 3,
+        "distance": 231.0,
+        "coordinates": {
+          "lng": 119.596974,
+          "lat": 39.934013
+        },
+        "source": "amap"
+      },
+      {
+        "name": "和联超市(兴源街店)",
+        "address": "兴源街5号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 06:30-23:18",
+        "tel": "0335-3209145",
+        "photos_count": 3,
+        "distance": 235.0,
+        "coordinates": {
+          "lng": 119.596937,
+          "lat": 39.933991
+        },
+        "source": "amap"
+      },
+      {
+        "name": "滔搏运动城(天贺公寓店)",
+        "address": "兴源街14号天贺公寓",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-20:00",
+        "tel": "0335-3295051",
+        "photos_count": 2,
+        "distance": 244.0,
+        "coordinates": {
+          "lng": 119.597054,
+          "lat": 39.933789
+        },
+        "source": "amap"
+      },
+      {
+        "name": "亿品融合抵押典当黄金回收",
+        "address": "冀北秦皇岛电力公司西南门西北70米",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "18332594999",
+        "photos_count": 3,
+        "distance": 249.0,
+        "coordinates": {
+          "lng": 119.597616,
+          "lat": 39.933429
+        },
+        "source": "amap"
+      },
+      {
+        "name": "滔搏运动(乐都汇店)",
+        "address": "海阳路与兴源街交叉口东40米",
+        "type": "购物服务;体育用品店;体育用品店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 10:00-21:00",
+        "tel": "0335-3295099",
+        "photos_count": 2,
+        "distance": 258.0,
+        "coordinates": {
+          "lng": 119.597169,
+          "lat": 39.933551
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱你宝贝儿童摄影(十佳门店)",
+        "address": "海阳路曲美家具对面(仁济医院斜对面)106-4公用事业局下车北行100米即到",
+        "type": "购物服务;专卖店;儿童用品店|生活服务;摄影冲印店;摄影冲印",
+        "rating": 4.4,
+        "cost": "740.00",
+        "open_time": "周一至周日 08:00-06:00",
+        "tel": "0335-3232006;0335-3360318;13633335573",
+        "photos_count": 3,
+        "distance": 260.0,
+        "coordinates": {
+          "lng": 119.596074,
+          "lat": 39.93472
+        },
+        "source": "amap"
+      },
+      {
+        "name": "上海永久电动车自行车(海阳路旗舰店)",
+        "address": "海阳路92-94号上海永久自行车电动车",
+        "type": "购物服务;专卖店;自行车专卖店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 08:00-19:00",
+        "tel": "0335-3573288;13333353138;13780330318",
+        "photos_count": 3,
+        "distance": 261.0,
+        "coordinates": {
+          "lng": 119.596613,
+          "lat": 39.933933
+        },
+        "source": "amap"
+      },
+      {
+        "name": "雅迪电动车(秦皇岛专卖店)",
+        "address": "海洋路80号",
+        "type": "购物服务;专卖店;自行车专卖店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 08:00-18:00",
+        "tel": "0335-7922798",
+        "photos_count": 3,
+        "distance": 266.0,
+        "coordinates": {
+          "lng": 119.596665,
+          "lat": 39.933814
+        },
+        "source": "amap"
+      },
+      {
+        "name": "小刀电动车(海阳路店)",
+        "address": "海阳路与海新街交叉口东60米",
+        "type": "购物服务;专卖店;自行车专卖店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "13283489992",
+        "photos_count": 3,
+        "distance": 275.0,
+        "coordinates": {
+          "lng": 119.596295,
+          "lat": 39.934048
+        },
+        "source": "amap"
+      },
+      {
+        "name": "好孕妈妈产后调理恢复中心(海阳路店)",
+        "address": "兴源街11号",
+        "type": "购物服务;专卖店;儿童用品店|生活服务;美容美发店;美容美发店",
+        "rating": 4.0,
+        "cost": "281.00",
+        "open_time": "周一至周日 08:30-18:00",
+        "tel": "0335-3366930",
+        "photos_count": 3,
+        "distance": 279.0,
+        "coordinates": {
+          "lng": 119.595895,
+          "lat": 39.934608
+        },
+        "source": "amap"
+      },
+      {
+        "name": "植屿花舍(人民路店)",
+        "address": "康乐里3栋(老年大学对面)",
+        "type": "购物服务;花鸟鱼虫市场;花卉市场",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "17703356556",
+        "photos_count": 2,
+        "distance": 282.0,
+        "coordinates": {
+          "lng": 119.598146,
+          "lat": 39.937854
+        },
+        "source": "amap"
+      },
+      {
+        "name": "站点便利店",
+        "address": "海阳路59号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-23:45",
+        "tel": "17703336686",
+        "photos_count": 2,
+        "distance": 288.0,
+        "coordinates": {
+          "lng": 119.596994,
+          "lat": 39.933311
+        },
+        "source": "amap"
+      },
+      {
+        "name": "回收名酒(康乐里店)",
+        "address": "康乐里3栋老洋洋花卉北50米老年大学正对面",
+        "type": "生活服务;生活服务场所;生活服务场所|购物服务;购物相关场所;购物相关场所",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13785991008",
+        "photos_count": 3,
+        "distance": 293.0,
+        "coordinates": {
+          "lng": 119.598069,
+          "lat": 39.937935
+        },
+        "source": "amap"
+      },
+      {
+        "name": "联想来酷智生活(海阳路店)",
+        "address": "海阳路与河北大街中段交叉口北60米",
+        "type": "购物服务;家电电子卖场;数码电子",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 293.0,
+        "coordinates": {
+          "lng": 119.599029,
+          "lat": 39.932762
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇萌主·精品宠物专卖(总店)",
+        "address": "人民路洋洋花卉康乐里三栋底商",
+        "type": "购物服务;专卖店;宠物用品店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": "周一至周日 08:00-20:00",
+        "tel": "17703337756",
+        "photos_count": 3,
+        "distance": 294.0,
+        "coordinates": {
+          "lng": 119.598071,
+          "lat": 39.937949
+        },
+        "source": "amap"
+      },
+      {
+        "name": "新视觉眼镜(海阳路店)",
+        "address": "海阳路53号",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": "周一至周日 08:00-19:30",
+        "tel": "15076493378",
+        "photos_count": 3,
+        "distance": 296.0,
+        "coordinates": {
+          "lng": 119.596922,
+          "lat": 39.93327
+        },
+        "source": "amap"
+      },
+      {
+        "name": "正腾五金",
+        "address": "海阳路53号",
+        "type": "购物服务;家居建材市场;建材五金市场",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 296.0,
+        "coordinates": {
+          "lng": 119.596945,
+          "lat": 39.933255
+        },
+        "source": "amap"
+      },
+      {
+        "name": "醉香阁陈年老酒收藏馆(康乐里店)",
+        "address": "老洋洋花卉往北30米老年大学正门对面(康乐里3栋的门市)",
+        "type": "购物服务;专卖店;烟酒专卖店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13785991008",
+        "photos_count": 3,
+        "distance": 296.0,
+        "coordinates": {
+          "lng": 119.598068,
+          "lat": 39.937969
+        },
+        "source": "amap"
+      },
+      {
+        "name": "联想授权体验店(海阳路48号店)",
+        "address": "海阳路48号",
+        "type": "购物服务;家电电子卖场;数码电子",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": "周一至周日 08:30-19:30",
+        "tel": "0335-3981066;13933642062",
+        "photos_count": 3,
+        "distance": 299.0,
+        "coordinates": {
+          "lng": 119.598937,
+          "lat": 39.932709
+        },
+        "source": "amap"
+      },
+      {
+        "name": "联想(英力电子城智商务店)",
+        "address": "河北大街141号英力电子城3楼电梯右侧大联想",
+        "type": "购物服务;家电电子卖场;数码电子",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13633338431",
+        "photos_count": 3,
+        "distance": 300.0,
+        "coordinates": {
+          "lng": 119.598975,
+          "lat": 39.932702
+        },
+        "source": "amap"
+      },
+      {
+        "name": "好想来零食乐园(秦皇岛海港区团结里市场店)",
+        "address": "文化路街道海阳路108号",
+        "type": "购物服务;专卖店;专营店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-22:40",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 305.0,
+        "coordinates": {
+          "lng": 119.595604,
+          "lat": 39.934529
+        },
+        "source": "amap"
+      },
+      {
+        "name": "迪信通(白雪店)",
+        "address": "河北大街158号锦江宾馆旁",
+        "type": "购物服务;家电电子卖场;手机销售",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 09:00-18:30",
+        "tel": "0335-5998385;13363358881",
+        "photos_count": 3,
+        "distance": 307.0,
+        "coordinates": {
+          "lng": 119.600736,
+          "lat": 39.932981
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大亨眼镜(海阳路)",
+        "address": "海阳路44号",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 10:15-19:30",
+        "tel": "0335-3049255",
+        "photos_count": 1,
+        "distance": 307.0,
+        "coordinates": {
+          "lng": 119.599152,
+          "lat": 39.932637
+        },
+        "source": "amap"
+      },
+      {
+        "name": "卓灿通讯",
+        "address": "河北大街中段与人民路交叉口东北80米",
+        "type": "购物服务;购物相关场所;购物相关场所",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 310.0,
+        "coordinates": {
+          "lng": 119.601558,
+          "lat": 39.933418
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三木24小时便利店(河北大街中段店)",
+        "address": "第二中学正门西侧",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13133521986",
+        "photos_count": 3,
+        "distance": 311.0,
+        "coordinates": {
+          "lng": 119.600073,
+          "lat": 39.932721
+        },
+        "source": "amap"
+      },
+      {
+        "name": "迪信通OPPO(河北大街店)",
+        "address": "河北大街中段186号(第二中学旁边)",
+        "type": "购物服务;家电电子卖场;手机销售",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 08:30-19:00",
+        "tel": "0335-5998385;13363358881",
+        "photos_count": 3,
+        "distance": 312.0,
+        "coordinates": {
+          "lng": 119.600683,
+          "lat": 39.932903
+        },
+        "source": "amap"
+      },
+      {
+        "name": "王斌眼镜(河北大街店)",
+        "address": "文化路街道河北大街194号",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 08:00-18:30",
+        "tel": "0335-3047777",
+        "photos_count": 3,
+        "distance": 317.0,
+        "coordinates": {
+          "lng": 119.600003,
+          "lat": 39.93265
+        },
+        "source": "amap"
+      },
+      {
+        "name": "德玉生鲜超市",
+        "address": "海阳路83号",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": "周一至周日 07:00-20:00",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 321.0,
+        "coordinates": {
+          "lng": 119.595782,
+          "lat": 39.933907
+        },
+        "source": "amap"
+      },
+      {
+        "name": "vivo官方授权体验店(秦皇岛海港区海阳店)",
+        "address": "文化路街道海阳路48号",
+        "type": "购物服务;家电电子卖场;家电电子卖场",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 08:30-19:00",
+        "tel": "15703361988",
+        "photos_count": 3,
+        "distance": 321.0,
+        "coordinates": {
+          "lng": 119.599325,
+          "lat": 39.932525
+        },
+        "source": "amap"
+      },
+      {
+        "name": "骆驼生活馆",
+        "address": "新华书店旁",
+        "type": "购物服务;体育用品店;户外用品",
+        "rating": 3.4,
+        "cost": [],
+        "open_time": "08:00-19:30",
+        "tel": "13230938802",
+        "photos_count": 2,
+        "distance": 328.0,
+        "coordinates": {
+          "lng": 119.60257,
+          "lat": 39.936508
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老白牛羊肉店",
+        "address": "海阳路61号",
+        "type": "购物服务;综合市场;农副产品市场",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "13933575087",
+        "photos_count": 2,
+        "distance": 334.0,
+        "coordinates": {
+          "lng": 119.596807,
+          "lat": 39.932907
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北越五金工具",
+        "address": "海新街83号",
+        "type": "购物服务;家居建材市场;建材五金市场",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 06:30-20:30",
+        "tel": "13191816183",
+        "photos_count": 3,
+        "distance": 336.0,
+        "coordinates": {
+          "lng": 119.59554,
+          "lat": 39.933947
+        },
+        "source": "amap"
+      },
+      {
+        "name": "同名眼镜(康视大厦店)",
+        "address": "海阳路21-1号",
+        "type": "购物服务;专卖店;眼镜店",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 08:30-19:00",
+        "tel": "0335-7921222",
+        "photos_count": 3,
+        "distance": 339.0,
+        "coordinates": {
+          "lng": 119.598849,
+          "lat": 39.932352
+        },
+        "source": "amap"
+      },
+      {
+        "name": "弹壳便利店(城市花园店)",
+        "address": "城市花园婚纱摄影东北门东南50米",
+        "type": "购物服务;便民商店/便利店;便民商店/便利店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "0335-8636666",
+        "photos_count": 3,
+        "distance": 339.0,
+        "coordinates": {
+          "lng": 119.598572,
+          "lat": 39.932366
+        },
+        "source": "amap"
+      },
+      {
+        "name": "奶香铺子(兴源街店)",
+        "address": "人民里未名路17号",
+        "type": "餐饮服务;甜品店;甜品店",
+        "rating": 4.0,
+        "cost": "24.00",
+        "open_time": "周一至周日 09:30-21:00",
+        "tel": "18830381616",
+        "photos_count": 3,
+        "distance": 87.0,
+        "coordinates": {
+          "lng": 119.598812,
+          "lat": 39.934629
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金小叔餐馆",
+        "address": "老洋洋花卉一楼南侧平台11号原团结里金小厨",
+        "type": "餐饮服务;外国餐厅;韩国料理",
+        "rating": 3.8,
+        "cost": "36.00",
+        "open_time": "周一至周日 11:00-14:00,17:00-20:30",
+        "tel": "13933696614",
+        "photos_count": 3,
+        "distance": 111.0,
+        "coordinates": {
+          "lng": 119.598452,
+          "lat": 39.936311
+        },
+        "source": "amap"
+      },
+      {
+        "name": "枣豆糕店(人民里小区店)",
+        "address": "文化路街道兴源街24号(人民里南院底商枣豆糕店)",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.0,
+        "cost": "9.00",
+        "open_time": [],
+        "tel": "18932565685",
+        "photos_count": 3,
+        "distance": 122.0,
+        "coordinates": {
+          "lng": 119.598249,
+          "lat": 39.93446
+        },
+        "source": "amap"
+      },
+      {
+        "name": "韩福道一店",
+        "address": "人民路31号",
+        "type": "餐饮服务;外国餐厅;日本料理|餐饮服务;外国餐厅;韩国料理",
+        "rating": 4.5,
+        "cost": "36.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13171727097",
+        "photos_count": 3,
+        "distance": 136.0,
+        "coordinates": {
+          "lng": 119.599908,
+          "lat": 39.934389
+        },
+        "source": "amap"
+      },
+      {
+        "name": "安徽板面(宴龙总店)",
+        "address": "人民里未名路26号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.0,
+        "cost": "12.00",
+        "open_time": "周一至周日 08:30-21:00",
+        "tel": "13730332828",
+        "photos_count": 3,
+        "distance": 141.0,
+        "coordinates": {
+          "lng": 119.597982,
+          "lat": 39.934395
+        },
+        "source": "amap"
+      },
+      {
+        "name": "哈三兰州手工牛肉面",
+        "address": "兴源街32号",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 3.6,
+        "cost": "14.00",
+        "open_time": "12月 周一至周日 06:30-22:30",
+        "tel": "18794510567",
+        "photos_count": 3,
+        "distance": 157.0,
+        "coordinates": {
+          "lng": 119.597789,
+          "lat": 39.934338
+        },
+        "source": "amap"
+      },
+      {
+        "name": "云娟粥铺家常菜(天贺公寓店)",
+        "address": "兴源街14号天贺公寓",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.5,
+        "cost": [],
+        "open_time": "周一至周日 06:00-21:00",
+        "tel": [],
+        "photos_count": 1,
+        "distance": 164.0,
+        "coordinates": {
+          "lng": 119.59773,
+          "lat": 39.93429
+        },
+        "source": "amap"
+      },
+      {
+        "name": "刘波面皮",
+        "address": "人民里兴源街32号",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 3.9,
+        "cost": "13.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13933952496",
+        "photos_count": 3,
+        "distance": 180.0,
+        "coordinates": {
+          "lng": 119.597579,
+          "lat": 39.934199
+        },
+        "source": "amap"
+      },
+      {
+        "name": "呱呱叫冰淇淋(兴源街总店)",
+        "address": "兴源街13号",
+        "type": "餐饮服务;冷饮店;冷饮店",
+        "rating": 4.3,
+        "cost": "9.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "18333574444;18630360077",
+        "photos_count": 3,
+        "distance": 188.0,
+        "coordinates": {
+          "lng": 119.597355,
+          "lat": 39.934276
+        },
+        "source": "amap"
+      },
+      {
+        "name": "温州小吃(天贺公寓店)",
+        "address": "兴源街14号天贺公寓",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.9,
+        "cost": "20.00",
+        "open_time": "周一至周日 10:00-20:30",
+        "tel": "13191805778",
+        "photos_count": 3,
+        "distance": 205.0,
+        "coordinates": {
+          "lng": 119.597349,
+          "lat": 39.934061
+        },
+        "source": "amap"
+      },
+      {
+        "name": "果度(人民里店)",
+        "address": "兴源街15号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.1,
+        "cost": "37.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "13230391119",
+        "photos_count": 2,
+        "distance": 209.0,
+        "coordinates": {
+          "lng": 119.597179,
+          "lat": 39.934141
+        },
+        "source": "amap"
+      },
+      {
+        "name": "猪拉虎-现烤鸡腿三明治",
+        "address": "海港区文化街道海阳路76-2",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.1,
+        "cost": "21.00",
+        "open_time": "周一至周日 06:00-20:00",
+        "tel": "18712781767",
+        "photos_count": 3,
+        "distance": 252.0,
+        "coordinates": {
+          "lng": 119.597348,
+          "lat": 39.933516
+        },
+        "source": "amap"
+      },
+      {
+        "name": "大顺口老菜馆",
+        "address": "海阳路与海新街交叉口东北80米",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 256.0,
+        "coordinates": {
+          "lng": 119.596125,
+          "lat": 39.934725
+        },
+        "source": "amap"
+      },
+      {
+        "name": "96号辣货(海阳路店)",
+        "address": "海阳路96号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.2,
+        "cost": "27.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "18333551977",
+        "photos_count": 2,
+        "distance": 271.0,
+        "coordinates": {
+          "lng": 119.596504,
+          "lat": 39.933884
+        },
+        "source": "amap"
+      },
+      {
+        "name": "韬仔自助食堂(金三角店)",
+        "address": "文化路街道海阳路48-3号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.3,
+        "cost": "17.00",
+        "open_time": "周一至周日 10:00-21:30",
+        "tel": "18633535283",
+        "photos_count": 3,
+        "distance": 282.0,
+        "coordinates": {
+          "lng": 119.598734,
+          "lat": 39.932873
+        },
+        "source": "amap"
+      },
+      {
+        "name": "津门包子",
+        "address": "海港区印刷厂津门包子",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": "周一至周日 05:00-21:00",
+        "tel": "18630833063",
+        "photos_count": 3,
+        "distance": 282.0,
+        "coordinates": {
+          "lng": 119.597058,
+          "lat": 39.933341
+        },
+        "source": "amap"
+      },
+      {
+        "name": "沙县小吃(海阳路老店)",
+        "address": "海阳路57号沙县小吃",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": "20.00",
+        "open_time": "周一至周日 08:30-21:30",
+        "tel": "15903331237",
+        "photos_count": 3,
+        "distance": 283.0,
+        "coordinates": {
+          "lng": 119.597063,
+          "lat": 39.933333
+        },
+        "source": "amap"
+      },
+      {
+        "name": "渤海味道手工饺子馆",
+        "address": "国家金融监督管理总局秦皇岛监管分局西南门东南50米",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 4.7,
+        "cost": "37.00",
+        "open_time": "周一至周日 10:00-15:00,16:00-19:00",
+        "tel": "0335-3143333",
+        "photos_count": 3,
+        "distance": 290.0,
+        "coordinates": {
+          "lng": 119.595783,
+          "lat": 39.93455
+        },
+        "source": "amap"
+      },
+      {
+        "name": "焦记关中面馆",
+        "address": "河北大街中段186号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.3,
+        "cost": "16.00",
+        "open_time": "周一至周日 08:00-20:30",
+        "tel": [],
+        "photos_count": 3,
+        "distance": 290.0,
+        "coordinates": {
+          "lng": 119.600675,
+          "lat": 39.933125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "佳秋熟食店奥斯佳盐焗鸡(海阳路店)",
+        "address": "海阳路69号",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.1,
+        "cost": "63.00",
+        "open_time": "周一至周日 07:00-21:00",
+        "tel": "0335-3237246",
+        "photos_count": 3,
+        "distance": 291.0,
+        "coordinates": {
+          "lng": 119.596577,
+          "lat": 39.93356
+        },
+        "source": "amap"
+      },
+      {
+        "name": "李师傅老北京绿豆酥",
+        "address": "海阳路与兴源街交叉口西20米",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 3.7,
+        "cost": "11.00",
+        "open_time": "周一至周日 10:00-19:00",
+        "tel": "18031255910",
+        "photos_count": 3,
+        "distance": 291.0,
+        "coordinates": {
+          "lng": 119.596425,
+          "lat": 39.933685
+        },
+        "source": "amap"
+      },
+      {
+        "name": "康神面馆",
+        "address": "海阳路59号(滔博体育正对门)",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": "14.00",
+        "open_time": "周一至周日 08:00-02:00",
+        "tel": "0335-7926789;15803354545",
+        "photos_count": 3,
+        "distance": 291.0,
+        "coordinates": {
+          "lng": 119.596745,
+          "lat": 39.933432
+        },
+        "source": "amap"
+      },
+      {
+        "name": "馍行天下",
+        "address": "秦皇岛市第二中学东北门东南170米",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.0,
+        "cost": "20.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 292.0,
+        "coordinates": {
+          "lng": 119.600705,
+          "lat": 39.933122
+        },
+        "source": "amap"
+      },
+      {
+        "name": "胖记·粤记肠粉(海阳路店)",
+        "address": "海阳路75号",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 3.9,
+        "cost": "15.00",
+        "open_time": "周一至周日 07:00-24:00",
+        "tel": "15303342255",
+        "photos_count": 3,
+        "distance": 296.0,
+        "coordinates": {
+          "lng": 119.596401,
+          "lat": 39.933635
+        },
+        "source": "amap"
+      },
+      {
+        "name": "傻根鸭脖(海阳路店)",
+        "address": "河北省海港区海阳路77号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.0,
+        "cost": "20.00",
+        "open_time": "周一至周日 00:00-24:00",
+        "tel": "17332714567",
+        "photos_count": 3,
+        "distance": 298.0,
+        "coordinates": {
+          "lng": 119.596221,
+          "lat": 39.933768
+        },
+        "source": "amap"
+      },
+      {
+        "name": "糖小酥杭州桂花糕",
+        "address": "海阳路与海新街交叉口东南100米",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 3.1,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 300.0,
+        "coordinates": {
+          "lng": 119.596525,
+          "lat": 39.933475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "卤匠公社卤味(海阳路店)",
+        "address": "城市花园",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 3.6,
+        "cost": "13.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 302.0,
+        "coordinates": {
+          "lng": 119.598134,
+          "lat": 39.932767
+        },
+        "source": "amap"
+      },
+      {
+        "name": "东香熟食店",
+        "address": "海阳路81-1号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 3.9,
+        "cost": "8.00",
+        "open_time": [],
+        "tel": "18830395992",
+        "photos_count": 3,
+        "distance": 303.0,
+        "coordinates": {
+          "lng": 119.596106,
+          "lat": 39.933816
+        },
+        "source": "amap"
+      },
+      {
+        "name": "老马香酥无水蛋糕",
+        "address": "海阳路81号",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.2,
+        "cost": "12.00",
+        "open_time": "1月至5月,10月至12月 周一至周日 07:00-18:30；6月至9月 周一至周日 08:00-19:00",
+        "tel": "15703358600",
+        "photos_count": 3,
+        "distance": 303.0,
+        "coordinates": {
+          "lng": 119.596117,
+          "lat": 39.933797
+        },
+        "source": "amap"
+      },
+      {
+        "name": "巴六爷·创新鸡公煲",
+        "address": "海阳路39号",
+        "type": "餐饮服务;中餐厅;火锅店",
+        "rating": 3.9,
+        "cost": "32.00",
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "15333335775;18633598955",
+        "photos_count": 3,
+        "distance": 306.0,
+        "coordinates": {
+          "lng": 119.598115,
+          "lat": 39.932731
+        },
+        "source": "amap"
+      },
+      {
+        "name": "北京稻香村(人民路店)",
+        "address": "河北大街中段184号",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.1,
+        "cost": "35.00",
+        "open_time": [],
+        "tel": [],
+        "photos_count": 2,
+        "distance": 308.0,
+        "coordinates": {
+          "lng": 119.600814,
+          "lat": 39.933001
+        },
+        "source": "amap"
+      },
+      {
+        "name": "楚恒饺子",
+        "address": "海阳路老汽车站",
+        "type": "餐饮服务;中餐厅;东北菜",
+        "rating": 3.6,
+        "cost": "16.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "13230935115;13582405115",
+        "photos_count": 3,
+        "distance": 309.0,
+        "coordinates": {
+          "lng": 119.59686,
+          "lat": 39.933157
+        },
+        "source": "amap"
+      },
+      {
+        "name": "清真哈家肉饼火锅",
+        "address": "海阳路城市花园酒店西侧",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "13903330100;17732908333",
+        "photos_count": 2,
+        "distance": 309.0,
+        "coordinates": {
+          "lng": 119.597112,
+          "lat": 39.933024
+        },
+        "source": "amap"
+      },
+      {
+        "name": "麦多馅饼(汉王大厦店)",
+        "address": "河北大街中段196号",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 4.1,
+        "cost": "11.00",
+        "open_time": "周一至周日 06:00-19:00",
+        "tel": "13582808998;15227299798",
+        "photos_count": 3,
+        "distance": 314.0,
+        "coordinates": {
+          "lng": 119.6,
+          "lat": 39.932678
+        },
+        "source": "amap"
+      },
+      {
+        "name": "岛尚蟹逅辣炒捞汁店",
+        "address": "海阳路长途汽车站南行100米院内永利国王电竞隔壁",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": "周一至周日 09:00-22:00",
+        "tel": "13730355656;15333333928",
+        "photos_count": 2,
+        "distance": 317.0,
+        "coordinates": {
+          "lng": 119.598367,
+          "lat": 39.93259
+        },
+        "source": "amap"
+      },
+      {
+        "name": "福满手工水饺馆",
+        "address": "海阳路与海新街交叉口东南20米",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 3.7,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 317.0,
+        "coordinates": {
+          "lng": 119.595775,
+          "lat": 39.933975
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海坤抻面(秦皇岛运通大厦店)",
+        "address": "泉秀路431号运通大厦F1层",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.0,
+        "cost": "9.00",
+        "open_time": "周一至周日 06:00-20:00",
+        "tel": "13930353886",
+        "photos_count": 3,
+        "distance": 323.0,
+        "coordinates": {
+          "lng": 119.596879,
+          "lat": 39.932988
+        },
+        "source": "amap"
+      },
+      {
+        "name": "焦记关中面馆",
+        "address": "海阳路与海新街交叉口南20米",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 3.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "15076066238",
+        "photos_count": 3,
+        "distance": 323.0,
+        "coordinates": {
+          "lng": 119.59577,
+          "lat": 39.933872
+        },
+        "source": "amap"
+      },
+      {
+        "name": "屿茶(海阳路人民公园店)",
+        "address": "文化路街道海阳路49号一幢都市花园酒店西侧4号",
+        "type": "餐饮服务;休闲餐饮场所;休闲餐饮场所",
+        "rating": 3.9,
+        "cost": "12.00",
+        "open_time": "周一至周日 10:30-24:00",
+        "tel": "15712514211;18894929857",
+        "photos_count": 1,
+        "distance": 326.0,
+        "coordinates": {
+          "lng": 119.597017,
+          "lat": 39.932891
+        },
+        "source": "amap"
+      },
+      {
+        "name": "意莎利榴莲酥(文化路店)",
+        "address": "文化路与河堤路交叉口南140米",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 2.8,
+        "cost": [],
+        "open_time": "08:00-21:00",
+        "tel": "18131896656;18670102586",
+        "photos_count": 1,
+        "distance": 330.0,
+        "coordinates": {
+          "lng": 119.602579,
+          "lat": 39.936543
+        },
+        "source": "amap"
+      },
+      {
+        "name": "赵姨手工水饺",
+        "address": "海阳路付13号",
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 10:00-22:00",
+        "tel": "18833533921",
+        "photos_count": 3,
+        "distance": 338.0,
+        "coordinates": {
+          "lng": 119.598284,
+          "lat": 39.932408
+        },
+        "source": "amap"
+      },
+      {
+        "name": "鸭局·北京烤鸭(人民广场店)",
+        "address": "国家金融监督管理总局秦皇岛监管分局西南门旁",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.1,
+        "cost": "29.00",
+        "open_time": "周一至周日 10:00-23:30",
+        "tel": "18033505410;18603363214",
+        "photos_count": 3,
+        "distance": 341.0,
+        "coordinates": {
+          "lng": 119.595115,
+          "lat": 39.934663
+        },
+        "source": "amap"
+      },
+      {
+        "name": "艾宁宁炸肉(人民公园店)",
+        "address": "海阳路120号",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.2,
+        "cost": "11.00",
+        "open_time": "周一至周日 08:30-20:30",
+        "tel": "13081877677",
+        "photos_count": 3,
+        "distance": 342.0,
+        "coordinates": {
+          "lng": 119.59509,
+          "lat": 39.934704
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马佬鸭·鸭脖鸭货(海阳路店)",
+        "address": "海阳路116号(曲美家居正对面)",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 3.9,
+        "cost": "21.00",
+        "open_time": "周一至周日 09:00-21:00",
+        "tel": "0335-3035898",
+        "photos_count": 3,
+        "distance": 342.0,
+        "coordinates": {
+          "lng": 119.595117,
+          "lat": 39.934608
+        },
+        "source": "amap"
+      },
+      {
+        "name": "王辉·王家熟食(海阳路店)",
+        "address": "海阳路124号(曲美家具对面)",
+        "type": "餐饮服务;餐饮相关场所;餐饮相关",
+        "rating": 4.2,
+        "cost": "35.00",
+        "open_time": "周一至周日 08:30-19:00",
+        "tel": "0335-3865568;13731777765",
+        "photos_count": 3,
+        "distance": 350.0,
+        "coordinates": {
+          "lng": 119.594986,
+          "lat": 39.934723
+        },
+        "source": "amap"
+      },
+      {
+        "name": "瑞幸咖啡(秦皇岛河北大街金三角店)",
+        "address": "海阳路21-1号",
+        "type": "餐饮服务;休闲餐饮场所;休闲餐饮场所",
+        "rating": 4.3,
+        "cost": "16.00",
+        "open_time": "周一至周日 08:00-21:00",
+        "tel": "4000100100",
+        "photos_count": 3,
+        "distance": 364.0,
+        "coordinates": {
+          "lng": 119.599075,
+          "lat": 39.932125
+        },
+        "source": "amap"
+      },
+      {
+        "name": "马乙不拉兰州牛肉面",
+        "address": "海新街与海阳路交叉口西南60米",
+        "type": "餐饮服务;中餐厅;清真菜馆",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": "周一至周日 07:00-22:00",
+        "tel": "18197308452",
+        "photos_count": 2,
+        "distance": 367.0,
+        "coordinates": {
+          "lng": 119.595193,
+          "lat": 39.933851
+        },
+        "source": "amap"
+      },
+      {
+        "name": "丁战自助快餐",
+        "address": "文化路189号丁战自助快餐",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 4.4,
+        "cost": "15.00",
+        "open_time": "周一至周四,周六至周日 09:00-24:00；周五 09:00-23:00",
+        "tel": "13513342973",
+        "photos_count": 3,
+        "distance": 369.0,
+        "coordinates": {
+          "lng": 119.603065,
+          "lat": 39.936553
+        },
+        "source": "amap"
+      },
+      {
+        "name": "夫妻麻辣烫(团结里市场店)",
+        "address": "海阳路",
+        "type": "餐饮服务;快餐厅;快餐厅",
+        "rating": 3.8,
+        "cost": "21.00",
+        "open_time": "周一至周日 17:00-01:00",
+        "tel": "15703330596",
+        "photos_count": 3,
+        "distance": 370.0,
+        "coordinates": {
+          "lng": 119.595079,
+          "lat": 39.933971
+        },
+        "source": "amap"
+      },
+      {
+        "name": "金麦糕点",
+        "address": "海阳路136号",
+        "type": "餐饮服务;糕饼店;糕饼店",
+        "rating": 3.7,
+        "cost": "14.00",
+        "open_time": [],
+        "tel": "15031216664;18833828293",
+        "photos_count": 3,
+        "distance": 376.0,
+        "coordinates": {
+          "lng": 119.594632,
+          "lat": 39.934931
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛枣香宾馆",
+        "address": "人民路39号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 2.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3028763;16603319909;+861056320612,17319652",
+        "photos_count": 3,
+        "distance": 107.0,
+        "coordinates": {
+          "lng": 119.599804,
+          "lat": 39.934654
+        },
+        "source": "amap"
+      },
+      {
+        "name": "霖霖民宿",
+        "address": "文化路206号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "18503333772",
+        "photos_count": 3,
+        "distance": 127.0,
+        "coordinates": {
+          "lng": 119.600493,
+          "lat": 39.935383
+        },
+        "source": "amap"
+      },
+      {
+        "name": "都市花园酒店(秦皇岛火车站人民广场店)",
+        "address": "海阳路51号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-7833118;16633565703",
+        "photos_count": 3,
+        "distance": 307.0,
+        "coordinates": {
+          "lng": 119.597371,
+          "lat": 39.932938
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家酒店(秦皇岛人民公园乐购商城店)",
+        "address": "海阳路48号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3512222",
+        "photos_count": 3,
+        "distance": 332.0,
+        "coordinates": {
+          "lng": 119.599641,
+          "lat": 39.932455
+        },
+        "source": "amap"
+      },
+      {
+        "name": "驿居酒店(秦皇岛人民广场店)",
+        "address": "海阳路48号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.9,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3512222",
+        "photos_count": 3,
+        "distance": 329.0,
+        "coordinates": {
+          "lng": 119.599625,
+          "lat": 39.932475
+        },
+        "source": "amap"
+      },
+      {
+        "name": "半岛四季酒店",
+        "address": "文化路181号",
+        "type": "住宿服务;宾馆酒店;五星级宾馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-5333888",
+        "photos_count": 3,
+        "distance": 405.0,
+        "coordinates": {
+          "lng": 119.603546,
+          "lat": 39.936455
+        },
+        "source": "amap"
+      },
+      {
+        "name": "骏怡酒店(秦皇岛太阳城文化路店)",
+        "address": "文化路169号1层",
+        "type": "住宿服务;宾馆酒店;三星级宾馆",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3033333",
+        "photos_count": 3,
+        "distance": 377.0,
+        "coordinates": {
+          "lng": 119.603379,
+          "lat": 39.934927
+        },
+        "source": "amap"
+      },
+      {
+        "name": "SF自营环宇公寓店(顺丰合作店)",
+        "address": "海阳路75号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 228.0,
+        "coordinates": {
+          "lng": 119.596675,
+          "lat": 39.934375
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家华驿酒店(人民公园太阳城店)",
+        "address": "文化路189号附1号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3293666",
+        "photos_count": 3,
+        "distance": 374.0,
+        "coordinates": {
+          "lng": 119.603081,
+          "lat": 39.936634
+        },
+        "source": "amap"
+      },
+      {
+        "name": "爱家酒店(文化路店)",
+        "address": "文化路189号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3293666;0335-3505388",
+        "photos_count": 3,
+        "distance": 381.0,
+        "coordinates": {
+          "lng": 119.60318,
+          "lat": 39.936625
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛老妈妈招待所",
+        "address": "海洋路61-1号",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 2.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3209463;18603382015",
+        "photos_count": 3,
+        "distance": 297.0,
+        "coordinates": {
+          "lng": 119.597018,
+          "lat": 39.933201
+        },
+        "source": "amap"
+      },
+      {
+        "name": "友邦酒店(秦皇岛火车站人民广场店)",
+        "address": "河北大街新一路8号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店|住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.1,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-5318111",
+        "photos_count": 3,
+        "distance": 386.0,
+        "coordinates": {
+          "lng": 119.598059,
+          "lat": 39.932004
+        },
+        "source": "amap"
+      },
+      {
+        "name": "白雪宾馆(河北大街中段)",
+        "address": "河北大街186号、金三角斜对面(二中旁)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "15333335882",
+        "photos_count": 2,
+        "distance": 312.0,
+        "coordinates": {
+          "lng": 119.600547,
+          "lat": 39.932851
+        },
+        "source": "amap"
+      },
+      {
+        "name": "我的地盘电竞酒店(秦皇岛人民广场店)",
+        "address": "海阳路51号运通大厦2层8222号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-7833118",
+        "photos_count": 0,
+        "distance": 303.0,
+        "coordinates": {
+          "lng": 119.59723,
+          "lat": 39.933038
+        },
+        "source": "amap"
+      },
+      {
+        "name": "锦江之星(秦皇岛河北大街太阳城店)",
+        "address": "河北大街中段158号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3566666",
+        "photos_count": 3,
+        "distance": 436.0,
+        "coordinates": {
+          "lng": 119.603933,
+          "lat": 39.934366
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛弹壳电竞酒店(海港区太阳城店)",
+        "address": "海阳路31号一楼",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-8635555",
+        "photos_count": 3,
+        "distance": 317.0,
+        "coordinates": {
+          "lng": 119.598525,
+          "lat": 39.932575
+        },
+        "source": "amap"
+      },
+      {
+        "name": "JING圣迪电竞酒店(秦皇岛乐购店)",
+        "address": "文化路169号1层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3033333",
+        "photos_count": 3,
+        "distance": 379.0,
+        "coordinates": {
+          "lng": 119.603431,
+          "lat": 39.935156
+        },
+        "source": "amap"
+      },
+      {
+        "name": "汉庭酒店(秦皇岛西港花园太阳城店)",
+        "address": "文化路158号",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3512828",
+        "photos_count": 3,
+        "distance": 486.0,
+        "coordinates": {
+          "lng": 119.603012,
+          "lat": 39.93229
+        },
+        "source": "amap"
+      },
+      {
+        "name": "亚几木主题酒店(秦皇岛河北大街太阳城店)",
+        "address": "河北大街141号亚几木主题酒店",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3656655",
+        "photos_count": 3,
+        "distance": 400.0,
+        "coordinates": {
+          "lng": 119.601404,
+          "lat": 39.932311
+        },
+        "source": "amap"
+      },
+      {
+        "name": "美伦酒店(西港花园店)",
+        "address": "海阳路与兴源街交叉口东南80米",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 300.0,
+        "coordinates": {
+          "lng": 119.597325,
+          "lat": 39.933025
+        },
+        "source": "amap"
+      },
+      {
+        "name": "维也纳酒店(秦皇岛河北大街太阳城店)",
+        "address": "河北大街商城东路2号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3217777;15032320066;0335-3217777,0",
+        "photos_count": 3,
+        "distance": 518.0,
+        "coordinates": {
+          "lng": 119.605031,
+          "lat": 39.934849
+        },
+        "source": "amap"
+      },
+      {
+        "name": "王哥公寓(秦皇岛文化路店)",
+        "address": "海港区世纪海洋花园",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,122093;021-26137886,122093",
+        "photos_count": 3,
+        "distance": 398.0,
+        "coordinates": {
+          "lng": 119.603476,
+          "lat": 39.936426
+        },
+        "source": "amap"
+      },
+      {
+        "name": "日佳住宿",
+        "address": "海阳路与兴源街交叉口南60米",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 307.0,
+        "coordinates": {
+          "lng": 119.596967,
+          "lat": 39.93312
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛张江华公寓(14号店)",
+        "address": "文化路建设大街和苑小区2号楼一单元1007房间",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.7,
+        "cost": [],
+        "open_time": [],
+        "tel": "+861056320612,177385;021-26137886,177385",
+        "photos_count": 3,
+        "distance": 398.0,
+        "coordinates": {
+          "lng": 119.603475,
+          "lat": 39.936425
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛亚丁影院主题公寓",
+        "address": "文化路179号半岛四季公寓楼上",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "13230385017;15503351788",
+        "photos_count": 3,
+        "distance": 423.0,
+        "coordinates": {
+          "lng": 119.603792,
+          "lat": 39.936371
+        },
+        "source": "amap"
+      },
+      {
+        "name": "晟景酒店(秦皇岛河北大街太阳城店)",
+        "address": "河北大街中段158号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3566666",
+        "photos_count": 3,
+        "distance": 435.0,
+        "coordinates": {
+          "lng": 119.603924,
+          "lat": 39.934361
+        },
+        "source": "amap"
+      },
+      {
+        "name": "半岛四季酒店大堂",
+        "address": "文化路181号半岛四季酒店",
+        "type": "住宿服务;宾馆酒店;五星级宾馆",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 0,
+        "distance": 414.0,
+        "coordinates": {
+          "lng": 119.603674,
+          "lat": 39.936402
+        },
+        "source": "amap"
+      },
+      {
+        "name": "郭诗涵小筑民宿(人民广场区店)",
+        "address": "文化路与河堤南路交叉口东南60米",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "15243478809",
+        "photos_count": 3,
+        "distance": 393.0,
+        "coordinates": {
+          "lng": 119.603135,
+          "lat": 39.936968
+        },
+        "source": "amap"
+      },
+      {
+        "name": "丽都国际酒店",
+        "address": "海阳路200号",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-7637777;0335-8898888",
+        "photos_count": 3,
+        "distance": 602.0,
+        "coordinates": {
+          "lng": 119.592284,
+          "lat": 39.937052
+        },
+        "source": "amap"
+      },
+      {
+        "name": "咕噜元电竞酒店(秦皇岛人民广场店)",
+        "address": "新一路友邦酒店5层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 3,
+        "distance": 383.0,
+        "coordinates": {
+          "lng": 119.598041,
+          "lat": 39.93203
+        },
+        "source": "amap"
+      },
+      {
+        "name": "星宿公寓",
+        "address": "海新街12号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": [],
+        "photos_count": 1,
+        "distance": 418.0,
+        "coordinates": {
+          "lng": 119.594675,
+          "lat": 39.933635
+        },
+        "source": "amap"
+      },
+      {
+        "name": "郭诗涵栖梦民宿(人民广场区店)",
+        "address": "文化路与河堤南路交叉口东南80米",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "15243478809",
+        "photos_count": 3,
+        "distance": 412.0,
+        "coordinates": {
+          "lng": 119.603326,
+          "lat": 39.937059
+        },
+        "source": "amap"
+      },
+      {
+        "name": "三只猫青旅(秦皇岛太阳城店)",
+        "address": "建设大街街道商城东路2号13层16号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "15369735859;17832553626",
+        "photos_count": 3,
+        "distance": 527.0,
+        "coordinates": {
+          "lng": 119.605145,
+          "lat": 39.934921
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛郭诗涵民宿(人民广场区2号店)",
+        "address": "海港区文化路7号",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 0.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "15243478809",
+        "photos_count": 3,
+        "distance": 423.0,
+        "coordinates": {
+          "lng": 119.603237,
+          "lat": 39.93738
+        },
+        "source": "amap"
+      },
+      {
+        "name": "十六家商务酒店(秦皇岛太阳城店)",
+        "address": "河北大街商城东路2号10楼",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "18713577177",
+        "photos_count": 3,
+        "distance": 527.0,
+        "coordinates": {
+          "lng": 119.605175,
+          "lat": 39.935175
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛秘境客栈酒店",
+        "address": "文化北路228号(近人民医院、实验中学北门)",
+        "type": "住宿服务;旅馆招待所;旅馆招待所|住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3255555;0335-5805199",
+        "photos_count": 3,
+        "distance": 587.0,
+        "coordinates": {
+          "lng": 119.60268,
+          "lat": 39.939864
+        },
+        "source": "amap"
+      },
+      {
+        "name": "十六家房客民宿(人民广场区6号店)",
+        "address": "河北大街维也纳酒店",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 5.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "4006888215,,193880",
+        "photos_count": 2,
+        "distance": 481.0,
+        "coordinates": {
+          "lng": 119.604537,
+          "lat": 39.934591
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家商旅酒店(秦皇岛太阳城新天地购物广场店)",
+        "address": "新华街9号新天地购物广场F6层",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3306333;19339355334",
+        "photos_count": 3,
+        "distance": 650.0,
+        "coordinates": {
+          "lng": 119.606377,
+          "lat": 39.933942
+        },
+        "source": "amap"
+      },
+      {
+        "name": "喆·啡酒店(人民公园店)",
+        "address": "和平大街17号",
+        "type": "住宿服务;宾馆酒店;三星级宾馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-5877888",
+        "photos_count": 3,
+        "distance": 630.0,
+        "coordinates": {
+          "lng": 119.59163,
+          "lat": 39.935031
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家酒店·neo(秦皇岛河北大街中段太阳城店)",
+        "address": "新华街9号新天地广场A座10层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.8,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3306333",
+        "photos_count": 3,
+        "distance": 650.0,
+        "coordinates": {
+          "lng": 119.60637,
+          "lat": 39.933899
+        },
+        "source": "amap"
+      },
+      {
+        "name": "如家快捷酒店(秦皇岛河北大街中段太阳城店)",
+        "address": "新华街9号新天地A座6层",
+        "type": "住宿服务;宾馆酒店;经济型连锁酒店",
+        "rating": 4.0,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3306333",
+        "photos_count": 3,
+        "distance": 635.0,
+        "coordinates": {
+          "lng": 119.606175,
+          "lat": 39.933875
+        },
+        "source": "amap"
+      },
+      {
+        "name": "艺龙安云酒店夏忆栈(秦皇岛火车站人民广场店)",
+        "address": "海阳路159号10-13博川大厦5楼",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-5818811;0335-7654999;13315674141",
+        "photos_count": 3,
+        "distance": 663.0,
+        "coordinates": {
+          "lng": 119.591258,
+          "lat": 39.935883
+        },
+        "source": "amap"
+      },
+      {
+        "name": "天天优品电竞酒店",
+        "address": "西沙滩8号(原7天酒店)",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.2,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-5897999",
+        "photos_count": 3,
+        "distance": 624.0,
+        "coordinates": {
+          "lng": 119.600708,
+          "lat": 39.929949
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛祥云旅店",
+        "address": "西沙滩19栋",
+        "type": "住宿服务;旅馆招待所;旅馆招待所",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "17336358512",
+        "photos_count": 3,
+        "distance": 639.0,
+        "coordinates": {
+          "lng": 119.601622,
+          "lat": 39.930014
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛金坤电竞公寓",
+        "address": "文化路太阳城金都公寓10层1019室",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 3.3,
+        "cost": [],
+        "open_time": [],
+        "tel": "13333323309;13653360029",
+        "photos_count": 3,
+        "distance": 578.0,
+        "coordinates": {
+          "lng": 119.60424,
+          "lat": 39.93211
+        },
+        "source": "amap"
+      },
+      {
+        "name": "微光·云影墅",
+        "address": "新华街36号长丰大厦401",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "13171728292;18630357782",
+        "photos_count": 3,
+        "distance": 614.0,
+        "coordinates": {
+          "lng": 119.605618,
+          "lat": 39.933217
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秦皇岛暖逸电竞公寓(太阳城店)",
+        "address": "道德街34号金都大厦F16层",
+        "type": "住宿服务;住宿服务相关;住宿服务相关",
+        "rating": 4.4,
+        "cost": [],
+        "open_time": [],
+        "tel": "18230306223",
+        "photos_count": 3,
+        "distance": 593.0,
+        "coordinates": {
+          "lng": 119.604384,
+          "lat": 39.932031
+        },
+        "source": "amap"
+      },
+      {
+        "name": "秋鑫酒店(秦皇岛火车站人民广场店)",
+        "address": "文化路街道建设大街190号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3053555",
+        "photos_count": 3,
+        "distance": 711.0,
+        "coordinates": {
+          "lng": 119.599533,
+          "lat": 39.941781
+        },
+        "source": "amap"
+      },
+      {
+        "name": "海上海国际酒店",
+        "address": "建设大街198号",
+        "type": "住宿服务;宾馆酒店;四星级宾馆",
+        "rating": 4.6,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3936666;0335-3628888",
+        "photos_count": 3,
+        "distance": 733.0,
+        "coordinates": {
+          "lng": 119.601203,
+          "lat": 39.941765
+        },
+        "source": "amap"
+      },
+      {
+        "name": "柒洲酒店(秦皇岛人民公园店)",
+        "address": "河北大街292号",
+        "type": "住宿服务;宾馆酒店;宾馆酒店",
+        "rating": 4.5,
+        "cost": [],
+        "open_time": [],
+        "tel": "0335-3621888;18617836324",
+        "photos_count": 3,
+        "distance": 718.0,
+        "coordinates": {
+          "lng": 119.593055,
+          "lat": 39.930835
+        },
+        "source": "amap"
+      }
+    ],
+    "baike_spots": [
+      {
+        "name": "海滨国家森林公园",
+        "source": "amap_scenic",
+        "rating": 4.5,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "秦皇岛野生动物园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;动物园"
+      },
+      {
+        "name": "金梦海湾浴场",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "北戴河海滩",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;海滩"
+      },
+      {
+        "name": "法云寺",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;寺庙道观"
+      },
+      {
+        "name": "秦皇岛新澳海底世界",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "鸽子窝公园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "半岛公园",
+        "source": "amap_scenic",
+        "rating": 4.2,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "金海湾森林公园",
+        "source": "amap_scenic",
+        "rating": 4.2,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "秦皇岛港口工业旅游区",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "观鸟湿地",
+        "source": "amap_scenic",
+        "rating": 4.3,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "秦皇求仙入海处",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "秦皇岛市人民广场",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;公园广场;城市广场"
+      },
+      {
+        "name": "奥林匹克公园",
+        "source": "amap_scenic",
+        "rating": 4.3,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "红太阳广场",
+        "source": "amap_scenic",
+        "rating": 3.6,
+        "type": "风景名胜;公园广场;城市广场"
+      },
+      {
+        "name": "南戴河旅游度假区",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "鸽子窝海鸥海滩",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;海滩"
+      },
+      {
+        "name": "秦皇植物园",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;植物园"
+      },
+      {
+        "name": "仙螺岛景区",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "集发农业梦想王国",
+        "source": "amap_scenic",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "金梦海湾海誓广场",
+        "source": "amap_scenic",
+        "rating": 4.1,
+        "type": "风景名胜;公园广场;公园广场"
+      },
+      {
+        "name": "戴河生态园",
+        "source": "amap_scenic",
+        "rating": 4.7,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "人民公园",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "西沙滩",
+        "source": "amap_scenic",
+        "rating": 4.0,
+        "type": "风景名胜;风景名胜;海滩"
+      },
+      {
+        "name": "老虎石海上公园中海滩",
+        "source": "amap_scenic",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;风景名胜"
+      }
+    ],
+    "wiki": {
+      "wiki_zh": "",
+      "wiki_en": "",
+      "wiki_tourism_zh": ""
+    },
+    "duckduckgo_snippets": [],
+    "ctrip_approx_spots": [
+      {
+        "name": "食必思",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 3.5,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "必推牛咖啡",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 3.2,
+        "type": "餐饮服务;咖啡厅;咖啡厅"
+      },
+      {
+        "name": "食必思黄焖鸡米饭(抚宁东购店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 3.8,
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅"
+      },
+      {
+        "name": "食必思黄焖鸡米饭(长江道店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 1.6,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "食必思黄焖鸡米饭(兴华商城店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 3.9,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "食必思黄焖鸡米饭(南戴河店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.0,
+        "type": "餐饮服务;快餐厅;快餐厅"
+      },
+      {
+        "name": "双和烧烤城(燕山大街店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.2,
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅"
+      },
+      {
+        "name": "八加壹台球俱乐部",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.4,
+        "type": "体育休闲服务;运动场馆;台球厅"
+      },
+      {
+        "name": "山海关景区·天下第一关",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "海滨国家森林公园",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.5,
+        "type": "风景名胜;公园广场;公园"
+      },
+      {
+        "name": "南戴河旅游度假区",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "阿那亚礼堂",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;教堂|体育休闲服务;体育休闲服务场所;体育休闲服务场所"
+      },
+      {
+        "name": "鸽子窝公园",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "山海关景区·老龙头",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.8,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "CoCo都可(海港茂业天地店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.2,
+        "type": "餐饮服务;冷饮店;冷饮店"
+      },
+      {
+        "name": "三宝馄饨(牛头崖店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.0,
+        "type": "餐饮服务;快餐厅;快餐厅"
+      },
+      {
+        "name": "無忧·馄饨(奥体店)",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.3,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "MunchMarket超级鱼港",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.4,
+        "type": "餐饮服务;中餐厅;海鲜酒楼"
+      },
+      {
+        "name": "秦皇岛港口工业旅游区",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "深夜的粥",
+        "source": "ctrip_approx_秦皇岛必去",
+        "rating": 4.3,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "秦皇岛野生动物园",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.6,
+        "type": "风景名胜;公园广场;动物园"
+      },
+      {
+        "name": "秦皇岛新澳海底世界",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "蔚蓝海岸浴场",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.7,
+        "type": "体育休闲服务;运动场馆;海滨浴场"
+      },
+      {
+        "name": "浅水湾浴场",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.6,
+        "type": "体育休闲服务;运动场馆;海滨浴场"
+      },
+      {
+        "name": "春台Spring Patio(阿那亚店)",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;云贵菜"
+      },
+      {
+        "name": "海澜广场",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.2,
+        "type": "体育休闲服务;运动场馆;海滨浴场"
+      },
+      {
+        "name": "双海潮餐厅(西港花园店)",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.7,
+        "type": "餐饮服务;餐饮相关场所;餐饮相关"
+      },
+      {
+        "name": "北27号·黄河入海",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;西北菜"
+      },
+      {
+        "name": "矿野之栖CAMP",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.2,
+        "type": "体育休闲服务;休闲场所;露营地"
+      },
+      {
+        "name": "Restaurant y·sea",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.5,
+        "type": "餐饮服务;外国餐厅;西餐厅(综合风味)"
+      },
+      {
+        "name": "尚品海鲜私房菜(黄金海岸店)",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.5,
+        "type": "餐饮服务;中餐厅;海鲜酒楼"
+      },
+      {
+        "name": "老王头饺子(原始店)",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.6,
+        "type": "餐饮服务;中餐厅;特色/地方风味餐厅"
+      },
+      {
+        "name": "台营汪记大饼裹肉",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.5,
+        "type": "餐饮服务;中餐厅;中餐厅"
+      },
+      {
+        "name": "海蓝轩海鲜餐厅",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.4,
+        "type": "餐饮服务;中餐厅;海鲜酒楼"
+      },
+      {
+        "name": "秉锴饭店",
+        "source": "ctrip_approx_秦皇岛网红打卡",
+        "rating": 4.2,
+        "type": "体育休闲服务;休闲场所;休闲场所"
+      },
+      {
+        "name": "山海关景区",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "入海石城建筑石",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 3.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "龙园",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 3.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "山海关景区·老龙头-龙武营",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 3.5,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "白石山景区-观景台",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 3.6,
+        "type": "风景名胜;风景名胜;观景点"
+      },
+      {
+        "name": "仙螺岛景区",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "角山风景区",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.7,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "角山风景区管理处",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 3.7,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      },
+      {
+        "name": "仙螺岛跨海索道",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "老君顶景区",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "燕山石林",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.4,
+        "type": "风景名胜;风景名胜;风景名胜"
+      },
+      {
+        "name": "秦皇求仙入海处",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.6,
+        "type": "风景名胜;风景名胜;国家级景点"
+      },
+      {
+        "name": "龙云谷",
+        "source": "ctrip_approx_秦皇岛旅游",
+        "rating": 4.3,
+        "type": "风景名胜;风景名胜相关;旅游景点"
+      }
+    ]
+  },
+  "stats": {
+    "total_amap_pois": 350,
+    "total_baike_spots": 25,
+    "total_ctrip_spots": 48,
+    "ground_truth_must_visit": 10,
+    "ground_truth_dining": 10,
+    "ground_truth_leisure": 5
+  }
+}
