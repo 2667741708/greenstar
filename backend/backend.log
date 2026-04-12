@@ -1,0 +1,6 @@
+INFO:     Started server process [48481]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:47936 - "GET /api/poi/text?keywords=%E4%B8%8A%E6%B5%B7&city=%E6%9C%AA%E7%9F%A5%E5%9F%8E%E5%B8%82&page_size=50&page_num=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:33270 - "GET /api/poi/around?lat=39.9097454&lng=119.51483&radius=30000&page_size=50&page_num=1 HTTP/1.1" 200 OK

@@ -35,11 +35,11 @@ export const useGeolocation = (onLocationFound?: (lat: number, lng: number, addr
             setCity(result.city);
             onLocationFound?.(loc.lat, loc.lng, result.address, result.city);
           } catch (err) {
-            const fallbackAddr = `📍 ${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)}`;
+            const fallbackAddr = `Loc: ${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)}`;
             setAddress(fallbackAddr);
-            // 逆地理编码失败时，使用默认城市名确保自动跳转仍可触发
-            // Fallback to default city name to ensure auto-locate still triggers
-            const fallbackCity = CONSTANTS.DEFAULT_LOCATION.name;
+            // 逆地理编码失败时，使用未知城市以防止误导
+            // Fallback to unknown city name
+            const fallbackCity = "未知城市";
             setCity(fallbackCity);
             onLocationFound?.(loc.lat, loc.lng, fallbackAddr, fallbackCity);
           } finally {
@@ -47,12 +47,11 @@ export const useGeolocation = (onLocationFound?: (lat: number, lng: number, addr
           }
         },
         (err) => {
-          setError('定位失败，请检查浏览器权限');
-          const fallback = { lat: 31.2304, lng: 121.4737 }; // 上海
-          setLocation(fallback);
-          setAddress("上海定位失败，降级显示参考点");
-          setCity("上海市");
-          // 移除 onLocationFound?.(...) 以防止定位失败时自动跳转到上海
+          setError('定位未开启或获取失败，请在星图中手动选择位置');
+          setLocation(null);
+          setAddress("定位服务不可用，请手动选择位置");
+          setCity("");
+          // 移除 onLocationFound?.(...) 以防止定位失败时隐式跳转
           setLoading(false);
         },
         // 高精度模式参数

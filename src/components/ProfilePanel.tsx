@@ -12,6 +12,7 @@ import React, { useState, useEffect } from 'react';
 import { Spot, CityInfo } from '../types';
 import { CheckinDiary } from './CheckinDiary';
 import { getCheckinStats } from '../services/checkinStore';
+import { monetAssets } from '../config/monetAssets';
 
 interface SavedPlan {
   id: string;
@@ -45,22 +46,26 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
 
   return (
     <div className="p-6 space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 pb-32">
-      <div className={`rounded-[3rem] p-10 text-white relative overflow-hidden shadow-2xl transition-all duration-700 ${isPro ? 'bg-slate-900 border-2 border-amber-500/20' : 'bg-gray-900'}`}>
+      <div 
+        className="rounded-[3rem] p-10 text-white relative overflow-hidden shadow-2xl transition-all duration-700 bg-cover bg-center border border-white/20"
+        style={{ backgroundImage: `url(${monetAssets.bgGarden})` }}
+      >
+        <div className="absolute inset-0 bg-slate-900/30 mix-blend-multiply pointer-events-none"></div>
         <div className="relative z-10">
-          <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-inner">
+          <div className="w-20 h-20 bg-white/20 backdrop-blur-2xl border border-white/40 rounded-3xl flex items-center justify-center text-4xl mb-6 shadow-inner">
             <i className={`bi ${isPro ? 'bi-person-stars text-amber-400' : 'bi-person text-emerald-400'}`}></i>
           </div>
-          <h3 className="text-2xl font-black mb-1">{isPro ? 'Pro Traveler' : 'Explorer'}</h3>
+          <h3 className="text-2xl font-black mb-1 drop-shadow-md">{isPro ? 'Pro Traveler' : 'Explorer'}</h3>
           <div className="flex flex-col gap-2 mt-4">
-            <p className="text-xs opacity-70 font-bold uppercase tracking-widest bg-black/20 px-3 py-2 rounded-xl inline-block w-max">
-              <i className="bi bi-geo-alt-fill text-emerald-400 mr-2"></i>解锁城市: {unlockedCities} / {cities.length}
+            <p className="text-xs text-white/90 font-bold uppercase tracking-widest bg-black/20 border border-white/30 px-4 py-2.5 rounded-[1rem] shadow-inner inline-block w-max backdrop-blur-md">
+              <i className="bi bi-geo-alt-fill text-[var(--color-accent-lilac)] mr-2"></i>解锁城市: {unlockedCities} / {cities.length}
             </p>
-            <p className="text-xs opacity-70 font-bold uppercase tracking-widest bg-black/20 px-3 py-2 rounded-xl inline-block w-max">
+            <p className="text-xs text-white/90 font-bold uppercase tracking-widest bg-black/20 border border-white/30 px-4 py-2.5 rounded-[1rem] shadow-inner inline-block w-max backdrop-blur-md">
               <i className="bi bi-pin-map-fill text-amber-400 mr-2"></i>足迹点亮: {checkedSpots} 个坐标
             </p>
           </div>
         </div>
-        <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12">
+        <div className="absolute top-0 right-0 p-8 opacity-40 rotate-12 mix-blend-overlay">
           <i className="bi bi-stars text-9xl"></i>
         </div>
       </div>
@@ -68,32 +73,32 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
       {/* 打卡统计卡片 */}
       <div className="grid grid-cols-4 gap-3">
         {[
-          { icon: 'bi-camera-fill', label: '打卡', value: stats.totalCheckins, color: 'text-emerald-500 bg-emerald-50' },
-          { icon: 'bi-image-fill', label: '照片', value: stats.totalPhotos, color: 'text-blue-500 bg-blue-50' },
-          { icon: 'bi-geo-fill', label: '城市', value: stats.citiesVisited, color: 'text-purple-500 bg-purple-50' },
-          { icon: 'bi-pin-map-fill', label: '地点', value: stats.spotsVisited, color: 'text-amber-500 bg-amber-50' },
+          { icon: 'bi-camera-fill', label: '打卡', value: stats.totalCheckins, color: 'text-emerald-600' },
+          { icon: 'bi-image-fill', label: '照片', value: stats.totalPhotos, color: 'text-blue-600' },
+          { icon: 'bi-geo-fill', label: '城市', value: stats.citiesVisited, color: 'text-[var(--color-accent-lilac)]' },
+          { icon: 'bi-pin-map-fill', label: '地点', value: stats.spotsVisited, color: 'text-amber-600' },
         ].map((item, i) => (
-          <div key={i} className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col items-center gap-1">
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${item.color}`}>
+          <div key={i} className="bg-white/40 backdrop-blur-xl rounded-[1.8rem] p-4 shadow-[0_8px_24px_rgba(0,0,0,0.05)] shadow-inner border border-white/50 flex flex-col items-center gap-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]">
+            <div className={`w-10 h-10 rounded-2xl flex items-center justify-center bg-white/60 border border-white/40 shadow-inner ${item.color}`}>
               <i className={`bi ${item.icon} text-lg`}></i>
             </div>
-            <span className="text-xl font-black text-gray-800">{item.value}</span>
-            <span className="text-[10px] text-gray-400 font-bold">{item.label}</span>
+            <span className="text-xl font-black text-slate-800 drop-shadow-sm">{item.value}</span>
+            <span className="text-[10px] text-slate-500 font-bold tracking-wider">{item.label}</span>
           </div>
         ))}
       </div>
 
       {/* Tab 切换 */}
-      <div className="flex bg-gray-100 rounded-2xl p-1 gap-1">
+      <div className="flex bg-white/30 backdrop-blur-2xl border border-white/40 rounded-[1.8rem] p-1.5 gap-1 shadow-inner">
         <button 
           onClick={() => setActiveTab('diary')}
-          className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'diary' ? 'bg-white shadow-sm text-emerald-600' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`flex-1 py-3 rounded-[1.5rem] text-sm font-bold transition-all duration-300 ease-out ${activeTab === 'diary' ? 'bg-white shadow-md text-slate-800 scale-[1.02]' : 'text-slate-500 hover:text-slate-700 hover:bg-white/20'}`}
         >
           <i className="bi bi-journal-richtext mr-1.5"></i>打卡足迹
         </button>
         <button 
           onClick={() => setActiveTab('plans')}
-          className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${activeTab === 'plans' ? 'bg-white shadow-sm text-emerald-600' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`flex-1 py-3 rounded-[1.5rem] text-sm font-bold transition-all duration-300 ease-out ${activeTab === 'plans' ? 'bg-white shadow-md text-slate-800 scale-[1.02]' : 'text-slate-500 hover:text-slate-700 hover:bg-white/20'}`}
         >
           <i className="bi bi-collection-play-fill mr-1.5"></i>行程记忆库
         </button>
@@ -111,28 +116,29 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
                 <div 
                   key={plan.id}
                   onClick={() => setViewingPlan(plan)}
-                  className="bg-white p-5 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-all active:scale-[0.98] cursor-pointer flex gap-4 items-center group"
+                  className="bg-white/60 backdrop-blur-2xl p-5 rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-white/50 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out active:scale-[0.98] cursor-pointer flex gap-5 items-center group relative overflow-hidden"
                 >
-                  <div className="w-14 h-14 bg-emerald-50 text-emerald-500 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                    <i className="bi bi-file-earmark-richtext text-2xl"></i>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--color-accent-lilac)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="w-14 h-14 bg-white/70 backdrop-blur-md shadow-inner border border-white/40 text-[var(--color-accent-lilac)] rounded-[1.2rem] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out z-10">
+                    <i className="bi bi-file-earmark-richtext text-2xl drop-shadow-sm"></i>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-bold text-gray-800 text-lg truncate">{plan.destination} 的定制行</h4>
-                    <p className="text-xs text-gray-400 mt-1 flex items-center gap-2">
-                      <i className="bi bi-calendar2-week"></i> {plan.date} 生成
+                  <div className="flex-1 min-w-0 z-10">
+                    <h4 className="font-bold text-slate-800 text-lg truncate drop-shadow-sm">{plan.destination} 的定制行</h4>
+                    <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-2 font-medium">
+                      <i className="bi bi-calendar2-week opacity-70"></i> {plan.date} 生成
                     </p>
                   </div>
-                  <div className="text-gray-300">
-                    <i className="bi bi-chevron-right"></i>
+                  <div className="text-slate-300 group-hover:text-slate-500 transition-colors z-10">
+                    <i className="bi bi-chevron-right text-lg"></i>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="bg-white/50 border border-dashed border-gray-200 rounded-3xl p-8 text-center text-gray-400">
-              <i className="bi bi-box2-heart text-4xl mb-2 block text-gray-300"></i>
-              <p className="font-bold text-sm">暂无保存的行程计划</p>
-              <p className="text-xs mt-1">去AI规划引擎生成并收藏吧</p>
+            <div className="bg-white/30 backdrop-blur-xl border border-dashed border-white/60 rounded-[2.5rem] p-10 text-center text-slate-400 shadow-inner">
+              <i className="bi bi-box2-heart text-5xl mb-4 block text-slate-300 drop-shadow-sm"></i>
+              <p className="font-bold text-base text-slate-600">暂无收藏的记忆区块</p>
+              <p className="text-xs mt-2 font-medium opacity-80">去星系探索引擎建立专属档案吧</p>
             </div>
           )}
         </div>

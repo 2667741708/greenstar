@@ -132,6 +132,14 @@ export function rankAndSegment(
   // Step 3: 按 score 降序排序
   ranked.sort((a, b) => b.score - a.score);
 
+  // Step 3.5: Top-K 截断 — 防止推荐数过多导致准确率稀释
+  // 修改基准: recommendEngine.ts @ 当前版本 (206行)
+  // 修改内容: 新增 Top-K 截断, 使用 CONSTANTS.RECOMMEND_TOP_K
+  // Changes: Added Top-K truncation using CONSTANTS.RECOMMEND_TOP_K
+  const topK = CONSTANTS.RECOMMEND_TOP_K || 40;
+  const beforeTopK = ranked.length;
+  ranked = ranked.slice(0, topK);
+
   // Step 4: 距离分段
   const groups = segmentByDistance(ranked);
 

@@ -17,6 +17,8 @@ import {
   CheckInRecord 
 } from '../services/checkinStore';
 import { getHDImageUrl } from '../services/poiCache';
+import { monetIcons } from '../config/monetIcons';
+
 
 interface SpotDetailProps {
   spot: Spot;
@@ -112,7 +114,7 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, cityName = '未知
         className="hidden" 
       />
 
-      <div className="w-full max-w-lg bg-white rounded-t-[3rem] sm:rounded-[3rem] shadow-2xl overflow-hidden animate-slide-up relative max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+      <div className="w-full max-w-lg glass-panel !rounded-t-[3.5rem] sm:!rounded-[3.5rem] shadow-2xl overflow-hidden animate-slide-up relative max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
         {/* 关闭按钮 */}
         <div className="absolute top-6 right-6 z-20">
           <button onClick={onClose} className="w-10 h-10 bg-black/20 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors hover:bg-black/40"><i className="bi bi-x-lg"></i></button>
@@ -141,10 +143,10 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, cityName = '未知
               alt={spot.name}
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-emerald-50 text-emerald-100 text-8xl">
-              <i className={`bi ${spot.category.toLowerCase().includes('cafe') ? 'bi-cup-hot' : 'bi-camera'}`}></i>
-            </div>
-          )}
+          <div className="w-full h-full flex items-center justify-center bg-white/20">
+            <img src={monetIcons.camera} className="w-12 h-12 object-contain opacity-20" alt="placeholder" />
+          </div>
+        )}
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-black/10"></div>
           
           {/* 打卡徽章 */}
@@ -185,26 +187,20 @@ export const SpotDetail: React.FC<SpotDetailProps> = ({ spot, cityName = '未知
           </div>
 
           {/* 打卡按钮 */}
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             <button 
               onClick={handleCameraCheckIn} 
               disabled={isSaving}
-              className={`flex-1 py-4 rounded-2xl font-black tracking-widest text-sm transition-all shadow-xl active:scale-95 ${
-                isSaving 
-                  ? 'bg-gray-300 text-gray-500 cursor-wait' 
-                  : spot.checkedIn 
-                    ? 'bg-emerald-600 text-white shadow-emerald-200' 
-                    : (isPro ? 'bg-amber-500 text-white shadow-amber-200' : 'bg-emerald-600 text-white shadow-emerald-200')
-              }`}
+              className={`flex-1 py-4 monet-btn text-sm ${isSaving ? 'opacity-50 grayscale' : ''}`}
             >
               {isSaving 
-                ? <span><i className="bi bi-hourglass-split mr-2 animate-spin"></i>保存中...</span>
-                : spot.checkedIn 
-                  ? <span><i className="bi bi-camera mr-2"></i>再传几张回忆</span> 
-                  : <span><i className="bi bi-camera mr-2"></i>记录专属回忆</span>
+                ? <span className="flex items-center justify-center gap-2"><i className="bi bi-hourglass-split animate-spin"></i>绘写记录中...</span>
+                : <div className="flex items-center justify-center gap-2">
+                    <img src={monetIcons.camera} className="w-6 h-6 object-contain" alt="camera" />
+                    <span>{spot.checkedIn ? '再次漫游记' : '镌刻此地回忆'}</span>
+                  </div>
               }
             </button>
-            <button className="px-6 py-4 bg-gray-100 rounded-2xl text-gray-600 hover:bg-gray-200 transition-all"><i className="bi bi-send-fill"></i></button>
           </div>
 
           {/* 历史打卡照片 */}

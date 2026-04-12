@@ -1,15 +1,5 @@
-// ============================================================================
-// 文件: src/App.tsx
-// 基准版本: App.tsx @ 650ddca (151行)
-// 修改内容 / Changes:
-//   [新增] 定位自动跳转：定位成功后自动构造 CityInfo 进入 CityExplorer
-//   [新增] 定位信息条：在 Header 下方显示当前实时地址
-//   [新增] POI 缓存过期清理逻辑（App mount 时执行一次）
-//   [NEW] Auto-locate: construct CityInfo from GPS and jump to CityExplorer
-//   [NEW] Location info bar below Header showing current address
-//   [NEW] Purge expired POI cache on App mount
-// ============================================================================
 import React, { useState, useEffect, useCallback } from 'react';
+import { MapPin, RotateCw, Compass } from 'lucide-react';
 import { ViewState, CityInfo } from './types';
 import { CHINA_CITIES } from './config/cities';
 import { Header } from './components/Header';
@@ -21,6 +11,7 @@ import { ProfilePanel } from './components/ProfilePanel';
 import { LoadingOverlay } from './components/LoadingOverlay';
 import { useGeolocation } from './hooks/useGeolocation';
 import { purgeExpiredCache } from './services/poiCache';
+import { monetIcons } from './config/monetIcons';
 
 declare global {
   interface AIStudio {
@@ -112,19 +103,22 @@ const App: React.FC = () => {
         onRefreshLocation={refreshLocation} 
         onUpgradeKey={handleUpgradeKey} 
       />
+      
+      {/* Decorative Monet Brushstroke */}
+      <div className="monet-divider -mt-4 relative z-50"></div>
 
       {/* 定位信息条：实时显示当前地址 */}
       {/* Location info bar: show current address in real-time */}
       {location && (
-        <div className="px-5 py-2 glass-panel-light !rounded-none !border-x-0 !border-t-0 flex items-center gap-3 z-40 relative shadow-sm">
-          <i className="bi bi-geo-alt-fill text-accent-pink shadow-[0_0_8px_var(--color-accent-pink)]" />
-          <span className="truncate flex-1 text-xs font-bold font-mono tracking-wider opacity-80">{geoAddress}</span>
+        <div className="px-5 py-2 glass-panel-light !rounded-none !border-x-0 !border-t-0 flex items-center gap-3 z-40 relative shadow-inner">
+          <img src={monetIcons.pin} className="w-5 h-5 object-contain" alt="pin" />
+          <span className="truncate flex-1 text-[10px] font-black font-mono tracking-tighter opacity-60 italic">{geoAddress}</span>
           <button 
             onClick={refreshLocation} 
-            className="ml-auto opacity-40 hover:opacity-100 hover:text-[var(--color-accent-indigo)] transition-all shrink-0 active:scale-90"
+            className="ml-auto opacity-40 hover:opacity-100 hover:text-[var(--color-accent-blue)] transition-all shrink-0 active:scale-90"
             title="重新定位"
           >
-            <i className="bi bi-arrow-clockwise" />
+            <RotateCw className="w-3.5 h-3.5" />
           </button>
         </div>
       )}
@@ -141,6 +135,7 @@ const App: React.FC = () => {
             setLoading={setLoading}
             setLoadingStep={setLoadingStep}
             setErrorMsg={setErrorMsg}
+            onUserInteract={() => { autoLocatedRef.current = true; setAutoLocated(true); }}
           />
         )}
 
@@ -161,7 +156,7 @@ const App: React.FC = () => {
         {/* 当直接点击了底部的'探索' Tab，但还没有选择城市时，回退到中国地图 */}
         {activeTab === 'city-explorer' && !currentCity && (
           <div className="h-full flex items-center justify-center flex-col opacity-50 p-6 space-y-4 text-center stagger-in">
-            <i className="bi bi-compass text-6xl text-accent-lilac drop-shadow-md"></i>
+            <img src={monetIcons.compass} className="w-20 h-20 object-contain grayscale opacity-40 shadow-xl" alt="compass" />
             <h2 className="text-xl font-bold tracking-widest uppercase text-[#2D3748]">尚未锁定探索星球</h2>
             <button 
               onClick={() => setActiveTab('china-map')} 

@@ -51,8 +51,16 @@ export const DiscoverCard: React.FC<DiscoverCardProps> = ({ spot, onClick }) => 
           <p className="text-xs text-slate-500 mt-2 line-clamp-2 leading-relaxed font-medium">{spot.description}</p>
         </div>
         <div className="flex items-center justify-between mt-4">
-          <span className="text-[10px] font-black text-slate-700 bg-white/50 border border-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">{spot.distance ? `${(spot.distance / 1000).toFixed(1)}KM` : 'NEARBY'}</span>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-black text-slate-700 bg-white/50 border border-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">{spot.distance ? `${(spot.distance / 1000).toFixed(1)}KM` : 'NEARBY'}</span>
+            {spot.cost && spot.cost !== '0.00' && (
+               <span className="text-[10px] font-bold text-orange-600 bg-orange-50 border border-orange-100 px-2 py-1 rounded-full"><i className="bi bi-currency-yen"></i> {spot.cost}</span>
+            )}
+            {spot.openTime && (
+               <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 border border-emerald-100 px-2 py-1 rounded-full truncate max-w-[100px]"><i className="bi bi-clock"></i> {spot.openTime}</span>
+            )}
+          </div>
+          <div className="flex items-center gap-3 shrink-0 ml-2">
             {spot.dataSource && (
               <span className="text-[9px] font-bold text-slate-400/50 uppercase tracking-wider">{spot.dataSource}</span>
             )}

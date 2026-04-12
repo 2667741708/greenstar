@@ -1,26 +1,27 @@
 /* ============================================================================
  * 文件: src/index.css
  * 基准版本: index.css (基于 v4_frontend_design_skill.md 规范重构)
- * 目标风格: 原型 B (Cinematic / Glassmorphism) 配合极值对比度与流体排版
+ * 目标风格: "The Impressionist's Workbench" - Immersive Monet Experience
  * ============================================================================ */
 @import "tailwindcss";
 
 @theme {
   --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', 'Songti SC', serif;
 
   /* Premium Design Tokens (Monet & Marble) */
-  --color-glass-base: rgba(250, 250, 250, 0.6); /* 珍珠岩白半透 */
-  --color-glass-surface: rgba(255, 255, 255, 0.4);
-  --color-glass-border: rgba(255, 255, 255, 0.5);
+  --color-glass-base: rgba(250, 250, 250, 0.7); /* 珍珠岩白半透 */
+  --color-glass-surface: rgba(255, 255, 255, 0.5);
+  --color-glass-border: rgba(255, 255, 255, 0.6);
   
-  --color-accent-pink: #F1B5CB; /* 睡莲粉 */
-  --color-accent-lilac: #B9C0E5; /* 日出丁香 */
-  --color-accent-sage: #9DC183; /* 柔和鼠尾草 */
-  --color-accent-blue: #7A9BB8; /* 微明蓝 */
+  --color-accent-pink: #EAC5D8; /* 睡莲粉 - 莫奈 */
+  --color-accent-lilac: #C0A0D1; /* 柔和紫藤 - 莫奈 */
+  --color-accent-sage: #8FB8A8; /* 睡莲梗青 - 莫奈 */
+  --color-accent-blue: #A2BEE2; /* 晨曦浅蓝 - 莫奈 */
 
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
   
-  /* Fluid Typo (Tailwind v4 格式) */
+  /* Fluid Typo */
   --text-hero: clamp(3rem, 6vw, 6rem);
   --text-display: clamp(2rem, 4vw, 4rem);
   --text-title: clamp(1.2rem, 2vw, 2rem);
@@ -28,13 +29,14 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #F7F7F9; /* 珍珠白基底 */
-  background-image: 
-    radial-gradient(ellipse at 10% 20%, rgba(241, 181, 203, 0.15) 0%, transparent 40%), /* 粉色光晕 */
-    radial-gradient(ellipse at 80% 80%, rgba(185, 192, 229, 0.2) 0%, transparent 40%), /* 丁香光晕 */
-    radial-gradient(ellipse at 50% 50%, rgba(157, 193, 131, 0.1) 0%, transparent 50%), /* 鼠尾草光晕 */
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.05 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  color: #2D3748; /* 深灰替代纯白，保持阅读舒适 */
+  background-color: #F7F7F9;
+  /* Monet Immersive Background */
+  background-image: url("./assets/monet/monet_bg_garden.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #2D3748;
   overscroll-behavior-y: contain;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,25 +46,148 @@ body {
  * 组件类 (Components)
  * ========================================== */
 
-/* 极致毛玻璃面板 (Premium Glassmorphism - Light Monet) */
+/* 极致毛玻璃面板 (Premium Glassmorphism + Deep Monet Texture) */
 .glass-panel {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
-  backdrop-filter: blur(48px);
-  -webkit-backdrop-filter: blur(48px);
+  position: relative;
+  background-color: transparent !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-glass-border);
-  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
   border-radius: 24px;
+  overflow: hidden;
 }
 
-/* 亮色模式玻璃 (维持统一明亮体系) */
+.glass-panel::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  background-image: url("./assets/monet/monet_panel_bg.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.85; /* 肌理透出 */
+  filter: blur(8px) saturate(1.2);
+  z-index: 0;
+}
+
+.glass-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* 为维持黑字可读性，中心提亮，边缘保留深幽色 */
+  background: radial-gradient(circle at center 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 100%);
+  z-index: 0;
+}
+
+.glass-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 亮色模式玻璃 (柔和体系) */
 .glass-panel-light {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 100%);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1);
+  position: relative;
+  background-color: transparent !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
   border-radius: 24px;
   color: #2D3748;
+  overflow: hidden;
+}
+
+.glass-panel-light::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  background-image: url("./assets/monet/monet_panel_bg.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.6;
+  filter: blur(6px);
+  z-index: 0;
+}
+
+.glass-panel-light::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+  z-index: 0;
+}
+
+.glass-panel-light > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 专门用于 Modal 的超大型莫奈表面层 */
+.monet-modal-surface {
+  position: relative;
+  background-color: transparent !important;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.2), inset 0 2px 20px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+}
+.monet-modal-surface::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background-image: url("./assets/monet/monet_panel_bg.png");
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px) saturate(1.2) brightness(0.9);
+  z-index: 0;
+}
+.monet-modal-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Modal 中心高亮，边缘露底图深幽感 */
+  background: radial-gradient(ellipse at center 40%, rgba(255,255,255,0.95) 20%, rgba(250,245,255,0.65) 100%);
+  z-index: 0;
+}
+.monet-modal-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 莫奈按钮 (Monet Impasto Style) */
+.monet-btn {
+  position: relative;
+  background: var(--color-accent-lilac);
+  background-image: url("./assets/monet/monet_texture_impasto.png");
+  background-size: cover;
+  background-blend-mode: soft-light;
+  color: white;
+  border-radius: 20px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  box-shadow: 0 10px 25px -5px rgba(192, 160, 209, 0.5);
+  transition: all 0.4s var(--ease-premium);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.monet-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 35px -5px rgba(192, 160, 209, 0.7);
+  filter: brightness(1.1);
+}
+
+.monet-btn:active {
+  transform: scale(0.96);
+}
+
+/* 莫奈笔触分割线 (Brushstroke Divider) */
+.monet-divider {
+  height: 24px;
+  background-image: url("./assets/monet/monet_brush_divider.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin: 1.5rem 0;
+  opacity: 0.6;
 }
 
 /* 渐变文本 (柔和水彩系) */
@@ -80,15 +205,11 @@ body {
   height: 40vw;
   background: radial-gradient(circle, var(--color-accent-lilac) 0%, transparent 70%);
   filter: blur(120px);
-  opacity: 0.3;
+  opacity: 0.2;
   pointer-events: none;
   z-index: -1;
   will-change: transform;
 }
-
-/* ==========================================
- * 交互与动画 (Micro-interactions)
- * ========================================== */
 
 /* 磁性悬浮卡片 */
 .hover-magnetic {
@@ -96,26 +217,31 @@ body {
 }
 .hover-magnetic:hover {
   transform: translateY(-4px) scale(1.01);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
 }
 
-/* 交错入场基础类 (Staggered Entrance) */
-.stagger-in {
-  opacity: 0;
-  animation: slideUpFade 0.8s var(--ease-premium) forwards;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
-
-@keyframes slideUpFade {
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0); }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-pink);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-lilac);
 }
 
 /* 高德地图覆写 */
 .amap-logo, .amap-copyright {
-  display: none !important; /* 隐藏高德 logo 以追求纯净 UI，但需注意商用合规 */
+  display: none !important;
 }
 
-/* 地图 Marker 交互动画 */
 .custom-marker {
   transition: transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium);
 }
@@ -125,18 +251,115 @@ body {
 
 /* Markdown 排版系统覆盖 */
 .markdown-content h1, .markdown-content h2 { 
+  font-family: var(--font-serif);
   font-weight: 800; 
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin-top: 2rem; 
   margin-bottom: 0.75rem; 
-  color: inherit;
+  color: #2D3748;
 }
 .markdown-content p { 
   margin-bottom: 1.2rem; 
   line-height: 1.8; 
-  color: #4A5568; /* 中度灰阶适配亮色背景 */
+  color: #4A5568;
 }
 .markdown-content strong {
   font-weight: 700;
   color: #2D3748;
+}
+
+/* 莫奈风格卡片流排版 (Monet Card Layout System) */
+.monet-card-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.monet-card-item {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255,255,255,1);
+  border-radius: 24px;
+  padding: 1.5rem 1.8rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.monet-card-item:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 40px -10px rgba(192, 160, 209, 0.2), inset 0 1px 0 rgba(255,255,255,1);
+}
+
+/* 左下角与右上角的渲染光晕层 */
+.monet-card-item::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--color-accent-pink);
+  filter: blur(50px);
+  opacity: 0.15;
+  pointer-events: none;
+  transition: opacity 0.5s, transform 0.8s;
+}
+
+.monet-card-item::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--color-accent-lilac);
+  filter: blur(50px);
+  opacity: 0.15;
+  pointer-events: none;
+  transition: opacity 0.5s, transform 0.8s;
+}
+
+.monet-card-item:hover::before {
+  opacity: 0.3;
+  transform: scale(1.2) translate(-10px, 10px);
+}
+
+.monet-card-item:hover::after {
+  opacity: 0.3;
+  transform: scale(1.2) translate(10px, -10px);
+}
+
+.monet-card-item > h3:first-child {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--color-accent-lilac);
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px dashed rgba(192, 160, 209, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.monet-card-item > h3:first-child::before {
+  content: "✧";
+  margin-right: 8px;
+  color: var(--color-accent-pink);
+  font-size: 1.1em;
+}
+
+.monet-card-item > *:not(::before, ::after) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove white background from all Monet Assets safely */
+img[src*="/monet_"], img[src*="monet_"] {
+  mix-blend-mode: multiply;
 }

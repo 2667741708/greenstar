@@ -194,7 +194,14 @@ export const CONSTANTS = {
 
   // 场景/风格推断规则 — 从高德 type 字符串和 name 推断人类可读的风格标签
   // Scene inference rules: infer human-readable style tags from AMap type + name
+  //
+  // 修改基准: constants.ts @ 当前版本 (224行, 22条规则)
+  // 修改内容: 22条 → 45条, 补充川菜/面馆/影城/喜剧/购物/寺庙等高频品类
+  //   修复 V2 评估中成都/西安 Top10 "其他" 占比过高 (70%→目标<20%)
+  // Changes: 22→45 rules, added Sichuan cuisine/noodles/cinema/comedy/shopping/temple etc.
+  //   Fix V2 eval where Chengdu/Xi'an Top10 had 70% "other" scene tags
   SCENE_RULES: [
+    // 酒饮类 (Drinks & Nightlife)
     { keywords: ['精酿', '啤酒', '鲜啤'],  scene: '精酿啤酒' },
     { keywords: ['威士忌', 'whiskey', 'WHISKEY'], scene: '威士忌' },
     { keywords: ['鸡尾酒', 'cocktail'],    scene: '鸡尾酒' },
@@ -203,21 +210,54 @@ export const CONSTANTS = {
     { keywords: ['民谣'],                  scene: '民谣酒吧' },
     { keywords: ['小酒馆', '酒馆'],         scene: '小酒馆' },
     { keywords: ['酒吧'],                  scene: '酒吧' },
-    { keywords: ['咖啡', 'coffee', 'COFFEE'], scene: '咖啡馆' },
-    { keywords: ['猫咖', '猫'],            scene: '猫咖' },
+    // 饮品/轻食 (Coffee & Tea)
+    { keywords: ['咖啡', 'coffee', 'COFFEE', 'Cafe', 'cafe'], scene: '咖啡馆' },
+    { keywords: ['猫咖'],                  scene: '猫咖' },
+    { keywords: ['奶茶', '茶饮'],          scene: '奶茶' },
+    { keywords: ['茶馆', '茶室', '茶楼', '茶社'], scene: '茶馆' },
+    { keywords: ['甜品', '蛋糕', '烘焙', '面包', '甜食', '糕'], scene: '甜品' },
+    // 正餐/特色餐饮 (Cuisine)
+    { keywords: ['火锅', '串串'],          scene: '火锅' },
+    { keywords: ['烧烤', '烤肉', '烤鱼'],  scene: '烧烤' },
+    { keywords: ['日料', '寿司', '刺身'],  scene: '日料' },
+    { keywords: ['西餐', '牛排', '意面'],  scene: '西餐' },
+    { keywords: ['川菜', '成都菜'],        scene: '川菜' },
+    { keywords: ['粤菜', '茶餐厅', '早茶'], scene: '粤菜' },
+    { keywords: ['泡馍', '陕菜', '凉皮', '肉夹馍', '面馆', '拉面', '手工面', '水饺', '饺子'], scene: '地方小吃' },
+    { keywords: ['海鲜', '生蚝'],          scene: '海鲜' },
+    { keywords: ['小吃', '美食街', '美食', '夜市', '小吃街'], scene: '小吃街' },
+    { keywords: ['餐厅', '饭店', '餐饮', '食府', '私房菜', '菜馆'], scene: '餐厅' },
+    // 玩乐/体验 (Entertainment)
     { keywords: ['密室', '逃脱'],          scene: '密室逃脱' },
     { keywords: ['剧本杀'],               scene: '剧本杀' },
-    { keywords: ['火锅'],                 scene: '火锅' },
-    { keywords: ['烧烤', '烤肉', '串串'],  scene: '烧烤' },
-    { keywords: ['日料', '寿司'],         scene: '日料' },
-    { keywords: ['茶馆', '茶室', '茶'],   scene: '茶馆' },
-    { keywords: ['书店', '书吧'],         scene: '书店' },
-    { keywords: ['博物馆'],               scene: '博物馆' },
-    { keywords: ['公园'],                 scene: '公园' },
-    { keywords: ['景区', '风景', '名胜'], scene: '景区' },
-    { keywords: ['酒店', '宾馆'],         scene: '酒店' },
-    { keywords: ['民宿', '客栈'],         scene: '民宿' },
+    { keywords: ['影城', '影院', '电影', 'IMAX'], scene: '影院' },
+    { keywords: ['喜剧', '脱口秀', '剧场', '剧院', '演艺', '大剧院', '音乐厅'], scene: '演出' },
+    { keywords: ['游乐园', '游乐场', '乐园', '水上'], scene: '游乐园' },
+    { keywords: ['KTV', '歌厅'],           scene: 'KTV' },
+    // 景点/文化 (Scenic & Culture)
+    { keywords: ['博物馆', '纪念馆'],      scene: '博物馆' },
+    { keywords: ['美术馆', '画廊', '艺术馆', '展览'], scene: '美术馆' },
+    { keywords: ['寺', '庙', '教堂', '清真'], scene: '寺庙' },
+    { keywords: ['古镇', '古城', '古村', '老街', '历史文化街'], scene: '古镇老街' },
+    { keywords: ['广场', '城墙', '钟楼', '鼓楼', '塔', '城门'], scene: '地标建筑' },
+    { keywords: ['公园', '花园', '植物园', '动物园'], scene: '公园' },
+    { keywords: ['景区', '风景', '名胜', '遗址', '故居'], scene: '景区' },
+    // 购物 (Shopping)
+    { keywords: ['书店', '书吧', '书局'],  scene: '书店' },
+    { keywords: ['文创', '手作', '买手店'], scene: '文创' },
+    { keywords: ['商场', '购物中心', '百货', 'SKP', '万达', '大悦城'], scene: '商场' },
+    { keywords: ['步行街', '商业街', '商圈'], scene: '商业街' },
+    // 住宿 (Accommodation)
+    { keywords: ['酒店', '宾馆', '度假'],  scene: '酒店' },
+    { keywords: ['民宿', '客栈', '公寓', '青旅', '旅舍'], scene: '民宿' },
   ] as Array<{ keywords: string[]; scene: string }>,
+
+  // 推荐 Top-K 截断 — 控制推荐引擎最终输出数量
+  // Recommendation Top-K: max spots returned by rankAndSegment
+  // 修改基准: constants.ts @ 当前版本
+  // 修改内容: 新增 RECOMMEND_TOP_K, 解决推荐数过多导致准确率稀释
+  // Changes: Added RECOMMEND_TOP_K to prevent precision dilution from oversized output
+  RECOMMEND_TOP_K: 40,
 
   DEFAULT_LOCATION: { lat: 31.2304, lng: 121.4737, name: '上海市' },
 };

@@ -26,31 +26,63 @@ from collections import defaultdict
 
 DATASET_DIR = os.path.join(os.path.dirname(__file__), "datasets")
 
-# === Greenstar 推荐引擎 (1:1 移植, 与 test_recommend_engine.py 一致) ===
+# === Greenstar 推荐引擎 (1:1 移植, 与 constants.ts 同步)
+# 修改基准: eval_travel_planner.py @ 当前版本 (22条规则)
+# 修改内容: 22→45条, 同步 constants.ts V2 扩展; 新增 Top-K=40 截断
+# Changes: 22→45 rules synced with constants.ts V2; added Top-K=40 truncation
+
+RECOMMEND_TOP_K = 40
 
 SCENE_RULES = [
+    # 酒饮类
     {"keywords": ["精酿", "啤酒", "鲜啤"],  "scene": "精酿啤酒"},
     {"keywords": ["威士忌", "whiskey"],      "scene": "威士忌"},
     {"keywords": ["鸡尾酒", "cocktail"],     "scene": "鸡尾酒"},
     {"keywords": ["清吧"],                   "scene": "清吧"},
-    {"keywords": ["LiveHouse", "livehouse"], "scene": "LiveHouse"},
+    {"keywords": ["LiveHouse", "livehouse", "LIVE", "现场"], "scene": "LiveHouse"},
     {"keywords": ["民谣"],                   "scene": "民谣酒吧"},
     {"keywords": ["小酒馆", "酒馆"],          "scene": "小酒馆"},
     {"keywords": ["酒吧"],                   "scene": "酒吧"},
-    {"keywords": ["咖啡", "coffee"],         "scene": "咖啡馆"},
-    {"keywords": ["猫咖", "猫"],             "scene": "猫咖"},
+    # 饮品/轻食
+    {"keywords": ["咖啡", "coffee", "COFFEE", "Cafe", "cafe"], "scene": "咖啡馆"},
+    {"keywords": ["猫咖"],                   "scene": "猫咖"},
+    {"keywords": ["奶茶", "茶饮"],           "scene": "奶茶"},
+    {"keywords": ["茶馆", "茶室", "茶楼", "茶社"], "scene": "茶馆"},
+    {"keywords": ["甜品", "蛋糕", "烘焙", "面包", "甜食", "糕"], "scene": "甜品"},
+    # 正餐/特色餐饮
+    {"keywords": ["火锅", "串串"],           "scene": "火锅"},
+    {"keywords": ["烧烤", "烤肉", "烤鱼"],   "scene": "烧烤"},
+    {"keywords": ["日料", "寿司", "刺身"],   "scene": "日料"},
+    {"keywords": ["西餐", "牛排", "意面"],   "scene": "西餐"},
+    {"keywords": ["川菜", "成都菜"],         "scene": "川菜"},
+    {"keywords": ["粤菜", "茶餐厅", "早茶"], "scene": "粤菜"},
+    {"keywords": ["泡馍", "陕菜", "凉皮", "肉夹馍", "面馆", "拉面", "手工面", "水饺", "饺子"], "scene": "地方小吃"},
+    {"keywords": ["海鲜", "生蚝"],           "scene": "海鲜"},
+    {"keywords": ["小吃", "美食街", "美食", "夜市", "小吃街"], "scene": "小吃街"},
+    {"keywords": ["餐厅", "饭店", "餐饮", "食府", "私房菜", "菜馆"], "scene": "餐厅"},
+    # 玩乐/体验
     {"keywords": ["密室", "逃脱"],           "scene": "密室逃脱"},
     {"keywords": ["剧本杀"],                "scene": "剧本杀"},
-    {"keywords": ["火锅"],                  "scene": "火锅"},
-    {"keywords": ["烧烤", "烤肉"],           "scene": "烧烤"},
-    {"keywords": ["日料", "寿司"],           "scene": "日料"},
-    {"keywords": ["茶馆", "茶室"],           "scene": "茶馆"},
-    {"keywords": ["书店", "书吧"],           "scene": "书店"},
-    {"keywords": ["博物馆"],                "scene": "博物馆"},
-    {"keywords": ["公园"],                  "scene": "公园"},
-    {"keywords": ["景区", "风景", "名胜"],   "scene": "景区"},
-    {"keywords": ["酒店", "宾馆"],           "scene": "酒店"},
-    {"keywords": ["民宿", "客栈"],           "scene": "民宿"},
+    {"keywords": ["影城", "影院", "电影", "IMAX"], "scene": "影院"},
+    {"keywords": ["喜剧", "脱口秀", "剧场", "剧院", "演艺", "大剧院", "音乐厅"], "scene": "演出"},
+    {"keywords": ["游乐园", "游乐场", "乐园", "水上"], "scene": "游乐园"},
+    {"keywords": ["KTV", "歌厅"],            "scene": "KTV"},
+    # 景点/文化
+    {"keywords": ["博物馆", "纪念馆"],       "scene": "博物馆"},
+    {"keywords": ["美术馆", "画廊", "艺术馆", "展览"], "scene": "美术馆"},
+    {"keywords": ["寺", "庙", "教堂", "清真"], "scene": "寺庙"},
+    {"keywords": ["古镇", "古城", "古村", "老街", "历史文化街"], "scene": "古镇老街"},
+    {"keywords": ["广场", "城墙", "钟楼", "鼓楼", "塔", "城门"], "scene": "地标建筑"},
+    {"keywords": ["公园", "花园", "植物园", "动物园"], "scene": "公园"},
+    {"keywords": ["景区", "风景", "名胜", "遗址", "故居"], "scene": "景区"},
+    # 购物
+    {"keywords": ["书店", "书吧", "书局"],   "scene": "书店"},
+    {"keywords": ["文创", "手作", "买手店"], "scene": "文创"},
+    {"keywords": ["商场", "购物中心", "百货", "SKP", "万达", "大悦城"], "scene": "商场"},
+    {"keywords": ["步行街", "商业街", "商圈"], "scene": "商业街"},
+    # 住宿
+    {"keywords": ["酒店", "宾馆", "度假"],   "scene": "酒店"},
+    {"keywords": ["民宿", "客栈", "公寓", "青旅", "旅舍"], "scene": "民宿"},
 ]
 
 SORT_WEIGHTS = {
@@ -156,6 +188,10 @@ def run_recommend_engine(amap_pois, quality_only=True):
 
     # 按 score 降序
     ranked.sort(key=lambda x: -x["score"])
+
+    # Top-K 截断
+    ranked = ranked[:RECOMMEND_TOP_K]
+
     return ranked
 
 
@@ -258,9 +294,9 @@ def eval_diversity(ranked_pois):
         return 0.0
 
     categories = {"景点": 0, "餐饮": 0, "休闲": 0}
-    scenic_scenes = {"景区", "公园", "博物馆", "书店"}
-    dining_scenes = {"火锅", "烧烤", "日料", "咖啡馆", "茶馆", "猫咖"}
-    leisure_scenes = {"酒吧", "清吧", "精酿啤酒", "LiveHouse", "密室逃脱", "剧本杀", "小酒馆", "民谣酒吧", "威士忌", "鸡尾酒"}
+    scenic_scenes = {"景区", "公园", "博物馆", "书店", "美术馆", "寺庙", "古镇老街", "地标建筑", "文创"}
+    dining_scenes = {"火锅", "烧烤", "日料", "咖啡馆", "茶馆", "猫咖", "川菜", "粤菜", "西餐", "地方小吃", "海鲜", "小吃街", "餐厅", "奶茶", "甜品"}
+    leisure_scenes = {"酒吧", "清吧", "精酿啤酒", "LiveHouse", "密室逃脱", "剧本杀", "小酒馆", "民谣酒吧", "威士忌", "鸡尾酒", "影院", "演出", "游乐园", "KTV", "商场", "商业街"}
 
     for p in ranked_pois:
         scene = p.get("scene", "其他")
