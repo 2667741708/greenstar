@@ -88,14 +88,12 @@ const generateTieredImageUrls = (
     }
   }
 
-  // 无图 POI：用地图瓦片生成两级兜底
-  // No photos: use tile map with two zoom tiers
-  const thumbMap = generateTileMapUrl(lat, lng, 14);  // 街区级 (~36KB)
-  const hdMap = generateTileMapUrl(lat, lng, 16);      // 街道级 (~50KB)
+  // 实验要求：仅展示高德真实原图，剔除一切瓦片地图降级渲染
+  // 只为了查看高德到底提供了多少真实图片
   return {
-    thumb: thumbMap,
-    standard: hdMap,
-    hd: hdMap,
+    thumb: '',
+    standard: '',
+    hd: '',
   };
 };
 
@@ -217,8 +215,13 @@ const _searchPOIFromAmap = (
             // ============================================================
             if (!options.isUserSearch) {
               spots = spots.filter(spot => {
-                const typeStr = (spot.tags || []).join(' ') + ' ' + (spot.description || '');
-                return !CONSTANTS.POI_TYPE_EXCLUDE.some(exclude => typeStr.includes(exclude));
+                const typeStr = (spot.name || '') + ' ' + (spot.tags || []).join(' ') + ' ' + (spot.description || '');
+                // 1. 黑名单剔除：绝不允许出现垃圾场、变电站、公司、市政等
+                if (CONSTANTS.POI_TYPE_EXCLUDE.some(exclude => typeStr.includes(exclude))) {
+                  return false;
+                }
+                // 2. 白名单强制校验：地点信息中必须至少包含一个强旅游/休闲/品质生活相关的词语才放行
+                return CONSTANTS.POI_TYPE_STRICT_INCLUDE.some(include => typeStr.includes(include));
               });
             }
 
@@ -257,56 +260,46 @@ const _searchPOIFromREST = async (
   const page = options.pageIndex || 1;
   const pageSize = options.pageSize || 50;
 
-  // 构建 REST API URL
-  // Build REST API URL
+  // 调用本地 Python API (被 Vite 代理转发到 8000)
   let url: string;
   if (options.isUserSearch && keyword) {
-    // 1. 用户跨区主动文本搜索 -> v5/place/text
-    // User global text search -> v5/place/text
-    url = `https://restapi.amap.com/v5/place/text?key=${AMAP_KEY}&keywords=${encodeURIComponent(keyword)}&region=${encodeURIComponent(city)}&page_size=${pageSize}&page_num=${page}&show_fields=photos,business`;
+    url = `/api/poi/text?keywords=${encodeURIComponent(keyword)}&city=${encodeURIComponent(city)}&page_size=${pageSize}&page_num=${page}`;
   } else {
-    // 2. 标签/探测浏览 -> v5/place/around
-    // Tag / local browse -> v5/place/around
-    url = `https://restapi.amap.com/v5/place/around?key=${AMAP_KEY}&location=${center.lng},${center.lat}&radius=${radius}&page_size=${pageSize}&page_num=${page}&show_fields=photos,business`;
+    url = `/api/poi/around?lat=${center.lat}&lng=${center.lng}&radius=${radius}&page_size=${pageSize}&page_num=${page}`;
     
-    // 如果存在分类限定，加上分类
     if (!options.isUserSearch && !options.type) {
-      url += `&types=110000|050000|060000|100000|080000|140000`;
+      url += `&types=${CONSTANTS.POI_TYPE_POSITIVE}`;
     } else if (options.type) {
       url += `&types=${options.type}`;
     }
 
-    // 如果通过标签携带了 keyword，加上 keywords 进行叠加过滤
     if (keyword) {
       url += `&keywords=${encodeURIComponent(keyword)}`;
     }
   }
 
-  console.log('[REST API] Falling back to Web REST API:', url.substring(0, 80) + '...');
+  console.log('[Backend Proxy API] Sending proxy request to Python API:', url);
 
   const resp = await fetch(url, { 
     signal: AbortSignal.timeout(10000),
-    referrerPolicy: 'no-referrer' 
   });
-  if (!resp.ok) throw new Error(`REST API HTTP ${resp.status}`);
+  if (!resp.ok) throw new Error(`Backend Proxy API HTTP ${resp.status}`);
   const data = await resp.json();
 
   if (data.status !== '1' || !data.pois || data.pois.length === 0) {
-    console.warn('[REST API] No results:', data.info || data.infocode);
+    console.warn('[Backend Proxy API] No results:', data.info || 'Unknown Error');
     return [];
   }
 
   let spots: Spot[] = data.pois.map((poi: any) => {
-    // v5 REST API location 格式为 "lng,lat" 字符串
+    // Python 后端中 v3 返回的是 lng,lat 字符串
     const [lngStr, latStr] = (poi.location || '0,0').split(',');
     const poiLat = parseFloat(latStr);
     const poiLng = parseFloat(lngStr);
 
-    // 评分
-    const ratingStr = poi.business?.rating || (4 + Math.random()).toFixed(1);
+    const ratingStr = poi.biz_ext?.rating || (4 + Math.random()).toFixed(1);
     const rating = Math.min(parseFloat(ratingStr), 5);
 
-    // 分类
     let category = 'Landmark';
     const typeStr = poi.type || '';
     if (typeStr.includes('酒店') || typeStr.includes('宾馆') || typeStr.includes('民宿')) category = 'Hotel';
@@ -317,9 +310,12 @@ const _searchPOIFromREST = async (
     else if (typeStr.includes('购物') || typeStr.includes('商场') || typeStr.includes('步行街')) category = 'Shopping';
     else if (typeStr.includes('风景') || typeStr.includes('名胜')) category = 'Scenic';
 
-    // REST API v5 photos 格式: [{url: string}]
     const photos = poi.photos && poi.photos.length > 0 ? poi.photos : null;
     const tieredUrls = generateTieredImageUrls(photos, poiLat, poiLng);
+
+    // 解析商业数据
+    const cost = poi.biz_ext?.cost && poi.biz_ext.cost.length > 0 ? poi.biz_ext.cost : undefined;
+    const openTime = poi.biz_ext?.open_time || poi.biz_ext?.opentime2 || undefined;
 
     return {
       id: poi.id || `rest-${Date.now()}-${Math.random()}`,
@@ -333,19 +329,23 @@ const _searchPOIFromREST = async (
       rating: rating,
       tags: typeStr ? typeStr.split(';').slice(0, 2).map((t: string) => t.split('|').pop() || t) : [],
       checkedIn: false,
-      distance: calculateDistance(center.lat, center.lng, poiLat, poiLng),
+      distance: poi.distance ? parseFloat(poi.distance) : calculateDistance(center.lat, center.lng, poiLat, poiLng),
+      cost,
+      openTime
     };
   });
 
-  // 负面排除（非用户搜索）
   if (!options.isUserSearch) {
     spots = spots.filter(spot => {
-      const info = (spot.tags || []).join(' ') + ' ' + (spot.description || '');
-      return !CONSTANTS.POI_TYPE_EXCLUDE.some(ex => info.includes(ex));
+      const info = (spot.name || '') + ' ' + (spot.tags || []).join(' ') + ' ' + (spot.description || '');
+      if (CONSTANTS.POI_TYPE_EXCLUDE.some(ex => info.includes(ex))) {
+        return false;
+      }
+      return CONSTANTS.POI_TYPE_STRICT_INCLUDE.some(inc => info.includes(inc));
     });
   }
 
-  console.log(`[REST API] Got ${spots.length} spots for ${city}`);
+  console.log(`[Backend Proxy API] Got ${spots.length} spots for ${city}`);
   return spots;
 };
 
@@ -377,16 +377,55 @@ export const searchPOI = async (
 
   // Step 2: 双引擎搜索 — JS API 优先，失败降级 REST API
   // Dual-engine search: prefer JS API, auto-fallback to REST API
-  let spots: Spot[];
-  try {
-    spots = await _searchPOIFromAmap(city, keyword, center, { ...options, radius });
-  } catch (jsErr: any) {
-    console.warn(`[AMap JS] ${jsErr.message}, 降级到 REST API / falling back to REST API`);
+  let spots: Spot[] = [];
+  
+  if (!options.isUserSearch && !options.type && !keyword) {
+    // 【系统重大解耦架构】：在进行广域泛搜索探索时采用多维度子类并发探针 (Multi-Dimensional Fetching)
+    // 修改基准: amap.ts @ 当前版本 (558行)
+    // 修改内容: dimensions 从硬编码改为引用 CONSTANTS.SEARCH_DIMENSIONS (含新增餐饮/住宿维度); 截断从 45→80
+    // Changes: dimensions from hardcode → CONSTANTS.SEARCH_DIMENSIONS; truncation 45→80 for larger AI candidate pool
+    console.log('[AMap] 触发泛搜寻多维并发池构建模式...');
+    const dimensions = CONSTANTS.SEARCH_DIMENSIONS;
+    
+    const promises = dimensions.map(d_type => 
+      _searchPOIFromAmap(city, keyword, center, { ...options, radius, type: d_type, pageSize: 50 })
+        .catch(() => _searchPOIFromREST(city, keyword, center, { ...options, radius, type: d_type, pageSize: 50 }))
+        .catch(() => [])
+    );
+    
     try {
-      spots = await _searchPOIFromREST(city, keyword, center, { ...options, radius });
-    } catch (restErr: any) {
-      console.error(`[REST API] Also failed: ${restErr.message}`);
-      return [];  // 双引擎均失败，返回空让上层 RAG 兜底
+      const results = await Promise.all(promises);
+      const merged = new Map<string, Spot>();
+      results.flat().forEach(s => merged.set(s.id, s)); // 哈希合并去重
+      let pool = Array.from(merged.values());
+      
+      // 执行系统算力初级洗牌裁决（Algorithmic Sorting Engine）：拥有相册数据的顶置，次以基础评分降序
+      pool.sort((a, b) => {
+        const aHasImage = a.photos && a.photos.length > 0;
+        const bHasImage = b.photos && b.photos.length > 0;
+        if (aHasImage !== bHasImage) return bHasImage ? 1 : -1;
+        return (b.rating || 0) - (a.rating || 0);
+      });
+      
+      // 扩容截断：Top 80 (从 45 扩容)，给 AI 精选层和路线规划器提供更充分的候选池
+      // Expanded truncation: Top 80 (from 45), larger candidate pool for AI refinement & route planner
+      spots = pool.slice(0, 80); 
+      console.log(`[AMap] 并发探针获取基数: ${pool.length} 条，经过裁冗保留极优集 ${spots.length} 条。`);
+    } catch (e) {
+      console.error('[AMap] 并发聚合失败', e);
+      spots = [];
+    }
+  } else {
+    try {
+      spots = await _searchPOIFromAmap(city, keyword, center, { ...options, radius });
+    } catch (jsErr: any) {
+      console.warn(`[AMap JS] ${jsErr.message}, 降级到 REST / falling back to REST`);
+      try {
+        spots = await _searchPOIFromREST(city, keyword, center, { ...options, radius });
+      } catch (restErr: any) {
+        console.error(`[REST API] Also failed: ${restErr.message}`);
+        return [];
+      }
     }
   }
 

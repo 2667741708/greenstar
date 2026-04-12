@@ -25,6 +25,9 @@ export interface Spot {
   distance?: number;
   isAIGenerated?: boolean;      // 是否由 AI 兜底生成
   dataSource?: string;          // 数据溯源标识（如 "维基百科 + DeepSeek"）
+  cost?: string;                // 商业指标：人均消费
+  openTime?: string;            // 商业指标：营业时间
+  aiGroup?: string;             // AI 精选分组标记 (must_visit | dining | leisure)
 }
 
 export interface CityInfo {

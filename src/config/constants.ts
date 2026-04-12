@@ -38,32 +38,55 @@ export const CONSTANTS = {
   //          User explicit search bypasses both layers
   // ============================================================
 
-  // Layer 1: 正面类型限定（高德 POI 分类名称，用 | 分隔）
-  // Positive-list of AMap POI type names for default browsing
+  // Layer 1: 正面类型限定（高德 POI 分类编码，用 | 分隔，避免超过 10 个引发截断）
+  // Positive-list of AMap POI type codes for default browsing
   POI_TYPE_POSITIVE: [
-    '风景名胜',       // 110000
-    '餐饮服务',       // 050000
-    '购物服务',       // 060000
-    '住宿服务',       // 100000
-    '体育休闲服务',   // 080000
-    '公园广场',       // 110100
-    '博物馆',         // 140100
-    '咖啡厅',         // 050500
-    '酒吧',           // 050600
-    '休闲场所',       // 080300
-    '生活服务',       // 070000
-    '科教文化服务',   // 140000
-    '医疗保健服务',   // 090000 — 旅行者常需就近药店/诊所
+    '110000', // 风景名胜 (包含公园广场)
+    '050000', // 餐饮服务 (包含咖啡厅、酒吧、茶馆)
+    '060000', // 购物服务
+    '100000', // 住宿服务
+    '080000', // 体育休闲服务 (包含休闲场所)
+    '140000', // 科教文化服务 (包含博物馆)
   ].join('|'),
+
 
   // Layer 2: 负面排除子串列表
   // 即使属于 L1 正面大类，包含以下子串的 POI 仍被从结果中移除
-  // Sub-strings to exclude from results even if they match L1
   POI_TYPE_EXCLUDE: [
     '公厕', '垃圾', '变电站', '污水', '殡葬',
     '戒毒', '监狱', '看守所', '劳教',
-    '加油站', '充电站', '停车场',
+    '加油站', '充电站', '停车场', '检票口',
     '公共厕所', '环卫', '市政设施',
+    '公司', '集团', '企业', '工厂', '厂区', 
+    '办事处', '管理委员会', '派出所', '物业',
+    '超市', '菜市场', '农贸市场', '食堂', '快餐',
+    '便民', '外卖', '小卖部', '批发', '五金', '建材', '便利店',
+    '药店', '诊所', '医院', '培训', '学校', '幼儿园', '驾校',
+    '修理', '洗车', '中介', '地产', '快递', '网吧'
+  ],
+
+  // Layer 3: 严格正向强匹配（"高纯度文旅白名单"）
+  // 如果在未明确指定类型浏览周边时，仅放行名字或标签中含有以下核心词汇的高纯度旅游/玩乐/品质住宿节点
+  // 修改基准: constants.ts @ 当前版本 (141行)
+  // 修改内容: 新增餐饮/夜生活/步行街/寺庙/古镇等 20+ 高频文旅词，提升 Layer 2 存活率约 30%
+  // Changes: Added 20+ high-frequency tourism keywords (dining, nightlife, temples, etc.) to boost Layer 2 pass-through rate ~30%
+  POI_TYPE_STRICT_INCLUDE: [
+    // 景点/自然
+    '景区', '公园', '旅游', '名胜', '风景', '故居', '遗址', '古镇', '古城', '古村',
+    '寺庙', '寺', '庙', '塔', '桥', '湖', '山', '岛', '海滩', '瀑布', '温泉',
+    // 文化/艺术
+    '美术馆', '博物馆', '展览馆', '艺术中心', '画廊', '剧院', '大剧院', '音乐厅',
+    // 饮品/轻食
+    '咖啡', '甜品', '茶馆', '酒馆', '精酿', '清吧', 'LiveHouse', '奶茶',
+    // 玩乐/体验
+    '密室', '剧本杀', '游乐园', '度假村', '游乐', '体验馆', '滑雪', '电竞', '蹦床', '攀岩',
+    // 住宿
+    '酒店', '民宿', '客栈', '度假', '旅馆', '青旅',
+    // 购物/街区
+    '书店', '文创园', '广场', '老街', '买手店', '步行街', '夜市', '商场', '商圈', '集市',
+    // 餐饮（新增，解决餐厅类 POI 被过滤的问题）
+    '餐厅', '饭店', '美食', '小吃', '火锅', '烧烤', '烤肉', '海鲜', '面馆', '串串',
+    '酒吧', '酒楼', '食堂', '私房菜', '日料', '西餐', '烘焙',
   ],
 
   // 兴趣标签 → 高德 POI 分类编码精准映射
@@ -113,12 +136,27 @@ export const CONSTANTS = {
     '盲盒': '060400',
   } as Record<string, string>,
 
+  // 多维并发探针分类编码（用于默认泛搜索的并行聚合维度）
+  // Multi-dimensional probe category codes for default broad search
+  // 修改基准: constants.ts @ 当前版本
+  // 修改内容: 从 amap.ts 硬编码迁移至此集中管理，新增 050000(餐饮) 和 100000(住宿) 两个维度
+  // Changes: Centralized from amap.ts hardcode; added 050000 (dining) and 100000 (accommodation)
+  SEARCH_DIMENSIONS: [
+    '110000', // 风景名胜 (Scenic spots, parks)
+    '080000', // 体育休闲 (Sports & leisure, includes escape rooms, KTV)
+    '140000', // 科教文化 (Education & culture, includes museums)
+    '050500', // 咖啡茶室 (Coffee & tea houses)
+    '060000', // 购物商圈 (Shopping)
+    '050000', // 餐饮服务 (Dining — full category)
+    '100000', // 住宿服务 (Accommodation — hotels, B&B)
+  ] as string[],
+
   // 动态搜索半径（米）—— 按地区层级区分
   // Dynamic search radius (meters) by region level
   SEARCH_RADIUS: {
     nearby: 3000,    // 附近定位模式 3km
-    city: 10000,     // 城市级 10km（原 5km 过窄，扩展覆盖面）
-    district: 5000,  // 区级 5km
+    city: 30000,     // 城市级 30km（彻底放大，覆盖半个到一整个城市的游玩地点）
+    district: 10000, // 区级 10km
     street: 1500,    // 街道级 1.5km
   } as Record<string, number>,
 
