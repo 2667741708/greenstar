@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>绿星 (Green Star) - 智能旅游打卡</title>
     <!-- Tailwind CSS 已本地化(v4)，无需CDN / Tailwind CSS is now local (v4), no CDN needed -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap">
@@ -67,8 +67,8 @@
     </style>
 
 </head>
-<body class="h-screen flex flex-col overflow-hidden">
-    <div id="root" class="h-full"></div>
+<body class="h-screen flex flex-col overflow-hidden" style="-webkit-overflow-scrolling: touch;">
+    <div id="root" class="h-screen"></div>
     <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

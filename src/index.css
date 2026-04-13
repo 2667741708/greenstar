@@ -220,6 +220,13 @@ body {
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
 }
 
+/* 主滚动区域 iOS 惯性滚动 (Momentum Scrolling for iOS WebView/Capacitor) */
+main {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior-y: contain;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

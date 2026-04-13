@@ -98,7 +98,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full overflow-hidden transition-colors duration-500 relative">
+    <div className="flex flex-col h-screen h-dvh overflow-hidden transition-colors duration-500 relative">
       <Header 
         onRefreshLocation={refreshLocation} 
         onUpgradeKey={handleUpgradeKey} 
@@ -123,7 +123,7 @@ const App: React.FC = () => {
         </div>
       )}
 
-      <main className="flex-1 overflow-y-auto relative z-10">
+      <main className="flex-1 min-h-0 overflow-y-auto relative z-10">
         <LoadingOverlay loadingStep={loadingStep} isPro={isPro} />
 
         {/* 视图路由 */}
