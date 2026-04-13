@@ -1,23 +1,32 @@
 // ============================================================================
 // 文件: src/components/ProfilePanel.tsx
-// 修改基准: ProfilePanel.tsx @ 178行版本 (diary + plans 两个 Tab)
+// 修改基准: ProfilePanel.tsx @ 422行版本
 // 修改内容 / Changes:
-//   [新增] 第三个 Tab「AI 设置」—— 支持用户配置 Gemini/DeepSeek Key 与模型
-//   [新增] Gemini Key 一键验证（调用 /v1beta/models，零 token 消耗）
-//   [新增] Gemini 模型下拉选择，显示各模型免费 RPD/RPM 配额
-//   [新增] DeepSeek Key 输入框、高德 AMap Key 输入框
-//   [新增] 保存到 localStorage，字段实时同步到 llmSettings 服务层
-//   [NEW] Third tab「AI Settings」— user-configurable API keys & model selection
-//   [NEW] One-click Gemini key validation (0 token cost)
-//   [NEW] Model dropdown with free quota labels
-//   [NEW] DeepSeek key & AMap key inputs, persisted to localStorage
+//   [重构] 行程记忆库从 localStorage 迁移到 IndexedDB (localVault)
+//   [新增] 行程记忆库完整 CRUD: 编辑笔记内容、删除、模糊搜索
+//   [新增] 打卡足迹笔记编辑功能
+//   [保留] AI 设置 Tab 完整功能不变
+//   [REFACTOR] Saved plans migrated from localStorage to IndexedDB (localVault)
+//   [NEW] Full CRUD for saved plans: edit content, delete, fuzzy search
+//   [NEW] Check-in note editing capability
+//   [KEPT] AI Settings tab unchanged
 // ============================================================================
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Spot, CityInfo } from '../types';
 import { CheckinDiary } from './CheckinDiary';
-import { getCheckinStats } from '../services/checkinStore';
+import {
+  getCheckinStats,
+  getAllPlans,
+  savePlan,
+  updatePlan,
+  deletePlan,
+  searchPlans,
+  migrateFromLegacy,
+  SavedPlan,
+} from '../services/localVault';
 import { monetAssets } from '../config/monetAssets';
+import { MarkdownRenderer } from './MarkdownRenderer';
 import {
   getLLMSettings,
   setLLMSettings,
@@ -25,13 +34,6 @@ import {
   GEMINI_MODELS,
   LLMProvider,
 } from '../services/llmSettings';
-
-interface SavedPlan {
-  id: string;
-  destination: string;
-  content: string;
-  date: string;
-}
 
 interface ProfilePanelProps {
   isPro: boolean;
@@ -44,6 +46,14 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
   const [viewingPlan, setViewingPlan] = useState<SavedPlan | null>(null);
   const [activeTab, setActiveTab] = useState<'diary' | 'plans' | 'settings'>('diary');
   const [stats, setStats] = useState({ totalCheckins: 0, totalPhotos: 0, citiesVisited: 0, spotsVisited: 0 });
+
+  // ── 行程记忆库 CRUD 状态 ─────────────────────────────────
+  const [searchQuery, setSearchQuery] = useState('');
+  const [editingPlan, setEditingPlan] = useState<SavedPlan | null>(null);
+  const [editContent, setEditContent] = useState('');
+  const [editDestination, setEditDestination] = useState('');
+  const [deleteConfirmId, setDeleteConfirmId] = useState<string | null>(null);
+  const [planActionFeedback, setPlanActionFeedback] = useState('');
 
   // ── AI 设置 Tab 状态 ────────────────────────────────────
   const [provider, setProvider] = useState<LLMProvider>('google');
@@ -60,12 +70,17 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
   const [validateMsg, setValidateMsg] = useState('');
   const [saveSuccess, setSaveSuccess] = useState(false);
 
+  // ── 初始化：迁移 + 加载 ──────────────────────────────────
   useEffect(() => {
-    try {
-      const data = localStorage.getItem('gs_saved_plans');
-      if (data) setSavedPlans(JSON.parse(data));
-    } catch { }
-    getCheckinStats().then(setStats);
+    const init = async () => {
+      // 自动迁移旧数据（仅执行一次）
+      await migrateFromLegacy();
+      // 加载数据
+      await loadPlans();
+      const s = await getCheckinStats();
+      setStats(s);
+    };
+    init();
     // 读取已保存的 AI 设置
     const s = getLLMSettings();
     setProvider(s.provider);
@@ -75,8 +90,56 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
     setAmapKey(s.amapKey);
   }, []);
 
+  // ── 行程记忆库数据加载 ──────────────────────────────────
+  const loadPlans = useCallback(async () => {
+    const plans = searchQuery.trim()
+      ? await searchPlans(searchQuery.trim())
+      : await getAllPlans();
+    setSavedPlans(plans);
+  }, [searchQuery]);
+
+  // 搜索框变化时重新加载
+  useEffect(() => {
+    loadPlans();
+  }, [loadPlans]);
+
   const checkedSpots = spots.filter(s => s.checkedIn).length;
   const unlockedCities = cities.filter(c => c.isUnlocked).length;
+
+  // ── 行程 CRUD 操作 ─────────────────────────────────────
+  const handleDeletePlan = async (id: string) => {
+    await deletePlan(id);
+    setDeleteConfirmId(null);
+    setViewingPlan(null);
+    await loadPlans();
+    showFeedback('行程已删除');
+  };
+
+  const handleStartEdit = (plan: SavedPlan) => {
+    setEditingPlan(plan);
+    setEditContent(plan.content);
+    setEditDestination(plan.destination);
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingPlan) return;
+    await updatePlan(editingPlan.id, {
+      content: editContent,
+      destination: editDestination,
+    });
+    setEditingPlan(null);
+    // 刷新正在查看的详情
+    if (viewingPlan?.id === editingPlan.id) {
+      setViewingPlan({ ...editingPlan, content: editContent, destination: editDestination, updatedAt: new Date().toISOString() });
+    }
+    await loadPlans();
+    showFeedback('修改已保存');
+  };
+
+  const showFeedback = (msg: string) => {
+    setPlanActionFeedback(msg);
+    setTimeout(() => setPlanActionFeedback(''), 2000);
+  };
 
   // ── 保存 AI 设置 ──────────────────────────────────────
   const handleSaveSettings = () => {
@@ -172,28 +235,99 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
       {/* 打卡日记时间线 */}
       {activeTab === 'diary' && <CheckinDiary />}
 
-      {/* 我的行程库 */}
+      {/* ══ 行程记忆库 Tab（完整 CRUD 版本）══════════════════ */}
       {activeTab === 'plans' && (
         <div className="space-y-4">
+          {/* 搜索栏 */}
+          <div className="relative">
+            <i className="bi bi-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              placeholder="搜索目的地、内容关键词..."
+              className="w-full bg-white/50 backdrop-blur-xl border border-white/50 rounded-[1.5rem] py-3.5 pl-10 pr-4 text-sm text-slate-700 placeholder-slate-400 outline-none focus:bg-white/80 focus:ring-2 focus:ring-[var(--color-accent-lilac)]/40 transition-all"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+              >
+                <i className="bi bi-x-circle-fill"></i>
+              </button>
+            )}
+          </div>
+
+          {/* 操作反馈 */}
+          {planActionFeedback && (
+            <div className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-4 py-2.5 rounded-[1rem] text-sm font-bold flex items-center gap-2 animate-in fade-in">
+              <i className="bi bi-check-circle-fill"></i>
+              {planActionFeedback}
+            </div>
+          )}
+
+          {/* 记录数量统计 */}
+          {savedPlans.length > 0 && (
+            <div className="flex items-center justify-between px-1">
+              <span className="text-[11px] text-slate-500 font-bold">
+                <i className="bi bi-database mr-1"></i>
+                {searchQuery ? `搜索到 ${savedPlans.length} 条` : `共 ${savedPlans.length} 条行程记录`}
+              </span>
+              <span className="text-[10px] text-slate-400 font-medium">
+                <i className="bi bi-hdd mr-1"></i>IndexedDB 本地仓库
+              </span>
+            </div>
+          )}
+
           {savedPlans.length > 0 ? (
             <div className="grid grid-cols-1 gap-4">
               {savedPlans.map(plan => (
                 <div
                   key={plan.id}
-                  onClick={() => setViewingPlan(plan)}
                   className="bg-white/60 backdrop-blur-2xl p-5 rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-white/50 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 ease-out active:scale-[0.98] cursor-pointer flex gap-5 items-center group relative overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--color-accent-lilac)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="w-14 h-14 bg-white/70 backdrop-blur-md shadow-inner border border-white/40 text-[var(--color-accent-lilac)] rounded-[1.2rem] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out z-10">
-                    <i className="bi bi-file-earmark-richtext text-2xl drop-shadow-sm"></i>
+                  
+                  {/* 点击主体进入详情 */}
+                  <div
+                    className="flex gap-5 items-center flex-1 min-w-0 z-10"
+                    onClick={() => setViewingPlan(plan)}
+                  >
+                    <div className="w-14 h-14 bg-white/70 backdrop-blur-md shadow-inner border border-white/40 text-[var(--color-accent-lilac)] rounded-[1.2rem] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-500 ease-out">
+                      <i className="bi bi-file-earmark-richtext text-2xl drop-shadow-sm"></i>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-slate-800 text-lg truncate drop-shadow-sm">{plan.destination} 的定制行程</h4>
+                      <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-2 font-medium">
+                        <i className="bi bi-calendar2-week opacity-70"></i> {plan.date} 生成
+                        {plan.updatedAt && (
+                          <span className="text-[10px] text-[var(--color-accent-lilac)] bg-[var(--color-accent-lilac)]/10 px-1.5 py-0.5 rounded-md">
+                            已编辑
+                          </span>
+                        )}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0 z-10">
-                    <h4 className="font-bold text-slate-800 text-lg truncate drop-shadow-sm">{plan.destination} 的定制行</h4>
-                    <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-2 font-medium">
-                      <i className="bi bi-calendar2-week opacity-70"></i> {plan.date} 生成
-                    </p>
+
+                  {/* 右侧操作按钮组 */}
+                  <div className="flex items-center gap-1 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); handleStartEdit(plan); }}
+                      className="w-9 h-9 rounded-xl bg-white/70 border border-white/40 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-all shadow-sm"
+                      title="编辑"
+                    >
+                      <i className="bi bi-pencil-square text-sm"></i>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setDeleteConfirmId(plan.id); }}
+                      className="w-9 h-9 rounded-xl bg-white/70 border border-white/40 flex items-center justify-center text-slate-500 hover:text-red-600 hover:bg-red-50 transition-all shadow-sm"
+                      title="删除"
+                    >
+                      <i className="bi bi-trash3 text-sm"></i>
+                    </button>
                   </div>
-                  <div className="text-slate-300 group-hover:text-slate-500 transition-colors z-10">
+
+                  <div className="text-slate-300 group-hover:text-slate-500 transition-colors z-10" onClick={() => setViewingPlan(plan)}>
                     <i className="bi bi-chevron-right text-lg"></i>
                   </div>
                 </div>
@@ -202,8 +336,12 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
           ) : (
             <div className="bg-white/30 backdrop-blur-xl border border-dashed border-white/60 rounded-[2.5rem] p-10 text-center text-slate-400 shadow-inner">
               <i className="bi bi-box2-heart text-5xl mb-4 block text-slate-300 drop-shadow-sm"></i>
-              <p className="font-bold text-base text-slate-600">暂无收藏的记忆区块</p>
-              <p className="text-xs mt-2 font-medium opacity-80">去星系探索引擎建立专属档案吧</p>
+              <p className="font-bold text-base text-slate-600">
+                {searchQuery ? '未找到匹配的行程记录' : '暂无收藏的记忆区块'}
+              </p>
+              <p className="text-xs mt-2 font-medium opacity-80">
+                {searchQuery ? '尝试其它关键词' : '去星系探索引擎建立专属档案吧'}
+              </p>
             </div>
           )}
         </div>
@@ -393,31 +531,119 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
         </div>
       )}
 
-      {/* 行程详情弹窗 */}
-      {viewingPlan && (
+      {/* ── 删除确认弹窗 ──────────────────────────────────── */}
+      {deleteConfirmId && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm animate-in fade-in" onClick={() => setDeleteConfirmId(null)}>
+          <div className="bg-white rounded-[2rem] p-8 shadow-2xl max-w-sm w-full space-y-5 animate-in zoom-in-95" onClick={e => e.stopPropagation()}>
+            <div className="text-center space-y-2">
+              <div className="w-16 h-16 mx-auto bg-red-50 rounded-2xl flex items-center justify-center">
+                <i className="bi bi-exclamation-triangle-fill text-3xl text-red-500"></i>
+              </div>
+              <h3 className="text-lg font-black text-slate-800">确认删除此行程？</h3>
+              <p className="text-sm text-slate-500">删除后无法恢复，请谨慎操作</p>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setDeleteConfirmId(null)}
+                className="flex-1 py-3 rounded-[1.2rem] bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors"
+              >
+                取消
+              </button>
+              <button
+                onClick={() => handleDeletePlan(deleteConfirmId)}
+                className="flex-1 py-3 rounded-[1.2rem] bg-red-500 text-white font-bold text-sm hover:bg-red-600 transition-colors shadow-md active:scale-95"
+              >
+                <i className="bi bi-trash3 mr-1"></i>确认删除
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── 编辑行程弹窗 ──────────────────────────────────── */}
+      {editingPlan && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 bg-black/50 backdrop-blur-sm animate-in fade-in" onClick={() => setEditingPlan(null)}>
+          <div className="bg-white w-full max-w-2xl h-[85vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95" onClick={e => e.stopPropagation()}>
+            {/* 编辑头部 */}
+            <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+              <div className="flex-1 min-w-0">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1 block">目的地</label>
+                <input
+                  type="text"
+                  value={editDestination}
+                  onChange={e => setEditDestination(e.target.value)}
+                  className="text-xl font-black text-gray-800 bg-transparent border-b-2 border-dashed border-gray-200 focus:border-[var(--color-accent-lilac)] outline-none w-full pb-1 transition-colors"
+                />
+              </div>
+              <button
+                onClick={() => setEditingPlan(null)}
+                className="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors ml-4 shrink-0"
+              >
+                <i className="bi bi-x-lg"></i>
+              </button>
+            </div>
+            {/* 编辑器主体 */}
+            <div className="flex-1 overflow-hidden p-6">
+              <textarea
+                value={editContent}
+                onChange={e => setEditContent(e.target.value)}
+                className="w-full h-full bg-slate-50/50 border border-slate-200 rounded-2xl p-5 text-sm text-slate-700 font-mono leading-relaxed outline-none focus:border-[var(--color-accent-lilac)] focus:ring-2 focus:ring-[var(--color-accent-lilac)]/20 resize-none scrollbar-thin"
+                placeholder="编辑攻略 Markdown 内容..."
+              />
+            </div>
+            {/* 编辑底部操作 */}
+            <div className="p-6 border-t border-gray-100 flex gap-3">
+              <button
+                onClick={() => setEditingPlan(null)}
+                className="flex-1 py-3.5 rounded-[1.2rem] bg-slate-100 text-slate-600 font-bold text-sm hover:bg-slate-200 transition-colors"
+              >
+                取消
+              </button>
+              <button
+                onClick={handleSaveEdit}
+                className="flex-1 py-3.5 rounded-[1.2rem] bg-gradient-to-r from-[var(--color-accent-lilac)] to-blue-500 text-white font-bold text-sm hover:brightness-110 transition-all shadow-lg active:scale-95"
+              >
+                <i className="bi bi-check-lg mr-1"></i>保存修改
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── 行程详情查看弹窗 ─────────────────────────────── */}
+      {viewingPlan && !editingPlan && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-gray-900/60 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white w-full max-w-2xl h-[85vh] rounded-[2.5rem] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95">
             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
               <div>
                 <h3 className="text-xl font-black text-gray-800">{viewingPlan.destination} 行程单</h3>
-                <p className="text-xs text-gray-500 mt-1 font-bold">创建于 {viewingPlan.date}</p>
+                <p className="text-xs text-gray-500 mt-1 font-bold">
+                  创建于 {viewingPlan.date}
+                  {viewingPlan.updatedAt && (
+                    <span className="ml-2 text-[var(--color-accent-lilac)]">
+                      · 编辑于 {new Date(viewingPlan.updatedAt).toLocaleDateString()}
+                    </span>
+                  )}
+                </p>
               </div>
-              <button
-                onClick={() => setViewingPlan(null)}
-                className="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors"
-              >
-                <i className="bi bi-x-lg"></i>
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => { handleStartEdit(viewingPlan); }}
+                  className="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-blue-500 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+                  title="编辑"
+                >
+                  <i className="bi bi-pencil-square"></i>
+                </button>
+                <button
+                  onClick={() => setViewingPlan(null)}
+                  className="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:text-gray-800 transition-colors"
+                >
+                  <i className="bi bi-x-lg"></i>
+                </button>
+              </div>
             </div>
-            <div className="flex-1 overflow-y-auto p-6 custom-scrollbar prose prose-sm max-w-none prose-headings:text-emerald-800 prose-a:text-emerald-600">
-              <div dangerouslySetInnerHTML={{
-                __html: viewingPlan.content
-                  .replace(/## /g, '<h2 class="text-xl font-black mt-6 mb-3 border-b pb-2">')
-                  .replace(/### /g, '<h3 class="text-lg font-bold mt-5 mb-2 text-emerald-700">')
-                  .replace(/\*\*(.*?)\*\*/g, '<strong class="text-emerald-900 bg-emerald-50 px-1 rounded">$1</strong>')
-                  .replace(/-\s/g, '<li class="ml-4 mb-2 list-disc marker:text-emerald-400">')
-                  .replace(/\n/g, '<br/>')
-              }} />
+            <div className="flex-1 overflow-y-auto p-6 custom-scrollbar markdown-content text-[15px] leading-loose text-gray-700">
+              <MarkdownRenderer content={viewingPlan.content} />
             </div>
           </div>
         </div>

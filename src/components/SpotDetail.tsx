@@ -15,7 +15,7 @@ import { Spot } from '../types';
 import { 
   fileToBase64, generateThumbnail, saveCheckin, getCheckinsBySpot, 
   CheckInRecord 
-} from '../services/checkinStore';
+} from '../services/localVault';
 import { getHDImageUrl } from '../services/poiCache';
 import { monetIcons } from '../config/monetIcons';
 

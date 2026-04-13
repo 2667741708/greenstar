@@ -7,7 +7,7 @@
 // ============================================================================
 
 import React, { useState, useEffect } from 'react';
-import { CheckInRecord, getAllCheckins, deleteCheckin } from '../services/checkinStore';
+import { CheckInRecord, getAllCheckins, deleteCheckin } from '../services/localVault';
 
 interface CheckinDiaryProps {
   cityFilter?: string;     // 可选城市过滤
