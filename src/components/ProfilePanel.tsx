@@ -1,20 +1,16 @@
 // ============================================================================
 // 文件: src/components/ProfilePanel.tsx
-// 修改基准: ProfilePanel.tsx @ 422行版本
 // 修改内容 / Changes:
-//   [重构] 行程记忆库从 localStorage 迁移到 IndexedDB (localVault)
-//   [新增] 行程记忆库完整 CRUD: 编辑笔记内容、删除、模糊搜索
-//   [新增] 打卡足迹笔记编辑功能
-//   [保留] AI 设置 Tab 完整功能不变
-//   [REFACTOR] Saved plans migrated from localStorage to IndexedDB (localVault)
-//   [NEW] Full CRUD for saved plans: edit content, delete, fuzzy search
-//   [NEW] Check-in note editing capability
-//   [KEPT] AI Settings tab unchanged
+//   [新增] 记忆库 -> 地图联动：支持从行程详情开启 RouteVisualizer
+//   [新增] Saved Plan 可视化预览按钮
+//   [NEW] Memory Library -> Map linkage: toggle RouteVisualizer from plan details
+//   [NEW] Visual preview button for saved itineraries
 // ============================================================================
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { Spot, CityInfo } from '../types';
 import { CheckinDiary } from './CheckinDiary';
+import RouteVisualizer from './explore/RouteVisualizer'; // 导入路线可视化组件
 import {
   getCheckinStats,
   getAllPlans,
@@ -46,6 +42,9 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
   const [viewingPlan, setViewingPlan] = useState<SavedPlan | null>(null);
   const [activeTab, setActiveTab] = useState<'diary' | 'plans' | 'settings'>('diary');
   const [stats, setStats] = useState({ totalCheckins: 0, totalPhotos: 0, citiesVisited: 0, spotsVisited: 0 });
+
+  // ── 联动状态 ──────────────────────────────────────────
+  const [showRouteMap, setShowRouteMap] = useState<SavedPlan | null>(null);
 
   // ── 行程记忆库 CRUD 状态 ─────────────────────────────────
   const [searchQuery, setSearchQuery] = useState('');
@@ -311,6 +310,13 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
 
                   {/* 右侧操作按钮组 */}
                   <div className="flex items-center gap-1 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setShowRouteMap(plan); }}
+                      className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 hover:bg-emerald-100 transition-all shadow-sm"
+                      title="在地图中开启"
+                    >
+                      <i className="bi bi-map-fill text-sm"></i>
+                    </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); handleStartEdit(plan); }}
                       className="w-9 h-9 rounded-xl bg-white/70 border border-white/40 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:bg-blue-50 transition-all shadow-sm"
@@ -627,6 +633,13 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
                 </p>
               </div>
               <div className="flex items-center gap-2">
+                {/* 新增：在详情页也开启地图的按钮 */}
+                <button
+                  onClick={() => { setShowRouteMap(viewingPlan); setViewingPlan(null); }}
+                  className="px-4 h-10 bg-emerald-500 text-white rounded-full flex items-center gap-2 text-sm font-bold hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-200"
+                >
+                  <i className="bi bi-map-fill"></i> 路线地图
+                </button>
                 <button
                   onClick={() => { handleStartEdit(viewingPlan); }}
                   className="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-blue-500 hover:text-blue-700 hover:bg-blue-50 transition-colors"
@@ -647,6 +660,15 @@ export const ProfilePanel: React.FC<ProfilePanelProps> = ({ isPro, spots, cities
             </div>
           </div>
         </div>
+      )}
+
+      {/* ── 路线可视化全屏预览 (联动) ────────────────────────── */}
+      {showRouteMap && (
+        <RouteVisualizer
+          planText={showRouteMap.content}
+          cityName={showRouteMap.destination}
+          onClose={() => setShowRouteMap(null)}
+        />
       )}
     </div>
   );

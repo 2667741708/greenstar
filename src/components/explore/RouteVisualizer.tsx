@@ -4,6 +4,8 @@ import * as L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { optimizeRoute, getOptimizedRouteDistance } from '../../services/routeOptimizer';
 import { monetIcons } from '../../config/monetIcons';
+import { SpotDetail } from '../SpotDetail'; // 导入打卡详情组件
+import { saveCheckin, CheckInRecord } from '../../services/localVault'; // 导入存储服务
 
 // 全局声明 AMap 以支持 TS
 declare global {
@@ -13,9 +15,11 @@ declare global {
 }
 
 interface Stop {
+  id?: string; // 增加 ID 支持
   name: string;
   lng: number;
   lat: number;
+  category?: string;
 }
 
 interface LogEntry {
@@ -48,6 +52,10 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
   const [routeSteps, setRouteSteps] = useState<any[]>([]);
   const [isLogExpanded, setIsLogExpanded] = useState(false);
   const [unlockedLevel, setUnlockedLevel] = useState(0);
+
+  // ── 打卡联动状态 ──────────────────────────────────────
+  const [selectedSpot, setSelectedSpot] = useState<any | null>(null);
+  const [isCheckingIn, setIsCheckingIn] = useState(false);
 
   const logIdCounter = useRef(0);
 
@@ -101,7 +109,8 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
 
         const coord = await geocode(name);
         if (coord) {
-          newStops.push({ name, ...coord });
+          // 这里构造一个临时的 Spot ID 以支持打卡逻辑
+          newStops.push({ id: `temp_${Date.now()}_${i}`, name, ...coord });
           addLog(<>[精确定位] <b>{name}</b></>, 'success');
         } else {
           addLog(<>[定位失败] <b>{name}</b></>, 'error');
@@ -164,13 +173,11 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
           setSummary({ dist: `${km} km`, time: `${min} 分钟`, count: stops.length });
           addLog(<>[Success] 步行拟合完成: <b>{km}km</b></>, 'success');
         } else if (routeMode === 'game') {
-          // Game Mode (No real routing needed, just counts)
           routePath = [];
           newSteps = stops.map((s, i) => ({ instruction: i === 0 ? '出发点：' + s.name : '勇闯：' + s.name }));
           setSummary({ dist: '趣味闯关', time: '快乐无价', count: stops.length });
           addLog('[Game] 已切换游戏化萌系关卡模式', 'info');
         } else if (routeMode === 'optimized') {
-          // DAG 优化模式：使用高德驾车但站点已被 routeOptimizer 重排
           addLog('[Nav] DAG 最短路径优化驾车导航中...', 'info');
           const dr = await drivingRoute(stops);
           if (dr) {
@@ -182,7 +189,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
             addLog(<>[Success] DAG 优化导航完成: <b>{km}km</b>, 无折返</>, 'success');
           }
         } else {
-          // straight
           routePath = stops.map(s => ({ lat: s.lat, lng: s.lng }));
           newSteps = stops.map((s, i) => ({ instruction: i === 0 ? '起点：' + s.name : '飞向：' + s.name }));
           setSummary({ dist: '直线预估', time: '无偏差', count: stops.length });
@@ -192,7 +198,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
       
       setRouteSteps(newSteps);
 
-      // 渲染到 Leaflet
       const map = mapRef.current!;
       if (pathLayer.current) map.removeLayer(pathLayer.current);
       markersGroup.current?.clearLayers();
@@ -201,7 +206,7 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
 
       if (routePath.length > 1) {
         pathLayer.current = L.polyline(routePath, {
-          color: routeMode === 'straight' ? '#94a3b8' : '#0d9488', // Teal highlight to contrast the muted map
+          color: routeMode === 'straight' ? '#94a3b8' : '#0d9488',
           weight: routeMode === 'straight' ? 3 : 5,
           dashArray: routeMode === 'straight' ? '8, 8' : undefined,
           opacity: 0.9,
@@ -215,12 +220,9 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
         
         const iconHtml = `
             <div style="position: relative; display: flex; align-items: center; pointer-events: none; width: 250px;">
-                <!-- Monet Animation Icon -->
                 <div style="position: absolute; top: -45px; left:-12px; z-index: 20;">
                     <img src="${monetImg}" style="width: 48px; height: 48px; object-contain: contain; filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.25));" />
                 </div>
-                
-                <!-- 3D 风格的小水滴图标 (SVG) -->
                 <div style="filter: drop-shadow(0px 8px 6px rgba(13, 148, 136, 0.4)); flex-shrink: 0; z-index: 10; margin-top: 10px;">
                     <svg width="28" height="36" viewBox="0 0 24 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 0C5.373 0 0 5.373 0 12C0 21 12 36 12 36C12 36 24 21 24 12C24 5.373 18.627 0 12 0Z" fill="url(#grad1)"/>
@@ -233,15 +235,27 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
                         </defs>
                     </svg>
                 </div>
-                <!-- 旁边的地点名称文字牌 -->
-                <div style="background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); padding: 4px 12px; border-radius: 12px; margin-left: -4px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid rgba(255,255,255,1); z-index: 5; margin-top: 8px;">
+                <div style="background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); padding: 4px 12px; border-radius: 12px; margin-left: -4px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); border: 1px solid rgba(255,255,255,1); z-index: 5; margin-top: 8px; pointer-events: auto; cursor: pointer;">
                     <span style="font-size:10px; font-weight:900; color:#0d9488; margin-right:4px; opacity: 0.7;">${idx+1}</span>
                     <span style="font-size:12px; font-weight:800; color:#1e293b; letter-spacing: -0.01em;">${s.name}</span>
                 </div>
             </div>
         `;
         const customIcon = L.divIcon({ html: iconHtml, className: 'custom-stop-icon', iconSize: [32, 42], iconAnchor: [16, 42] });
-        L.marker([s.lat, s.lng], { icon: customIcon }).addTo(markersGroup.current!);
+        const marker = L.marker([s.lat, s.lng], { icon: customIcon }).addTo(markersGroup.current!);
+        
+        // 点击标记打开打卡详情
+        marker.on('click', () => {
+          setSelectedSpot({
+            id: s.id || `spot_${idx}`,
+            name: s.name,
+            coordinates: { lat: s.lat, lng: s.lng },
+            cityName: cityName,
+            category: s.category || '景点',
+            description: `来自行程：${cityName} 定制路线`
+          });
+        });
+
         bounds.extend([s.lat, s.lng]);
       });
 
@@ -253,7 +267,36 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
     draw();
   }, [stops, routeMode]);
 
-  // --- 高度解耦的高德 API 工具函授 ---
+  // 处理打卡成功
+  const handleCheckIn = async (spot: any, photoUrls?: string[]) => {
+    setIsCheckingIn(true);
+    addLog(<>[打卡] 正在记录 <b>{spot.name}</b> 的足迹...</>, 'info');
+    
+    // 构造打卡记录
+    const record: CheckInRecord = {
+      id: `checkin_${Date.now()}`,
+      spotId: spot.id,
+      spotName: spot.name,
+      cityName: cityName,
+      category: spot.category,
+      coordinates: spot.coordinates,
+      photos: photoUrls || [],
+      timestamp: new Date().toISOString(),
+      note: ''
+    };
+
+    try {
+      await saveCheckin(record);
+      addLog(<>[Success] <b>{spot.name}</b> 打卡成功！</>, 'success');
+      setSelectedSpot(null);
+    } catch (e) {
+      addLog(<>[Error] 打卡失败: {String(e)}</>, 'error');
+    } finally {
+      setIsCheckingIn(false);
+    }
+  };
+
+  // --- 高度解耦的高德 API 工具函数 ---
 
   const get3DEmojiForName = (name: string) => {
     if (name.includes('熊猫')) return monetIcons.panda;
@@ -267,11 +310,9 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
 
 
   const extractStops = (text: string) => {
-    // 仅提取带有严格括号标记的内容作为目标实体
     const pats = [/【([^】]{2,15})】/g, /\[([^\]]{2,15})\]/g, /<POI>([^<]+)<\/POI>/g];
     const seen = new Set<string>();
     const out: string[] = [];
-    // 进一步过滤掉常见的明显非地理词汇
     const rejects = ['建议', '提示', '注意', '推荐', '公里', '小时', '分钟', '雷区', '备受推崇', '体验', '漫步', '打卡', '指南', '路线', '安排', '概览', '交通', '接驳', '大盘', '避雷', '预警', '消费', '预算', '花销', '详情', '隐性', '踩坑', '必须', '重点', '方案', '上午', '下午', '晚上', '内核', '文化', '交错带', '印记', '城市', '极简', '夏季', '冬季', '最优解', '周边', '中心'];
     for (const p of pats) { let m; while ((m = p.exec(text)) !== null) { const n = m[1].trim().replace(/[【】「」『』《》\[\]]/g, '').trim(); if (n.length >= 2 && n.length <= 15 && !rejects.some(w => n.includes(w)) && !seen.has(n)) { seen.add(n); out.push(n); } } }
     return out.slice(0, 15);
@@ -280,10 +321,10 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
   const geocode = (name: string): Promise<{ lng: number, lat: number } | null> => {
     return new Promise((resolve) => {
       if (!window.AMap || !window.AMap.Geocoder) { resolve(null); return; }
-      const timer = setTimeout(() => resolve(null), 3500); // 增加到 3.5s 防止高德网络波动
+      const timer = setTimeout(() => resolve(null), 3500); 
       try {
         const g = new window.AMap.Geocoder({ city: cityName });
-        const query = `${cityName} ${name}`; // 拼接城市名提高高德精确度
+        const query = `${cityName} ${name}`; 
         g.getLocation(query, (s: any, r: any) => {
           clearTimeout(timer);
           if (s === 'complete' && r.geocodes?.length) { const loc = r.geocodes[0].location; resolve({ lng: loc.getLng(), lat: loc.getLat() }); }
@@ -339,7 +380,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
     });
   };
 
-  // 自动滚动到最新日志
   const logContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (logContainerRef.current) {
@@ -350,17 +390,35 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
   return (
     <div className="fixed inset-0 z-[100] flex font-sans bg-[#f8fafc] overflow-hidden text-slate-800">
       
-      {/* 绝对定位的背景地图容器（移除暗色滤镜，恢复正常的高德浅色地图底图） */}
       <div 
         id="gs-map-container" 
         className="absolute inset-0 z-0 bg-[#f8fafc]"
         style={{ width: '100%', height: '100%' }}
       />
 
-      {/* 悬浮毛玻璃控制面板 - 严格匹配浅色高透过率毛玻璃风格City Wanderer */}
+      {/* 联动打卡详情弹窗 */}
+      {selectedSpot && (
+        <SpotDetail 
+          spot={selectedSpot} 
+          cityName={cityName}
+          onClose={() => setSelectedSpot(null)} 
+          onCheckIn={handleCheckIn} 
+          isPro={true} 
+        />
+      )}
+
+      {/* 联动加载蒙层 */}
+      {isCheckingIn && (
+        <div className="fixed inset-0 z-[300] bg-white/60 backdrop-blur-md flex flex-col items-center justify-center">
+           <div className="w-20 h-20 bg-emerald-100 rounded-[2rem] flex items-center justify-center mb-6 animate-bounce shadow-xl shadow-emerald-200">
+             <Camera className="w-10 h-10 text-emerald-600" />
+           </div>
+           <p className="text-xl font-black text-slate-800 tracking-tight">正在同步星系足迹...</p>
+        </div>
+      )}
+
       <div className="relative z-10 w-[420px] max-w-[90vw] h-full p-5 sm:p-6 flex flex-col gap-6 backdrop-blur-[24px] bg-white/50 border-r border-white/60 shadow-[8px_0_40px_-5px_rgba(0,0,0,0.1)] overflow-y-auto custom-scrollbar">
         
-        {/* 全局导航 Header */}
         <div className="flex justify-between items-center mt-1 mb-2">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/30">
@@ -385,11 +443,9 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
 
         <h1 className="text-2xl font-black text-slate-800 tracking-tight -mt-2">智能路线规划舱</h1>
 
-        {/* My Routes (路线模式大卡片) */}
         <div className="flex flex-col gap-3">
           <h2 className="text-sm font-bold text-slate-800 tracking-wide mb-1">我的路线选项</h2>
           
-          {/* Card 0: DAG Optimized (默认推荐) */}
           <div onClick={() => setRouteMode('optimized')} className={`relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md ${routeMode === 'optimized' ? 'bg-gradient-to-r from-emerald-50 to-teal-50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] border-emerald-200 ring-2 ring-emerald-400/30' : 'bg-white/40 hover:bg-white/60 border-white/60'}`}>
             <div className="flex gap-4 items-center">
               <div className={`w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-lg ${routeMode === 'optimized' ? 'shadow-emerald-500/30' : 'shadow-none'} bg-gradient-to-br from-[#10b981] to-[#059669]`}>
@@ -460,7 +516,7 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
           </div>
 
           {/* Card 2: Walk */}
-          <div onClick={() => setRouteMode('walk')} className={`relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md ${routeMode === 'walk' ? 'bg-white/95 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-white' : 'bg-white/40 hover:bg-white/60 border-white/60'}`}>
+          <div onClick={() => setRouteMode('walk')} className={`relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md ${routeMode === 'walk' ? 'bg-white/95 shadow-[0_8px_30_rgb(0,0,0,0.06)] border-white' : 'bg-white/40 hover:bg-white/60 border-white/60'}`}>
             <div className="flex gap-4 items-center">
               <div className={`w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-lg ${routeMode === 'walk' ? 'shadow-purple-500/30' : 'shadow-none'} bg-gradient-to-br from-[#a855f7] to-[#7e22ce]`}>
                 <Coffee className="w-6 h-6" />
@@ -491,73 +547,11 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
               </div>
             </div>
           </div>
-
-          {/* Card 3: Straight */}
-          <div onClick={() => setRouteMode('straight')} className={`relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md ${routeMode === 'straight' ? 'bg-white/95 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border-white' : 'bg-white/40 hover:bg-white/60 border-white/60'}`}>
-            <div className="flex gap-4 items-center">
-              <div className={`w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-lg ${routeMode === 'straight' ? 'shadow-teal-500/30' : 'shadow-none'} bg-gradient-to-br from-[#14b8a6] to-[#0f766e]`}>
-                <Castle className="w-6 h-6" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-bold text-slate-800 text-[15px] truncate">无界直线模式</h3>
-                  <button className="text-slate-400 hover:text-slate-600"><MoreVertical className="w-4 h-4" /></button>
-                </div>
-                <div className="text-[11px] text-slate-500 font-medium flex items-center gap-1.5 mt-0.5">
-                  <Navigation className="w-3 h-3 text-slate-400" />
-                  <span>{routeMode === 'straight' ? summary.dist : '~'}</span>
-                  <span>•</span>
-                  <span><MapPin className="inline w-3 h-3 text-slate-400 bottom-[1px] relative" /> {stops.length} 个锚点</span>
-                  <span>•</span>
-                  <span>{routeMode === 'straight' ? summary.time : '~'}</span>
-                </div>
-                <div className="flex gap-2 mt-3 items-center">
-                  <div className="flex bg-slate-100/80 rounded-lg p-1 gap-1">
-                    <MapIcon className="w-3.5 h-3.5 text-slate-400" />
-                    <Castle className="w-3.5 h-3.5 text-slate-400" />
-                  </div>
-                  <div className="flex-1"></div>
-                  <button className="bg-slate-100 hover:bg-slate-200 p-1.5 rounded-lg text-slate-500 transition-colors"><Eye className="w-3.5 h-3.5" /></button>
-                  <button className={`p-1.5 rounded-lg text-white shadow-md transition-colors ${routeMode === 'straight' ? 'bg-teal-600 hover:bg-teal-700 shadow-teal-600/20' : 'bg-slate-300'}`}><Edit2 className="w-3.5 h-3.5" /></button>
-                </div>
-                {/* Card 4: Game */}
-          <div onClick={() => setRouteMode('game')} className={`relative overflow-hidden group p-4 rounded-[1.5rem] cursor-pointer transition-all duration-300 border backdrop-blur-md ${routeMode === 'game' ? 'bg-amber-100/95 shadow-[0_8px_30px_rgb(251,191,36,0.3)] border-amber-300' : 'bg-white/40 hover:bg-white/60 border-white/60'}`}>
-            <div className="flex gap-4 items-center">
-              <div className={`w-12 h-12 rounded-2xl flex-shrink-0 flex items-center justify-center text-white shadow-lg ${routeMode === 'game' ? 'shadow-amber-500/30' : 'shadow-none'} bg-gradient-to-br from-[#f59e0b] to-[#d97706]`}>
-                <i className="bi bi-controller text-xl"></i>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-bold text-amber-900 text-[15px] truncate">趣味闯关模式</h3>
-                  <button className="text-amber-400 hover:text-amber-600"><MoreVertical className="w-4 h-4" /></button>
-                </div>
-                <div className="text-[11px] text-amber-700/70 font-medium flex items-center gap-1.5 mt-0.5">
-                  <Navigation className="w-3 h-3 text-amber-400" />
-                  <span>{routeMode === 'game' ? summary.dist : '~'}</span>
-                  <span>•</span>
-                  <span><MapPin className="inline w-3 h-3 text-amber-400 bottom-[1px] relative" /> {stops.length} 个关卡</span>
-                </div>
-                <div className="flex gap-2 mt-3 items-center">
-                  <div className="flex bg-amber-50 rounded-lg p-1 gap-1 border border-amber-200/50">
-                    <i className="bi bi-star-fill text-amber-400 text-[10px] mx-1"></i>
-                    <i className="bi bi-emoji-smile-fill text-amber-400 text-[10px] mx-1"></i>
-                  </div>
-                  <div className="flex-1"></div>
-                  <button className={`p-1.5 rounded-lg text-white shadow-md transition-colors ${routeMode === 'game' ? 'bg-amber-500 hover:bg-amber-600 shadow-amber-600/20' : 'bg-slate-300'}`}><Edit2 className="w-3.5 h-3.5" /></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-            </div>
-          </div>
         </div>
 
-        {/* Data Summary (高度还原的设计模块) */}
         <div className="flex flex-col gap-3">
           <h2 className="text-sm font-bold text-slate-800 tracking-wide mb-1">数据仪表盘</h2>
           
-          {/* Today's Travel */}
           <div className="bg-gradient-to-r from-[#3b82f6] to-[#60a5fa] p-5 rounded-[1.5rem] shadow-lg shadow-blue-500/20 text-white flex justify-between items-center border border-white/20">
             <div>
               <h3 className="font-semibold text-[16px] mb-2 tracking-wide">行程大盘</h3>
@@ -574,38 +568,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
             </div>
           </div>
 
-          {/* Nearby Highlights */}
-          <div className="bg-gradient-to-r from-[#70529f] to-[#a482cc] p-4 rounded-[1.5rem] shadow-lg shadow-purple-500/20 text-white border border-white/20">
-            <h3 className="font-semibold text-[15px] mb-3 tracking-wide">周边高光打卡地</h3>
-            <div className="flex justify-between items-center">
-              <div className="flex flex-col items-center gap-1 group cursor-pointer w-14">
-                <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
-                  <Landmark className="w-5 h-5" />
-                </div>
-                <span className="text-[9px] text-center leading-tight opacity-90">重磅<br/>地标</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 group cursor-pointer w-14">
-                <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
-                  <Castle className="w-5 h-5" />
-                </div>
-                <span className="text-[9px] text-center leading-tight opacity-90">艺术<br/>展馆</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 group cursor-pointer w-14">
-                <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
-                  <Coffee className="w-5 h-5" />
-                </div>
-                <span className="text-[9px] text-center leading-tight opacity-90">人气<br/>咖啡</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 group cursor-pointer w-14">
-                <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors border border-white/10">
-                  <MapIcon className="w-5 h-5" />
-                </div>
-                <span className="text-[9px] text-center leading-tight opacity-90">宝藏<br/>街区</span>
-              </div>
-            </div>
-          </div>
-
-          {/* System Processing Log (Our Route Optimization Replacement) */}
           <div className="bg-gradient-to-r from-[#0d9488] to-[#14b8a6] p-4 rounded-[1.5rem] shadow-lg shadow-teal-500/20 text-white border border-white/20 flex flex-col relative overflow-hidden group">
             <div className="flex justify-between items-center">
               <div>
@@ -625,14 +587,12 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
               </button>
             </div>
             
-            {/* Quick peek at last log */}
             <div className="mt-3 text-[10px] font-mono opacity-80 truncate bg-black/10 px-3 py-1.5 rounded-lg border border-white/5">
               {logs[logs.length - 1]?.message || "系统引擎已初始化..."}
             </div>
           </div>
         </div>
 
-        {/* 展开的路线详情步骤 (Turn by turn) */}
         {routeSteps.length > 0 && (
           <div className="bg-white/70 p-5 rounded-[1.5rem] shadow-sm border border-white/80 backdrop-blur-md flex flex-col mt-2">
             <h3 className="font-bold text-slate-800 text-[14px] mb-4">路线导航指引</h3>
@@ -659,11 +619,9 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
 
       </div>
 
-      {/* 增强型全屏模态框：系统执行日志 */}
       {isLogExpanded && (
         <div className="absolute inset-0 z-[200] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 sm:p-8 animate-in fade-in duration-200">
           <div className="w-full max-w-2xl h-[80vh] flex flex-col rounded-3xl bg-white shadow-2xl overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200">
-            {/* Header */}
             <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center"><CheckCircle2 className="w-5 h-5"/></div>
@@ -679,7 +637,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
                 <Minimize2 className="w-5 h-5" />
               </button>
             </div>
-            {/* Body */}
             <div className="flex-1 bg-slate-900 p-6 overflow-y-auto font-mono text-sm tracking-wide custom-scrollbar" ref={logContainerRef}>
               <div className="space-y-3">
                 {logs.map(log => (
@@ -706,7 +663,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
       {/* Game Mode Overlay (Cute Carrot Fantasy Style) */}
       {routeMode === 'game' && (
         <div className="absolute inset-0 z-[60] bg-[#a8e6cf] overflow-y-auto custom-scrollbar flex justify-center pb-32 pt-20">
-          {/* Animated Background Elements */}
           <div className="fixed inset-0 pointer-events-none opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMiIgZmlsbD0iIzA0OGE2YyIvPjwvc3ZnPg==')]"></div>
 
           <div className="w-full max-w-xl relative p-6 flex flex-col items-center">
@@ -714,7 +670,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
             <p className="text-emerald-700 font-bold bg-white/50 px-6 py-2 rounded-full shadow-inner mb-12">点击解锁你的专属关卡</p>
             
             <div className="relative w-full pb-20">
-              {/* Central dashed line connecting the path */}
               <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-4 border-l-8 border-r-8 border-emerald-300/30 border-dashed z-0 rounded-full"></div>
 
               {stops.map((stop, index) => {
@@ -725,8 +680,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
                 
                 return (
                   <div key={index} className={`relative z-10 w-full flex items-center mb-16 ${isLeft ? 'justify-start' : 'justify-end'}`}>
-                    
-                    {/* The Card */}
                     <div className={`w-[45%] flex flex-col items-center transform transition-all duration-500 ${isUnlocked ? 'scale-100 opacity-100' : 'scale-90 opacity-60 grayscale'}`}>
                       {isCurrent && <div className="absolute -top-12 animate-bounce text-4xl text-emerald-500"><i className="bi bi-arrow-down-circle-fill"></i></div>}
                       
@@ -737,7 +690,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
                         <div className={`text-6xl mb-2 filter drop-shadow-xl ${isUnlocked ? '' : 'opacity-50'}`}>{emoji}</div>
                         <h3 className={`font-black text-center text-sm ${isUnlocked ? 'text-emerald-800' : 'text-gray-500'}`}>{stop.name}</h3>
                         
-                        {/* Status Badge */}
                         <div className={`absolute -bottom-5 px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-wider border-4 border-white shadow-md ${isUnlocked ? 'bg-amber-400 text-amber-900' : 'bg-gray-400 text-white'}`}>
                           {isUnlocked ? '已解锁' : '待探索'}
                         </div>
@@ -764,7 +716,6 @@ export default function RouteVisualizer({ planText = DEFAULT_PLAN, cityName = '�
         </div>
       )}
 
-      {/* 隐藏系统的 Leaflet 预定义暗色样式影响以保持滤镜纯正；以及滚动条样式 */}
       <style dangerouslySetInnerHTML={{__html: `
         .leaflet-container { background: #f8fafc !important; }
         .leaflet-tile-pane {
